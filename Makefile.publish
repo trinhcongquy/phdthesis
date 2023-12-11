@@ -1,0 +1,81 @@
+#SOURCES := UUThesisTemplate.cls $(wildcard *.tex) $(wildcard img/*.tex) $(wildcard experiments/*.tex) $(wildcard experiments/*.txt)
+SOURCES := $(wildcard settings/*.tex) settings/UUThesisTemplate.cls thesis.tex \
+	   $(wildcard misc/*.tex) \
+	   $(wildcard chapters/verification/*.tex) \
+	   $(wildcard chapters/parameterized-systems/*.tex) \
+	   $(wildcard chapters/monotonic-abstraction/*.tex) \
+	   $(wildcard chapters/view-abstraction/*.tex) \
+           $(wildcard chapters/shape-analysis/*.tex) \
+	   $(wildcard img/*.tex) \
+           $(wildcard experiments/*.tex) $(wildcard experiments/code/*.txt)
+
+FLAGS?=-interaction=batchmode
+REDIRECT?= > /dev/null
+
+export TEXMFVAR = settings
+LATEX := pdflatex --shell-escape
+BIBTEX := bibtex -terse
+MAKEINDEX := makeindex -q
+CURRDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+BUILD := $(CURRDIR)_build
+
+.SUFFIXES: .pdf .tex .txt .bb .map .enc .ttf .vf .tfm
+.PHONY: all web img experiments fonts force
+
+## ==== Thesis ==================================================
+all: thesis.pdf
+
+$(BUILD)/thesis.pdf: thesis.tex settings/builddir.tex $(SOURCES) 
+	@echo "Compiling $<"
+	@$(LATEX) $(FLAGS) -output-directory=$(BUILD) $< $(REDIRECT)
+
+thesis: $(BUILD)/thesis.pdf bib index
+	@echo "Second compilation"
+	@$(LATEX) $(FLAGS) -output-directory=$(BUILD) thesis.tex $(REDIRECT)
+	@echo "Final compilation"
+	@$(LATEX) $(FLAGS) -output-directory=$(BUILD) thesis.tex $(REDIRECT)
+
+thesis.pdf: fonts thesis
+	@cp $(BUILD)/thesis.pdf .
+
+
+## ==== Bibtex =================================================
+# Must use the TEXMFOUTPUT variable or change the openout_any=a in the texmf.cnf settings file
+$(BUILD)/thesis.bbl: misc/references.bib $(BUILD)/thesis.aux
+	@echo "Compiling the bibliography"
+	@export TEXMFOUTPUT=$(BUILD); $(BIBTEX) $(BUILD)/thesis || true
+$(BUILD)/thesis.aux: $(BUILD)/thesis.pdf
+bib: $(BUILD)/thesis.bbl
+
+## ==== makeindex ==============================================
+$(BUILD)/thesis.ind: $(BUILD)/thesis.idx
+	@echo "Creating the index"
+	@export TEXMFOUTPUT=$(BUILD); $(MAKEINDEX) $(BUILD)/thesis.idx
+$(BUILD)/thesis.idx: $(BUILD)/thesis.pdf
+index: $(BUILD)/thesis.ind
+
+## ==== fonts ==================================================
+fonts:
+	@echo "Preparing the fonts"
+	@make -s -C settings/fonts
+
+## -------------------------------------
+settings/builddir.tex:
+	@mkdir -p $(BUILD)
+	@echo "\\\newcommand\\\builddir{\detokenize{$(BUILD)}}" > $@
+#	@for c in {parameterized-systems,verification,monotonic-abstraction,view-abstraction,shape-analysis}; do mkdir -p $(BUILD)/chapters/$${c}; done
+
+## ==== Cleaning ==================================================
+cleantilde:
+	@find . -type f -iname '*~' -exec  rm {} \;
+
+clean: cleantilde
+	@rm -f $(BUILD)/thesis.*
+
+cleanfonts:
+	@make -s -C settings/fonts clean
+
+cleanall: cleantilde cleanfonts
+	@rm -rf $(BUILD)
+	@rm -f settings/builddir.tex
+

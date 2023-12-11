@@ -1,0 +1,76 @@
+%% ====================================================================
+ 
+\chapter{Data Structures}
+In general, a data structure is any data representation and its
+associated operations. Even an integer or floating point number stored on the computer can be viewed as a simple data structure. Typically, a data structure is meant to be an organization or structuring for a collection of data items. 
+ Each data structure has an interface which defines a set of possible values and a set of operations. More precisely, the interface consists of a set of operations or methods, each having a number of input and output parameters, and a specification of the effect of each operation. 
+
+For example,  a sequential set is an data structure for storing a collection of elements, with the following three operations: 
+\begin{itemize}
+\item $\tt add(e)$ adds element $\tt e$ into the set, returning \true\; if and only if $\tt e$ was not
+already there. 
+\item $\tt remove(e)$ removes element $\tt e$ from the set, returning \true\; if and only if
+$\tt e$ was there. 
+\item $\tt contains(e)$ checks the existence of element $\tt e$ in the set, returns \true\; if and only if the set contains $\tt e$. 
+\end{itemize}
+For each method, we say that a call is successful if it returns true, and unsuccessful
+otherwise. It is typical that in applications using sets, there are significantly more
+$\tt contains()$ calls than $\tt add()$ or $\tt remove()$ calls.
+The implementation of a data structure should provide
+an efficient way to store data in computer memory and perform its operations
+in an efficient way. Data structures
+typically use heap-allocated memory to store their data. Various schemes
+can be used to organise the heap-allocated memory, such as singly-linked lists,
+doubly-linked lists, skip-lists and trees. The implementation
+can be sequential or concurrent.
+
+A set can be implemented as a singly linked list of cells. Each cell has two fields named $\tt val$ and $\tt next$. The $\tt val$ field represent the value of a cell, and the $\tt next$ field is a reference to
+the next cell in the list. Cells are sorted according to $\tt val$ order, providing an efficient way to detect when an item is absent. The list has two sentinel cells, called head and tail, which are the first and last list elements. Sentinel nodes are never added, removed, or searched for, and their values are the minimum and maximum integer values.
+
+
+
+A concurrent data structure is a way of storing and organising data for access and manipulation by multiple computing threads (or processes) on a shared-memory computer. Each operation is implemented as a sequential
+method that is executed by a thread accessing the share state. Several features of shared-memory multiprocessors make concurrent data structures significantly more difficult to design and to verify correct than their sequential counterparts. The primary source of this additional difficulty is concurrency: because threads are executed concurrently, possibly on different processors, and are subject to operating system scheduling decisions, interrupts, etc., we must think of the interaction between threads as completely asynchronous, so that the steps of different threads can be interleaved arbitrarily. %This significantly complicates the task of designing correct concurrent data structures. 
+
+
+
+There are several techniques to construct concurrent data structures including coarse-grained locking, fine-grained locking, and lock-free programming. The simplest technique is coarse-grained locking, where a single lock is used to synchronise every access to an object. Coarse-grained locking is easy to reason about; however it works well only when the level of concurrency is low. However, if too many threads try to access an object at the same time, then the object becomes a sequential bottleneck, forcing threads to wait in line for access. Fine-grained synchronisation techniques address this problem by splitting the object into independently synchronised components, ensuring that method calls interfere only when trying to access the same component at the same time. Fine-grained locking requires very careful design of the data structure and its
+methods, since one must foresee what can happen when several threads access
+the same component in parallel.
+Fine-grained synchronisation is often performed without locks, replacing them by less costly
+synchronisation operations such as {\tt compareAndSet()}. Each of these techniques can be applied (with appropriate customisation) to a variety of common data structures (queues, stacks, sets) implemented by different linked data structures such as singly linked lists, skiplists, trees, or lists of lists. 
+
+
+\vspace{1cm}
+\input img/lazy-list
+
+
+
+
+As an example, Fig.~\ref{figure:lazy-list} depicts a program
+Lazy Set \cite{Lazyset}
+that implements a concurrent set containing integer
+elements with three operations $\tt add$, $\tt remove$ and $\tt contains$.
+It is just as the sequential version,
+except that each cell now has two additional fields named ${\tt mark}$ and ${\tt lock}$. The field $\tt mark$ is \true\; if
+the node has been logically removed from the set. The ${\tt lock}$ field is a lock and the field ${\tt val}$ represents the data value which in this case is an integer. The
+mechanism behind logically and physical removing is explained as following: it is impossible to atomically remove a cell from the list if other threads may concurrently access the adjacent cells. One reason is that one must both move a $\tt next$ pointer which references to the cell as well as physically remove the cell. This cannot be done, e.g., if another thread currently is visiting the cell that is to be removed. Therefore, the task of removing a cell from the list  can be split into two phases: the cell is logically removed simply by setting a $mark$ field to be \true, and later, the cell can be physically deleted by unlinking it from the rest of the data structure. The removal “actually happens” when an entry is marked, and the physical removal is just a way to clean up.
+The algorithm uses two global pointers, {\tt head} that points to  the first cell of the heap, and {\tt tail} that points to the last cell.  
+These two cells contain two values that are smaller 
+and larger, respectively, than data values of all cells that may be                     
+inserted in the set. The algorithm also contains the subroutine {\tt locate} that returns a structure containing the cells on either side of $\tt e$. In more detail, the {\tt locate} method traverses the list using along two local variables ${\tt p}$ and $\tt c$, starting at the head of the list and moves forward the list (line 2), comparing ${\tt c.val}$ to ${\tt e}$. When $\tt c$ is pointed to the
+first cell whose value of  $\tt val$ is greater than or equal to $\tt e$, the traversal stops, and the
+method locks cells pointed to by $\tt p$ and $\tt c$ (line 7) so that no other thread can update fields of $\tt p$ and $\tt c$. Thereafter, if both $\tt p.mark$ and $\tt c.mark$ are \false \; and ${\tt p.next = c}$ meaning that there is no added cell from other threads between $\tt p$ and $\tt c$, the method returns the pair $\tt (p,c)$ (line 9). Otherwise, it unlocks cells pointed to by $\tt p$ and $\tt c$ and tries traversing again from the head of the list.
+
+
+
+ 
+
+
+The {\tt add(e)} method calls {\tt locate(e)} at line 1 to locate the position in the list where $\tt e$ is to be inserted. Its local variables $\tt p$ and $\tt c$ are assigned the first and second values of the pair returned by {\tt locate(e)}, respectively. If $\tt c.val = e$, meaning that a cell whose value of $\tt val$ is equal to $\tt e$ is already in the list, the method unlocks $\tt p$ and $\tt c$ and returns \false \; (line 7-8). Otherwise, a new cell $\tt n$ is created (line 3), and inserted into the list by linking it into the list between the $\tt p$ and $\tt c$ pointers returned by
+{\tt locate} (line 3-4). Then, the method unlocks cells pointed to by $\tt p$ and $\tt c$ and returns \true.  
+
+The {\tt rmv(e)} method also calls {\tt locate} at line 1 to locate the position in the list where $\tt e$ is to be inserted. If $\tt c.val \neq e$ meaning that a cell with val $\tt e$ is not already in the list, the method unlocks $\tt p$ and $\tt c$ and returns \false \;(line 7-9). Otherwise, cell $\tt c$ is logically removed (line 3) by assigning \true\; to the $\tt mark$ field of $\tt c$, and unlinking it from the list (line 4-5). Then, the method unlocks cells pointed to by $\tt p$ and $\tt c$ and returns \true.  
+
+The {\tt ctn(e)} method traverses the list by using local variable $\tt c$, ignoring whether nodes are marked or not, until $\tt c$ is set to the
+first cell with a value of $\tt val$ greater than or equal to $\tt e$. It simply returns \true \; if and only if the cell pointed to by $\tt c$  is unmarked with the desired value of $\tt val$ equal to $\tt e$. 

@@ -1,0 +1,463 @@
+\newcommand{\bjparagraph}[1]{\paragraph{{\bf #1}}}
+\newcommand{\closeparagraph}[1]{\vspace{-6pt}\paragraph{#1}}
+\newcommand{\expcloseparagraph}[1]{\vspace{-10pt}\paragraph{#1}}
+\newcommand{\td}[1]{\textcolor{red}{[TODO: #1]}} 
+\renewcommand{\td}[1]{}
+\newcommand{\bjcom}[1]{\textcolor{red}{[COMMENT: #1]}} 
+\newcommand{\quycom}[1]{\textcolor{blue}{[ANSWER of Quy: #1]}} 
+
+\newcommand{\bjinsert}[1]{\textcolor{blue}{[TO BE INSERTED: #1]}} 
+
+\newcommand\tuple[1]{\left\langle#1\right\rangle}
+\newcommand{\pair}[2]{\tuple{#1,#2}}
+\newcommand\fun{f}
+\newcommand\assigned\leftarrow
+\newcommand\set[1]{\left\{#1\right\}}
+\newcommand\setcomp[2]{\left\{#1\ | \ #2\right\}}
+\newcommand\nat{\mathbb{N}}
+\newcommand{\intgrs}{{\mathbb Z}}
+\newcommand\boolset{\mathbb{B}}
+\newcommand\wordsetover[1]{{#1}^*}
+\newcommand\project\odot
+\newcommand{\word}{w}
+\newcommand{\lengthof}[1]{\left|#1\right|}
+\newcommand{\firstof}[1]{{\tt first}\left(#1\right)}
+\newcommand{\lastof}[1]{{\tt last} \left(#1\right)}
+\newcommand{\aset}{A}
+\newcommand{\bset}{B}
+\newcommand{\aelem}{a}
+\newcommand{\belem}{b}
+\newcommand\subword\preceq
+\newcommand{\domof}[1]{Dom(#1)}
+
+
+\newcommand{\fset}{\mathbb{F}}
+\newcommand{\emptyword}{\varepsilon}
+\newcommand{\app}{\bullet}
+\newcommand\denotationof[1]{\left\llbracket{#1}\right\rrbracket}
+\newcommand\ii{i}
+\newcommand\jj{j}
+\newcommand\kk{k}
+\newcommand\mm{m}
+\newcommand\nn{n}
+
+
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\newcommand\xrsquigarrow[1]{%
+    \mathrel{\begin{tikzpicture}[baseline={(current bounding box.south)}]
+        \node[inner sep=.44ex, align=center] (tmp) {$\scriptstyle {#1}$};
+        \path[draw,<-,decorate,
+        decoration={zigzag,amplitude=0.7pt,segment length=1.2mm,pre length=3.5pt}] 
+        ($(tmp.south east)+(2pt,0pt)$)-- (tmp.south west);
+        \end{tikzpicture}}}
+
+
+
+
+\newcommand{\xvar}{x}
+\newcommand{\yvar}{y}
+\newcommand{\expr}{\mathbbm e}
+\newcommand{\dvar}{x}
+\newcommand{\dterm}{t^d}
+\newcommand{\zterm}{t^{\intgrs}}
+
+\newcommand{\varset}{{\tt X}}
+\newcommand{\tvars}{\mbox{\sc Tvars}}
+\newcommand{\tvarset}{T}
+\newcommand{\tvar}{t}
+
+\newcommand\dstruct{{\tt DS}}
+\newcommand\ddomain{{\mathds D}}
+\newcommand{\ddomainof}[1]{\ddomain^{\cal A}(#1)}
+\newcommand{\hsdomainof}[1]{\ddomain^{\cal H}(#1)}
+\newcommand{\dheapseg}{\ddomain^{\cal HS}}
+
+\newcommand{\hsodomainof}[1]{{\ddomain}^{{\observer}}(#1)}
+
+\newcommand\abstrdom{\ddomain^{\cal A}}
+\newcommand\malphabet{{\mathds M}}
+\newcommand\mname{{\tt m}}
+\newcommand{\methodof}[1]{{\tt Method}\left(#1\right)}
+\newcommand\data{d}
+\newcommand\indata{\data^{\it in}}
+\newcommand{\senderindata}{\data^{\it in}_s}
+\newcommand\inxvar{\xvar^{\it in}}
+\newcommand\pindata[1]{\data^{\it in}_{#1}}
+\newcommand\outdata{\data^{\it out}}
+\newcommand{\senderoutdata}{\data^{\it out}_s}
+\newcommand\outxvar{\xvar^{\it out}}
+\newcommand\poutdata[1]{\data^{\it out}_{#1}}
+\newcommand\op{{\it op}}
+\newcommand\event{e}
+\newcommand{\senderevent}{\event_s}
+\newcommand{\locsymbconf}{\sigma}
+\newcommand{\symbrep}{\Psi}
+\newcommand{\abstrconf}{\Phi}
+\newcommand{\ac}{\abstrconf}
+\newcommand\action{a}
+\newcommand{\satfrag}[1]{\lhd_{#1}}
+\newcommand{\satlocsymbconf}[1]{\models_{#1}^{\mathit{loc}}}
+\newcommand{\satfragset}[1]{\models_{#1}^{\mathit{heap}}}
+\newcommand{\satconf}[1]{\models_{#1}}
+%% \newcommand{\actuple}{\tuple{\tvarset,\he,\constr}}
+%% \newcommand{\actupleprime}{\tuple{\tvarset,\he',\constr'}}
+\newcommand{\actuple}{\tuple{\indices,\globmap,\nrglobloc,\pexpglobloc,\dmap,\ordconstr}}
+\newcommand{\actuplepar}[1]{\tuple{\indices_{#1},\globmap_{#1},\nrglobloc_{#1},\pexpglobloc_{#1},\dmap_{#1},\ordconstr_{#1}}}
+\newcommand{\actupleprime}{\tuple{\indices',{\globmap}',{\nrglobloc}',{\pexpglobloc}',{\dmap}',{\ordconstr}'}}
+\newcommand{\projection}[2]{#1\rhd#2}
+\newcommand{\symbproj}{{\tt proj}}
+\newcommand{\symbintersect}{{\tt merge}}
+\newcommand{\reg}{\mathtt{x}}
+\newcommand{\regset}{\mathtt{regset}}
+
+\newcommand\true{{\tt true}}
+\newcommand\false{{\tt false}}
+
+
+
+
+
+
+%% \newcommand\return[3]{\left(#1,#2,#3\right)\uparrow}
+%% \newcommand\call[3]{\left(#1,#2,#3\right)\downarrow}
+\newcommand\return[3]{\mathtt{ret}_{#1}\; #2\left(#3\right)}
+\newcommand\call[3]{\mathtt{call}_{#1}\; #2\left(#3\right)}
+%% \newcommand\returntwo[2]{#1\left(#2\right)\uparrow}
+%% \newcommand\calltwo[2]{#1\left(#2\right)\downarrow}
+\newcommand\returntwo[2]{\mathtt{ret}\; #1\left(#2\right)}
+\newcommand\calltwo[2]{\mathtt{call}\; #1\left(#2\right)}
+%% \newcommand\eid{\tt eid}
+\newcommand\eid{\tt o}
+\newcommand\history{h}
+\newcommand\histories{H}
+\newcommand\historyof[1]{{\mathcal H}\left(#1\right)}
+\newcommand\occursbefore[1]{\preceq_{#1}}
+
+\newcommand{\mkadata}[1]{\mathpzc{a_{#1}}}
+\newcommand{\cross}{\textcolor{red}{\ding{55}}}
+\newcommand{\tick}{\textcolor{green}{\ding{52}}}
+
+\newcommand{\glvarset}{\varset^{\tt gl}}
+\newcommand{\locvarset}{\varset^{\tt loc}}
+\newcommand{\pvarset}{\varset^{\tt p}}
+
+\newcommand{\viewvarset}{\varset^{\tt var}}
+
+\newcommand{\glval}{{\tt Val}^{\tt gl}}
+
+\newcommand{\viewval}{{\tt Val}^{\tt var}}
+
+\newcommand{\glvalof}[1]{\glval\left(#1\right)}
+\newcommand{\cellval}{{\tt Val}^{\cellset}}
+
+\newcommand{\nullconst}{{\tt null}}
+\newcommand{\dangconst}{\bot}
+\newcommand{\fieldset}{\mathcal{F}}
+\newcommand\fields{\fieldset}
+\newcommand{\datafields}{\mathbb{D}}
+\newcommand{\lockfields}{\mathbb{L}}
+\newcommand{\field}{\mathtt{f}}
+\newcommand{\dfield}{\mathtt{d}}
+\newcommand{\lfield}{\mathtt{lock}}
+\newcommand{\zfield}{\mathtt{f}}
+\newcommand{\ffield}{\mathtt{f}}
+\newcommand{\pfield}{\mathtt{ptr}}
+\newcommand{\fieldfunc}[1]{\lambda_{#1}}
+\newcommand{\cellsof}[1]{\mbox{\sc Cells}(#1)}
+\newcommand{\cell}{{\mathbbm c}}
+\newcommand{\cellset}{{\mathbb C}}
+\newcommand{\mcellset}{\cellset^{-}}
+\newcommand{\suc}{{\tt succ}}
+\newcommand{\succof}[1]{\suc\left(#1\right)}
+%\newcommand{\nrglobloc}{\rho}
+\newcommand{\nrglobloc}{{{\tt nextrel}}}
+\newcommand{\pexpglobloc}{\pathexpr}
+\newcommand{\nrglob}{\rho_g}
+\newcommand{\pexpglob}{\pathexpr_g}
+\newcommand{\pairindex}{i}
+
+\newcommand{\absconf}{\tuple{{\tt I}, {\tt Val}^{\tt v}, {\tt nextrel}, {\tt Val}^{\tt d}, {\tt Val}^{\tt r}, {\tt Val}^{\tt s}, {\tt Val}^{\tt m}}}
+
+\newcommand{\viewconf}{\tuple{\tt I,\tt next, {\tt vars}, {\tt data}, {\tt reachfrom}, {\tt reachto} ,\phi, \tt private}}
+%% \newcommand{\tagtuple}{\tuple{\tt next, {\tt pvars}, {\tt data}, {\tt reachfrom}, {\tt reachto} \tt private}}
+\newcommand{\gvarof}[1]{\mathtt{#1}}
+\newcommand{\lvarof}[1]{\mathtt{#1}}
+\newcommand{\pvars}{\mathtt{pvars}}
+%% \newcommand{\vals}{\mathtt{data}}
+\newcommand{\vals}{\mathtt{dabs}}
+\newcommand{\reachfrom}{\mathtt{reachfrom}}
+\newcommand{\reachto}{\mathtt{reachto}}
+\newcommand{\private}{\mathtt{private}}
+\newcommand{\pvarsof}[1]{\pvars\left(#1\right)}
+\newcommand{\pvarsat}[1]{#1.\pvars}
+\newcommand{\pvarsofth}[2]{\pvars\left(#1,#2\right)}
+\newcommand{\dataof}[1]{\data\left(#1\right)}
+\newcommand{\valsof}[1]{\vals\left(#1\right)}
+\newcommand{\valsat}[1]{#1.\vals}
+\newcommand{\valsofth}[2]{\vals\left(#1,#2\right)}
+\newcommand{\reachfromof}[1]{\reachfrom\left(#1\right)}
+\newcommand{\reachfromat}[1]{#1.\reachfrom}
+\newcommand{\reachfromofth}[2]{\reachfrom\left(#1,#2\right)}
+\newcommand{\reachtoof}[1]{\reachto\left(#1\right)}
+\newcommand{\reachtoat}[1]{#1.\reachto}
+\newcommand{\reachtoofth}[2]{\reachto\left(#1,#2\right)}
+\newcommand{\privateof}[1]{\private\left(#1\right)}
+\newcommand{\privateat}[1]{#1.\private}
+\newcommand{\privateofth}[2]{\private\left(#1,#2\right)}
+\newcommand{\gpvars}{\mathtt{gpvars}}
+\newcommand{\gvals}{\mathtt{gdata}}
+\newcommand{\gpvarsat}[1]{#1.\gpvars}
+\newcommand{\gvalsat}[1]{#1.\gvals}
+\newcommand{\greachfrom}{\mathtt{greachfrom}}
+\newcommand{\greachto}{\mathtt{greachto}}
+\newcommand{\greachfromat}[1]{#1.\greachfrom}
+\newcommand{\greachtoat}[1]{#1.\greachto}
+\newcommand{\gtag}{\mathtt{gtag}}
+\newcommand{\gtagat}[1]{#1.\gtag}
+\newcommand{\gtagtuple}{\tuple{\vals,\gpvars,\greachfrom,\greachto,\private}}
+\newcommand{\gtagtupleof}[1]{\tuple{\valsof{#1},\gpvarsof{#1},\greachfromof{#1},\greachtoof{#1},\privateof{#1}}}
+\newcommand{\gtagtupleat}[1]{\tuple{\valsof{#1},\gpvarsat{#1},\greachfromat{#1},\greachtoat{#1},\privateat{#1}}}
+
+\newcommand{\frag}{\mathtt{v}}
+\newcommand{\fragset}{V}
+\newcommand{\fragsetpost}{V'}
+
+
+\newcommand{\atag}{\mathtt{tag}}
+\newcommand{\tagat}[1]{#1.\atag}
+\newcommand{\tagtuple}{\tuple{\vals,\pvars,\reachfrom,\reachto,\private}}
+\newcommand{\tagtupleprime}{\tuple{\vals',\pvars',\reachfrom',\reachto',\private'}}
+\newcommand{\tagtupleof}[1]{\tuple{\valsof{#1},\pvarsof{#1},\reachfromof{#1},\reachtoof{#1},\privateof{#1}}}
+\newcommand{\tagtupleat}[1]{\tuple{\valsat{#1},\pvarsat{#1},\reachfromat{#1},\reachtoat{#1},\privateat{#1}}}
+\newcommand{\tagof}[1]{\mathtt{tag}\left(#1\right)}
+\newcommand{\sllviewtuple}{\tuple{\inputtag,\outputtag,\datarel}}
+\newcommand{\inputtag}{\mathtt{tag}_{in}}
+\newcommand{\outputtag}{\mathtt{tag}_{out}}
+\newcommand{\datarel}{\phi}
+\newcommand{\fragtupleat}[1]{\tuple{\inat{#1},\outat{#1},\datarelat{#1}}}
+\newcommand{\inat}[1]{#1.\mathtt{i}}
+\newcommand{\outat}[1]{#1.\mathtt{o}}
+\newcommand{\datarelat}[1]{#1.\datarel}
+
+
+
+\newcommand{\cellmap}{\mu}
+\newcommand{\cellterm}{c}
+\newcommand{\dataterm}{e}
+\newcommand{\globmap}{\delta}
+\newcommand{\nrloc}{\rho_l}
+\newcommand{\pexploc}{\pi_l}
+\newcommand{\pointervarmap}{{\tt Val}^{\tt v}}
+\newcommand{\datatermmap}{{\tt Val}^{\tt d}}
+\newcommand{\datarelmap}{{\tt Val}^{\tt r}}
+
+
+\newcommand{\triggersym}{\blue{\bullet}}
+\newcommand{\triggered}[1]{{#1}^{\triggersym}}
+
+\newcommand{\heap}{{\mathcal H}}
+\newcommand{\initheap}{\heap_{\tt init}}
+\newcommand{\heaptuple}{\tuple{\cellset,\pfield_1, \ldots , \pfield_k,\glval,\cellval}}
+%% \newcommand{\heaptuple}{\tuple{\cellset,\suc,\glval,\cellval}}
+\newcommand{\lstate}{{\tt loc}}
+\newcommand{\lbl}{\lambda}
+\newcommand{\initlstateof}[1]{\lstate_{\tt init}^{#1}}
+\newcommand{\idlestate}{{\tt idle}}
+\newcommand{\terminatedstate}{{\tt term}}
+
+\newcommand{\borule}[4]{\mbox{\bf when }#1\mbox{ \bf provided }#2\mbox{ \bf broadcast }#3\mbox{ \bf emit }#4}
+
+
+
+\newcommand{\rrule}[3]{\mbox{\bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+\newcommand{\frule}[5]{\mbox{\bf from } #1 \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4\mbox{ \bf goto } #5}
+
+\newcommand{\frulenostate}[3]{ \mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+
+\newcommand{\eventseq}{w}
+\newcommand{\veventseq}{v}
+
+
+\newcommand{\cstateset}[1]{Q^{#1}}
+\newcommand{\cruleset}[1]{R^{#1}}
+\newcommand{\cstate}{q}
+\newcommand{\initcstate}[1]{\cstate^{#1}_{\tt init}}
+\newcommand{\ctuple}[1]{\tuple{\cstateset{#1},\initcstate{#1},\cruleset{#1}}}
+\newcommand{\proj}{{\tt proj}}
+\newcommand{\view}{{\tt view}}
+\newcommand{\cnd}{{\it cnd}}
+\newcommand{\eexpr}{{\it expr}}
+\newcommand{\oevent}{{\it op}}
+\newcommand{\sevent}{{\it se}}
+\newcommand{\revent}{{\it re}}
+\newcommand{\cevent}{{\it ce}}
+\newcommand{\type}{{\tt type}}
+\newcommand{\msgset}{\Sigma}
+\newcommand{\msg}{\sigma}
+\newcommand{\msgof}[1]{{\tt Msg}\left(#1\right)}
+\newcommand{\rulename}{\rho}
+\newcommand{\sndrule}[6]{\mbox{\bf from } #1 \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4\mbox{ \bf broadcast } #5 \mbox{ \bf goto } #6}
+\newcommand{\sndrulenostate}[4]{\mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3\mbox{ \bf broadcast } #4}
+
+
+\newcommand{\rcvrule}[5]{\mbox{\bf from } #1  \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4 
+\mbox{ \bf goto } #5}
+\newcommand{\rcvrulenostate}[3]{\mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+
+\newcommand{\rcvruletwostate}[6]{\mbox{\bf from } #1 {,} #2  \mbox{ \bf when }#3\mbox{ \bf provided }#4\mbox{ \bf emit }#5 \mbox{ \bf goto } #6}
+
+
+\newcommand\snd[1]{{#1}!}
+\newcommand\rcv[1]{{#1}?}
+\newcommand{\ctrlof}[1]{{\tt cntrl}\left(#1\right)}
+\newcommand{\augof}[1]{{\tt aug}\left(#1\right)}
+\newcommand{\rvalues}{\theta}
+\newcommand{\param}{p}
+\newcommand{\ord}{{\tt ord}}
+\newcommand\before{\tt before}
+\newcommand\after{\tt after}
+
+\newcommand{\subsumed}{\sqsubseteq}
+
+\newcommand\prog{{\mathcal P}}
+\newcommand\augprog{{\mathcal Q}}
+\newcommand{\thread}{{\tt th}}
+\newcommand{\threads}{\mbox{\sc Threads}}
+\newcommand{\threadsof}[1]{\threads(#1)}
+\newcommand{\threadmapof}[1]{\threadmap(#1)}
+\newcommand{\threadmap}{h}
+\newcommand{\thmap}{\threadmap}
+\newcommand{\threadset}{{\tt Threads}}
+\newcommand{\athreads}{{\tt T}}
+\newcommand{\athreadsof}[1]{{\tt ThreadsOf}\left(#1\right)}
+\newcommand{\cstatemapping}{{\tt Q}}
+\newcommand{\cstatemappingof}[1]{\cstatemapping\left(#1\right)}
+\newcommand{\lstatemapping}{{\tt LOC}}
+\newcommand{\lstatemappingof}[1]{\lstatemapping\left(#1\right)}
+\newcommand{\initlstatemapping}{\lstatemapping_{\tt init}}
+\newcommand{\initlstatemappingof}[1]{\initlstatemapping\left(#1\right)}
+\newcommand{\initcstatemapping}{\cstatemapping_{\tt init}}
+\newcommand{\initcstatemappingof}[1]{\initcstatemapping\left(#1\right)}
+\newcommand{\senderthread}{\thread_s}
+\newcommand{\enabledname}{{\tt enabled}}
+\newcommand{\enabled}[7]{\enabledname\left(#1,#2,#3,#4,#5,#6,#7\right)}
+\newcommand{\post}{{\tt Post}}
+\newcommand{\postof}[1]{\post\left(#1\right)}
+\newcommand{\thpost}{\post^{ta}}
+\newcommand{\thpostof}[1]{\thpost\left(#1\right)}
+\newcommand{\symbpost}{\post^{symb}}
+\newcommand{\symbpostof}[1]{\symbpost\left(#1\right)}
+\newcommand{\valuation}{\sigma}
+\newcommand{\globvaluation}{\sigma}
+\newcommand{\constr}{\phi}
+\newcommand{\pexp}{\rho}
+\newcommand{\ha}{{\cal H}}
+
+\newcommand{\he}{{\cal H}}
+\newcommand{\indic}{i}
+\newcommand{\extindic}{\hat{i}}
+\newcommand{\indices}{{\tt I}}
+\newcommand{\hetuple}{\tuple{\indices,\globmap,\nrglobloc,\pexpglobloc}}
+\newcommand{\hetupleprime}{\tuple{\indices',{\globmap}',{\nrglobloc}',{\pexpglobloc}'}}
+%\newcommand{\heapseg}[1]{\mathit{nextseg}(#1)}
+\newcommand{\heapseg}[1]{{\tt nextseg}(#1)}
+\newcommand{\relevantof}[1]{{\tt Relevant}\left(#1\right)}
+\newcommand{\shapeabsof}[1]{\alpha^{\raisebox{-2pt}\cshape}\left(#1\right)}
+\newcommand{\shapeconcof}[1]{\gamma^{\raisebox{-2pt}\cshape}\left(#1\right)}
+\newcommand{\pathexprset}{\Pi}
+\newcommand{\pathexpr}{\pi}
+\newcommand{\pathexp}{\pathexpr}
+\newcommand{\zpathexpr}{\phi}
+\newcommand{\fpathexpr}{\psi}
+\newcommand{\cpathexpr}{\kappa}
+\newcommand{\segpathexpr}{\psi}
+\newcommand{\pathdata}{\delta}
+%\newcommand{\nextrel}[1]{\mbox{\it nextrel}(#1)}
+
+\newcommand{\nextrel}[1]{{\tt nextrel}(#1)}
+
+\newcommand{\dmap}{\varsigma}
+\newcommand{\ordconstr}{\vartheta}
+
+\newcommand{\globconf}{\gamma}
+\newcommand{\conf}{c}
+\newcommand{\dconf}{d}
+\newcommand{\initconf}{\conf_{\tt init}}
+\newcommand{\initconfof}[1]{\conf_{\tt init}^{#1}}
+\newcommand\initconfsetof[1]{\conf_{\tt init}^{#1}}
+\newcommand{\confs}{C}
+\newcommand{\confset}{{\mathcal C}}
+\newcommand{\confsetof}[1]{\confset^{#1}}
+\newcommand{\thabsconfsetof}[1]{\confset^{#1}_{\it thread}}
+\newcommand{\sizeof}[1]{\left|#1\right|}
+
+\newcommand{\linstatus}{{\tt Lin}}
+\newcommand{\linstatusof}[1]{\linstatus\left(#1\right)}
+\newcommand{\initlinstatus}{\linstatus_{\tt init}}
+\newcommand{\initlinstatusof}[1]{\initlinstatus\left(#1\right)}
+\newcommand{\rvalstatus}{{\tt RV}}
+\newcommand{\rvalstatusof}[1]{\rvalstatus\left(#1\right)}
+\newcommand{\initrvalstatus}{\rvalstatus_{\tt init}}
+\newcommand{\initrvalstatusof}[1]{\initrvalstatus\left(#1\right)}
+
+
+\newcommand{\monitor}{{\mathcal M}}
+\newcommand\compose\otimes
+\newcommand{\system}{{\mathcal S}}
+
+
+\newcommand{\errorstate}{\;{\bf error}}
+\newcommand{\returnstmt}{{\tt Return}}
+\newcommand{\diameterof}[1]{\# #1}
+
+\newcommand{\thabstraction}{\alpha_{\tt thread}}
+\newcommand{\thabstractionof}[1]{\thabstraction\left(#1\right)}
+\newcommand{\thconcretization}{\gamma_{\tt thread}}
+\newcommand{\thconcretizationof}[1]{\thconcretization\left(#1\right)}
+\newcommand{\kthconcretizationof}[2]{\thconcretization^{#1}\left(#2\right)}
+\newcommand{\symbabstraction}{\alpha_{\tt symb}}
+\newcommand{\symbabstractionof}[1]{\symbabstraction\left(#1\right)}
+\newcommand{\symbconcretization}{\gamma_{\tt symb}}
+\newcommand{\symbconcretizationof}[1]{\symbconcretization\left(#1\right)}
+
+
+
+\newcommand{\movesto}[2]{{\xrightarrow{#2}{}}_{\!\!#1}}
+\newcommand{\rcvmovesto}[1]{\xrsquigarrow{#1}}
+\newcommand{\thabsmovesto}[2]{\stackrel{#2}\leadsto_{#1}}
+
+
+\newcommand{\observer}{{\mathcal O}}
+\newcommand{\ostateset}{S^\observer}
+\newcommand{\ostate}{s}
+\newcommand{\otransitionset}{\Delta^\observer}
+\newcommand{\oaccstate}{\ostate^\observer_{\tt acc}}
+\newcommand{\oinitstate}{\ostate^\observer_{\tt init}}
+\newcommand{\otuple}{\tuple{\ostateset,\oinitstate,\ovarset,\otransitionset,\oaccstate}}
+\newcommand{\ovarset}{\varset^{\observer}}
+\newcommand{\ovar}{z}
+\newcommand{\val}{{\tt Val}}
+\newcommand{\valof}[1]{\val\left(#1\right)}
+
+
+\newcommand{\cellreaches}[1]{\looparrowright_{#1}}
+\newcommand\pclean[2]{{\tt clean}\left(#1\right)\left(#2\right)}
+\newcommand\clean[1]{{\tt clean}\left(#1\right)}
+
+
+\newcommand\restr[2]{\ensuremath{\left.#1\right|_{#2}}}
+ 
+\newcommand{\pconf}{\conf^{\prog}}
+\newcommand\mconf{\conf^\monitor}
+\newcommand\augconf{\conf^\augprog}
+\newcommand\sconf{\conf^\system}
+\newcommand\taconf{\conf^{ta}}
+\newcommand\taconftuple{\tuple{\taconf,\private}}
+ 
+\newcommand\pmconf[1]{\conf^\monitor_{#1}}
+\newcommand\pmdconf[1]{\dconf^\monitor_{#1}}
+\newcommand\paconf[1]{\conf^\augprog_{#1}}
+\newcommand\padconf[1]{\dconf^\augprog_{#1}}
+%% 

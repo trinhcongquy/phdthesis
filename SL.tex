@@ -1,0 +1,161 @@
+\begin{figure}[h]
+\vspace{1cm}
+	\center
+\begin{tikzpicture}
+
+%\node[name=cell1]{};
+%
+%\node[draw, rounded corners = 0.09cm, fill = red!30, draw = red, name = n1, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,0pt)$){{$$}};
+%\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n3, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-30pt)$){{$$}};
+%\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n5, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,-30pt)$){{$$}};
+%\node[draw, rounded corners = 0.09cm, fill = orange!30, draw = orange, name = n6, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-60pt)$){{$$}};
+%\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n7, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(120pt,-30pt)$){{$$}};
+%
+%
+%\draw[->, -stealth, dotted, color = black!60, line width=0.4mm] (n1) to  (n5);
+%
+%\draw[->,-stealth , dotted, color = black!60, line width=0.4mm] (n3) to  (n5);
+%\draw[->, -stealth, dotted, color = black!60, line width=0.4mm] (n6) to  (n5);
+%\draw[->, -stealth, dotted, color = black!60, line width=0.4mm] (n5) to  (n7); 
+%
+%\node[minimum width=12pt, draw, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(100pt,-22pt)$){{$\tt \succ$}};
+%\node[minimum width=12pt, draw, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(45pt,-2pt)$){{$\tt \prec$}};
+%\node[minimum width=12pt, draw, fill=black!10, minimum height=8pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(35.5pt,-2pt)$){{$\tt \prec$}};
+%
+%
+%\node[minimum width=12pt, draw, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(35pt,-23pt)$){{$\tt \prec$}};
+%
+%\node[minimum width=12pt, draw, fill = black!10, minimum height=8pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(24.5pt,-23pt)$){{$\tt \succ$}};
+% 
+%\node[minimum width=12pt, draw, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(45pt,-53pt)$){{$\tt \prec$}};
+%\node[minimum width=12pt, draw, fill = black!10, minimum height=8pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(34.5pt,-53pt)$){{$\tt \prec$}};
+%
+%
+%
+%\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(-10pt,0pt)$){{$\tt x$}};
+%\node[name = y, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(-10pt,-29pt)$){{$\tt y$}};
+%\node[name = y, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,-16pt)$){{$\tt g$}};
+%
+%\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(-10pt,-58pt)$){{$\tt z$}};
+%
+
+\node[rounded corners,draw = black,name=cell1,minimum width=24pt, minimum height=20pt]{};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d1] at (cell1.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8] at ($(cell1.south west)+(0.5pt,1pt)$){{}};
+\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell1.north){\cross};
+\node[draw=black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell1.south){\cross};
+\node[name=succ1,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell1.east)+(-4pt,0pt)$) {};
+\node[anchor=north,font=\tiny,align=center] at ($(cell1.south)+(0pt,2pt)$) {{\tt head}};
+black!50
+
+
+
+\node[draw, dotted, fill = green!3, name=cell10,minimum width=12pt, minimum height=20pt,anchor=west]
+at ($(cell1.east)+(18pt,12pt)$){};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8] at ($(cell10.south west)+(15pt,1pt)$){{}};
+\node[minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell10.north){\cross};
+\node[minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell10.south){\cross};
+
+
+\node[draw, dotted, fill = red!3, name=cell11,minimum width=12pt, minimum height=10pt,anchor=west, font = \tiny] at ($(cell1.east)+(5pt,12pt)$){$\prec$};
+%\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8] at ($(cell1.south west)+(15pt,1pt)$){{}};
+%\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell1.north){\cross};
+%\node[draw=black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell1.south){\cross};
+
+\node[draw, dotted, fill = blue!3, name=cell11,minimum width=12pt, minimum height=10pt,anchor=west, font = \tiny] at ($(cell1.east)+(10pt,-8pt)$){$\tt z^1$};
+
+\node[draw, dotted, fill = red!3, name=cell11,minimum width=12pt, minimum height=10pt,anchor=west, font = \tiny] at ($(cell1.east)+(75pt,20pt)$){$\prec$};
+
+\node[draw, dotted, fill = red!3, name=cell11,minimum width=12pt, minimum height=10pt,anchor=west, font = \tiny] at ($(cell1.east)+(75pt,-20pt)$){$\prec$};
+
+
+
+\node[draw, dotted, fill = green!3, name=cell10,minimum width=12pt, minimum height=20pt,anchor=west]
+at ($(cell1.east)+(125pt,12pt)$){};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8] at ($(cell10.south west)+(15pt,1pt)$){{}};
+\node[minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell10.north){\cross};
+\node[minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell10.south){\cross};
+\node[draw, dotted, fill = red!3, name=cell11,minimum width=12pt, minimum height=10pt,anchor=west, font = \tiny] at ($(cell1.east)+(112pt,12pt)$){$\prec$};
+
+
+
+
+\node[rounded corners,name=cell2,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell1.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt] at (cell2.south west){$3$};
+%\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell2.north){\cross};
+%\node[draw=black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell2.south){\tick};
+\node[name=succ2,fill,minimum size=0pt,inner sep=0pt,outer sep=0pt] at ($(cell2.east)+(-4pt,0pt)$) {};
+\draw (succ1) -- (succ2);
+
+
+
+
+\node[rounded corners,draw = black,name=cell3,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell2.east)+(10pt,20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d3] at (cell3.north west){$\mkadata1$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d3a] at (cell3.south west){};
+\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell3.north){\cross};
+\node[draw = black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell3.south){\cross};
+\node[name=succ3,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell3.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ2) to (cell3.west);
+%\draw[->,dotted,line width=1pt,color=black,out=60,in=180] ($(d2.north)+(3pt,0pt)$) to ($(d3.west)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell3.north)+(0pt,-2pt)$) {};
+\node[anchor=north,font=\tiny,align=center] at ($(cell3.south)+(0pt,2pt)$) {${\tt p}$};
+
+
+
+\node[rounded corners,draw = black,name=cell4,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell3.east)+(10pt,-20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d4] at (cell4.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d4a] at (cell4.south west){};
+\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell4.north){\cross};
+\node[draw = black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell4.south){\tick};
+\node[name=succ4,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell4.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ3) to  ($(cell4.west)+(0pt,6pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell4.north)+(0pt,-2pt)$) {};
+
+
+\node[rounded corners,name=cell5,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell4.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d5] at (cell5.north west){$\mkadata0$};
+%\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d5a] at (cell5.south west){$9$};
+%\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell5.north){\cross};
+%\node[draw = black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell5.south){\cross};
+%\node[name=succ5,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell5.east)+(-4pt,0pt)$) {};
+%\draw[->] (succ4) -- (cell5);
+%\draw[->,dotted,line width=1pt,color=black,out=270,in=270] ($(d4a.south)+(0pt,0pt)$) to ($(d5a.south)+(-3pt,1pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell5.north)+(0pt,-2pt)$) {};
+
+
+\node[rounded corners,draw = black,name=cell6,minimum width=24pt, minimum height=20pt,anchor=west,name=cell6]
+at ($(cell5.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d6] at (cell6.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8,name=d6a] at ($(cell6.south west)+(1pt,1pt)$){$\infty$};
+\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell6.north){\cross};
+\node[draw = black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell6.south){\cross};
+\draw ($(cell6.north east)+(-1pt,-2pt)$) -- ($(cell6.south east)+(-8pt,0pt)$);
+\draw ($(cell6.north east)+(-8pt,0pt)$) -- ($(cell6.south east)+(-1pt,2pt)$);
+\draw[->] (succ4) -- (cell6);
+%\draw[->,dotted,line width=1pt,color=black,out=270,in=270] ($(d5a.south)+(3pt,0pt)$) to ($(d6a.south)+(0pt,-1pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell6.north)+(0pt,-2pt)$) {{\tt tail}};
+
+\node[rounded corners,draw = black,name=cell7,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell2.east)+(7pt,-20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d7] at (cell7.north west){$\mkadata1$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt] at (cell7.south west){};
+\node[draw = black!50,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell7.north){\tick};
+\node[draw = black,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell7.south){\tick};
+\node[name=succ7,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell7.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ7) to ($(cell4.west)+(0pt,-6pt)$);
+%\draw[<->,dotted,line width=1pt,color=black,out=270,in=90] ($(d3a.south)$) to ($(d7.north)+(-2pt,0pt)$);
+%\draw[->,dotted,line width=1pt,color=black,out=90,in=180] ($(d7.north)+(2pt,0pt)$) to ($(cell4.west)$);
+\node[anchor=north,font=\tiny,align=center] at ($(cell7.south)+(0pt,2pt)$) {${\tt c}$};
+
+
+\end{tikzpicture}
+\vspace{1cm}
+\caption{A symbolic representation of the configuration of {\tt lazy set} in Figure \ref{lazy:list:heap:fig}}
+\label{heapsummary}
+\end{figure}
+

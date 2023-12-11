@@ -1,0 +1,27 @@
+\chapter{Conclusion and Future Work}
+\label{chapter:conclusion}
+\label{chapter:future:work}
+%\paragraph{Conclusion} 
+We have presented, in this thesis, approaches to verify the complex problem of
+both sequential and concurrent heap manipulating programs.%
+Such programs induce an infinite-state space in several dimensions:
+they %
+(i) consist of an unbounded number of concurrent threads, %
+(ii) use unbounded dynamically allocated memory, %
+(iii) the domain of data values is unbounded, and %
+(iv) consist of un unbounded number of pointers. In addition, the linearization points of some programs depend on the future executions of these programs. In this thesis, we focus on proving both safety properties, and linearization properties for the system. In order to prove safety properties, we define an abstract model of the program, and we employ approximation techniques that ignore irrelevant information so that we can reduce the problem
+into a finite-state model. In fact, we use an over-approximation, such that the abstract model
+cover all the behaviours of the original system. However, it might cover other behaviours which are not in the original system. If the bad states are not reached during the computation of reachable states of the abstract model, then the abstract model is considered safe, and so is the original system is also safe. If the bad state is reachable, we have to refine the abstraction. In order to verify linearization properties of a program, we add a specification which expresses its a data structure, using the technique of observers. In our approaches, the user has to provide linearization policies which specify how the program is linearized. We use a technique call  \emph{controller} to specify linearization policies. We then verify that in any concurrent execution of a collection of method calls, the sequence of announced operations satisfies the semantics of the data structure. This check is performed by an observer, which monitors the sequence of announced operations. This reduces the problem of checking linearizability to the problem of checking that in this cross-product, the observer cannot reach a state where the semantics of the set data structure has been violated. To verify that that the observer cannot reach a state where a violation is reported, we compute a symbolic representation of an invariant that is satisfied by all reachable configuration of the cross-product of a program and an observer.%of an invariant that is satised by all reachable configurations of the cross-product of a program and an observer
+
+
+%\paragraph{Future work} 
+There are three main possible lines of future work we would like to work on from this thesis. The first line is toextend the type programs we consider, by allowing more complicated data structures such as trees and hash-maps. Secondly, we would like to define a mechanism that allow the automatic synthesis of the controllers. The third possible line of work is to extend the view abstraction to
+multi-threaded programs running on machines with different memory
+models. Such hardware systems employ store buffers and cache systems
+that could be modelled using views. This is an interesting challenge since it would help programmers to
+write their code under a given memory model that is simpler to reason
+around, and verify that the behaviour of the program is the same under
+another less-restricted memory model.
+
+
+

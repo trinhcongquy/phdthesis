@@ -1,0 +1,131 @@
+%% ====================================================================
+\chapter{Model Checking}
+\label{section:model:checking}
+\index{Model Checking}%
+\index{Verification Methods!Model Checking}%
+%% ====================================================================
+%
+
+The approach that we focus on this thesis is
+\emph{model checking}.
+%% ********************************************************************
+\KW{Automation}%
+\index{Automation}%
+%% ********************************************************************
+
+This approach was introduced by Emerson and Clarke~\cite{CE82} and by Queille and Sifakis~\cite{QS82}. 
+Model checking aims to check whether a model of a program satisfies a given specification.
+ The method then computes and returns either "correct" when the specification is satisfied by the program, or "incorrect" when the program does not satisfy its specification. In the latter case, the method can explain the reason by giving a counter-example.
+%\bjcom{The following sentence is redundant, you can skip it.}
+%  As input, the method requires a model of the system under consideration and a specification.
+%\bjcom{Here,you can move the sentence ``The method then ...''}
+Models are typically transition systems consisting of states and transitions between states.
+%\bjcom{The following sentence can be moved to later}
+%Whereas the specification contains safety requirements 
+% \bjcom{Here, you can start to explain how models look: ``Models are typically ...''} 
+A state in the model contains relevant information about the program.
+%\bjcom{Before writing this, you must introduce ``transition systems'', otherwise the reader did not see what ``state'' means. See, e.g., the thesis by To}
+Alongside all the states of the system, the model also depicts the
+transitions, i.e.\ how to move from one state to another state. Every behaviour of the system is represented as a succession of transitions, starting from some initial state.
+%\bjcom{better ``state''}.
+%\bjcom{THe following sentence is not really necessary}
+%States and transitions together describe the \emph{operational
+%  semantics}, that is, how steps of the system take place in the model.
+%\bjcom{``how every...'' is strange wording}
+The number of states and transitions can be finite or infinite.
+%\bjcom{Better to write that initial approaches were for finite (explain), and that one direction of work (since 90's) has focused on state-space explosion,one on infinite}
+%\bjcom{Now you can start to explain ``specifications'': You can say, e.g., 
+A specification consists of properties of behaviors (i.e., of sequences of states). One usually distinguishes safety properties (``something bad must never happen'') from liveness properties (``something good must eventually happen''), where
+   most properties are safety properties.
+Model-checking aims to explore the state-space entirely from some initial states.
+%\bjcom{The following sentence is incomplete. You can instead say that 
+One of the main problems with model checking is that the state-space is infinite or finite and very
+  large. It grows in-fact
+exponentially with the number of parameters or the size of their
+domains. Therefore, there have been several methods to address the
+state-space explosion problem.
+
+                   
+There are several techniques addressing the state-space explosion problem.
+%\bjcom{Next sentence becomes not clear. Better to start ``One important approach is partial order techniques, which aim at ...   They are based on the fact ...''}
+One important approach is \emph{partial order} techniques, which aim to avoid
+redundant exceptions.This approach is based on the fact that, in some cases, exploring all orderings of transitions that are independent is not necessary. Perhaps the main approach to address the state-space explosion problem is to use a
+%called \bjcom{better ``to use a''} 
+\emph{symbolic
+  representation}. It avoids
+   %\bjcom{``avoids''} 
+   representing concretely all states of the system. 
+%\bjcom{The following can better start ``Its main idea is to design a symbolic ...''}
+Its main idea is to design a symbolic representation of sets of states.
+   %abstract states so that each abstract state could represent a set of concrete states.
+% \bjcom{Often, one do not have clearly identifiable abstract states. Rather one has a symbolic representation of sets of states (then you do not need to talk about ``abstract'' and ``concrete'' states)}
+This is done by dropping irrelevant details based on properties that we want to verify. Symbolic representations are of crucial help to combat the state-space explosion, accelerate the algorithms, and get them to terminate in a reasonable amount of time.
+
+%\bjcom{For the following text, you can use a drawing of the transition system. I enclose my LATEX figure if you like to use it}
+\input dining-mathematicians
+Let us illustrate symbolic representation by showing an example that consists of two threads representing mathematicians, which share an integer variable
+$n$. The number of
+states is infinite. Suppose we want to check that the two
+mathematicians are not eating at the same time, i.e., we want to
+check the invariant that
+%\[
+%\neg(\at{eat_1} \land \at{eat_2})
+%\]
+$eat_1 \land eat_2$ will never happen. Simple inspection shows that this invariant indeed holds
+for the system, for the simple reason that
+when the left process is in $eat_1$, then $n$ is odd, and
+when the right process is in $eat_2$, then $n$ is even.
+However, this simple fact cannot be detected by naive reachability analysis,
+since the system has infinitely many states. The dining mathematicians example is of course simple and does not reflect the complexity of today’s software. 
+%As an example, consider the dining mathematicians which is a protocol for implementing the classical mutual exclusion problem: There are two mathematicians living at the same place, whose lives are focused on two activities, namely thinking ($think_1$ and $think_2$, respectively) and eating ($eat_1$ and $eat_2$, respectively). They do not want to eat at the same time. To ensure this, they agreed to have access to a common integer variable {\tt n}. If value of {\tt n} is even, the first mathematician is allowed to start eating. After finishing, the first mathematician sets {\tt (n/2)} to {\tt n}. The second mathematician then check if {\tt n} is odd, and the value he set set back after eating is {\tt (3n+1)}. 
+%\bjcom{The description of the protocol is not good.}
+%We want to verify that two mathematicians do not eat at the same time, this specification is stated by a safety property which says that the two mathematicians are not simultaneously in states eat 01 and eat 02. 
+%\bjcom{Here, start a new sentence. Also say that this specification is stated by a safety property which says that the two mathematicians are not simultaneously in states eat 01 and eat 02}
+%if we keep all the information of the system, then, a state represents the control state of each mathematician
+%\bjcom{A state cannot consist of actions, rather it represents the control state of each mathematician} 
+%, and the value of the $\tt n$. Therefore the number of states depends on the value of $\tt n$. 
+%\bjcom{This depends on the type of n, make this clear} 
+%However, it is obvious that $\tt n$ is not fully needed to verify the property, so we could present it symbolically where we use two boolean predicates {\tt even(n)} and {\tt odd(n)} to represent  whether n is even or odd. The dining mathematicians example is of course simple and does not reflect the complexity of today’s software.  
+%\bjcom{The last sentence should be put earlier (in the preceding paragraph), where you introduce   symbolic techniques}
+%  drop a variable. It would be better if you had an example, where you need
+%  to find a symbolic representation (e.g., ``odd''  ``even'', or so. You could
+%  maybe (just a possible idea) add a transition to a failure state if the
+%  counter satisfies some copmlex formula that can be true only when it is
+%  (say) even, and then introduce an abstraction for ``even/odd''. In that
+%  case you can illustrate better Symbolic technique, and overapproximation,
+%  and to check for saftey properties}
+
+
+Finding a right symbolic representation 
+%\bjcom{Better ``symbolic representation''} 
+is challenging, it might introduce
+behaviours that could turn out to be bad.  Then, the method would
+return that the property is not satisfied and we would not know
+whether it comes from the approximation introduced by the symbolic representation or from the concrete system
+itself.
+%\bjcom{This last sentence was hard to understand. Maybe with a better example
+%  (see above) you can be more concrete, and it is easier to express what
+%  you want to say}% 
+For example in the dining mathematicians problem, if we would start with an over-approximation that ignores the variable $\tt n$, we get a false
+  positive, we must then refine
+   %\bjcom{Better ``We must then refine ...''} needs to refine
+    the symbolic representation to
+  avoid it. To deal with the imprecision caused by a too coarse
+over-approximation, it is possible to analyse the returned
+counter-example and find the origin of the problem. If it turns out to
+be a real concrete example, the method has in fact found a bug, and
+the property is surely not satisfied. Otherwise, the counter-example
+comes from the approximation, that is, there is a step in the sequence
+of events leading to that counter-example which is not performed by
+the original system but only by the abstract model. The approximation
+must then be refined to discard this step and the method should be run
+anew.
+
+Nevertheless, finding suitable over-approximations is a challenge on
+its own. %
+This thesis revolves around the problems of unboundedness, including dynamically heap-allocated memory, unbounded number of threads, and unbounded number of pointers which are described as research challenges in the previous section.
+%\bjcom{This last sentence is much too vague, and cannot be understood. You shoudl be concrete about which unboundedness you refer to, and be
+%   more precise about which text you refer to}
+%\bjcom{Here you must continue. You can simply list the challenges that
+%  you address for symbolic model checking. Since you already listed them
+%  in Section 1, you can be quite short here}

@@ -1,0 +1,24 @@
+\begin{figure}
+  {\footnotesize
+    \[
+\begin{array}{l}
+\hline
+{\mbox{\underline{\textbf{add}}}}  \\
+\rulename_1 : \sndrulenostate{\triggersym}{\mbox{\tt pc=4}}{\mbox{\tt add(e,true)}}{\mbox{\tt add(e)}}\\
+\rulename_2 :   \frulenostate{\triggersym}{\mbox{\tt pc=2 \&\& (c.val = e)}}{\mbox{\tt add(e,false)}}\ \\
+ {\mbox{\underline{\textbf{rmv}}}} \\
+\rulename_3 :   \frulenostate{\triggersym}{\mbox{\tt pc=3}}{\mbox{\tt rmv(e,true)}}\ \\
+\rulename_4 :   \frulenostate{\triggersym}{\mbox{\tt pc=2 \&\& c.val != e}}{\mbox{\tt rmv(e,false)}}\ \\
+ {\mbox{\underline{\textbf{ctn}}}} \\
+\rulename_5: \frulenostate{\triggersym}{\mbox{\tt pc=4 \&\& !b \&\& c.val = e}}{\mbox{\tt ctn(e,true)}}\ \\
+\rulename_6:    \frule{{\cstate}_0}{\triggersym}{\mbox{\tt pc=4\&\&!(!b\&\&c.val=e)}}{\mbox{\tt ctn(e,false)}}{{\cstate}_0}\ \\
+\rulename_7 :  \rcvrule{{\cstate}_0}{\mbox{\tt (add(e),b)}}{\mbox{\tt 1<=pc<=4}}{\mbox{\tt ctn(e,false)}}{{\cstate}_1}\ \\
+\hline  
+\end{array}
+\]
+  }
+  \vspace*{-0.5cm}
+  \caption{Reaction Rules for Controllers of Lazy Set.}
+%%   \vspace*{-0.5cm}
+  \label{rrules:lazy:list:fig}
+\end{figure}

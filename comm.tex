@@ -1,0 +1,425 @@
+\newcommand{\cone}{\mbox{\ding{192}}}
+\newcommand{\ctwo}{\mbox{\ding{193}}}
+\newcommand{\cthree}{\mbox{\ding{194}}}
+\newcommand{\cfour}{\mbox{\ding{195}}}
+\newcommand{\cfive}{\mbox{\ding{196}}}
+\newcommand{\csix}{\mbox{\ding{197}}}
+\newcommand{\cseven}{\mbox{\ding{198}}}
+\newcommand{\ceight}{\mbox{\ding{199}}}
+\newcommand{\cnine}{\mbox{\ding{200}}}
+\newcommand{\cten}{\mbox{\ding{201}}}
+
+
+\newcommand{\cmark}{\textcolor{red}{\ding{51}}}%
+\newcommand{\xmark}{\ding{55}}%
+
+%\newcommand{\word}{w}
+\newcommand{\firstof}[1]{{\tt first}\left(#1\right)}
+\newcommand{\lastof}[1]{{\tt last} \left(#1\right)}
+\newcommand{\aset}{A}
+\newcommand{\bset}{B}
+\newcommand{\aelem}{a}
+\newcommand{\belem}{b}
+\newcommand{\fun}{f}
+\newcommand{\undf}{\bot}
+\newcommand{\updateto}{\leftarrow}
+%\newcommand{\wordsover}[1]{{#1}^*}
+\newcommand{\tuple}[1]{\left\langle#1\right\rangle}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\xset}{X}
+\newcommand{\yset}{Y}
+\newcommand{\setcomp}[2]{\left\{#1|\,#2\right\}}
+\newcommand{\nat}{\mathbb{N}}
+%\newcommand{\pnat}{{\mathbb N}^{>0}}
+\newcommand{\intgrs}{{\mathbb Z}}
+\newcommand{\upto}[1]{\hat{#1}}
+\newcommand{\union}{\cup}
+\newcommand{\domof}[1]{Dom(#1)}
+%\newcommand{\dset}{\mathbb{D}}
+\newcommand{\boolset}{\mathbb{B}}
+\newcommand{\fset}{\mathbb{F}}
+\newcommand{\emptystring}{\varepsilon}
+\newcommand{\emptyword}{\varepsilon}
+\newcommand{\false}{\ensuremath{\mathit{false}}}
+\newcommand{\true}{\ensuremath{\mathit{true}}}
+
+\newcommand{\code}[1]{{\tt #1}}
+\newcommand{\datarel}{\sim}
+
+\newcommand{\valuation}{\sigma}
+\newcommand{\constr}{\phi}
+\newcommand{\pexp}{\rho}
+\newcommand{\ha}{{\cal H}}
+
+%\newcommand{\threadset}{T}
+\newcommand{\he}{{\cal H}}
+\newcommand{\hetuple}{\tuple{I,\Irho,\Ir,\globmap,\locmaprho,\locmapr}}
+\newcommand{\hetupleone}{\tuple{I_1,\Irho_1,\Ir_1,\globmap_1,\locmaprho_1,\locmapr_1}}
+\newcommand{\hetupletwo}{\tuple{I_2,\Irho_2,\Ir_2,\globmap_2,\locmaprho_2,\locmapr_2}}
+\newcommand{\Irho}{\rho^I}
+\newcommand{\Ir}{r^{I}}
+\newcommand{\pairindex}{i}
+\newcommand{\cellmap}{h}
+\newcommand{\threadmap}{{\cal T}}
+\newcommand{\globmap}{\gamma}
+\newcommand{\locmaprho}{\rho^{X}}
+\newcommand{\locmapr}{r^{X}}
+
+%\newcommand{\lblset}{L}
+%\newcommand{\lbl}{\lambda}
+\newcommand{\sndbroadcastof}[1]{{#1}!!}
+\newcommand{\rcvbroadcastof}[1]{{#1}??}
+\newcommand{\sndbinaryof}[1]{{#1}!}
+\newcommand{\rcvbinaryof}[1]{{#1}?}
+
+%\newcommand{\cell}{\ensuremath{m}}
+%\newcommand{\nullconst}{{\tt NULL}}
+\newcommand{\pathexp}{\rho}
+
+%%% TODOs
+
+\newcommand{\td}[1]{\textcolor{blue}{[TODO: #1]}} 
+\newcommand{\rem}[1]{\textcolor{green}{[NOTE: #1]}}
+\newcommand{\fixme}[1]{\textcolor{red}{[FIXME: #1]}}
+
+\newcommand{\TODOcomment}[2]{%
+  \stepcounter{TODOcounter#1}%
+  {\scriptsize\bf$^{(\arabic{TODOcounter#1})}$}%
+  \marginpar[\fbox{
+    \parbox{2cm}{\raggedleft
+      \scriptsize$^{({\bf{\arabic{TODOcounter#1}{#1}}})}$%
+      \scriptsize #2}}]%
+  {\fbox{\parbox{2cm}{\raggedright
+      \scriptsize$^{({\bf{\arabic{TODOcounter#1}{#1}}})}$%
+      \scriptsize #2}}}
+}%
+
+\newcommand{\simpleTODOcomment}[2]{%
+  \stepcounter{TODOcounter#1}%
+  {\bf
+    \scriptsize({\arabic{TODOcounter#1}~{#1}})
+    {\bfseries{TODO:} #2}
+  }
+}
+
+\newcounter{TODOcounter}
+\newcommand{\TODO}[1]{\TODOcomment{}{#1}}
+\renewcommand{\TODO}[1]{}
+\newcommand{\TODOX}[1]{\simpleTODOcomment{}{#1}}
+
+
+
+%%%%%% Parosh  %%%%
+
+
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{definition}{Definition}
+%\newenvironment{proof}[1][Proof]{\begin{trivlist}
+%\item[\hskip \labelsep {#1}]}{\end{trivlist}}
+
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+%\newcommand{\tuple}[1]{\left\langle{#1}\right\rangle}
+
+\newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\sim$}}
+%\newcommand{\set}[1]{\left\{#1\right\}}
+%\newcommand{\dset}{\mathbb{D}}
+\newcommand{\data}{\mathbbm{d}}
+\newcommand{\ii}{i}
+\newcommand{\jj}{j}
+\newcommand{\kk}{k}
+\newcommand{\mm}{m}
+\newcommand{\nn}{n}
+\newcommand{\hh}{h}
+
+
+\newcommand{\lblset}{{\mathbb L}}
+\newcommand{\lbl}{\lambda}
+\newcommand{\initlblof}[1]{\lbl_{\tt init}^{#1}}
+\newcommand{\idlelbl}{{\tt idle}}
+\newcommand{\etypeset}{{\tt E}}
+\newcommand{\enameset}{{\tt N}}
+\newcommand{\ename}{{\mathbbm e}}
+%\newcommand{\emptyevent}{{\tt empty}}
+\newcommand{\event}{e}
+\newcommand{\fevent}{f}
+\newcommand{\eventseq}{w}
+\newcommand{\veventseq}{v}
+\newcommand{\onameset}{\enameset^{o}}
+\newcommand{\cnameset}{\enameset^{c}}
+\newcommand{\eventset}{{\mathbb E}}
+\newcommand{\term}{t}
+\newcommand{\sndbroadcast}[1]{{#1}!!}
+\newcommand{\sndbinary}[1]{{#1}!}
+\newcommand{\rcvbinary}[1]{{#1}?}
+\newcommand{\atomic}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\sync}{\alpha}
+\newcommand{\stmt}{{\tt stmt}}
+\newcommand{\xvar}{x}
+\newcommand{\yvar}{y}
+\newcommand{\param}{p}
+%\newcommand{\method}{{\tt m}}
+\newcommand{\mkfirstsnd}[1]{{#1}{\tt !}}
+\newcommand{\mkfollowsnd}[1]{{\tt !}{#1}}
+\newcommand{\mkfirstrcv}[1]{{#1}{\tt ?}}
+\newcommand{\mkfollowrcv}[1]{{\tt ?}{#1}}
+
+\newcommand{\boolcons}{{\tt b}}
+
+\newcommand\prog{{\mathcal P}}
+\newcommand{\threadset}{{\tt Threads}}
+\newcommand{\athreads}{{\tt T}}
+%\newcommand{\proc}{p}
+\newcommand{\thread}{{\tt th}}
+\newcommand{\methodof}[1]{{\tt Method}\left(#1\right)}
+\newcommand{\methodset}{{\mathbbm M}}
+\newcommand{\method}{{\mathbbm m}}
+\newcommand{\senderthread}{\thread_s}
+%\newcommand{\qproc}{p}
+\newcommand{\observer}{{\mathcal O}}
+\newcommand{\varnum}{\#_{\tt V}}
+\newcommand{\varnumof}[1]{\varnum\left(#1\right)}
+\newcommand{\guard}{g}
+%\newcommand{\val}{{\tt Val}}
+\newcommand{\stmtof}[2]{{\tt Stmt}\left(#1\right)\left(#2\right)}
+\newcommand{\lstate}{{\tt loc}}
+\newcommand{\initlstateof}[1]{\lstate_{\tt init}^{#1}}
+\newcommand{\lstatemapping}{{\tt LOC}}
+\newcommand{\initlstatemapping}{{\tt LOC}_{\tt init}}
+\newcommand{\cstatemapping}{{\tt Q}}
+\newcommand{\initcstatemapping}{{\tt Q}_{\tt init}}
+\newcommand{\view}{{\tt view}}
+\newcommand{\lblsetof}[1]{\lblset_{#1}}
+\newcommand{\movesto}[2]{{\xrightarrow{#2}{}}_{{\raisebox{2pt}{\!\!$#1$}}}}
+\newcommand{\thmovesto}[2]{{\xrightarrow{#2}{}}_{\!\!#1}}
+%\newcommand{\thmovesto}[2]{{\xrightarrow[\!\!{\tt plain}(#1)]{#2}}}
+\newcommand{\plaintcmovesto}[1]{{\xrightarrow{\triggersym}{}}_{\!\!{\tt ctrl}(#1)}}
+\newcommand{\tcmovesto}[2]{\plaintcmovesto{#1}\left[#2\right]}
+\newcommand{\plainpcmovesto}[1]{{\longrightarrow}_{\!\!{\tt ctrl}(#1)}}
+\newcommand{\pcmovesto}[2]{\plainpcmovesto{#1}\left[#2\right]}
+\newcommand{\cthmovesto}[2]{{\xrightarrow{#2}{}}_{\!\!{\tt comp}(#1)}}
+\newcommand{\progmovesto}[2]{{\xrightarrow{#2}{}}_{\!\!#1}}
+\newcommand{\omovesto}[2]{{\xrightarrow{#2}{}}_{\!\!#1}}
+\newcommand{\composemovesto}[2]{{\xrightarrow{#2}{}}_{\!\!#1}}
+\newcommand{\action}{{\tt act}}
+\newcommand{\lp}{{\tt LP}}
+\newcommand{\lpof}[1]{\lp\left(#1\right)}
+\newcommand{\ctrlof}[1]{{\tt cntrl}\left(#1\right)}
+\newcommand{\synch}[1]{{#1}\;\Diamond}
+\newcommand{\nondet}[1]{{#1}\;\Box}
+%\newcommand{\ts}{{\mathcal T}}
+\newcommand{\tstype}[1]{\ts^{\raisebox{-2pt}{#1}}}
+\newcommand{\tstuple}{\tuple{\confset,\initconfset,\movesto{}{}}}
+\newcommand{\conf}{c}
+\newcommand{\confs}{C}
+\newcommand{\confset}{{\mathcal C}}
+\newcommand{\dconfset}{{\mathcal D}}
+\newcommand{\econfset}{{\mathcal E}}
+\newcommand{\initconfset}{{\mathcal I}}
+\newcommand{\confsettype}[1]{\confset^{\raisebox{-2pt}{#1}}}
+\newcommand{\dconfsettype}[1]{\dconfset^{\raisebox{-2pt}{#1}}}
+\newcommand{\econfsettype}[1]{\econfset^{\raisebox{-2pt}{#1}}}
+\newcommand{\kconfsettype}[2]{\confset^{\raisebox{-2pt}{#2}}_{#1}}
+\newcommand{\kconfset}[1]{\confset^{#1}}
+\newcommand{\aconf}{b}
+\newcommand{\aconfs}{B}
+\newcommand{\absconfset}{{\mathbb B}}
+\newcommand{\kabsconfset}[1]{\absconfset^{#1}}
+\newcommand{\triggersym}{\blue{\bullet}}
+\newcommand{\triggered}[1]{{#1}^{\triggersym}}
+\newcommand{\pcvar}{{\tt pc}}
+\newcommand{\pcvarof}[1]{\pcvar^{#1}}
+\newcommand{\crule}[5]{{#1}\left[{#3}\right]\leadsto\left[{#4}\mid{#5}\right]{#2}}
+\newcommand{\rulename}{\rho}
+\newcommand{\enabled}[5]{{\tt enabled}\left(#1,#2,#3,#4,#5\right)}
+
+
+
+
+\newcommand{\strule}[5]{{#1}\left[{#3}\right]\stackrel\triggersym\leadsto\left[{#4}\mid{#5}\right]{#2}}
+\newcommand{\trule}[4]{{#1}\left[{#3}\right]\stackrel\triggersym\leadsto\left[{#4}\right]{#2}}
+\newcommand{\prule}[5]{{#1}\left[{#3}\right]\leadsto\left[{#4}\mid{#5}\right]{#2}}
+
+
+\newcommand{\cstateset}[1]{Q^{#1}}
+\newcommand{\cruleset}[1]{R^{#1}}
+\newcommand{\cstate}{q}
+\newcommand{\initcstate}[1]{\cstate^{#1}_{\tt init}}
+\newcommand{\ctuple}[1]{\tuple{\cstateset{#1},\initcstate{#1},\cruleset{#1}}}
+
+
+\newcommand{\varset}{{\tt X}}
+\newcommand{\ostateset}{S^\observer}
+\newcommand{\ostate}{s}
+\newcommand{\accostate}{\ostate^\observer_{\tt acc}}
+\newcommand{\initostate}{\ostate^\observer_{\tt init}}
+\newcommand{\ovarset}{\varset^{\observer}}
+\newcommand{\ovar}{x}
+\renewcommand{\oval}{\val^\observer}
+\newcommand{\otransitionset}{\Delta^\observer}
+\newcommand{\otuple}{\tuple{\ostateset,\initostate,\ovarset,\otransitionset,\accostate}}
+\newcommand{\initoconfset}{{\mathcal I}_\observer}
+\newcommand{\oconfset}{{\mathcal C}_\observer}
+
+
+
+
+
+\makeatletter
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\leadstofill@{#1}{#2}}
+\makeatother
+
+
+\newcommand\xrsquigarrow[1]{%
+    \mathrel{\begin{tikzpicture}[baseline={(current bounding box.south)}]
+        \node[inner sep=.44ex, align=center, text width = \widthof{$\scriptstyle #1$}-.88ex] (tmp) {$\scriptstyle #1$};
+        \path[draw,<-,decorate,
+        decoration={zigzag,amplitude=0.7pt,segment length=1.2mm,pre length=3.5pt}] 
+        (tmp.south east) -- (tmp.south west);
+        \end{tikzpicture}}}
+
+\newcommand{\rcvmovesto}[1]{\xrsquigarrow{#1\;\;}}
+\newcommand{\matches}{\rhd}
+\newcommand{\absof}[1]{\alpha\left(#1\right)}
+\newcommand{\kabsof}[2]{\alpha^{#1}\left(#2\right)}
+\newcommand{\concof}[1]{\gamma\left(#1\right)}
+\newcommand{\kconcof}[2]{\gamma^{#1}\left(#2\right)}
+\newcommand{\klconcof}[3]{\gamma^{#1}_{#2}\left(#3\right)}
+\newcommand{\post}{{\tt Post}}
+\newcommand{\postof}[1]{\post\left(#1\right)}
+\newcommand{\apostof}[1]{{\tt APost}\left(#1\right)}
+\newcommand{\kapostof}[2]{{\tt APost^{#1}}\left(#2\right)}
+\newcommand{\klapostof}[3]{{\tt APost^{#1}}\left(#2\right)}
+\newcommand{\reach}{{\tt Reach}}
+\newcommand{\reachof}[1]{\reach\left(#1\right)}
+\newcommand{\areach}{{\tt AReach}}
+\newcommand{\initprogconfset}{{\mathcal I}_\prog}
+\newcommand{\initcomposeconfset}[1]{{\mathcal I}_{#1}}
+\newcommand{\initconfsettype}[1]{{\mathcal I}^{\raisebox{-2pt}{#1}}}
+\newcommand{\acccomposeconfset}[1]{{\mathcal A}_{#1}}
+\newcommand{\accconfsettype}[1]{{\mathcal A}^{\raisebox{-2pt}{#1}}}
+\newcommand{\progconfset}[1]{{\mathcal C}^{#1}}
+\newcommand{\diameterof}[1]{\# #1}
+\newcommand{\app}{\bullet}
+\newcommand{\tracesof}[1]{{\tt Traces}\left(#1\right)}
+\newcommand{\sizeof}[1]{\left|#1\right|}
+
+
+\newcommand{\setspec}{{\tt SetSpec}}
+\newcommand{\setops}{{\tt SetOps}}
+\newcommand{\setopsof}[1]{\setops\left(#1\right)}
+\newcommand{\setop}{{\tt op}}
+\newcommand{\setstateset}{Q_{\tt Set}}
+\newcommand{\settransitionset}{\Delta_{\tt Set}}
+\newcommand{\setstate}{q}
+\newcommand{\settraces}{{\tt SetTraces}}
+\newcommand{\compose}{\otimes}
+
+\newcommand{\subconf}[1]{\sqsubseteq_{#1}}
+\newcommand{\restrict}{\upharpoonright}
+
+
+
+\newcommand{\nullconst}{{\tt null}}
+\newcommand{\dangconst}{\bot}
+\newcommand{\suc}{{\tt succ}}
+\newcommand{\isuc}[1]{{\tt succ}_{#1}}
+\newcommand{\succof}[1]{\suc\left(#1\right)}
+\newcommand{\isuccof}[2]{\isuc{#1}\left(#2\right)}
+\newcommand{\val}{{\tt Val}}
+\newcommand{\aval}{\val^{\tt A}}
+\newcommand{\valof}[1]{\val\left(#1\right)}
+\newcommand{\dval}{\val_\dset}
+\newcommand{\dvalof}[1]{\val_{\tt Z}^{#1}}
+\newcommand{\shvarset}{\varset^{\tt sh}}
+\newcommand{\plvarsetof}[1]{\varset_{\tt P}^{#1}}
+\newcommand{\dlvarsetof}[1]{\varset_\dset^{#1}}
+\newcommand{\zlvarsetof}[1]{\varset_{\tt Z}^{#1}}
+\newcommand{\blvarsetof}[1]{\varset_\boolset^{#1}}
+\newcommand{\flvarsetof}[1]{\varset_{\tt F}^{#1}}
+\newcommand{\lvarsetof}[1]{\varset_{\tt loc}^{#1}}
+\newcommand{\cellvarset}{\varset^{\tt cell}}
+\newcommand{\fcellvarset}{\varset^{\tt Cell}_{\tt F}}
+\newcommand{\zcellvarset}{\varset^{\tt Cell}_{\tt Z}}
+\newcommand{\cellvarsetof}[1]{\varset^{#1}}
+\newcommand{\pcellvarset}{\varset_{\mathbbm P}^{\tt cell}}
+\newcommand{\pcellvarsetof}[1]{\varset_{\mathbbm P}^{#1}}
+\newcommand{\varsetof}[1]{\varset^{#1}}
+\newcommand{\pvarset}{\varset_{\tt P}^{\tt cell}}
+\newcommand{\pvarsetof}[1]{\varset_{\tt P}^{#1}}
+\newcommand{\fvarsetof}[1]{\varset_{\tt F}^{#1}}
+\newcommand{\dvarset}{\varset_{\tt Z}^{\tt cell}} %
+\newcommand{\zvarset}{\varset_{\tt Z}^{\tt cell}} %
+\newcommand{\dvarsetof}[1]{\varset_{\tt Z}^{#1}} %
+\newcommand{\zvarsetof}[1]{\varset_{\tt Z}^{#1}} %
+\newcommand{\heap}{{\mathcal H}}
+\newcommand{\initheap}{\heap_{\tt init}}
+\newcommand{\heaptuple}{\tuple{\cellset,\suc,\shval,\cellval}}
+\newcommand{\cell}{{\mathbbm c}}
+\newcommand{\cellset}{{\mathbb C}}
+\newcommand{\mcellset}{\cellset^{-}}
+\newcommand{\cellval}{{\tt Val}^{\cellset}}
+\newcommand{\ocellvalof}[1]{\cellval\left(#1\right)}
+\newcommand{\cellvalof}[1]{\cellval\left(#1\right)}
+\newcommand{\shval}{{\tt Val}^{\tt sh}}
+\newcommand{\shvalof}[1]{\shval\left(#1\right)}
+\newcommand{\paramvar}{{\tt par}}
+\newcommand{\paramvarof}[1]{\paramvar^{#1}}
+%\newcommand{\dvarsetof}[1]{{\tt ZVars}\left(#1\right)}
+
+
+\newcommand\encircle[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=circle, inner sep=0pt,font=\tiny] {\strut $#1$};}
+
+\newcommand\enelipse[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, ellipse,inner sep=-0.3pt,font=\tiny] {\strut $#1$};}
+
+
+%\newcommand{\cone}{\enelipse{1}}
+\newcommand{\kaset}[1]{{\mathbbm A}_{#1}}
+\newcommand{\adata}{{\mathbbm a}}
+\newcommand{\dataabsof}[1]{\alpha^{\raisebox{-2pt}\cdata}\left(#1\right)}
+\newcommand{\dataconcof}[1]{\gamma^{\raisebox{-2pt}\cdata}\left(#1\right)}
+\newcommand{\dsubsumedby}{\sqsubseteq^{\raisebox{-2pt}\cdata}}
+\newcommand{\dobject}{{\mathbbm o}}
+\newcommand{\dobjects}{{\mathbbm O}}
+\newcommand{\dmin}{{\tt min}^{\raisebox{-2pt}\cdata}}
+\newcommand{\dminof}[1]{\dmin\left(#1\right)}
+\newcommand{\cconcrete}{\cone}
+\newcommand{\cdata}{\ctwo}
+\newcommand{\cthread}{\cthree}
+\newcommand{\cshape}{\cfour}
+\newcommand{\kcthread}[1]{\enelipse{3.{#1}}}
+\newcommand{\dsizeof}[1]{{\tt \#_D}\left(#1\right)}
+\newcommand{\threadabsof}[1]{\alpha^{\raisebox{-2pt}\cthread}\left(#1\right)}
+\newcommand{\threadconcof}[1]{\gamma^{\raisebox{-2pt}\cthread}\left(#1\right)}
+\newcommand{\kthreadconcof}[2]{\gamma^{\raisebox{-2pt}\cthread}_{#1}\left(#2\right)}
+
+\newcommand{\mkadata}[1]{\mathpzc{a_{#1}}}
+\newcommand{\cross}{\ding{55}}
+\newcommand{\tick}{\ding{52}}
+
+\newcommand{\denotationof}[1]{\left\llbracket{#1}\right\rrbracket}
+
+
+\newcommand{\relevantof}[1]{{\tt Relevant}\left(#1\right)}
+\newcommand{\shapeabsof}[1]{\alpha^{\raisebox{-2pt}\cshape}\left(#1\right)}
+\newcommand{\shapeconcof}[1]{\gamma^{\raisebox{-2pt}\cshape}\left(#1\right)}
+\newcommand{\mypath}{{\tt path}}
+\newcommand{\spath}{{\tt spath}}
+\newcommand{\pathof}[1]{\mypath\left(#1\right)}
+\newcommand{\npathof}[1]{\tt nextpath\left(#1\right)}
+\newcommand{\relsuccof}[1]{\overrightarrow{#1}}
+\newcommand{\varorderof}[2]{\left(#1\right)\otimes{#2}}
+\newcommand{\rcellreaches}{\twoheadrightarrow}
+\newcommand{\cellreaches}[1]{\looparrowright_{#1}}
+\newcommand{\pathexprset}{\Pi}
+\newcommand{\pathexpr}{\pi}
+\newcommand{\zpathexpr}{\phi}
+\newcommand{\fpathexpr}{\psi}
+\newcommand{\segpathexpr}{\psi}
+\newcommand{\pathdata}{\delta}

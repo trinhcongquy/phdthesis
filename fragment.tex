@@ -1,0 +1,130 @@
+\begin{figure}[h]
+\vspace{1cm}
+	\center
+\begin{tikzpicture}
+
+\node[name=cell1]{};
+
+\node[draw,rounded corners = 0.09cm, fill = red!30, draw = red, name = n1, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,0pt)$){{$$}};
+\node[draw, rounded corners = 0.09cm, fill = red!30, draw = red, name = n2, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(40pt,0pt)$){{$$}};
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n3, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-50pt)$){{$$}};
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n4, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(40pt,-50pt)$){{$$}};
+
+
+
+
+\node[draw, rounded corners = 0.09cm, fill = red!30, draw = red, name = n2', minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,0pt)$){{$$}};
+
+\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n3', minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(120pt,0pt)$){{$$}};
+
+\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n4', minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(160pt,0pt)$){{$$}};
+
+\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n5', minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(200pt,0pt)$){{$$}};
+
+
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n5, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,-50pt)$){{$$}};
+\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n7, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(120pt,-50pt)$){{$$}};
+\node[draw, rounded corners = 0.09cm, fill = orange!30, draw = orange, name = n6, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(160pt,-50pt)$){{$$}};
+
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n7', minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(200pt,-50pt)$){{$$}};
+
+
+\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,12pt)$){{$\tt x$}};
+\node[name = y, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-37pt)$){{$\tt y$}};
+\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(160pt,-37pt)$){{$\tt z$}};
+
+\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(160pt,13pt)$){{$\tt g$}};
+\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(120pt,13pt)$){{$\tt g$}};
+\node[name = x, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(120pt,-37pt)$){{$\tt g$}};
+
+\draw[->, color = black!50, line width=0.2mm] (n1) to  (n2);
+\draw[->,color = black!50,line width=0.2mm] (n2') to  (n3');
+\draw[->, color = black!50,line width=0.2mm] (n4') to  (n5');
+%
+\draw[->, color = black!50, line width=0.2mm] (n3) to  (n4);
+\draw[->,color = black!50,line width=0.2mm] (n5) to  (n7);
+\draw[->, color = black!50,line width=0.2mm] (n6) to  (n7');
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(20pt,10pt)$){{$\tt \prec$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(100pt,10pt)$){{$\tt \prec$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(180pt,10pt)$){{$\tt \prec$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(20pt,-40pt)$){{$\tt \prec$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(100pt,-40pt)$){{$\tt \prec$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(180pt,-40pt)$){{$\tt \prec$}};
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize, color = brown] 
+at ($(cell1.north east)+(0pt,-10pt)$){{$\tt \emptyset$}};
+ 
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize, color = OliveGreen] 
+at ($(cell1.north east)+(0pt,-17pt)$){{$\tt g$}};
+
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(40pt,-10pt)$){{$\tt \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(40pt,-17pt)$){{$\tt g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(80pt,-10pt)$){{$\tt \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(80pt,-17pt)$){{$\tt g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(120pt,-10pt)$){{$\tt g$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(120pt,-17pt)$){{$\tt g$}};
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(160pt,-10pt)$){{$\tt g$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(160pt,-17pt)$){{$\tt g$}};
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(200pt,-10pt)$){{$\tt g$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(200pt,-17pt)$){{$\tt \emptyset$}};
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(0pt,-60pt)$){{$\tt \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(0pt,-67pt)$){{$\tt g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(40pt,-60pt)$){{$\tt \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(40pt,-67pt)$){{$\tt g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(80pt,-60pt)$){{$\tt \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(80pt,-67pt)$){{$\tt g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(120pt,-60pt)$){{$\tt  g$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(120pt,-67pt)$){{$\tt  g$}};
+
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(160pt,-60pt)$){{$\tt  \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(160pt,-67pt)$){{$\tt  g$}};
+
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =brown] 
+at ($(cell1.north east)+(200pt,-60pt)$){{$\tt  \emptyset$}};
+\node[minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8, font = \footnotesize,color =OliveGreen] 
+at ($(cell1.north east)+(200pt,-67pt)$){{$\tt  g$}};
+\end{tikzpicture}
+\vspace{1cm}
+\caption{Fragment abstraction}
+\label{fragment}
+\end{figure}
+

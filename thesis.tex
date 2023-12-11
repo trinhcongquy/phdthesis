@@ -1,0 +1,44 @@
+\documentclass[%
+openright%
+]{settings/UUThesisTemplate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bjcom}[1]{\textcolor{blue}{\sl [#1]}}
+\newcommand{\bjfix}[2]{{\sl [\textcolor{red}{#1} -> \textcolor{green}{#2}]}}
+\newcommand{\bjcor}[1]{{\sl [\textcolor{red}{should be} \textcolor{green}{``#1''}]}}
+
+\input{settings/info}
+\input{settings/main}
+\usetikzlibrary{shapes.callouts} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% -------------------------------------
+\frontmatter
+\input{misc/frontmatter}
+%% -------------------------------------
+ 
+%% -------------------------------------
+\mainmatter
+%% -------------------------------------
+
+
+
+\input introduction
+\input modelchecking
+\input datastructure
+\input correctness
+\input shapeanalysis
+\input conclusion
+
+
+%\backmatter     \input{papers/sas/main.tex}
+\input{misc/backmatter}
+
+%% -------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

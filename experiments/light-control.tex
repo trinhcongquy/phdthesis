@@ -1,0 +1,148 @@
+This algorithm implements a simple solution to the light system of an
+office room. An arbitrary number of people may get in or out of the
+room.
+%
+Initially, the light is off and everyone is outside the room.
+%
+The first person to enter the room turns the light on and the last
+person to exit the room turns it off.
+%
+
+%
+A bad configuration is detected when the light is on, but there is
+noone in the room, or when the light is off while there are still
+people in the room.
+
+We model this algorithm with a Petri Net with Inhibitor arcs.  There
+are 2 places associated with the \emph{on} and \emph{off} status of
+the light. %
+And there are 2 places associated with the fact that a person is
+inside or outside the room. %
+An extra place \emph{exiting} is used to check the person who wishes
+to exit is the last one in the room. %
+Initially, there is a token in the \emph{off} place, and all the other
+tokens in the outside place. %
+For readibility, we represent the transitions piecewise as follows.
+
+%   let is_bad m = m.(bad) > 0
+%     (* (m.(fst inside) + m.(fst exiting) > 0 && m.(fst off) > 0) || ( m.(fst inside) + m.(fst exiting) = 0 && m.(fst on) > 0) *) 
+
+{\noindent\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[show background rectangle,
+  trlabel/.style={node distance=1mm,scale=0.8},
+  caption/.style={mylabel,anchor=north},
+  every place/.append style={scale=0.7}
+  ]
+  %% Going in
+%     R.T ( [outside;off], [inside;on], "[outside;off] -> [inside;on]");
+%     R.T ( [outside;on], [inside;on], "[outside;on] -> [inside;on]");
+
+  \begin{scope}%[xshift=-4cm]
+
+    \node[state,place](on) at (2,0) {};
+    \node[state,place](off)  at (2,-2) {};
+    \node[state,place](in)  at (0,0) {};
+    \node[state,place](out)  at (0,-2) {};
+
+    \node[trlabel,right=of on]{on};
+    \node[trlabel,right=of off]{off};
+    \node[trlabel,left=of in]{in};
+    \node[trlabel,left=of out]{out};
+    
+    \node[transition](t1) at (1.7,-1){};
+    \draw[myedge,<-] (t1.-165) to[out=-90,in=45] (out);
+    \draw[myedge,<-] (t1.-15) to[out=-90,in=135] (off);
+    \draw[myedge,->] (t1.165) to[out=90,in=-45] (in);
+    \draw[myedge,->] (t1.15) to[out=90,in=-135] (on);
+
+    \node[transition](t2) at (0.3,-1){};
+    \draw[myedge,<-] (t2.-165) to[out=-90,in=135] (out);
+    \draw[myedge,<-] (t2.-15) ..controls +(-65:10mm) and +(-160:13mm).. (on);
+    \draw[myedge,->] (t2.165) to[out=90,in=-135] (in);
+    \draw[myedge,->] (t2.15) to[out=90,in=180] (on);
+
+    \node[caption] at (1,-2.4) {Going in};
+  \end{scope}
+
+  %% Going out
+  \begin{scope}[shift={(4,0)}]
+
+    \node[state,place](on) at (2,0) {};
+    \node[state,place](off)  at (2,-2) {};
+    \node[state,place](in)  at (0,0) {};
+    \node[state,place](out)  at (0,-2) {};
+    \node[state,place](exiting) at (1,-1) {};
+
+    \node[trlabel,right=of on]{on};
+    \node[trlabel,right=of off]{off};
+    \node[trlabel,left=of in]{in};
+    \node[trlabel,left=of out]{out};
+    \node[trlabel,above=0mm of exiting]{exiting};
+
+%     R.Inhibitor ( [inside], [exiting], [fst exiting], "[inside] empty[exiting] -> [exiting]");
+    \node[transition](t1) at (-0.1,-1){};
+    \draw[myedge,<-] (t1.165) to[out=90,in=-90] (in);
+    \draw[myedge,*-] (t1.15) ..controls +(up:10mm) and +(left:6mm).. (exiting);
+    \draw[myedge,->] (t1) ..controls +(-60:8mm) and +(down:8mm).. (exiting);
+
+%     R.Inhibitor ( [exiting;on], [outside;off], [fst inside], "[exiting;on] empty[inside] -> [outside;off]");
+    \node[transition](t2) at (2.1,-1){};
+    \draw[myedge,<-] (t2.15) to[out=90,in=-90] (on);
+    \draw[myedge,<-] (t2.165) ..controls +(up:10mm) and +(right:6mm).. (exiting);
+    \draw[myedge,*-] (t2.90) to[out=90,in=0] (in);
+    \draw[myedge,->] (t2.-165) to[out=-90,in=0] (out);
+    \draw[myedge,->] (t2.-15) to[out=-90,in=90] (off);
+
+
+    \node[caption] at (1,-2.4) {Going out};
+  \end{scope}
+
+  %% Still going out
+  \begin{scope}[shift={(8,0)}]
+
+    \node[state,place](on) at (2,0) {};
+    \node[state,place](off)  at (2,-2) {};
+    \node[state,place](in)  at (0,0) {};
+    \node[state,place](out)  at (0,-2) {};
+    \node[state,place](exiting) at (1,-1) {};
+
+    \node[trlabel,right=of on]{on};
+    \node[trlabel,right=of off]{off};
+    \node[trlabel,left=of in]{in};
+    \node[trlabel,left=of out]{out};
+    \node[trlabel,above=0mm of exiting]{exiting};
+
+%     R.T ( [exiting;inside], [outside;inside], "[exiting;inside] -> [outside;inside]");
+    \node[transition](t1) at (-0.1,-1){};
+    \draw[myedge,<-] (t1.165) to[out=90,in=-90] (in);
+    \draw[myedge,<-] (t1.15) ..controls +(up:10mm) and +(left:6mm).. (exiting);
+    \draw[myedge,->] (t1.-165) ..controls +(-135:10mm) and +(-135:8mm).. (in);
+    \draw[myedge,->] (t1.-15) to[out=-90,in=45] (out);
+
+    %% Bad cases
+    \node[state,place,draw=black,fill=black!80!white](bad) at (3,-1) {};
+    \node[trlabel,below=0mm of bad]{Bad};
+%     R.T ( [inside;off], [(bad,2)], "[inside;off] -> [bad;bad]");
+    \node[transition,rotate=90,minimum width=6mm,draw=black](t2) at (2.3,-1.5){};
+    \draw[myedge,<-] (t2.35) ..controls +(left:5mm) and +(right:15mm).. (in.-10);
+    \draw[myedge,<-] (t2.135) to[out=180,in=135] (off);
+    \draw[myedge,->] (t2.-65) to[out=0,in=170] (bad);
+    \draw[myedge,->] (t2.-125) to[out=0,in=-170] (bad);
+
+%     R.Inhibitor ( [on], [(bad,1)], [fst inside; fst exiting], "[on] empty[inside;exiting] -> [bad]");
+    \node[transition,rotate=90,minimum width=6mm,draw=black](t3) at (2.1,-0.7){};
+    \draw[myedge,<-] (t3.15) ..controls +(left:5mm) and +(left:5mm).. (on);
+    \draw[myedge,*-] (t3.90) ..controls +(left:5mm) and +(right:15mm).. (in.10);
+    \draw[myedge,*-] (t3.165) to[out=180,in=0] (exiting);
+    \draw[myedge,->] (t3.-90) to[out=0,in=135] (bad);
+
+
+    \node[caption] at (1,-2.4) {Not the last out \& Bad};
+  \end{scope}
+
+  \draw[white,thick] (3,0) -- +(0,-2.5);
+  \draw[white,thick] (7,0) -- +(0,-2.5);
+\end{tikzpicture}
+}% end \resizebox
+\par} % end \centering

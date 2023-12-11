@@ -1,0 +1,63 @@
+\begin{figure}[h]
+	\center
+\begin{tikzpicture}
+
+\node[name=cell1]{};
+\node[draw, fill = yellow!10, draw = yellow, name = heap, ellipse, minimum width=150pt, minimum height=50pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.south west)+(110pt,1pt)$){{Global Heap}};
+
+
+\node[draw, fill = cyan!10, draw = cyan, name = observer, ellipse, minimum width=100pt, minimum height=30pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.south west)+(125pt,190pt)$){{Observer}};
+
+
+\node[draw, fill = red!10, draw = red, name = add, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(20pt,60pt)$){{add(2)}};
+\node[draw, fill = blue!10, draw = blue, name = cnt, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(130pt,60pt)$){{cnt(2)}};
+\node[draw, fill = orange!10, draw = orange, name = rmv, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(240pt,60pt)$){{cnt(2)}};
+
+%\draw[->,out=0,in=180] (add) to  ($(heap.west)+(0pt,6pt)$);
+\draw[<->, dashed, color = red, line width=0.30mm] (add) to  ($(heap.west)+(0pt,0pt)$);
+\draw[<->, dashed,color = blue,line width=0.30mm] (cnt) to  ($(heap.north)+(0pt,0pt)$);
+\draw[<->, dashed, color = orange,line width=0.30mm] (rmv) to  ($(heap.east)+(0pt,0pt)$);
+
+   
+
+\node[draw, circle, fill = red!20, double = red, name = addT, minimum width=30pt, minimum height=30pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(30pt,87pt)$){{$\tt T_1$}};
+\node[draw, circle, fill = blue!10, double = blue, name = cntT, minimum width=30pt, minimum height=30pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(140pt,87pt)$){{$\tt T_2$}};
+\node[draw, circle, fill = orange!10, double = orange, name = rmvT, minimum width=30pt, minimum height=30pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(250pt,87pt)$){{$\tt T_3$}};
+ 
+
+\node[draw, rounded corners, fill = red!10, draw = red, name = addc, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(20pt,130pt)$){{controller}};
+\node[draw, rounded corners, fill = blue!10, draw = blue, name = cntc, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(130pt,130pt)$){{controller}};
+\node[draw, rounded corners, fill = orange!10, draw = orange, name = rmvc, minimum width=40pt, minimum height=20pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(240pt,130pt)$){{controller}}; 
+   
+
+\draw[->, dashed, color = red, line width=0.30mm] (addT) to  (addc);
+\draw[->, dashed,color = blue,line width=0.30mm] (cntT) to  (cntc);
+\draw[->, dashed, color = orange,line width=0.30mm] (rmvT) to  (rmvc);
+\draw[->, dashed, color = red, line width=0.30mm] (addc) to  (cntc);
+\draw[->, dashed, color = red, line width=0.30mm, bend left = -15] (addc) to (rmvc);
+
+   
+ 
+\draw[<->, dashed, color = red, line width=0.30mm] (addc) to  (observer);
+\draw[<->, dashed,color = blue,line width=0.30mm] (cntc) to  (observer);
+\draw[<->, dashed, color = orange,line width=0.30mm] (rmvc) to  (observer); 
+
+  
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(25pt,115pt)$){{$\tt 1$}};
+
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(190pt,110pt)$){{$\tt 4$}};
+
+
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,170pt)$){{$\tt 6$}};
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(90pt,145pt)$){{$\tt 2$}};
+
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(132pt,160pt)$){{$\tt 3$}};
+
+\node[draw, circle, fill = gray!20, draw = black, name = step1, minimum width=13pt, minimum height=13pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(210pt,170pt)$){{$\tt 5$}};
+
+\end{tikzpicture}
+\vspace{0.5cm}
+\caption{An example of linearization policies of Lazy Set algorithm}
+\label{fig:policy}
+\end{figure}
+

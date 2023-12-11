@@ -1,0 +1,16 @@
+void enq(data d){
+  node* n := new node(); 
+  n\textit[$\to$]val := d;
+  n\textit[$\to$]next := NULL;
+  while(TRUE){
+    node* tail := Tail; 
+    node* next := tail\textit[$\to$]next;
+    if(tail = Tail)
+      if(next = NULL)
+        if(CAS(&tail\textit[$\to$]next, next, n ) \commitpoint[infig])\label[ms:code:line:enq:gc]
+          break;
+      else
+        CAS(&Tail, tail, next);
+  }
+  CAS(&Tail, tail, n);
+}

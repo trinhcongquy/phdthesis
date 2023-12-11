@@ -1,0 +1,1846 @@
+%%% Publishers.
+@string{Springer = "Springer"}
+@string{SV = "Springer-Verlag"}
+@string{NH = "North-Holland"}
+@string{KA = "Kluwer Academic"}
+@string{ACM = "ACM"} %Association for Computing Machinery
+
+%%@string{LNCS = "LNCS"}
+@string{LNCS = "Lecture Notes in Computer Science"}
+
+%%% Journals.
+@string{TOPLAS = "ACM Transactions on Programming Languages and Systems"}
+@string{STTT = "International Journal on Software Tools for Technology Transfer"}
+
+%%% Proceedings.
+@string{ATVA13 = "Proc.\ {ATVA'13}, \nth{11} International Symposium on Automated Technology for Verification and Analysis"}
+
+@string{CAV00 = "Proc.\ {CAV '00}, \nth{12} International Conference on Computer Aided Verification"}
+@string{CAV01 = "Proc.\ {CAV '01}, \nth{13} International Conference on Computer Aided Verification"}
+@string{CAV02 = "Proc.\ {CAV '02}, \nth{14} International Conference on Computer Aided Verification"}
+@string{CAV03 = "Proc.\ {CAV '03}, \nth{15} International Conference on Computer Aided Verification"}
+@string{CAV04 = "Proc.\ {CAV '04}, \nth{16} International Conference on Computer Aided Verification"}
+@string{CAV07 = "Proc.\ {CAV '07}, \nth{19} International Conference on Computer Aided Verification"}
+@string{CAV08 = "Proc.\ {CAV '08}, \nth{20} International Conference on Computer Aided Verification"}
+@string{CAV10 = "Proc.\ {CAV '10}, \nth{22} International Conference on Computer Aided Verification"}
+
+@string{CONCUR02 = "Proc.\ {CONCUR '02}, \nth{13} International Conference on Concurrency Theory"}
+@string{CONCUR04 = "Proc.\ {CONCUR '04}, \nth{15} International Conference on Concurrency Theory"}
+@string{CONCUR10 = "Proc.\ {CONCUR '10}, \nth{21} International Conference on Concurrency Theory"}
+
+@string{FORTE08 = "Proc.\ {FORTE '08}, \nth{28} International Conference on Formal Techniques for Networked and Distributed Systems"}
+
+
+@string{LICS86 = "{Proc.\ {LICS'86}, Annual Symposium on Logic in Computer Science}"}
+@string{LICS96 = "{Proc.\ {LICS'96}, Annual Symposium on Logic in Computer Science}"}
+@string{LICS99 = "{Proc.\ {LICS'99}, Annual Symposium on Logic in Computer Science}"}
+
+@string{PLDI09 = "Proc.\ {PLDI '09}, \nth{30} ACM SIGPLAN Conference on Programming Language Design and Implementation"}
+
+@string{PODC96 = "Proc.\ {PoDC'96}, \nth{15} Annual ACM Symposium on Principles of Distributed Computing"}
+
+@string{POPL86 = "Proc.\ {POPL'86}, \nth{13} Annual ACM Symposium on Principles of Programming Languages"}
+@string{POPL95 = "Proc.\ {POPL'95}, \nth{22} Annual ACM Symposium on Principles of Programming Languages"}
+
+@string{TACAS01 = "Proc.\ {TACAS '01}, \nth{7} International Conference on Tools and Algorithms for the Construction and Analysis of Systems"}
+@string{TACAS07 = "Proc.\ {TACAS '07}, \nth{13} International Conference on Tools and Algorithms for the Construction and Analysis of Systems"}
+@string{TACAS08 = "Proc.\ {TACAS '08}, \nth{14} International Conference on Tools and Algorithms for the Construction and Analysis of Systems"}
+
+@string{VMCAI02 = "Proc.\ {VMCAI '02}, \nth{3} International Workshop on Verification, Model Checking, and Abstract Interpretation"}
+@string{VMCAI06 = "Proc.\ {VMCAI '06}, \nth{7} International Conference on Verification, Model Checking, and Abstract Interpretation"}
+@string{VMCAI07 = "Proc.\ {VMCAI '07}, \nth{8} International Conference on Verification, Model Checking, and Abstract Interpretation"}
+@string{VMCAI08 = "Proc.\ {VMCAI '08}, \nth{9} International Conference on Verification, Model Checking, and Abstract Interpretation"}
+@string{VMCAI09 = "Proc.\ {VMCAI '09}, \nth{10} International Conference on Verification, Model Checking, and Abstract Interpretation"}
+@string{OOPSLA2 = "Proceedings of the ACM on Programming Languages"}
+
+%% ========================================================================
+%%     References...
+%% ========================================================================
+
+@article{Dongol,
+  author    = {Brijesh Dongol and
+               John Derrick},
+  title     = {Verifying Linearisability: {A} Comparative Survey},
+  journal   = {{ACM} Comput. Surv.},
+  volume    = {48},
+  number    = {2},
+  pages     = {19:1--19:43},
+  year      = {2015},
+  url       = {https://doi.org/10.1145/2796550},
+  doi       = {10.1145/2796550},
+  timestamp = {Tue, 06 Nov 2018 12:50:49 +0100},
+  biburl    = {https://dblp.org/rec/bib/journals/csur/DongolD15},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Sundell:2005,
+ author = {Sundell, H{\aa}kan and Tsigas, Philippas},
+ title = {Fast and lock-free concurrent priority queues for multi-thread systems},
+ journal = {J. Parallel Distrib. Comput.},
+ issue_date = {May 2005},
+ volume = {65},
+ number = {5},
+ month = may,
+ year = {2005},
+ issn = {0743-7315},
+ pages = {609--627},
+ numpages = {19},
+
+ doi = {10.1016/j.jpdc.2004.12.005},
+ acmid = {1073770},
+ publisher = {Academic Press, Inc.},
+ address = {Orlando, FL, USA},
+ keywords = {Concurrent, Lock-free, Multi-thread, Non-blocking, Priority queue, Real-time, Shared data structure, Skip list},
+}
+
+@article{herlihy1990linearizability,
+  title={Linearizability: A correctness condition for concurrent objects},
+  author={Herlihy, Maurice P and Wing, Jeannette M},
+  journal={ACM Transactions on Programming Languages and Systems (TOPLAS)},
+  volume={12},
+  number={3},
+  pages={463--492},
+  year={1990},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{Fomitchev:2004,
+ author = {Fomitchev, Mikhail and Ruppert, Eric},
+ title = {Lock-free linked lists and skip lists},
+ booktitle = {PODC'04},
+ OPTseries = {PODC'04},
+ year = {2004},
+ isbn = {1-58113-802-4},
+ location = {St. John's, Newfoundland, Canada},
+ pages = {50--59},
+ numpages = {10},
+ doi = {10.1145/1011767.1011776},
+ acmid = {1011776},
+ publisher = {ACM},
+ OPTaddress = {New York},
+ keywords = {amortized analysis, analysis, distributed, efficient, fault-tolerant, linked list, lock-free, skip list},
+}
+
+@incollection{kuehlmann2002combinational,
+  title={Combinational and sequential equivalence checking},
+  author={Kuehlmann, Andreas and van Eijk, Cornelis AJ},
+  booktitle={Logic synthesis and Verification},
+  pages={343--372},
+  year={2002},
+  publisher={Springer}
+}
+
+@inproceedings{spotlight07,
+  author    = {B. Wachter and
+               B. Westphal},
+  title     = {The Spotlight Principle},
+  booktitle = {{VMCAI}},
+  pages     = {182--198},
+  year      = {2007},
+  series    = LNCS,
+  volume    = {4349},
+  publisher = {Springer},
+}
+
+
+@inproceedings{singh:issre16,
+  title={Proving Concurrent Data Structures Linearizable},
+  author={V. Singh and I. Neamtiu and R. Gupta},
+  booktitle={{ISSRE}},
+  pages={230--240},
+  year={2016},
+  publisher={IEEE}
+}
+
+@inproceedings{Khyzha:esop17,
+  author    = {A. Khyzha and
+               M. Dodds and
+               A. Gotsman and
+               M.J. Parkinson},
+  title     = {Proving Linearizability Using Partial Orders},
+  booktitle = {{ESOP}},
+  pages     = {639--667},
+  series    = LNCS,
+  volume    = {10201},
+  publisher = {Springer},
+  year      = {2017},
+}
+
+@inproceedings{BEEM:cav17,
+  author    = {Ahmed Bouajjani and
+               Michael Emmi and
+               Constantin Enea and
+               Suha Orhun Mutluergil},
+  title     = {Proving Linearizability Using Forward Simulations},
+  booktitle = {{CAV}},
+  pages     = {542--563},
+  year      = {2017},
+  series    = {LNCS},
+  volume    = {10427},
+  publisher = {Springer},
+}
+
+
+@inproceedings{ts-stack,
+  author    = {M. Dodds and
+               A. Haas and
+               C.M. Kirsch},
+  title     = {A Scalable, Correct Time-Stamped Stack},
+  booktitle = {{POPL}},
+  pages     = {233--246},
+  year      = {2015},
+  publisher = {{ACM}},
+}
+
+@inproceedings{Linden:opodis13,
+  author    = {J. Lind{\'e}n and
+               B. Jonsson},
+  title     = {A Skiplist-Based Concurrent Priority Queue with Minimal
+               Memory Contention},
+  booktitle = {OPODIS},
+  year      = {2013},
+  pages     = {206-220},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {8304},
+}
+
+@inproceedings{Sanchez:skiplists,
+  author    = {A. S{\'{a}}nchez and
+               C. S{\'{a}}nchez},
+  title     = {Formal Verification of Skiplists with Arbitrary Many Levels},
+  booktitle = {{ATVA}},
+  pages     = {314--329},
+  series    = LNCS,
+  volume    = {8837},
+  publisher = {Springer},
+  year      = {2014},
+}
+
+
+@inproceedings{Amit:comparisonAbstraction,
+ author = {D. Amit and N. Rinetzky and T. Reps and M. Sagiv and E. Yahav},
+ title = {Comparison under abstraction for verifying linearizability},
+ booktitle = {CAV'07},
+ year = {2007},
+ pages = {477--490},
+ series    = {LNCS},
+ volume    = {4590},
+} 
+
+@inproceedings{Sagiv:correlation,
+  author    = {Michal Segalov and
+               Tal Lev-Ami and
+               Roman Manevich and
+               Ganesan Ramalingam and
+               Mooly Sagiv},
+  title     = {Abstract Transformers for Thread Correlation Analysis},
+  booktitle = {APLAS},
+  year      = {2009},
+  pages     = {30-46},
+  publisher = {Springer},
+  volume={5904},
+  series= LNCS,
+}
+
+@inproceedings{Quy:sas16,
+  author    = {Parosh Aziz Abdulla and
+               Bengt Jonsson and
+               Cong Quy Trinh},
+  title     = {Automated Verification of Linearization Policies},
+  booktitle = {{SAS}},
+  pages     = {61--83},
+  doi       = {10.1007/978-3-662-53413-7_4},
+  series    = {LNCS},
+  volume    = {9837},
+  publisher = {Springer},
+  year      = {2016},
+}
+
+@incollection{rushby2000theorem,
+  title={Theorem proving for verification},
+  author={Rushby, John},
+  booktitle={Summer School on Modeling and Verification of Parallel Processes},
+  pages={39--57},
+  year={2000},
+  publisher={Springer}
+}
+
+@inproceedings{clarke1997model,
+  title={Model checking},
+  author={Clarke, Edmund M},
+  booktitle={Foundations of Software Technology and Theoretical Computer Science: 17th Conference Kharagpur, India, December 18--20, 1997 Proceedings 17},
+  pages={54--56},
+  year={1997},
+  organization={Springer}
+}
+
+@inproceedings{meyer:vmcai16,
+  author    = {Fr{\'{e}}d{\'{e}}ric Haziza and
+               Luk{\'{a}}s Hol{\'{\i}}k and
+               Roland Meyer and
+               Sebastian Wolff},
+  title     = {Pointer Race Freedom},
+  booktitle = {{VMCAI}},
+  pages     = {393--412},
+  year      = {2016},
+  doi       = {10.1007/978-3-662-49122-5_19},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {9583},
+  publisher = {Springer},
+}
+
+@inproceedings{meyer:oopsla2,
+  author    = {Roland Meyer and Thomas Wies and Sebastian Wolff},
+  title     = {A concurrent program logic with a future and history},
+  booktitle = {{OOPSLA2}},
+  pages     = {1378–1407},
+  volume    = {6},
+  publisher = {ACM},
+  year      = {2022},
+}
+
+@inproceedings{meyer:pldi2023,
+  author    = {Roland Meyer and Thomas Wies and Sebastian Wolff},
+  title     = {Embedding Hindsight Reasoning in Separation Logic},
+  booktitle = {{Proceedings of the ACM on Programming Languages}},
+  pages     = {1848-1871},
+  volume    = {7},
+  publisher = {ACM},
+  year      = {2023},
+}
+
+@article{sleek13,
+  author    = {William Pugh},
+  title     = {Skip Lists: {A} Probabilistic Alternative to Balanced Trees},
+  journal   = {Commun. {ACM}},
+  volume    = {33},
+  number    = {6},
+  pages     = {668--676},
+  year      = {1990}
+}
+
+@inproceedings{dragoi:atva12,
+  author    = {Ahmed Bouajjani and
+               Cezara Dragoi and
+               Constantin Enea and
+               Mihaela Sighireanu},
+  title     = {Accurate Invariant Checking for Programs Manipulating Lists and Arrays
+               with Infinite Data},
+  booktitle = {Automated Technology for Verification and Analysis - 10th International
+               Symposium, {ATVA} 2012, Thiruvananthapuram, India, October 3-6, 2012.
+               Proceedings},
+  pages     = {167--182},
+  year      = {2012},
+}
+
+@inproceedings{CE82,
+ author = {Clarke, Edmund M. and Emerson, E. Allen},
+ title = {Design and Synthesis of Synchronization Skeletons Using Branching-Time Temporal Logic},
+ booktitle = {Logic of Programs, Workshop},
+ year = {1982},
+ isbn = {3-540-11212-X},
+ pages = {52--71},
+ numpages = {20},
+ url = {http://dl.acm.org/citation.cfm?id=648063.747438},
+ acmid = {747438},
+ publisher = {Springer-Verlag},
+ address = {London, UK, UK},
+}
+
+
+@inproceedings{Loginov:AbstrRefViaInductLearning:05,
+  author    = {Jakob L. Jensen and
+               Michael E. J{\o}rgensen and
+               Nils Klarlund and
+               Michael I. Schwartzbach},
+  title     = {Automatic Verification of Pointer Programs using Monadic Second-Order
+               Logic},
+  booktitle = {Proceedings of the {ACM} {SIGPLAN} '97 Conference on Programming Language
+               Design and Implementation (PLDI), Las Vegas, Nevada, USA, June 15-18,
+               1997},
+  pages     = {226--236},
+  year      = {1997}
+}
+
+@inproceedings{atva09,
+  author    = {Parosh Aziz Abdulla and
+               Muhsin Atto and
+               Jonathan Cederberg and
+               Ran Ji},
+  title     = {Automated Analysis of Data-Dependent Programs with Dynamic Memory},
+  booktitle = {Automated Technology for Verification and Analysis, 7th International
+               Symposium, {ATVA} 2009, Macao, China, October 14-16, 2009. Proceedings},
+  pages     = {197--212},
+  year      = {2009},
+}
+
+@article{lists-counters,
+  author    = {Ahmed Bouajjani and
+               Marius Bozga and
+               Peter Habermehl and
+               Radu Iosif and
+               Pierre Moro and
+               Tom{\'{a}}s Vojnar},
+  title     = {Programs with lists are counter automata},
+  journal   = {Formal Methods in System Design},
+  volume    = {38},
+  number    = {2},
+  pages     = {158--192},
+  year      = {2011},
+}
+
+@INPROCEEDINGS{Lazyset,
+  author    = {Steve Heller and
+               Maurice Herlihy and
+               Victor Luchangco and
+               Mark Moir and
+               William N. Scherer III and
+               Nir Shavit},
+  title     = {A Lazy Concurrent List-Based Set Algorithm},
+  booktitle = {OPODIS
+               },
+  pages     = {3--16},
+  year      = {2005},
+}
+@inproceedings{CernyRZCA:CAV10,
+  author    = {Pavol \v{C}ern{\'y} and
+               Arjun Radhakrishna and
+               Damien Zufferey and
+               Swarat Chaudhuri and
+               Rajeev Alur},
+  title     = {Model Checking of Linearizability of Concurrent List Implementations},
+  booktitle = "{CAV}",
+  year      = {2010},
+  pages     = {465-479},
+  series    = {LNCS},
+  volume    = {6174}
+}
+@INPROCEEDINGS{Zhang:unorderedlist,
+  author    = {Kunlong Zhang and
+               Yujiao Zhao and
+               Yajun Yang and
+               Yujie Liu and
+               Michael F. Spear},
+  title     = {Practical Non-blocking Unordered Lists},
+  booktitle = {{DISC}
+               },
+  pages     = {239--253},
+  year      = {2013},
+}
+@inproceedings{Vafeiadis:vmcai09,
+  author    = {V. Vafeiadis},
+  title     = {Shape-Value Abstraction for Verifying Linearizability},
+  booktitle = "{VMCAI}",
+  year      = {2009},
+  pages     = {335-348},
+  series    = {LNCS},
+  volume    = {5403}
+}
+@TECHREPORT{AHHR:integrated:rep,
+        Author = 	"Parosh A. Abdulla and {Fr\'ed\'eric} Haziza and Bengt Jonsson and Ahmed Rezine",
+        Title = 	"An Integrated Specification and Verification Technique
+for Highly Concurrent Data Structures",
+	    Number =	"???",
+        Institution = 	"Brno ot Uppsala",
+        Year = 		2013,
+}
+@INPROCEEDINGS{Henzinger:CAV13,
+  author    = {Cezara Dragoi and
+               Ashutosh Gupta and
+               Thomas A. Henzinger},
+  title     = {Automatic Linearizability Proofs of Concurrent Objects with Cooperating
+               Updates},
+  booktitle = {CAV},
+  series    = {LNCS},
+  volume    = {8044},
+  pages     = {174--190},
+  year      = {2013},
+}
+@INPROCEEDINGS{AHHR:integrated,
+        Author = 	"Parosh A. Abdulla and {Fr\'ed\'eric} Haziza and Luk{\'a}s Hol\'{\i}k and Bengt Jonsson and Ahmed Rezine",
+        Title = 	"An Integrated Specification and Verification Technique
+for Highly Concurrent Data Structures",
+  booktitle = {TACAS},
+  pages     = {324-338},
+  series    = {LNCS},
+  volume    = {7795},
+  year      = {2013},
+}
+@book{ArtOfMpP,
+  Author = {Maurice Herlihy and Nir Shavit},
+  publisher = {Morgan Kaufmann},
+  title = {The Art of Multiprocessor Programming},
+  year = 2008,
+  ean = {9780123705914},
+  keywords = {Appendix Architecture CAS Hardware Java Memory MultiCore Programming},
+  added-at = {2009-11-02T15:18:44.000+0100},
+  asin = {0123705916},
+  isbn = {0123705916},
+}
+
+@inproceedings{Vechev:spin09,
+  author    = {M.T. Vechev and
+               E. Yahav and
+               G. Yorsh},
+  title     = {Experience with Model Checking Linearizability},
+  booktitle = {SPIN},
+  year      = {2009},
+  pages     = {261-278},
+  series    = {LNCS},
+  volume    = {5578},
+}
+
+@inproceedings{John:SL,
+  author    = {John C. Reynolds},
+  title     = {Separation Logic: {A} Logic for Shared Mutable Data Structures},
+  booktitle = {17th {IEEE} Symposium on Logic in Computer Science {(LICS} 2002),
+               22-25 July 2002, Copenhagen, Denmark, Proceedings},
+  pages     = {55--74},
+  year      = {2002},
+}
+
+@inproceedings{Stephen:SL,
+  author    = {Stephen Magill and
+               Ming{-}Hsien Tsai and
+               Peter Lee and
+               Yih{-}Kuen Tsay},
+  title     = {Automatic numeric abstractions for heap-manipulating programs},
+  booktitle = {Proceedings of the 37th {ACM} {SIGPLAN-SIGACT} Symposium on Principles
+               of Programming Languages, {POPL} 2010, Madrid, Spain, January 17-23,
+               2010},
+  pages     = {211--222},
+  year      = {2010},
+  }
+  
+@ARTICLE{HSYstack,
+  author    = {Danny Hendler and
+               Nir Shavit and
+               Lena Yerushalmi},
+  title     = {A scalable lock-free stack algorithm},
+  journal   = {J. Parallel Distrib. Comput.},
+  volume    = {70},
+  number    = {1},
+  pages     = {1--12},
+  year      = {2010},
+}
+
+@inproceedings{HSV:concur13,
+  author    = {T.A. Henzinger and
+               A. Sezgin and
+               V. Vafeiadis},
+  title     = {Aspect-Oriented Linearizability Proofs},
+  booktitle = {CONCUR},
+  year      = {2013},
+  pages     = {242-256},
+  series    = {LNCS},
+  volume    = {8052},
+}
+
+@INPROCEEDINGS{Harris:list,
+  author    = {Timothy L. Harris},
+  title     = {A Pragmatic Implementation of Non-blocking Linked-Lists},
+  booktitle = {{DISC}},
+  pages     = {300--314},
+  year      = {2001},
+}
+@INPROCEEDINGS{Michael:list,
+  author    = {Maged M. Michael},
+  title     = {High performance dynamic lock-free hash tables and list-based sets},
+  booktitle = {{SPAA}},
+  pages     = {73--82},
+  year      = {2002},
+}
+@INPROCEEDINGS{OHearnlist,
+  author    = {Peter W. O'Hearn and
+               Noam Rinetzky and
+               Martin T. Vechev and
+               Eran Yahav and
+               Greta Yorsh},
+  title     = {Verifying linearizability with hindsight},
+  booktitle = {PODC},
+  pages     = {85--94},
+  year      = {2010},
+}
+
+@inproceedings{JoshCris:SL,
+  author    = {Josh Berdine and
+               Cristiano Calcagno and
+               Byron Cook and
+               Dino Distefano and
+               Peter W. O'Hearn and
+               Thomas Wies and
+               Hongseok Yang},
+  title     = {Shape Analysis for Composite Data Structures},
+  booktitle = {Computer Aided Verification, 19th International Conference, {CAV}
+               2007, Berlin, Germany, July 3-7, 2007, Proceedings},
+  pages     = {178--192},
+  year      = {2007},
+}
+
+@INPROCEEDINGS{Shavit:ElimQueue,
+   author    = {Mark Moir and
+               Daniel Nussbaum and
+               Ori Shalev and
+               Nir Shavit},
+  title     = {Using elimination to implement scalable and lock-free {FIFO} queues},
+  booktitle = {{SPAA}},
+  pages     = {253--262},
+  year      = {2005},
+}
+
+@inproceedings{thor10,
+  author    = {Tayfun Elmas and
+               Shaz Qadeer and
+               Serdar Tasiran},
+  title     = {A calculus of atomic actions},
+  booktitle = {Proceedings of the 36th {ACM} {SIGPLAN-SIGACT} Symposium on Principles
+               of Programming Languages, {POPL} 2009, Savannah, GA, USA, January
+               21-23, 2009},
+  pages     = {2--15},
+  year      = {2009},
+  doi       = {10.1145/1480881.1480885},
+}
+
+@inproceedings{rival11,
+  author    = {Bor{-}Yuh Evan Chang and
+               Xavier Rival and
+               George C. Necula},
+  title     = {Shape Analysis with Structural Invariant Checkers},
+  booktitle = {Static Analysis, 14th International Symposium, {SAS} 2007, Kongens
+               Lyngby, Denmark, August 22-24, 2007, Proceedings},
+  pages     = {384--401},
+  year      = {2007},
+}
+
+@inproceedings{Hongseok:SL,
+  author    = {Hongseok Yang and
+               Oukseh Lee and
+               Josh Berdine and
+               Cristiano Calcagno and
+               Byron Cook and
+               Dino Distefano and
+               Peter W. O'Hearn},
+  title     = {Scalable Shape Analysis for Systems Code},
+  booktitle = {Computer Aided Verification, 20th International Conference, {CAV}
+               2008, Princeton, NJ, USA, July 7-14, 2008, Proceedings},
+  pages     = {385--398},
+  year      = {2008}
+}
+
+@inproceedings{Kamil:SL,
+  author    = {Kamil Dudka and
+               Petr Peringer and
+               Tom{\'{a}}s Vojnar},
+  title     = {Byte-Precise Verification of Low-Level List Manipulation},
+  booktitle = {Static Analysis - 20th International Symposium, {SAS} 2013, Seattle,
+               WA, USA, June 20-22, 2013. Proceedings},
+  pages     = {215--237},
+  year      = {2013},
+}
+@INPROCEEDINGS{Harris:CAS,
+  author    = {Timothy L. Harris and
+               Keir Fraser and
+               Ian A. Pratt},
+  title     = {A Practical Multi-word Compare-and-Swap Operation},
+  booktitle = { {DISC},
+               },
+  pages     = {265--279},
+  year      = {2002},
+}
+@inproceedings{Chin:SL,
+  author    = {Wei{-}Ngan Chin and
+               Cristina David and
+               Huu Hai Nguyen and
+               Shengchao Qin},
+  title     = {Automated verification of shape, size and bag properties via user-defined
+               predicates in separation logic},
+  journal   = {Sci. Comput. Program.},
+  volume    = {77},
+  number    = {9},
+  pages     = {1006--1036},
+  year      = {2012},
+}
+
+
+@inproceedings{Quang:SL,
+  author    = {Quang Loc Le and
+               Cristian Gherghina and
+               Shengchao Qin and
+               Wei{-}Ngan Chin},
+  title     = {Shape Analysis via Second-Order Bi-Abduction},
+  booktitle = {Computer Aided Verification - 26th International Conference, {CAV}
+               2014, Held as Part of the Vienna Summer of Logic, {VSL} 2014, Vienna,
+               Austria, July 18-22, 2014. Proceedings},
+  pages     = {52--68},
+  year      = {2014},
+}
+
+
+@inproceedings{Ruzica:SL,
+  author    = {Ruzica Piskac and
+               Thomas Wies and
+               Damien Zufferey},
+  title     = {Automating Separation Logic with Trees and Data},
+  booktitle = {Computer Aided Verification - 26th International Conference, {CAV}
+               2014, Held as Part of the Vienna Summer of Logic, {VSL} 2014, Vienna,
+               Austria, July 18-22, 2014. Proceedings},
+  pages     = {711--728},
+  year      = {2014},
+}
+@INPROCEEDINGS{Aaron:locigcal:linearizability,
+  author    = {Aaron Joseph Turon and
+               Jacob Thamsborg and
+               Amal Ahmed and
+               Lars Birkedal and
+               Derek Dreyer},
+  title     = {Logical relations for fine-grained concurrency},
+  booktitle = {{POPL} '13},
+  pages     = {343--356},
+  year      = {2013},
+}
+@inproceedings{Constrantin:SL,
+  author    = {Constantin Enea and
+               Mihaela Sighireanu and
+               Zhilin Wu},
+  title     = {On Automated Lemma Generation for Separation Logic with Inductive
+               Definitions},
+  booktitle = {Automated Technology for Verification and Analysis - 13th International
+               Symposium, {ATVA} 2015, Shanghai, China, October 12-15, 2015, Proceedings},
+  pages     = {80--96},
+  year      = {2015},
+}
+
+
+@inproceedings{Ander:ML,
+  author    = {Anders M{\o}ller and
+               Michael I. Schwartzbach},
+  title     = {The Pointer Assertion Logic Engine},
+  booktitle = {Proceedings of the 2001 {ACM} {SIGPLAN} Conference on Programming
+               Language Design and Implementation (PLDI), Snowbird, Utah, USA, June
+               20-22, 2001},
+  pages     = {221--231},
+  year      = {2001},
+}
+
+
+@article{artmc12,
+  author    = {Ahmed Bouajjani and
+               Peter Habermehl and
+               Adam Rogalewicz and
+               Tom{\'{a}}s Vojnar},
+  title     = {Abstract regular (tree) model checking},
+  journal   = {{STTT}},
+  volume    = {14},
+  number    = {2},
+  pages     = {167--191},
+  year      = {2012},
+}
+
+@inproceedings{Jakob:ML,
+  author    = {Jakob L. Jensen and
+               Michael E. J{\o}rgensen and
+               Nils Klarlund and
+               Michael I. Schwartzbach},
+  title     = {Automatic Verification of Pointer Programs using Monadic Second-Order
+               Logic},
+  booktitle = {Proceedings of the {ACM} {SIGPLAN} '97 Conference on Programming Language
+               Design and Implementation (PLDI), Las Vegas, Nevada, June 15-18, 1997},
+  pages     = {226--236},
+  year      = {1997},
+}
+
+
+@inproceedings{Madhusudan:ML,
+  author    = {P. Madhusudan and
+               Gennaro Parlato and
+               Xiaokang Qiu},
+  title     = {Decidable logics combining heap structures and data},
+  booktitle = {Proceedings of the 38th {ACM} {SIGPLAN-SIGACT} Symposium on Principles
+               of Programming Languages, {POPL} 2011, Austin, TX, USA, January 26-28,
+               2011},
+  pages     = {611--622},
+  year      = {2011},
+}
+
+
+@article{SagivRW02,
+  author    = {Shmuel Sagiv and
+               Thomas W. Reps and
+               Reinhard Wilhelm},
+  title     = {Parametric shape analysis via 3-valued logic},
+  journal   = {{ACM} Trans. Program. Lang. Syst.},
+  volume    = {24},
+  number    = {3},
+  pages     = {217--298},
+  year      = {2002},
+}
+
+
+@inproceedings{Shmuel:Shape,
+  author    = {Shmuel Sagiv and
+               Thomas W. Reps and
+               Reinhard Wilhelm},
+  title     = {Parametric Shape Analysis via 3-Valued Logic},
+  booktitle = {{POPL} '99, Proceedings of the 26th {ACM} {SIGPLAN-SIGACT} Symposium
+               on Principles of Programming Languages, San Antonio, TX, USA, January
+               20-22, 1999},
+  pages     = {105--118},
+  year      = {1999},
+}
+
+@inproceedings{Karen:Shape,
+  author    = {Karen Zee and
+               Viktor Kuncak and
+               Martin C. Rinard},
+  title     = {Full functional verification of linked data structures},
+  booktitle = {Proceedings of the {ACM} {SIGPLAN} 2008 Conference on Programming
+               Language Design and Implementation, Tucson, AZ, USA, June 7-13, 2008},
+  pages     = {349--361},
+  year      = {2008},
+}
+
+
+@inproceedings{Ahmed:TreeAutomata,
+  author    = {Ahmed Bouajjani and
+               Peter Habermehl and
+               Adam Rogalewicz and
+               Tom{\'{a}}s Vojnar},
+  title     = {Abstract Regular Tree Model Checking of Complex Dynamic Data Structures},
+  booktitle = {Static Analysis, 13th International Symposium, {SAS} 2006, Seoul,
+               Korea, August 29-31, 2006, Proceedings},
+  pages     = {52--70},
+  year      = {2006},
+}
+
+
+
+@inproceedings{Ahmed:TreeAutomata2,
+  author    = {Ahmed Bouajjani and
+               Marius Bozga and
+               Peter Habermehl and
+               Radu Iosif and
+               Pierre Moro and
+               Tom{\'{a}}s Vojnar},
+  title     = {Programs with Lists Are Counter Automata},
+  booktitle = {Computer Aided Verification, 18th International Conference, {CAV}
+               2006, Seattle, WA, USA, August 17-20, 2006, Proceedings},
+  pages     = {517--531},
+  year      = {2006},
+}
+
+
+@article{Jonathan:Shape,
+  author    = {Jonathan Heinen and
+               Thomas Noll and
+               Stefan Rieger},
+  title     = {Juggrnaut: Graph Grammar Abstraction for Unbounded Heap Structures},
+  journal   = {Electr. Notes Theor. Comput. Sci.},
+  volume    = {266},
+  pages     = {93--107},
+  year      = {2010},
+}
+
+
+@article{Jonathan:Grammars,
+  author    = {Jonathan Heinen and
+               Christina Jansen and
+               Joost{-}Pieter Katoen and
+               Thomas Noll},
+  title     = {Verifying pointer programs using graph grammars},
+  journal   = {Sci. Comput. Program.},
+  volume    = {97},
+  pages     = {157--162},
+  year      = {2015},
+}
+
+
+@inproceedings{QS82,
+ author = {Queille, Jean-Pierre and Sifakis, Joseph},
+ title = {Specification and Verification of Concurrent Systems in CESAR},
+ booktitle = {Proceedings of the 5th Colloquium on International Symposium on Programming},
+ year = {1982},
+ isbn = {3-540-11494-7},
+ pages = {337--351},
+ numpages = {15},
+ url = {http://dl.acm.org/citation.cfm?id=647325.721668},
+ acmid = {721668},
+ publisher = {Springer-Verlag},
+ address = {London, UK, UK},
+} 
+
+@inproceedings{Szymanski88,
+ author = {Boleslaw K. Szymanski},
+ title = {A Simple Solution to Lamport's Concurrent Programming Problem with Linear Wait},
+ booktitle = {Proceedings of the \nth{2} International Conference on Supercomputing},
+ series = {ICS '88},
+ year = {1988},
+ isbn = {0-89791-272-1},
+ location = {St. Malo, France},
+ pages = {621--626},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/55364.55425},
+ doi = {10.1145/55364.55425},
+ acmid = {55425},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@INPROCEEDINGS{Szymanski90,
+    author = {Boleslaw K. Szymanski},
+    title = {Mutual Exclusion Revisited},
+    booktitle = {Proc. Fifth Jerusalem Conference on Information Technology, IEEE Computer Society Press, Los Alamitos, CA},
+    year = {1990},
+    pages = {110--117},
+    publisher = {IEEE Computer Society Press}
+}
+
+
+@inproceedings{environment_abstraction,
+  author    = {Edmund M. Clarke and
+               Muralidhar Talupur and
+               Helmut Veith},
+  title     = {Environment Abstraction for Parameterized Verification},
+  booktitle = {VMCAI06},
+  year      = {2006},
+  pages     = {126-141},
+  publisher = {Springer},
+  series    = LNCS,
+  volume    = {3855},
+}
+
+@article{boolean_and_cartesian,
+  author    = {Thomas Ball and
+               Andreas Podelski and
+               Sriram K. Rajamani},
+  title     = {Boolean and Cartesian abstraction for model checking {C} programs},
+  journal   = {STTT},
+  volume    = {5},
+  number    = {1},
+  pages     = {49--58},
+  year      = {2003},
+  url       = {http://dx.doi.org/10.1007/s10009-002-0095-0},
+  doi       = {10.1007/s10009-002-0095-0},
+}
+
+@inproceedings{cutoff,
+  author    = {Alexander Kaiser and
+               Daniel Kroening and
+               Thomas Wahl},
+  title     = {Dynamic Cutoff Detection in Parameterized Concurrent Programs},
+  booktitle = {CAV10},
+  year      = {2010},
+  pages     = {645-659},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {6174},
+}
+
+
+@article{SPINModelChecker,
+  author    = {Gerard J. Holzmann},
+  title     = {The Model Checker SPIN},
+  journal   = {IEEE Trans. Software Eng.},
+  volume    = {23},
+  number    = {5},
+  year      = {1997},
+  pages     = {279-295},
+}
+
+@inproceedings{TMisCA,
+  author    = {Alexander Malkis and
+               Andreas Podelski and
+               Andrey Rybalchenko},
+  title     = {Thread-Modular Verification Is Cartesian Abstract Interpretation},
+  booktitle = {ICTAC'06},
+  year      = {2006},
+  pages     = {183-197},
+  publisher = Springer,
+  series    = {LNCS},
+  volume    = {4281},
+}
+
+
+@inproceedings{ThreadModular,
+  author    = {Cormac Flanagan and
+               Shaz Qadeer},
+  title     = {Thread-Modular Model Checking},
+  booktitle = {SPIN'03},
+  year      = {2003},
+  pages     = {213-224},
+  publisher = Springer,
+  series    = {LNCS},
+  volume    = {2648},
+}
+
+%% Reference to the Kanban systems
+%% http://www.springerlink.com/content/h4117q31132r6224/
+
+@inproceedings{Raskin:experiments:German,
+  author    = {Gilles Geeraerts and
+               Jean-Fran\c{c}ois Raskin and
+               Laurent Van Begin},
+  title     = {Expand, Enlarge and Check... Made Efficient},
+  booktitle = {CAV'05},
+  year      = {2005},
+  pages     = {394-407},
+  publisher = Springer,
+  series    = {LNCS},
+  volume    = {3576},
+}
+
+@article{Raskin:Viagra,
+  author    = {Gilles Geeraerts and
+               Jean-Fran\c{c}ois Raskin and
+               Laurent Van Begin},
+  title     = {{Expand, Enlarge and Check: New algorithms for the coverability problem of WSTS}},
+  journal   = {J. Comput. Syst. Sci.},
+  volume    = {72},
+  number    = {1},
+  year      = {2006},
+  pages     = {180-203},
+}
+
+@MISC{ieee:1394,
+  author = "{IEEE~Computer~Society}",
+  title = "{IEEE} Standard for a High Performance Serial Bus",
+  howpublished = "Std 1394-1995",
+  year = 1996,
+  month = Aug
+}
+
+@inProceedings{PRZ-tacas01,
+  author    = {Amir Pnueli and
+               Sitvanit Ruah and
+               Lenore D. Zuck},
+  title     = {Automatic Deductive Verification with Invisible Invariants},
+  booktitle = {TACAS'01},
+  year      = {2001},
+  pages     = {82-97},
+  publisher = {Springer},
+  series    = LNCS,
+  volume    = {2031},
+}
+
+@article{KMMPS2001,
+         author = "Y. Kesten and O. Maler and M. Marcus and A. Pnueli
+                  and E. Shahar",
+         title = "Symbolic Model Checking with Rich Assertional
+                  Languages",
+         journal= tcs,
+         year   = 2001,
+         volume = 256,
+         pages  = {93--112},
+         }
+
+@inproceedings{BLW03,
+    author =    "Bernard Boigelot and Axel Legay and Pierre Wolper",
+    title =        "Iterating Transducers in the Large",
+    booktitle =     {CAV'03},
+    publisher = Springer,
+    series = LNCS,
+    volume = "2725",
+    year =   "2003",
+    pages =  "223--235"
+}
+
+@InProceedings{DLS01,
+  author =       {D. Dams and Y. Lakhnech and M. Steffen},
+  title =        {Iterating Transducers},
+  booktitle =    {CAV'01},
+  publisher = Springer,
+  year =         2001,
+  volume =       2102,
+  series =       LNCS}
+
+@article{Tou01,
+        author = {T. Touili},
+        title = {{Regular Model Checking using Widening Techniques}},
+        journal = {Electronic Notes in Theoretical Computer Science},
+        publisher = {Elsevier Science B. V.},
+        volume = {50},
+        number = {4},
+        year = {2001},
+        note = {Proc. of VEPAS'01}}
+
+@inproceedings{BHV04,
+        author = "A. Bouajjani and P. Habermehl and T. Vojnar",
+        title = "Abstract Regular Model Checking",
+        booktitle = CAV04,
+	series =  LNCS,
+        publisher = Springer,
+        Volume = 3114,
+        pages = "372-386",
+	year =	"2004"
+}
+
+@article{GerSis:many,
+	author = "S. M. German and A. P. Sistla",
+	title = "Reasoning about Systems with Many Processes",
+	journal = JACM,
+	year = 1992,
+	pages = "675-735",
+	number = 3,
+	volume = 39}
+
+@INPROCEEDINGS{Esparza:Finkel:Mayr:LICS,
+        Author = "J. Esparza and A. Finkel and R. Mayr",
+        Title = "On the Verification of Broadcast Protocols",
+	Booktitle = {LICS99},
+        Year = 1999,
+ 	publisher = {IEEE Computer Society},
+}
+
+@INPROCEEDINGS{Delzanno:cache,
+        Author = "G. Delzanno",
+	Title = "Automatic Verification of Cache Coherence Protocols",
+        Editor = "Emerson and Sistla",
+        BookTitle = {CAV'00},
+        Series = LNCS,
+	Publisher = Springer,
+        Volume = 1855,
+        pages = "53-68",
+        Year = 2000}
+
+@INPROCEEDINGS{Delzanno:futurebus,
+  author    = {Giorgio Delzanno},
+  title     = {Verification of Consistency Protocols via Infinite-State
+               Symbolic Model Checking},
+  booktitle = {FORTE'00},
+  year      = {2000},
+  pages     = {171-186},
+  publisher = {Kluwer},
+  series    = {IFIP Conference Proceedings},
+  volume    = {183},
+}
+
+@INPROCEEDINGS{PXZ02,
+         author = "A. Pnueli and J. Xu  and L. Zuck ",
+         title = "Liveness with (0,1,infinity)-Counter Abstraction",
+	 BookTitle = {CAV'02},
+publisher = Springer,
+         Series = LNCS,
+         Volume = 2404,
+	 Year =  2002
+}
+
+@inProceedings{APRXZ01,
+        author    = "T. Arons and A. Pnueli and S. Ruah and J. Xu and
+L. Zuck",
+        title     = {Parameterized verification with automatically computed inductive assertions},
+        booktitle = {CAV'01},
+        Series = LNCS,
+        publisher = Springer,
+        Volume = 2102,
+        year      = 2001,
+        pages      = {221--234}
+}
+
+@inproceedings{Namjoshi:VMCAI07,
+  author    = {Kedar S. Namjoshi},
+  title     = {Symmetry and Completeness in the Analysis of Parameterized Systems},
+  booktitle = {VMCAI07},
+  year      = {2007},
+  pages     = {299-313},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {4349},
+}
+
+@inproceedings{BLS02,
+  author    = {Kai Baukus and
+               Yassine Lakhnech and
+               Karsten Stahl},
+  title     = {Parameterized Verification of a Cache Coherence Protocol:
+               Safety and Liveness},
+  booktitle = {VMCAI02},
+  pages     = {317-330},
+  publisher = Springer,
+  series    = LNCS,
+  volume    = {2294},
+  year      = {2002},}
+
+@inproceedings{MalkisPR07,
+  title = {Precise Thread-Modular Verification},
+  author = {Alexander Malkis and Andreas Podelski and Andrey Rybalchenko},
+  year = {2007},
+  pages = {218-232},
+  booktitle = {SAS'07},
+  volume = {4634},
+  series = LNCS,
+  publisher = Springer,
+}
+
+@INPROCEEDINGS{rmc:wo:transducers,
+        Author = "Parosh Aziz Abdulla and Noomene Ben Henda and Giorgio Delzanno and Ahmed Rezine",
+	Title = "Regular Model Checking without Transducers (On Efficient
+		  Verification of Parameterized Systems)",
+        BookTitle = {TACAS'07},
+        series    = LNCS,
+        pages     = {721-736},
+        volume    = 4424,
+        publisher = Springer,
+        Year = 2007}
+
+@INPROCEEDINGS{Emerson:Namjoshi:POPL95,
+        Author = "E.A. Emerson and  K.S. Namjoshi",
+        Title = "Reasoning about Rings",
+	Booktitle = {POPL95},
+ 	pages     = {85-94},
+	Year = 1995,
+}
+
+
+@INPROCEEDINGS{EmKa:manyfew,
+  author    = {E. Allen Emerson and
+               Vineet Kahlon},
+  title     = {Reducing Model Checking of the Many to the Few},
+  booktitle = {CADE'00},
+  year      = {2000},
+  pages     = {236-254},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {1831},
+}
+
+@INPROCEEDINGS{Parosh:non-atomic,
+  author    = {Parosh Aziz Abdulla and
+               Noomene Ben Henda and
+               Giorgio Delzanno and
+               Ahmed Rezine},
+  title     = {Handling Parameterized Systems with Non-atomic Global Conditions},
+  booktitle = {VMCAI08},
+  volume    = {4905},
+  series    = {LNCS},
+  publisher = {Springer},
+  year      = {2008},
+  pages     = {22-36},
+}
+
+@article{IJFCS09,
+  author    = {Parosh Aziz Abdulla and
+               Giorgio Delzanno and
+               Noomene Ben Henda and
+               Ahmed Rezine},
+  title     = {Monotonic Abstraction: on Efficient Verification of Parameterized
+               Systems},
+  journal   = {Int. J. Found. Comput. Sci.},
+  volume    = {20},
+  number    = {5},
+  pages     = {779--801},
+  year      = {2009},
+  url       = {http://dx.doi.org/10.1142/S0129054109006887},
+  doi       = {10.1142/S0129054109006887},
+  timestamp = {Thu, 11 Mar 2010 12:48:32 +0100}
+}
+
+@TECHREPORT{burnsinside,
+  author    = {Nancy A. Lynch and
+               Boaz-Path Shamir},
+  title     = {Distributed Algorithms, lecture notes for 6.852, fall 1992},
+  number	= {MIT/LCS/RSS-20},
+  publisher = {MIT},
+  institution = {MIT},
+  year      = {1993},
+}
+
+@MISC{private,
+  author    = {T. Vojnar},
+  title     = {private communication},
+  publisher = {private comminication},
+  year      = {1993},
+  month		= {June},
+}
+
+@article{abdulla:well,
+  author    = {Parosh Aziz Abdulla},
+  title     = {Well (and better) quasi-ordered transition systems},
+  journal   = {Bulletin of Symbolic Logic},
+  volume    = {16},
+  number    = {4},
+  year      = {2010},
+  pages     = {457-515},
+}
+
+
+@inproceedings{Bingham:empirically,
+  author    = {Jesse D. Bingham and
+               Alan J. Hu},
+  title     = {Empirically Efficient Verification for a Class of Infinite-State
+               Systems},
+  booktitle = {TACAS'05},
+  pages     = {77-92},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {3440},
+  year      = {2005},
+}
+
+@INPROCEEDINGS{Parosh:Bengt:Karlis:Tsay:general,
+  Author = {Parosh Aziz Abdulla and
+            Karlis {\v C}er{\=a}ns and
+	    Bengt Jonsson and
+	    Yih-Kuen Tsay},
+  Title = "General Decidability Theorems for Infinite-State Systems", 
+  BookTitle = {LICS96},
+  pages= "313-321",
+  Year = 1996,
+  Month={Jul}, 
+  doi={10.1109/LICS.1996.561359}, 
+  ISSN={1043-6871}
+}
+
+@article{MTSdecidable,
+author = {Abdulla, Parosh Aziz and
+          \v{C}er\={a}ns, K\={a}rlis and
+	  Jonsson, Bengt and
+	  Tsay, Yih-Kuen},
+ title = {Algorithmic Analysis of Programs with Well Quasi-ordered Domains},
+ journal = {Information and Computation},
+ issue_date = {July 10/Aug. 1, 2000},
+ volume = {160},
+ number = {1-2},
+ month = jul,
+ year = {2000},
+ issn = {0890-5401},
+ pages = {109--127},
+ numpages = {19},
+ url = {http://dx.doi.org/10.1006/inco.1999.2843},
+ doi = {10.1006/inco.1999.2843},
+ acmid = {346464},
+ publisher = {Academic Press, Inc.},
+ address = {Duluth, MN, USA},
+} 
+
+
+@inproceedings{Ganty:Complete,
+  author    = {Pierre Ganty and
+               Jean-Fran\c{c}ois Raskin and
+               Laurent Van Begin},
+  title     = "{A Complete Abstract Interpretation Framework for Coverability
+               Properties of WSTS}",
+  booktitle = {VMCAI06},
+  year      = {2006},
+  pages     = {49-64},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {3855},
+}
+
+@INPROCEEDINGS{AbHaHo:view:abstraction,
+	author    = "Parosh Aziz Abdulla and Fr\'ed\'eric Haziza and Luk\'a\v s Hol\'ik",
+	title     = "All for the Price of Few (Parameterized Verification through View Abstraction)",
+	booktitle = {VMCAI13},
+	series    = LNCS,
+	volume    = "7737",
+	pages     = "476-495",
+	year      = 2013,
+}
+
+@INPROCEEDINGS{AbDeRe:context:sensitive,
+	author    = "Parosh Aziz Abdulla and Giorgio Delzanno and Ahmed Rezine",
+	title     = {Approximated Context-Sensitive Analysis for Parameterized Verification},
+	booktitle = {FORTE'09},
+	series    = LNCS,
+	pages     = {41-56},
+	year      = {2009},
+	isbn      = {978-3-642-02137-4},
+	volume    = {5522},
+	editor    = {Lee, David and Lopes, Antónia and Poetzsch-Heffter, Arnd},
+	doi       = {10.1007/978-3-642-02138-1_3},
+	url       = {http://dx.doi.org/10.1007/978-3-642-02138-1_3},
+	publisher = {Springer},
+}
+
+@INPROCEEDINGS{CTV06,
+	author = "E. Clarke and M. Talupur and H. Veith",
+	title = "Environment Abstraction for Parameterized Verification",
+	booktitle = {VMCAI'06},
+	series = LNCS,
+	publisher = Springer,
+	volume = 3855,
+	pages = "126-141",
+	year = 2006,
+}
+
+@INPROCEEDINGS{AJNO:simple,
+	author = "Parosh Aziz Abdulla and Bengt Jonsson and Marcus Nilsson and Julien d'Orso",
+	title = "Regular Model Checking Made Simple and Efficient",
+	booktitle = CONCUR02,
+	series = LNCS,
+        publisher = Springer,
+	volume = "2421",
+	pages = "116-130",
+	year = 2002,
+}
+
+
+@incollection{forester11,
+        year={2011},
+        booktitle={CAV11},
+        publisher = Springer,
+        title={Forest Automata for Verification of Heap Manipulation},
+        author={P.~Habermehl, L.~Hol{\'i}k, A.~Rogalewicz, J.~{\v S}im{\' a}{\v c}ek, and
+  T.~Vojnar}
+}
+
+
+
+@incollection{Forester,
+        year={2013},
+        isbn={978-3-319-02443-1},
+        booktitle={ATVA13},
+        volume={8172},
+        series={LNCS},
+        publisher = Springer,
+        doi={10.1007/978-3-319-02444-8_17},
+        title={Verification of Heap Manipulating Programs with Ordered Data by Extended Forest Automata},
+        url={http://dx.doi.org/10.1007/978-3-319-02444-8_17},
+        author={Abdulla, ParoshAziz and Holík, Lukáš and Jonsson, Bengt and Lengál, Ondřej and Trinh, CongQuy and Vojnar, Tomáš},
+        pages={224-239},
+}
+
+@incollection{Forester,
+        year={2013},
+        isbn={978-3-319-02443-1},
+        booktitle={ATVA13},
+        volume={8172},
+        series={LNCS},
+        publisher = Springer,
+        doi={10.1007/978-3-319-02444-8_17},
+        title={Verification of Heap Manipulating Programs with Ordered Data by Extended Forest Automata},
+        url={http://dx.doi.org/10.1007/978-3-319-02444-8_17},
+        author={Abdulla, ParoshAziz and Holík, Lukáš and Jonsson, Bengt and Lengál, Ondřej and Trinh, CongQuy and Vojnar, Tomáš},
+        pages={224-239},
+}
+
+
+@proceedings{foresterfull,
+  editor    = {Natasha Sharygina and
+               Helmut Veith},
+  title     = {Computer Aided Verification - 25th International Conference},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {8044},
+  publisher = {Springer},
+  year      = {2013},
+  url       = {https://doi.org/10.1007/978-3-642-39799-8},
+  doi       = {10.1007/978-3-642-39799-8},
+  isbn      = {978-3-642-39798-1},
+}
+
+
+@article{ACJT00,
+  author    = {Parosh A. Abdulla and
+               Karlis Cerans and
+               Bengt Jonsson and
+               Yih-Kuen Tsay},
+  title     = {Algorithmic Analysis of Programs with Well Quasi-ordered
+               Domains},
+  journal   = {Inf. Comput.},
+  volume    = {160},
+  number    = {1-2},
+  year      = {2000},
+  pages     = {109-127}
+}
+
+@inproceedings{CEGAR,
+  author    = {Parosh Aziz Abdulla and
+               Yu{-}Fang Chen and
+               Giorgio Delzanno and
+               Fr{\'{e}}d{\'{e}}ric Haziza and
+               Chih{-}Duo Hong and
+               Ahmed Rezine},
+  title     = {Constrained Monotonic Abstraction: {A} {CEGAR} for Parameterized Verification},
+  booktitle = {CONCUR10},
+  pages     = {86--101},
+  year      = {2010},
+  url       = {http://dx.doi.org/10.1007/978-3-642-15375-4_7},
+  doi       = {10.1007/978-3-642-15375-4_7},
+}
+
+@article{Eraser,
+  author    = {Stefan Savage and
+               Michael Burrows and
+               Greg Nelson and
+               Patrick Sobalvarro and
+               Thomas E. Anderson},
+  title     = {Eraser: {A} Dynamic Data Race Detector for Multithreaded Programs},
+  journal   = {{ACM} Transactions on Computer Systems},
+  volume    = {15},
+  number    = {4},
+  pages     = {391--411},
+  year      = {1997},
+  url       = {http://doi.acm.org/10.1145/265924.265927},
+  doi       = {10.1145/265924.265927},
+}
+
+@book{Pnueli,
+ author = {Manna, Zohar and Pnueli, Amir},
+ title = {Temporal Verification of Reactive Systems: Safety},
+ year = {1995},
+ isbn = {0-387-94459-1},
+ publisher = {Springer},
+} 
+
+@TECHREPORT{Treiber:stack,
+	Author = "R.K. Treiber",
+        Title = "Systems Programming: Coping with Parallelism",
+	Institution= "IBM Almaden Res.\ Ctr.",
+	Number = "RJ5118",
+	Year = 1986}
+
+@INPROCEEDINGS{MS:QueueAlgorithms,
+    author = "M.M. Michael and M. Scott",
+    title = "Simple, Fast, and Practical Non-Blocking and Blocking Concurrent Queue Algorithms",
+    booktitle = {PODC96},
+    year = "1996",
+    pages = "267--275"
+}
+
+@misc{ABA:1983,
+Title="System/370 Principles of Operation",
+Author="IBM",
+Year=1983
+}
+
+@misc{ABA:Wikipedia,
+   author = "Wikipedia",
+   title = "ABA problem --- {W}ikipedia{,} The Free Encyclopedia",
+   year = "2008",
+   url = "\url{https://en.wikipedia.org/wiki/ABA_problem}",
+   note = "[Online; accessed 22-June-2015]"
+}
+
+@article{kruskal,
+     title     = {Well-Quasi-Ordering, The Tree Theorem, and Vazsonyi's Conjecture},
+     author    = {Kruskal, J. B.},
+     journal   = {Transactions of the American Mathematical Society},
+     volume    = {95},
+     number    = {2},
+     pages     = {pp. 210-225},
+     ISSN      = {00029947},
+     year      = {1960},
+     publisher = {American Mathematical Society},
+     copyright = {Copyright © 1960 American Mathematical Society},
+}
+
+@incollection{ParamVerif:global:conditions,
+title  = {Parameterized Verification of Infinite-State Processes with Global Conditions},
+author = {Parosh Aziz Abdulla and
+          Giorgio Delzanno and
+          Ahmed Rezine},
+booktitle={CAV07},
+volume={4590},
+pages={145-157},
+series={LNCS},
+publisher={Springer},
+year={2007},
+isbn={978-3-540-73367-6},
+doi={10.1007/978-3-540-73368-3_17},
+url={http://dx.doi.org/10.1007/978-3-540-73368-3_17},
+}
+
+@inproceedings{Wolper:dataindependence,
+ author = {Wolper, Pierre},
+ title = {Expressing Interesting Properties of Programs in Propositional Temporal Logic},
+ booktitle = {POPL86},
+ series = {POPL '86},
+ year = {1986},
+ pages = {184--193},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/512644.512661},
+ doi = {10.1145/512644.512661},
+ publisher = {ACM},
+} 
+
+@inproceedings{VW:modelchecking,
+  author    = {Moshe Y. Vardi and
+               Pierre Wolper},
+  title     = {An Automata-Theoretic Approach to Automatic Program Verification
+               (Preliminary Report)},
+  booktitle = {LICS86},
+  pages     = {332--344},
+  year      = {1986},
+}
+
+@article{HeWi:linearizability,
+ author = {Herlihy, Maurice P. and Wing, Jeannette M.},
+ title = {Linearizability: A Correctness Condition for Concurrent Objects},
+ journal = {TOPLAS},
+ volume = {12},
+ number = {3},
+ month = jul,
+ year = {1990},
+ issn = {0164-0925},
+ pages = {463--492},
+ numpages = {30},
+ url = {http://doi.acm.org/10.1145/78969.78972},
+ doi = {10.1145/78969.78972},
+ publisher = {ACM},
+} 
+
+@INPROCEEDINGS{Colvin:Lazy-List,
+  author    = {Robert Colvin and
+               Lindsay Groves and
+               Victor Luchangco and
+               Mark Moir},
+  title     = {Formal Verification of a Lazy Concurrent List-Based Set Algorithm},
+  booktitle = {CAV},
+  series =        {LNCS},
+        Volume = 4144,
+  pages     = {475--488},
+  year      = {2006},
+}
+
+
+@INPROCEEDINGS{Poling,
+  author    = {He Zhu and Gustavo Petri and Suresh Jagannathan},
+  title     = {Poling: {SMT} Aided Linearizability Proofs},
+  booktitle = {{CAV}},
+  pages     = {3--19},
+	Series = LNCS,
+	Volume = 9207,
+        Publisher = SV,
+  year      = {2015},
+}
+
+@PHDTHESIS{Vafeiadis:Thesis,
+        Author      =   "Viktor Vafeiadis",
+        Title       =   "Modular fine-grained concurrency verification",
+        Year        =   2008,
+        school=          {University of Cambridge}
+}
+
+@InProceedings{BEEH:icalp15,
+  author =      "A. Bouajjani and M. Emmi and C. Enea and J. Hamza",
+  title =      "On Reducing Linearizability to State Reachability",
+  booktitle =     "ICALP",
+  series =        {LNCS},
+        Volume = 9135,
+  pages     = {95--107},
+  year =          "2015"
+}
+
+
+@inproceedings{Vafeiadis,
+ author = {Vafeiadis, Viktor},
+ title = {Shape-Value Abstraction for Verifying Linearizability},
+ booktitle = {VMCAI09},
+ series = {VMCAI '09},
+ year = {2009},
+ isbn = {978-3-540-93899-6},
+ pages = {335--348},
+ numpages = {14},
+ url = {http://dx.doi.org/10.1007/978-3-540-93900-9_27},
+ doi = {10.1007/978-3-540-93900-9_27},
+ publisher = {SV},
+} 
+
+@inproceedings{Vafeiadis:cav10,
+  Author    = {Viktor Vafeiadis},
+  title     = {Automatically Proving Linearizability},
+  booktitle = {CAV},
+  year      = {2010},
+  pages     = {450-464},
+  series    = {LNCS},
+  volume    = {6174},
+}
+
+@incollection{BiRa:vmcai06,
+title={A Logic and Decision Procedure for Predicate Abstraction of Heap-Manipulating Programs},
+author={Bingham, Jesse and Rakamarić, Zvonimir},
+year={2006},
+booktitle={VMCAI06},
+volume={3855},
+series={Lecture Notes in Computer Science},
+isbn={978-3-540-31139-3},
+doi={10.1007/11609773_14},
+url={http://dx.doi.org/10.1007/11609773_14},
+publisher={Springer},
+pages={207-221},
+}
+
+@inproceedings{manevich2005predicate,
+  title={Predicate abstraction and canonical abstraction for singly-linked lists},
+  author={Manevich, Roman and Yahav, Eran and Ramalingam, Ganesan and Sagiv, Mooly},
+  booktitle={Verification, Model Checking, and Abstract Interpretation: 6th International Conference, VMCAI 2005, Paris, France, January 17-19, 2005. Proceedings 6},
+  pages={181--198},
+  year={2005},
+  organization={Springer}
+}
+
+@TECHREPORT{AHHR:integrated:rep,
+        Author = 	"Parosh A. Abdulla and {Fr\'ed\'eric} Haziza and Bengt Jonsson and Ahmed Rezine",
+        Title = 	"An Integrated Specification and Verification Technique
+for Highly Concurrent Data Structures",
+	    Number =	"???",
+        Institution = 	"Brno ot Uppsala",
+        Year = 		2013,
+}
+
+@article{Vafeiadis:Aspect,
+  author    = {Soham Chakraborty and
+               Thomas A. Henzinger and
+               Ali Sezgin and
+               Viktor Vafeiadis},
+  title     = {Aspect-oriented linearizability proofs},
+  journal   = {CoRR},
+  volume    = {abs/1502.07639},
+  year      = {2015},
+}
+
+
+@article{SDW:tcl14,
+  author    = {G. Schellhorn and
+               J. Derrick and
+               H. Wehrheim},
+  title     = {A Sound and Complete Proof Technique for Linearizability of Concurrent
+               Data Structures},
+  journal   = {{ACM} Trans. Comput. Log.},
+  volume    = {15},
+  number    = {4},
+  pages     = {31:1--31:37},
+  year      = {2014},
+}
+
+
+@inproceedings{Derrick:fm14,
+  author    = {J. Derrick and
+               B. Dongol and
+               G. Schellhorn and
+               B. Tofan and
+               O. Travkin and
+               H. Wehrheim},
+  title     = {Quiescent Consistency: Defining and Verifying Relaxed Linearizability},
+  booktitle = {{FM}},
+  pages     = {200--214},
+  year      = {2014},
+  series    = {LNCS},
+  volume    = {8442},
+  publisher = {Springer},
+}
+
+@inproceedings{SWD:cav12,
+  author    = {G. Schellhorn and
+               H. Wehrheim and
+               J. Derrick},
+  title     = {How to Prove Algorithms Linearisable},
+  booktitle = {CAV},
+  year      = {2012},
+  pages     = {243-259},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {7358},
+}
+
+
+
+@INPROCEEDINGS{CGLM:cav06,
+   author    = {R. Colvin and
+               L. Groves and
+               V. Luchangco and
+               M. Moir},
+  title     = {Formal Verification of a Lazy Concurrent List-Based Set
+               Algorithm},
+  booktitle = "{Proc. of CAV'06}",
+  pages     = {475-488},
+  publisher = {Springer},
+  series    = {LNCS},
+  volume    = {4144},
+  year      = {2006},
+}
+
+
+
+@inproceedings{BLMRS:cav08,
+ author = {Berdine, J. and
+           Lev-Ami, T. and
+	   Manevich, R. and
+	   Ramalingam, G. and
+	   Sagiv, M.},
+ title = {Thread Quantification for Concurrent Shape Analysis},
+ booktitle = {CAV08},
+ series = {CAV '08},
+ year = {2008},
+ isbn = {978-3-540-70543-7},
+ pages = {399--413},
+ numpages = {15},
+ url = {http://dx.doi.org/10.1007/978-3-540-70545-1_37},
+ doi = {10.1007/978-3-540-70545-1_37},
+ publisher = {SV},
+}
+
+@article{Lamport:Bakery,
+ author = {Lamport, Leslie},
+ title = {A New Solution of Dijkstra's Concurrent Programming Problem},
+ journal = {Communications of the ACM},
+ volume = {17},
+ number = {8},
+ month = aug,
+ year = {1974},
+ issn = {0001-0782},
+ pages = {453--455},
+ numpages = {3},
+ url = {http://doi.acm.org/10.1145/361082.361093},
+ doi = {10.1145/361082.361093},
+ publisher = {ACM},
+} 
+
+@phdthesis{Marcus:thesis,
+   author = {Marcus Nilsson},
+   institution = {Uppsala University, Division of Computer Systems},
+   pages = {149},
+   publisher = {Acta Universitatis Upsaliensis},
+   school = {Uppsala UniversityUppsala University, Division of Computer Systems, Computer Systems},
+   title = {Regular Model Checking},
+   series = {Uppsala Dissertations from the Faculty of Science and Technology},
+   number = {60},
+   year = {2005}
+}
+
+@misc{Burns:protocol,
+   author = {Nancy A. Lynch and Boaz Patt-Shamir},
+   title = {Distrbuted algorithms, lecture notes for 6.852, fall 1992},
+   booktitle = {Technical Report MIT/LCS/RSS-20, MIT, Jan. 1993},
+   year = {1992},
+}
+
+
+@misc{ieee:1394:firewire,
+   author = "IEEE Computer Society",
+   title = "IEEE standard for a high performance serial bus. Std 1394-1995",
+   year = "1996",
+   month = aug,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

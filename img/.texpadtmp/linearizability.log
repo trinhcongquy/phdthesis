@@ -1,0 +1,1456 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdftex 2016.5.22)  22 NOV 2017 10:49
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**linearizability.tex
+(./linearizability.tex
+./linearizability.tex:1: Undefined control sequence.
+l.1 \begin
+          {tikzpicture}[
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (54.10728pt too wide) in paragraph at lines 1--10
+[]\tenrm tikzpicture[ func-tion/.style=line width=1ex,>=fast cap,draw,color=cyan!50, func-tion1/.style=line width=1ex,>=fast|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm t
+.\tenrm i
+.\tenrm k
+.\tenrm z
+.etc.
+
+
+Overfull \hbox (15.13503pt too wide) in paragraph at lines 1--10
+\tenrm cap,draw,color=cyan!50, func-tion2/.style=line width=1ex,>=fast cap,draw,color=cyan!50, func-tion3/.style=line|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm c
+.\tenrm a
+.\tenrm p
+.\tenrm ,
+.\tenrm d
+.etc.
+
+
+Overfull \hbox (1.57944pt too wide) in paragraph at lines 1--10
+\tenrm width=1ex,>=fast cap,draw,color=cyan!50, func-tion4/.style=line width=1ex,>=fast cap,draw,color=cyan!50,|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm w
+.\tenrm i
+.\tenrm d
+.\tenrm t
+.\tenrm h
+.etc.
+
+
+Overfull \hbox (87.60739pt too wide) in paragraph at lines 1--10
+\tenrm func-tion-name/.style=color=black,above left=1pt,inner sep=0pt,pos=1, project/.style=dotted,very thick,black,>=stealth,shorten|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm f
+.\tenrm u
+.\tenrm n
+.\tenrm c
+.\discretionary
+..\tenrm -
+.etc.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach
+                \m/\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach \m
+                  /\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach \m/\x
+                     /\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach \m/\x/\y
+                        /\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach \m/\x/\y/\length
+                                /\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:28: Undefined control sequence.
+l.28   \foreach \m/\x/\y/\length/\pos
+                                     /\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31     \draw
+              [function1,<->] (\x,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31     \draw[function1,<->] (\x
+                                 ,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31     \draw[function1,<->] (\x,\y
+                                    ) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31 ...[function1,<->] (\x,\y) -- +(right:\length
+                                                  ) node[line width=1pt,comm...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31 ...) node[line width=1pt,commitpoint,pos=\pos
+                                                  ](cp\m){} node[functionnam...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Undefined control sequence.
+l.31 ...[line width=1pt,commitpoint,pos=\pos](cp\m
+                                                  ){} node[functionname]{\t};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:31: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.31 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:31: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.31 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (23.35727pt too wide) in paragraph at lines 28--31
+[]\tenrm /////[]in  1/5/7/4.5/0.2/cnt(a,true)  [function1,<->] (,) -- +(right:) node[line width=1pt,commitpoint,pos=](cp)|
+
+\hbox(9.31749+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.etc.
+
+./linearizability.tex:32: Undefined control sequence.
+l.32     \draw
+              [function1,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:32: Undefined control sequence.
+l.32     \draw[function1,<->] let \p
+                                    1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:32: Undefined control sequence.
+l.32     \draw[function1,<->] let \p1=(cp\m
+                                           .south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:32: Undefined control sequence.
+l.32 ...function1,<->] let \p1=(cp\m.south) in (\x
+                                                  1,-1.3) ++(-0.45,0) -- +(r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:32: Undefined control sequence.
+l.32 ...e[line width=1pt,commitpoint,midway](cpl\m
+                                                  ){};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:33: Undefined control sequence.
+l.33     \node
+              [scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:33: Undefined control sequence.
+l.33     \node[scale=0.7,above=1pt of cpl\m
+                                           ,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:33: Undefined control sequence.
+l.33 ...0.7,above=1pt of cpl\m,inner sep=0pt](ml\m
+                                                  ){\t}; % functionname
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:33: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.33 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:33: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.33 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (60.42213pt too wide) in paragraph at lines 31--33
+[]\tenrm ; [function1,<->] let 1=(cp.south) in (1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\tenrm [
+.\tenrm f
+.etc.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach
+                \m/\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach \m
+                  /\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach \m/\x
+                     /\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach \m/\x/\y
+                        /\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach \m/\x/\y/\length
+                                /\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:38: Undefined control sequence.
+l.38   \foreach \m/\x/\y/\length/\pos
+                                     /\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41     \draw
+              [function2,<->] (\x,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41     \draw[function2,<->] (\x
+                                 ,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41     \draw[function2,<->] (\x,\y
+                                    ) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41 ...[function2,<->] (\x,\y) -- +(right:\length
+                                                  ) node[line width=1pt,comm...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41 ...) node[line width=1pt,commitpoint,pos=\pos
+                                                  ](cp\m){} node[functionnam...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Undefined control sequence.
+l.41 ...[line width=1pt,commitpoint,pos=\pos](cp\m
+                                                  ){} node[functionname]{\t};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:41: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.41 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:41: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.41 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (19.21838pt too wide) in paragraph at lines 38--41
+[]\tenrm /////[]in  2/7/6/5/0.1/rmv(a,true)  [function2,<->] (,) -- +(right:) node[line width=1pt,commitpoint,pos=](cp)|
+
+\hbox(9.31749+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.etc.
+
+./linearizability.tex:42: Undefined control sequence.
+l.42     \draw
+              [function2,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:42: Undefined control sequence.
+l.42     \draw[function2,<->] let \p
+                                    1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:42: Undefined control sequence.
+l.42     \draw[function2,<->] let \p1=(cp\m
+                                           .south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:42: Undefined control sequence.
+l.42 ...function2,<->] let \p1=(cp\m.south) in (\x
+                                                  1,-1.3) ++(-0.45,0) -- +(r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:42: Undefined control sequence.
+l.42 ...e[line width=1pt,commitpoint,midway](cpl\m
+                                                  ){};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:43: Undefined control sequence.
+l.43     \node
+              [scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:43: Undefined control sequence.
+l.43     \node[scale=0.7,above=1pt of cpl\m
+                                           ,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:43: Undefined control sequence.
+l.43 ...0.7,above=1pt of cpl\m,inner sep=0pt](ml\m
+                                                  ){\t}; % functionname
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:43: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.43 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:43: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.43 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (60.42213pt too wide) in paragraph at lines 41--43
+[]\tenrm ; [function2,<->] let 1=(cp.south) in (1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\tenrm [
+.\tenrm f
+.etc.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach
+                \m/\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach \m
+                  /\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach \m/\x
+                     /\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach \m/\x/\y
+                        /\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach \m/\x/\y/\length
+                                /\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:48: Undefined control sequence.
+l.48   \foreach \m/\x/\y/\length/\pos
+                                     /\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51     \draw
+              [function3,<->] (\x,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51     \draw[function3,<->] (\x
+                                 ,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51     \draw[function3,<->] (\x,\y
+                                    ) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51 ...[function3,<->] (\x,\y) -- +(right:\length
+                                                  ) node[line width=1pt,comm...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51 ...) node[line width=1pt,commitpoint,pos=\pos
+                                                  ](cp\m){} node[functionnam...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Undefined control sequence.
+l.51 ...[line width=1pt,commitpoint,pos=\pos](cp\m
+                                                  ){} node[functionname]{\t};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:51: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.51 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:51: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.51 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (29.77396pt too wide) in paragraph at lines 48--51
+[]\tenrm /////[]in  3/2/5/8.5/0.83/cnt(a,false)  [function3,<->] (,) -- +(right:) node[line width=1pt,commitpoint,pos=](cp)|
+
+\hbox(9.31749+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.etc.
+
+./linearizability.tex:52: Undefined control sequence.
+l.52     \draw
+              [function3,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:52: Undefined control sequence.
+l.52     \draw[function3,<->] let \p
+                                    1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:52: Undefined control sequence.
+l.52     \draw[function3,<->] let \p1=(cp\m
+                                           .south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:52: Undefined control sequence.
+l.52 ...function3,<->] let \p1=(cp\m.south) in (\x
+                                                  1,-1.3) ++(-0.45,0) -- +(r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:52: Undefined control sequence.
+l.52 ...e[line width=1pt,commitpoint,midway](cpl\m
+                                                  ){};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:53: Undefined control sequence.
+l.53     \node
+              [scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:53: Undefined control sequence.
+l.53     \node[scale=0.7,above=1pt of cpl\m
+                                           ,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:53: Undefined control sequence.
+l.53 ...0.7,above=1pt of cpl\m,inner sep=0pt](ml\m
+                                                  ){\t}; % functionname
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:53: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.53 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:53: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.53 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (60.42213pt too wide) in paragraph at lines 51--53
+[]\tenrm ; [function3,<->] let 1=(cp.south) in (1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\tenrm [
+.\tenrm f
+.etc.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach
+               \m/\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach \m
+                 /\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach \m/\x
+                    /\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach \m/\x/\y
+                       /\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach \m/\x/\y/\length
+                               /\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:59: Undefined control sequence.
+l.59  \foreach \m/\x/\y/\length/\pos
+                                    /\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63     \draw
+              [function,<->] (\x,\y) -- +(right:\length) node[line width=1pt...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63     \draw[function,<->] (\x
+                                ,\y) -- +(right:\length) node[line width=1pt...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63     \draw[function,<->] (\x,\y
+                                   ) -- +(right:\length) node[line width=1pt...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63 ...w[function,<->] (\x,\y) -- +(right:\length
+                                                  ) node[line width=1pt,comm...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63 ...) node[line width=1pt,commitpoint,pos=\pos
+                                                  ](cp\m){} node[functionnam...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Undefined control sequence.
+l.63 ...[line width=1pt,commitpoint,pos=\pos](cp\m
+                                                  ){} node[functionname]{\t};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:63: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.63 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:63: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.63 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+./linearizability.tex:64: Undefined control sequence.
+l.64     \draw
+              [function,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:64: Undefined control sequence.
+l.64     \draw[function,<->] let \p
+                                   1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:64: Undefined control sequence.
+l.64     \draw[function,<->] let \p1=(cp\m
+                                          .south) in (\x1,-1.3) ++(-0.45,0) ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:64: Undefined control sequence.
+l.64 ...[function,<->] let \p1=(cp\m.south) in (\x
+                                                  1,-1.3) ++(-0.45,0) -- +(r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:64: Undefined control sequence.
+l.64 ...e[line width=1pt,commitpoint,midway](cpl\m
+                                                  ){};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:65: Undefined control sequence.
+l.65     \node
+              [scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:65: Undefined control sequence.
+l.65     \node[scale=0.7,above=1pt of cpl\m
+                                           ,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:65: Undefined control sequence.
+l.65 ...0.7,above=1pt of cpl\m,inner sep=0pt](ml\m
+                                                  ){\t}; % functionname
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:65: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.65 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:65: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.65 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (55.42212pt too wide) in paragraph at lines 63--65
+[]\tenrm ; [function,<->] let 1=(cp.south) in (1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\tenrm [
+.\tenrm f
+.etc.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach
+              \m/\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach \m
+                /\x/\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach \m/\x
+                   /\y/\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach \m/\x/\y
+                      /\length/\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach \m/\x/\y/\length
+                              /\pos/\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:68: Undefined control sequence.
+l.68 \foreach \m/\x/\y/\length/\pos
+                                   /\t in {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71     \draw
+              [function4,<->] (\x,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71     \draw[function4,<->] (\x
+                                 ,\y) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71     \draw[function4,<->] (\x,\y
+                                    ) -- +(right:\length) node[line width=1p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71 ...[function4,<->] (\x,\y) -- +(right:\length
+                                                  ) node[line width=1pt,comm...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71 ...) node[line width=1pt,commitpoint,pos=\pos
+                                                  ](cp\m){} node[functionnam...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Undefined control sequence.
+l.71 ...[line width=1pt,commitpoint,pos=\pos](cp\m
+                                                  ){} node[functionname]{\t};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:71: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.71 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:71: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.71 ...t,pos=\pos](cp\m){} node[functionname]{\t}
+                                                  ;
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (26.41286pt too wide) in paragraph at lines 68--71
+[]\tenrm /////[]in  6/1/2/8.7/0.1/add(b,true)  [function4,<->] (,) -- +(right:) node[line width=1pt,commitpoint,pos=](cp)|
+
+\hbox(9.31749+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.\tenrm /
+.etc.
+
+./linearizability.tex:72: Undefined control sequence.
+l.72     \draw
+              [function4,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:72: Undefined control sequence.
+l.72     \draw[function4,<->] let \p
+                                    1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:72: Undefined control sequence.
+l.72     \draw[function4,<->] let \p1=(cp\m
+                                           .south) in (\x1,-1.3) ++(-0.45,0)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:72: Undefined control sequence.
+l.72 ...function4,<->] let \p1=(cp\m.south) in (\x
+                                                  1,-1.3) ++(-0.45,0) -- +(r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:72: Undefined control sequence.
+l.72 ...e[line width=1pt,commitpoint,midway](cpl\m
+                                                  ){};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:73: Undefined control sequence.
+l.73     \node
+              [scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:73: Undefined control sequence.
+l.73     \node[scale=0.7,above=1pt of cpl\m
+                                           ,inner sep=0pt](ml\m){\t}; % func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:73: Undefined control sequence.
+l.73 ...0.7,above=1pt of cpl\m,inner sep=0pt](ml\m
+                                                  ){\t}; % functionname
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:73: Argument of \t has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.73 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+./linearizability.tex:73: Paragraph ended before \t was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.73 ...bove=1pt of cpl\m,inner sep=0pt](ml\m){\t}
+                                                  ; % functionname
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (60.42213pt too wide) in paragraph at lines 71--73
+[]\tenrm ; [function4,<->] let 1=(cp.south) in (1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\tenrm [
+.\tenrm f
+.etc.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78   \foreach
+                \m in {1,...,6}{ \draw[project,->] let \p1=(cp\m.south) in (...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78   \foreach \m
+                   in {1,...,6}{ \draw[project,->] let \p1=(cp\m.south) in (...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78   \foreach \m in {1,...,6}{ \draw
+                                      [project,->] let \p1=(cp\m.south) in (...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78 ... \m in {1,...,6}{ \draw[project,->] let \p
+                                                  1=(cp\m.south) in (\p1) --...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78 ...{1,...,6}{ \draw[project,->] let \p1=(cp\m
+                                                  .south) in (\p1) -- (\x1,0...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78 ...aw[project,->] let \p1=(cp\m.south) in (\p
+                                                  1) -- (\x1,0); }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:78: Undefined control sequence.
+l.78 ...t,->] let \p1=(cp\m.south) in (\p1) -- (\x
+                                                  1,0); }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:81: Undefined control sequence.
+l.81   \draw
+            [line width=1.5pt,line cap=round,-stealth] (0,0) -- +(right:14) ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:90: Undefined control sequence.
+l.90   \draw
+            [decorate,decoration={bent},shorten >=3pt,shorten <=3pt] (0,0) -...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./linearizability.tex:91: Undefined control sequence.
+l.91   \draw
+            [decorate,decoration={bent},shorten >=3pt,shorten <=3pt] (0,-2) ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (50.10728pt too wide) in paragraph at lines 90--92
+[]\tenrm [decorate,decoration=bent,shorten >=3pt,shorten <=3pt] (0,0) -- +(up:7) node[above=3pt,rotate=90,midway]Partial|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm [
+.\tenrm d
+.\tenrm e
+.\tenrm c
+.etc.
+
+
+Overfull \hbox (43.69986pt too wide) in paragraph at lines 90--92
+\tenrm Or-der; [dec-o-rate,decoration=bent,shorten >=3pt,shorten <=3pt] (0,-2) -- (0,0) node[above=3pt,rotate=90,midway]Total|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm O
+.\tenrm r
+.\discretionary
+..\tenrm -
+.\tenrm d
+.\tenrm e
+.etc.
+
+[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] )</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on /Users/quytrinh/Dropbox/FredThesis/src/img/.texpadtmp/linearizability.pdf (1 page, 28165 bytes).
+PDF statistics:
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

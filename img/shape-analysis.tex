@@ -1,0 +1,135 @@
+\begin{tikzpicture}
+
+  %% ============ Concrete shape ======================
+  \begin{scope}[scale=0.8,every node/.append style={scale=0.8}]
+
+    \foreach \n/\x/\y/\c in {
+      1/0/0/white,
+      2/1/-3/white,
+      3/2/-1.5/red,
+      4/3/-4/white,
+      5/0.5/-5.5/white,
+      6/3.5/-5.5/blue}{
+      
+      \node(m\n)[minimum width=12mm,minimum height=6mm,inner sep=0pt,
+      fill=blue!20, draw=blue!50, very thick, rounded corners=4pt] at (\x,\y) {};
+      \node[data=\c,left=1mm of m\n.center]{}; 
+      \coordinate[right=2mm of m\n.center](m\n-n){};
+      \draw[blue!50, very thick] (m\n.north) -- (m\n.south);
+    }
+    
+    \node[globals](null) at (3,-7){\#};
+  
+    \draw[pointsto] (m1-n) .. controls +(right:20mm) and +(160:30mm) .. (m2);
+    \draw[pointsto] (m2-n) .. controls +(right:20mm) and +(-170:20mm) .. (m3);
+    \draw[pointsto] (m3-n) .. controls +(right:20mm) and +(150:20mm) .. (m4);
+    \draw[pointsto] (m4-n) .. controls +(-15:32mm) and +(160:25mm) .. (m5);
+    \draw[pointsto] (m5-n) .. controls +(right:10mm) and +(120:10mm) .. (null);
+    \draw[pointsto] (m6-n) .. controls +(-10:20mm) and +(50:10mm) .. (null);
+
+
+    %% ============ Variables ======================
+
+    \node[globals,above left=3pt of m1.west,xshift=-2pt] (T) {Top};
+    \node[thread1,below left=3pt of m1.west,xshift=-3pt] (t1) {t};
+    \node[thread1,left=2pt of m2.west,xshift=-2pt] (x1) {x};
+    \node[thread2,left=2pt of m4.west,xshift=-2pt] (t2) {t};
+    \node[thread2,left=1pt of m6.west,xshift=-2pt] (n2) {n};
+
+    %% ============ Threads info ======================
+    \node[fill=t1color,rectangle,inner xsep=2pt] (thread1) at (3.2,0.2) {Thread 1 {\tiny (pc:~\ref{treiber:thread:pop})}};
+    \node[fill=t2color,rectangle,inner xsep=2pt,below=2pt of thread1.south] (thread2) {Thread 2 {\tiny (pc:~\ref{treiber:thread:push})}};
+
+    
+    %% ============ White separation ======================
+    \draw[white,ultra thick] (5.25,0) -- +(0,-7);
+
+  \end{scope} %% End concrete shape
+
+  %% ============ Matrix Encoding ===============
+  \begin{scope}[shift={(4.5,-0.5)},scale=0.8,every node/.append style={scale=0.8}]
+
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding) {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{t}
+      & |[thread1]|\text{x}
+      & |[thread2]|\text{t}
+      & |[thread2]|\text{n}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}
+      & =          & \reaches  & =           & \pointsto  & \reaches   & \unrelated & \reaches   & \unrelated \\
+      |[globals]|\text{\#} 
+      & \reachedby & =         & \reachedby  & \reachedby & \reachedby & \pointedby & \reachedby & \pointedby \\
+      |[thread1]|\text{t} 
+      & =          & \reaches  & =           & \pointsto  & \reaches   & \unrelated & \reaches   & \unrelated \\
+      |[thread1]|\text{x} 
+      & \pointedby & \reaches  & \pointedby  & =          & \reaches   & \unrelated & \pointsto  & \unrelated \\
+      |[thread2]|\text{t} 
+      & \reachedby & \reaches  & \reachedby  & \reachedby & =          & \unrelated & \pointedby & \unrelated \\
+      |[thread2]|\text{n}
+      & \unrelated & \pointsto & \unrelated  & \unrelated & \unrelated & =          & \unrelated & =          \\
+      |[data=red,minimum size=1em]|
+      & \reachedby & \reaches  & \reachedby  & \pointedby & \pointsto  & \unrelated & =          & \unrelated \\
+      |[data=blue,minimum size=1em]|
+      & \unrelated & \pointsto & \unrelated  & \unrelated & \unrelated & =          & \unrelated & =          \\
+    };
+
+    
+  \draw (encoding-2-2.north west) -- (encoding-2-9.north east);
+  \draw (encoding-2-2.north west) -- (encoding-9-2.south west);
+  \foreach \n in {2,...,9}{
+    \draw (encoding-\n-2.south west) -- (encoding-\n-9.south east);
+    \draw (encoding-2-\n.north east) -- (encoding-9-\n.south east);
+  }
+
+  \begin{pgfonlayer}{my background}
+    \fill[green!5]  (encoding-2-2.north west) rectangle (encoding-3-3.south east);
+    \fill[yellow!5] (encoding-2-4.north west) rectangle (encoding-3-5.south east);
+    \fill[yellow!5] (encoding-4-2.north west) rectangle (encoding-5-5.south east);
+
+    \fill[pink!25] (encoding-2-6.north west) rectangle (encoding-3-7.south east);
+    \fill[pink!25] (encoding-6-2.north west) rectangle (encoding-7-3.south east);
+    \fill[pink!25] (encoding-6-6.north west) rectangle (encoding-7-7.south east);
+
+    \fill[orange!10] (encoding-4-6.north west) rectangle (encoding-5-7.south east);
+    \fill[orange!10] (encoding-6-4.north west) rectangle (encoding-7-5.south east);
+  \end{pgfonlayer}
+
+
+  %% ============ Key ======================
+  \matrix[matrix of nodes,nodes={inner xsep=2pt},above=5pt of encoding] (sigma) {
+    $\sigma$ & : &
+    |[fill=t1color,rectangle]| \ref{treiber:thread:pop} &
+    $|$ &
+    |[fill=t2color,rectangle]| \ref{treiber:thread:push} &
+    $|$ &
+    Observer: $s_1$ \\    
+  };
+
+
+  %% ============ Pi ======================
+  \node[inner sep=0pt,right=8pt of encoding.east,scale=0.8] (pi){$\pi[t_2,n_2]$};
+  \begin{pgfonlayer}{my background}
+    \begin{scope}
+      [bubble/.style={fill=purple!30!white}]%opacity=.3,transparency group % Note: transparency doesn't work with xetex
+      \node [bubble,circle,fit=(encoding-6-7.center)] (pit2n2){};
+      \node [bubble,ellipse,fit=(pi)] (pit2n2'){};
+      
+      \fill[bubble]
+      (pit2n2.north) .. controls +(right:3mm) and +(-50:3mm) .. (pit2n2'.-170) --
+      (pit2n2'.south) .. controls +(left:3mm) and +(up:3mm) ..  (pit2n2.east) -- cycle;
+    \end{scope}
+  \end{pgfonlayer}
+
+      
+  \end{scope} %% End matrix encoding
+
+  \begin{pgfonlayer}{background}
+    \coordinate[right=3pt of encoding.east](cheat);
+    \node [background rectangle,fit=(T)(null)(encoding)(sigma)(cheat),inner xsep=8pt] (bg){};
+  \end{pgfonlayer}
+  
+\end{tikzpicture}

@@ -1,0 +1,115 @@
+\index{Leader Election}\index{Leader}
+
+The protocol operates on binary trees to elect a leader among
+processes which reside in the leaves and which are candidates.
+%
+A leaf process can be labeled as candidate~\s{c} or
+non-candidate~\s{n}.
+%
+An inner node is initially labeled as undefined~\s{u} and will
+be labeled as candidate if at least one of its children is candidate,
+and non-candidate otherwise.
+
+In a first phase, the information that a node is candidate or not
+travels up to reach the root.
+%
+In a second phase, the decision~\s{el}, initially in the root,
+travels down from candidate parent to candidate child.
+%
+(If several children are candidates, the parent chooses one
+undeterministicly).
+%
+Once the decision reaches a leaf, this leaf process is elected as
+leader.
+%
+
+%\noindent%
+\begin{wrapfigure}{r}{0.25\linewidth}
+  \hfill%
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt, solid}
+    ]
+    \node {*} child { node{el} edge from parent } child { node{el} edge from parent };
+  \end{tikzpicture}
+  } % end resizebox
+\end{wrapfigure}
+% 
+The set of initial constraints \Inits\ is represented by trees where
+leaves are either candidates or non-candidates, inner nodes are
+labeled undefined and the root is labeled~\s{el}.
+%
+The set of bad constraints \Bad\ is represented by trees where at
+least two nodes in different branches are elected (on the right).
+%
+The rules for the upwards propagation of candidate information are:
+
+{\noindent\centering%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    level 2/.style={sibling distance=5mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node                {u / c} child {node {c}} child {node {n}}; 
+    \node[shift={(2,0)}] {u / c} child {node {n}} child {node {c}};
+    \node[shift={(4,0)}] {u / c} child {node {c}} child {node {c}};
+    \node[shift={(6,0)}] {u / n} child {node {n}} child {node {n}};
+  \end{tikzpicture}
+  \par%
+}
+
+\noindent%
+The rules for the downwards propagation of election decision are:
+
+{\noindent\centering%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node {el} child {node {c / el}} child {edge from parent[draw=none]};
+  \end{tikzpicture}
+  %
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node {el} child {edge from parent[draw=none]} child {node {c / el}};
+  \end{tikzpicture}
+  \par%
+}
+
+Below follows a small scenario:
+
+{\noindent\centering%
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    level 2/.style={sibling distance=5mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+
+    \node(t1) {el}
+    child {node {u} child {node {n} edge from parent } child {node {c} edge from parent }}
+    child {node {u} child {node {n}} child {node {n}}};
+    \node(t2)[xshift=30mm] {el}
+    child {node[red] {c} child[red] {node {n}} child[red] {node {c}}}
+    child {node {u} child {node {n}} child {node {n}}};
+    \node(t3)[xshift=60mm] {el}
+    child {node {c} child {node {n}} child {node {c}}}
+    child {node[red] {n} child[red] {node {n}} child[red] {node {n}}};
+    \node(t4)[xshift=90mm,red] {el}
+    child[red] {node {el} child[black] {node {n}} child[black] {node {c}}}
+    child {node {n} child {node {n}} child {node {n}}};
+    \node(t5)[xshift=120mm] {el}
+    child {node[red] {el} child {node {n}} child[red] {node {el}}}
+    child {node {n} child {node {n}} child {node {n}}};
+
+    %% Small step arrows
+    \foreach \f/\t in {1/2,2/3,3/4,4/5}{ \path (t\f) -- coordinate[midway](t\f\t) (t\t); }
+    \foreach \x in {t12,t23,t34,t45}{ \draw[*->] (\x) ++(-3mm,0) .. controls +(3mm,1mm) .. +(6mm,0); }
+
+  \end{tikzpicture}
+  } % end resizebox
+  \par%
+}

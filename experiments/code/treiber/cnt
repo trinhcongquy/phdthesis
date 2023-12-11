@@ -1,0 +1,1 @@
+ctn(e): local c  c := Head;  while (c.val < e)    c := c.next; b := c.mark    if (! b && c.val = e)      return true;    else return false;

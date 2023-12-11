@@ -1,0 +1,249 @@
+\begin{figure}[h]
+\center
+\begin{tikzpicture}[]
+\node(top){};
+\node(top-head)[linecode] at ($(top.west)+(10pt,0pt)$) {};
+%%%%%%%%%%% struct %%%%%%%%%%%%%%%%
+\node[linecode,anchor=south west](struct) at ($(top-head.east)+(-20pt,0pt)$) { \scriptsize \textbf{struct} Node \scriptsize \{};
+%{struct Node(bool lock; int val; Node *next; bool mark);};
+\node(struct1)[linecode] at ($(top-head.west)+(10pt,-5pt)$) {\scriptsize \textbf{bool} lock;\;\;\;\;\;\;};
+\node(struct2)[linecode] at ($(top-head.west)+(10pt,-15pt)$) {\scriptsize \textbf{int} val;};
+\node(struct3)[linecode] at ($(top-head.west)+(10pt,-26pt)$) {\scriptsize Node* next;};
+\node(struct4)[linecode] at ($(top-head.west)+(10pt,-37pt)$) {\scriptsize \textbf{bool} mark;};
+\node(struct5)[linecode] at ($(top-head.west)+(0pt,-47pt)$) {\scriptsize \}};
+\node(struct6)[linecode] at ($(top-head.west)+(0pt,-50pt)$) { };
+\begin{pgfonlayer}{background}
+ \node[code-bg,fit=(struct) (struct6) (struct1)] {};
+\end{pgfonlayer}
+
+%%%%%%%%%% locate %%%%%%%%%%
+%\node(locate){};
+\node(locate-head)[linecode] at ($(top.east)+(88pt,8pt)$) {\scriptsize locate(e):};
+
+\node(locate-local)[linecode] at 
+($(locate-head.west)+(0pt,-10pt)$) {\scriptsize \textbf{local} p, c};
+
+\node(locate1)[linenum,anchor=west] at ($(locate-local.west)+(0pt,-10pt)$) {\scriptsize 1};
+\node[linecode] at ($(locate1.east)+(0pt,0pt)$) {\scriptsize \textbf{while} (\textbf{true}) };
+
+\node(locate2)[linenum] at ($(locate1.east)+(0pt,-10pt)$) {\scriptsize 2};
+\node[linecode] at ($(locate2.east)+(7pt,0pt)$) {\scriptsize p := Head;};
+
+\node(locate3)[linenum] at ($(locate2.east)+(0pt,-10pt)$) {\scriptsize 3};
+\node(code3)[linecode] at ($(locate3.east)+(7pt,0pt)$) {\scriptsize c := p.next; \;\;\;\;\;\;\;};
+
+\node(locate4)[linenum] at ($(locate3.east)+(0pt,-10pt)$) {\scriptsize 4};
+\node(code4)[linecode] at ($(locate4.east)+(7pt,0pt)$) {\scriptsize \textbf{while} (c.val < e)}; 
+
+\node(locate5)[linenum] at ($(locate4.east)+(0pt,-10pt)$) {\scriptsize 5};
+\node[linecode] at ($(locate5.east)+(14pt,0pt)$) {\scriptsize p := c; };
+
+\node(locate6)[linenum] at ($(locate5.east)+(0pt,-10pt)$) {\scriptsize 6};
+\node[linecode] at ($(locate6.east)+(14pt,0pt)$) {\scriptsize c := c.next};
+
+\node(locate7)[linenum] at ($(locate6.east)+(0pt,-10pt)$) {\scriptsize 7};
+\node[linecode] at ($(locate7.east)+(7pt,0pt)$) {\scriptsize lock(p); lock(c);};
+
+\node(locate8)[linenum] at ($(locate7.east)+(0pt,-10pt)$) {\scriptsize 8};
+\node(code8)[linecode] at ($(locate8.east)+(7pt,0pt)$) {\scriptsize \textbf{if} (! p.mark \&\& };
+
+\node(locate9)[linenum] at ($(locate8.east)+(0pt,-10pt)$) {};
+\node[linecode] at ($(locate9.east)+(20pt,0pt)$) {\scriptsize ! c.mark\&\&};
+
+\node(locate10)[linenum] at ($(locate9.east)+(0pt,-10pt)$) {};
+\node[linecode] at ($(locate10.east)+(20pt,0pt)$) {\scriptsize p.next=c)};
+
+\node(locate11)[linenum] at ($(locate10.east)+(0pt,-10pt)$) {\scriptsize 9};
+\node[linecode] at ($(locate11.east)+(16pt,0pt)$) {\scriptsize \textbf{return} (p,c);};
+
+\node(locate12)[linenum] at ($(locate11.east)+(0pt,-10pt)$) {\scriptsize 10};
+\node[linecode] at ($(locate12.east)+(7pt,0pt)$) {\scriptsize \textbf{else}};
+
+\node(locate13)[linenum] at ($(locate12.east)+(0pt,-10pt)$) {\scriptsize 11};
+\node[linecode] at ($(locate13.east)+(14pt,0pt)$) {\scriptsize unlock(p);};
+
+\node(locate14)[linenum] at ($(locate13.east)+(0pt,-10pt)$) {\scriptsize 12};
+\node[linecode] at ($(locate14.east)+(14pt,0pt)$) {\scriptsize unlock(c);};
+
+\node(bot)[linecode] at ($(locate14.east)+(0pt,-83pt)$) {};
+\begin{pgfonlayer}{background}
+ \node[code-bg,fit=(locate-head) (code3) (locate14) (bot) ]{};
+ \end{pgfonlayer}
+
+
+
+
+%%%%%%%%%% add %%%%%%%%%%
+
+
+\node[anchor=west](add) at ($(top.east)+(183pt,8pt)$) {};
+\node(add-head)[linecode] at (add) {\scriptsize add(e):};
+
+\node(add-local)[linecode,anchor=west] at 
+($(add-head.west)+(0pt,-10pt)$) {\scriptsize \textbf{local} p, c, n, r};
+
+\node(add1)[linenum,anchor=west] at ($(add-local.west)+(0pt,-10pt)$) {\scriptsize 1};
+\node[linecode] at ($(add1.east)+(-2pt,0pt)$) {\scriptsize (p,c) := locate(e);};
+
+\node(add2)[linenum] at ($(add1.east)+(0pt,-10pt)$) {\scriptsize 2};
+\node[linecode] at ($(add2.east)+(0pt,0pt)$) 
+{\scriptsize \textbf{if} (c.val != e) \commitpoint{}};
+
+\node(add3)[linenum] at ($(add2.east)+(0pt,-10pt)$) {\scriptsize 3};
+\node(code3)[linecode] at ($(add3.east)+(7pt,0pt)$) 
+{\scriptsize n := };
+
+\node(add3a)[linenum] at ($(add3.east)+(0pt,-10pt)$) {};
+\node(code3a)[linecode] at ($(add3a.east)+(7pt,0pt)$) 
+{\scriptsize \textbf{new} Node(\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;};
+
+\node(add3b)[linenum] at ($(add3a.east)+(0pt,-10pt)$) {};
+\node(code3b)[linecode] at ($(add3b.east)+(10pt,0pt)$) 
+{\scriptsize \;\;\;\;\;\;false,e,c,false);};
+
+\node(add4)[linenum] at ($(add3b.east)+(0pt,-10pt)$) {\scriptsize 4};
+\node[linecode] at ($(add4.east)+(10pt,0pt)$) 
+{\scriptsize p.next := n; \commitpoint{}};
+
+\node(add5)[linenum] at ($(add4.east)+(0pt,-10pt)$) {\scriptsize 5};
+\node[linecode] at ($(add5.east)+(10pt,0pt)$) {\scriptsize r := \textbf{true};};
+
+\node(add6)[linenum] at ($(add5.east)+(0pt,-10pt)$) {\scriptsize 6};
+\node[linecode] at ($(add6.east)+(0pt,0pt)$) {\scriptsize \textbf{else} 
+r := \textbf{false};};
+
+
+\node(add7)[linenum] at ($(add6.east)+(0pt,-10pt)$) {\scriptsize 7};
+\node[linecode] at ($(add7.east)+(0pt,0pt)$) {\scriptsize unlock(p); unlock(c);\;};
+
+%\node(add8)[linenum] at ($(add7.east)+(0pt,-10pt)$) {\scriptsize 8};
+%\node[linecode] at ($(add8.east)+(0pt,0pt)$) {\scriptsize unlock(c);};
+
+\node(add9)[linenum] at ($(add7.east)+(0pt,-10pt)$) {\scriptsize 9};
+\node[linecode] at ($(add9.east)+(0pt,0pt)$) {\scriptsize \textbf{return} r;};
+\node(bot)[linecode] at ($(add9.east)+(0pt,-5pt)$) {};
+\begin{pgfonlayer}{background}
+ \node[code-bg,fit=(add-head) (code3a) (add9) (add7) (bot)  ]{};
+ \end{pgfonlayer}
+
+%%%%%%%%%% rmv %%%%%%%%%%
+
+
+%\node[linecode,anchor=west](rmv) at ($(locate.west)+(0pt,-100pt)$) {};
+\node(rmv-head)[font={\small\tt},anchor=west] at ($(top.east)+(186pt,-123pt)$)  {\scriptsize rmv(e):};
+
+\node(rmv-local)[linecode] at 
+($(rmv-head.west)+(0pt,-10pt)$) {\scriptsize \textbf{local} p, c, n, r};
+
+\node(rmv1)[linenum,anchor=west] at ($(rmv-local.west)+(0pt,-10pt)$) {\scriptsize 1};
+\node[linecode] at ($(rmv1.east)+(0pt,0pt)$) {\scriptsize (p,c) := locate(e);};
+
+\node(rmv2)[linenum] at ($(rmv1.east)+(0pt,-10pt)$) {\scriptsize 2};
+\node[linecode] at ($(rmv2.east)+(0pt,0pt)$) {\scriptsize \textbf{if} (c.val = e) \commitpoint{}};
+
+
+\node(rmv3)[linenum] at ($(rmv2.east)+(0pt,-10pt)$) {\scriptsize 3};
+\node(code3)[linecode] at ($(rmv3.east)+(10pt,0pt)$) 
+{\scriptsize c.mark := \textbf{true}; \commitpoint{}\;\;\;\;\;\;\;};
+
+\node(rmv4)[linenum] at ($(rmv3.east)+(0pt,-10pt)$) {\scriptsize 4};
+\node[linecode] at ($(rmv4.east)+(10pt,0pt)$) {\scriptsize n := c.next;};
+
+\node(rmv5)[linenum] at ($(rmv4.east)+(0pt,-10pt)$) {\scriptsize 5};
+\node[linecode] at ($(rmv5.east)+(10pt,0pt)$) {\scriptsize p.next := n;};
+
+\node(rmv6)[linenum] at ($(rmv5.east)+(0pt,-10pt)$) {\scriptsize 6};
+\node[linecode] at ($(rmv6.east)+(10pt,0pt)$) {\scriptsize r := \textbf{true};};
+
+\node(rmv7)[linenum] at ($(rmv6.east)+(0pt,-10pt)$) {\scriptsize 7};
+\node[linecode] at ($(rmv7.east)+(0pt,0pt)$) {\scriptsize \textbf{else} r := false;};
+
+
+\node(rmv8)[linenum] at ($(rmv7.east)+(0pt,-10pt)$) {\scriptsize 8};
+\node[linecode] at ($(rmv8.east)+(0pt,0pt)$) {\scriptsize unlock(p); unlock(c);};
+
+%\node(rmv9)[linenum] at ($(rmv8.east)+(0pt,-10pt)$) {\scriptsize 9};
+%\node[linecode] at ($(rmv9.east)+(0pt,0pt)$) {\scriptsize unlock(c);};
+
+\node(rmv10)[linenum] at ($(rmv8.east)+(0pt,-10pt)$) {\scriptsize 9};
+\node[linecode] at ($(rmv10.east)+(0pt,0pt)$) {\scriptsize \textbf{return} r;};
+
+\node(bot)[linecode] at ($(rmv10.east)+(0pt,-12pt)$) {};
+\begin{pgfonlayer}{background}
+\node[code-bg,fit=(rmv-head) (code3) (rmv10) (rmv8) ]{};
+\end{pgfonlayer}
+
+
+%%%%%%%%%% ctn %%%%%%%%%%
+
+%\node[linecode](ctn) at ($(rmv.east)+(105pt,-50pt)$) {};
+\node(ctn-head)[font={\small\tt},anchor=west] at 
+($(top-head.west)+(-4pt,-66pt)$) 
+{\scriptsize ctn(e):};
+
+\node(ctn-local)[linecode] at 
+($(ctn-head.west)+(0pt,-10pt)$) {\scriptsize \textbf{local} c};
+
+\node(ctn1)[linenum,anchor=west] at ($(ctn-local.west)+(-10pt,-10pt)$) {\scriptsize 1};
+\node[linecode] at ($(ctn1.east)+(0pt,0pt)$) 
+{\scriptsize c := Head;};
+
+\node(ctn2)[linenum] at ($(ctn1.east)+(0pt,-10pt)$) {\scriptsize 2};
+\node[linecode] at ($(ctn2.east)+(0pt,0pt)$)
+{\scriptsize \textbf{while} (c.val < e)};
+
+\node(ctn3)[linenum] at ($(ctn2.east)+(0pt,-10pt)$) {\scriptsize 3};
+\node[linecode] (code3a) at ($(ctn3.east)+(7pt,0pt)$)
+{\scriptsize c := c.next};
+
+\node(ctn4)[linenum] at ($(ctn3.east)+(0pt,-10pt)$) {\scriptsize 4};
+\node[linecode] at ($(ctn4.east)+(0pt,0pt)$)
+{\scriptsize b := c.mark \commitpoint{}};
+
+\node(ctn5)[linenum] at ($(ctn4.east)+(0pt,-10pt)$) {\scriptsize 5};
+\node(code5)[linecode] at ($(ctn5.east)+(0pt,0pt)$) 
+{\scriptsize \textbf{if} (!b };
+
+\node(ctn5b)[linenum] at ($(ctn5.east)+(0pt,-10pt)$) {};
+\node(code5b)[linecode] at ($(ctn5b.east)+(0pt,0pt)$) 
+{\scriptsize \;\;\;\;\;\;\;\;\&\& c.val = e)};
+
+\node(ctn6)[linenum] at ($(ctn5b.east)+(0pt,-10pt)$) {\scriptsize 6};
+\node[linecode] at ($(ctn6.east)+(7pt,0pt)$) 
+{\scriptsize \textbf{return} \textbf{true};};
+
+\node(ctn7)[linenum] at ($(ctn6.east)+(0pt,-10pt)$) {\scriptsize 7};
+\node[linecode] at ($(ctn7.east)+(0pt,0pt)$) 
+{\scriptsize \textbf{else}};
+
+\node(ctn8)[linenum] at ($(ctn7.east)+(0pt,-10pt)$) {\scriptsize 8};
+\node[linecode] at ($(ctn8.east)+(7pt,0pt)$) 
+{\scriptsize \textbf{return} \textbf{false};};
+
+\node(bot)[linecode] at ($(ctn8.east)+(0pt,-60pt)$) {};
+
+\begin{pgfonlayer}{background}
+\node[code-bg,fit=(ctn-head) (code5b) (ctn8) (bot)]{};
+\end{pgfonlayer}
+ 
+ %%%%%%%%%%% init %%%%%%%%%%%%%%%%
+%\node[linecode,anchor=south west](init) at ($(top-head.west)+(243pt,-115pt)$) {\scriptsize initialize() :};
+%\node(init1)[linecode] at ($(top-head.west)+(250pt,-120pt)$) {\scriptsize Head := new Node(};
+%\node(init2)[linecode] at ($(top-head.west)+(250pt,-130pt)$) {\scriptsize \;\;\;\;\;\;0,-$\infty$,null,false);};
+%\node(init4)[linecode] at ($(top-head.west)+(250pt,-140pt)$) {\scriptsize Tail := new Node(};
+%\node(init5)[linecode] at ($(top-head.west)+(250pt,-150pt)$) {\scriptsize \;\;\;\;\;\;0,+$\infty$, null,false)};
+%\node(init7)[linecode] at ($(top-head.west)+(250pt,-160pt)$) {\scriptsize Head.next := Tail;};
+%
+%\node(bot)[linecode] at ($(init7.east)+(0pt,-12pt)$) {};
+%
+%\begin{pgfonlayer}{background}
+% \node[code-bg,fit=(init) (init7) (init5) (bot)] {};
+%\end{pgfonlayer}
+%
+
+\end{tikzpicture}
+%\vspace*{-0.5cm}
+\caption{Lazy Set Algorithm}
+%\vspace*{-0.5cm}
+\label{figure:lazy-list}
+\end{figure}

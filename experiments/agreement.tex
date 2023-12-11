@@ -1,0 +1,45 @@
+%
+Interacting peers are organized in a circular pipeline and are given a
+number. The protocol in place is to ensure that every participant in
+the ring knows which number in the maximum among the values of the
+ring members. We model this protocol as an instance of the framework
+on rings. Each participant in the ring can communicate with its
+adjacent neighbors. We assume the ring oriented and a member can send
+messages to its (immediate) ``successor'' and receive messages from
+its ``predecessor''. The reception is usually \emph{blocking} while
+the sending is not. However, we will model this communication as a
+rendez-vous.
+
+\noindent%
+\begin{wrapfigure}{r}[0pt]{0.25\linewidth}
+  \hfill%
+  \begin{tikzpicture}
+    [scale=0.8,every node/.style={scale=0.8,circle,inner sep=1pt,fill=red!20}, show background rectangle] 
+
+    \draw (0,0) .. controls +(up:15mm) and +(up:15mm) .. (3,0)
+    \foreach \n/\pos in {1/0.2,2/0.5,3/0.9}{node[state,pos=\pos](p\n){P$_{\n}$}};
+    \draw (0,0) .. controls +(down:15mm) and +(down:15mm) .. (3,0)
+    \foreach \n/\pos in {0/0.1,5/0.5,4/0.8}{node[state,pos=\pos](p\n){P$_{\n}$}};
+    \draw[->,myedge,thick] ([xshift=1mm,yshift=1mm]p2.east) to[out=-5,in=120] ([xshift=1mm,yshift=1mm]p3.north west);
+  \end{tikzpicture}
+\end{wrapfigure}
+%
+Initially, all process are in a \emph{dormant} state. One of the
+process will wake up first. This is the one which initializes the
+protocol (denoted in the pseudocode as $P_0$). Every process sends the
+max between its own value and the value its received from its
+predecessor (the biggest value it has seen so far). Note that the
+protocol doesn't not terminate when $P_0$ receives the biggest value
+in the ring. It must indeed communicate this value to the others. Each
+will receive it from its predecessor and only pass it along to its
+successor (after recording it). The protocol terminates when the
+predecessor of $P_0$ receives the biggest value and avoids the
+re-sending. A bad configuration is detected if one of the participant
+is in its final state (\s{6} or \s{17}) but has not seen the
+biggest value go by. %
+We depict the protocol using the following pseudocode. The channel
+between $P_{i-1}$ and $P_i$ is called {\tt values[n]}. A message in
+the channel will contain the number the sender sent.
+
+\bigskip
+\lstinputlisting[style=custom]{experiments/code/agreement.txt}

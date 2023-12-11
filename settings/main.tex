@@ -1,0 +1,470 @@
+%\input{settings/builddir}
+%% Check that we are not using XeTeX.
+\input{settings/no-xetex}
+
+% Plain LaTeX specific packages and settings
+% Language, diacritics and hyphenation
+\usepackage[swedish,french,english]{babel} 
+\usepackage[dvipsnames]{xcolor}
+
+%% -----------------------------------------------------------
+%% Fonts settings
+%% -----------------------------------------------------------
+% %\defaultfontfeatures{Ligatures=TeX}
+%% Main Font: Times New Roman (Regular, Italic, Bold, BoldItalic)
+%% Roman font (regular font): Times New Roman
+%% Sans Serif font: Arial
+%% Mono font: Courier New
+%% Brush: Papyrus
+%% Chalk: Chalkduster
+%% -----------------------------------------------------------
+\usepackage[utf8]{inputenc}
+%\usepackage[T1,OT1,LY1]{fontenc}
+\usepackage[LY1,T1]{fontenc}
+%\usepackage{type1cm}
+%\usepackage{lmodern}% http://ctan.org/pkg/lm
+\usepackage{times}
+\usepackage{paralist}
+%\usepackage{mathptmx} % I don't like this math font
+% TeX ligature seem to be already enabled
+
+\usepackage{texnansi}
+%\input{settings/fonts/Chalkduster.fd}
+%\input{settings/fonts/Papyrus.fd}
+%\input{settings/fonts/Hyeenanhaukotus.fd}
+% No font map, since I have run 'make fonts' before
+% and my TEXMFVAR points to the right place
+
+\newcommand{\Chalk}{\fontfamily{Chalkduster}\selectfont}
+\newcommand{\Brush}{\fontfamily{Papyrus}\selectfont}
+\newcommand{\TitleFont}{\fontfamily{Hyeenanhaukotus}\selectfont}
+
+\newcommand{\Parosh}{\begingroup\Chalk Parosh\endgroup}
+\newcommand{\Papa}{\begingroup\Brush Papa\endgroup}
+\newcommand{\Maman}{\begingroup\Brush Maman\endgroup}
+\newcommand{\Franck}{\begingroup\Brush Franck\endgroup}
+\newcommand{\Alexandre}{\begingroup\Brush Alexandre\endgroup}
+
+%% -----------------------------------------------------------
+%% Packages
+%% -----------------------------------------------------------
+
+% Enable scaling of images on import
+\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex]{graphics}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage{wrapfig}
+\usepackage{enumitem}
+%\usepackage{paralist}
+
+\usepackage{nth} % For 1st, 2nd, 3rd 4th, ...
+
+\usepackage{xcolor}
+\usepackage{amsfonts,amscd,amssymb,amsmath,amsxtra,amsthm}
+\usepackage{mathtools}
+\usepackage{etoolbox}
+%\usepackage{boxhandler}
+\usepackage{ifthen}
+\usepackage{stmaryrd}
+\usepackage{url}
+\usepackage{fancyvrb}
+
+\usepackage{esint} % For the squared contour integral
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+
+%\usepackage{fancyhdr,layout,appendix,subfigure}
+
+%% For the acknowledgments
+\usepackage{shapepar}
+
+
+%% Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% http://en.wikibooks.org/wiki/LaTeX/Indexing
+\ifnoindex\else
+\usepackage{makeidx}
+\makeindex
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% -----------------------------------------------------------
+%% Citations - Doesn't work...
+%% -----------------------------------------------------------
+%\renewcommand*{\bibfont}{\footnotesize}
+% \renewcommand*{\citesetup}{%
+%   \footnotesize
+%   \biburlsetup
+%   \frenchspacing}
+
+%% Making the citation smaller, and grey
+\let\oldcite=\cite
+\renewcommand{\cite}[1]{{\scriptsize\color{gray}\oldcite{#1}}}
+
+
+
+
+%% -----------------------------------------------------------
+%% For Tikz
+%% -----------------------------------------------------------
+\usepackage[version=latest]{pgf}
+
+\usepackage{tikz}
+\usetikzlibrary{%
+  arrows,%
+  arrows.meta,%
+  calc,%
+  %decorations,%
+  decorations.pathmorphing,%
+  %decorations.pathreplacing,%
+  %calendar,%
+  chains,%
+  fit,%
+  %shapes,%
+  shapes.geometric,%
+  shapes.misc,%
+  %shapes.symbols,%
+  %shapes.arrows,%
+  %shapes.callouts,%
+  shapes.multipart,%
+  %backgrounds,%
+  matrix,%
+  %fadings,%
+  %through,%
+  positioning,%
+  %scopes,%
+  %decorations.shapes,%
+  %decorations.pathmorphing,%
+  %decorations.text,%
+  shadows,%
+  trees,%
+  %snakes,% use decorations instead
+  petri,%
+  automata,%
+  backgrounds,%
+  patterns%
+}
+\input{settings/styles}
+
+%% -----------------------------------------------------------
+%% Tikz input
+%% -----------------------------------------------------------
+\pgfrealjobname{thesis}
+
+\newcommand{\tikzinput}[2][]{%
+  \ifexternaltikz%
+  \ifstrempty{#1}{%
+    \beginpgfgraphicnamed{\builddir/#2}\input{#2}\endpgfgraphicnamed%
+  }{\resizebox{#1}{!}{%
+    \beginpgfgraphicnamed{\builddir/#2}\input{#2}\endpgfgraphicnamed%
+  }}%
+  \else%
+    \ifstrempty{#1}{\input{#2}}{\resizebox{#1}{!}{\input{#2}}}%
+  \fi%
+}
+
+\newcommand{\listinginput}[1]{\lstinputlisting[style=custom]{#1}}
+
+
+%% -----------------------------------------------------------
+%% Spaces around Floating elements (like figure)
+%% See: http://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
+%% -----------------------------------------------------------
+%%---- Spacing around the captions
+\setlength{\abovecaptionskip}{0pt plus 2pt}
+\setlength{\belowcaptionskip}{3pt plus 42pt}
+%%---- length between two adjacent floats
+\setlength\floatsep{1.25\baselineskip plus 3pt minus 2pt}
+%%---- length between text and float placed at top or bottom.
+\setlength\textfloatsep{1.25\baselineskip plus 3pt minus 2pt}
+%%---- length between text and float placed in the middle (with 'here').
+%\setlength\intextsep{1.25\baselineskip plus 3pt minus 2 pt}
+\setlength{\intextsep}{0pt} %% Useful for the wrapfigure env
+
+%\setlength{\columnsep}{1ex}
+
+\newlength{\dazintextsep}
+%\setlength\dazintextsep{1.25\baselineskip plus 3pt minus 2 pt}
+\setlength\dazintextsep{\the\smallskipamount}
+
+
+%% -----------------------------------------------------------
+%% Algorithms
+%% -----------------------------------------------------------
+\usepackage[nofillcomment,noend,linesnumbered,noline,ruled]{algorithm2e}
+%\usepackage[noend]{algorithmic}
+\usepackage{listings}
+
+\lstdefinestyle{custom}{
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  %belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=BT,                       % Lines above and below
+  %frame=B,                        % Lines below only
+  %xleftmargin=\parindent,
+  language=C,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries,%\color{green!40!black},
+  commentstyle=\itshape\color{purple},
+  %identifierstyle=\color{blue},
+  %stringstyle=\color{orange},
+  escapechar=@,
+  %escapeinside={\%*}{*)}          % if you want to add a comment within your code 
+  mathescape=true,
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+}
+
+\fvset{fontfamily=helvetica,numbers=left,numbersep=5pt,stepnumber=1,firstnumber=0,numberblanklines=true,commandchars=\\\[\],codes={\catcode`$=3\catcode`^=7}}
+%codes={\catcode`$=3}
+\renewcommand{\theFancyVerbLine}{\tiny \arabic{FancyVerbLine}}
+
+%% -----------------------------------------------------------
+%% Comments
+%% -----------------------------------------------------------
+\input{settings/comments}
+
+%% ///////////////////////////////////////////////////////////
+%% -----------------------------------------------------------
+%%                        Definitions                         
+%% -----------------------------------------------------------
+%% ///////////////////////////////////////////////////////////
+%% Must be after styles
+%% -----------------------------------------------------------
+
+\newcommand{\lukasshort}{Luk\'a\v s}
+\newcommand{\lukas}{Luk\'a\v s Hol\'ik}
+\newcommand{\ahmed}{Ahmed Rezine}
+\newcommand{\noomene}{Noomene Ben~Henda}
+\newcommand{\jonathan}{Jonathan Cederberg}
+\newcommand{\bengt}{Bengt Jonsson}
+\newcommand{\parosh}{Parosh A. Abdulla}
+
+%\newtheorem{lemma}{Lemma}%{\bfseries}{\itshape}
+
+%% ---------------------------------------------
+%% What We Learned in Chapter X
+%% ---------------------------------------------
+\newcommand{\whatwelearned}[1]{
+  % \clearpage
+  % \refstepcounter{section}\section*{\thesection\hspace{0,5em}What we learned in Chapter~\ref{chapter:parameterized:systems}}
+  \chapter*{What we learned in Chapter~\thechapter}
+  \KW{Summary Ch.~\thechapter}%
+  \index{Chapter summaries}%
+  \input{chapters/#1/what-we-learned}
+}
+
+%% ---------------------------------------------
+\newenvironment{statement}{\begin{quote}\raggedleft}{\end{quote}}
+
+%% Settings for enumerations and item lists
+\setlist{noitemsep}
+\setlist[enumerate,1]{itemsep=1ex}
+%\setlist[enumerate]{align=right,labelindent=\parindent, leftmargin=*,widest*=4}
+\setlist[enumerate]{align=right,leftmargin=*,widest*=4}
+%\setlist[itemize]{labelindent=0pt,align=right,leftmargin=*}
+
+%% Framing the lists
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{DazFrame}{%
+    linecolor=gray!20!white,outerlinewidth=1pt,roundcorner=1ex,
+    innertopmargin=1ex,innerrightmargin=2ex,innerbottommargin=1ex,innerleftmargin=1ex,
+    backgroundcolor=white}
+
+\newenvironment{strategy}{%
+  \renewcommand{\labelenumi}{\protect\tikz[baseline=(n.base)]{\protect\node[enumbullet](n){\arabic{enumi}};}}
+  % No need to redefine \theenumi since there is no cross-referencing
+  \begin{mdframed}[style=DazFrame]%
+  \begin{enumerate}}{\end{enumerate}\end{mdframed}}
+
+\newenvironment{challenges}{%
+  \renewcommand{\labelenumi}{\theenumi}%
+  \renewcommand{\theenumi}{\protect\tikz[baseline=(n.base)]{\protect\path node[challenge](n){\Alph{enumi}};}}%
+  % \smallskip\hrule\smallskip% 
+  \begin{mdframed}[style=DazFrame]
+    % \begin{enumerate}[leftmargin=0pt]
+    \begin{enumerate}%
+    }{\end{enumerate}%
+    % \smallskip\hrule\smallskip
+  \end{mdframed}%
+}
+\newenvironment{subchallenges}{%
+  \renewcommand{\labelenumii}{\theenumii}%
+  \renewcommand{\theenumi}{}%
+  \renewcommand{\theenumii}{\protect\tikz[baseline=(n.base)]{\protect\path node[challenge](n){\Alph{enumi}} node[subchallenge,right=-1pt of n.south east]{\arabic{enumii}};}}%
+  \begin{enumerate}}{\end{enumerate}}
+
+
+%% ---------------------------------------------
+%% Process state
+%% ---------------------------------------------
+\newcount\loopcounter
+\newcommand{\w}[2][w]{%
+  \loopcounter=-1%
+\begin{tikzpicture}[baseline=(n0.base),start chain,node distance=0.4pt]%
+  \foreach \c in {#2}{
+    \global\advance\loopcounter by1
+    \node[on chain,state,state-#1](n\the\loopcounter){\c};
+  }
+  \begin{pgfonlayer}{my background}
+    \node[fit=(n0)(n\the\loopcounter),word,word-#1]{};
+  \end{pgfonlayer}
+\end{tikzpicture}%
+}
+
+% One state only
+%\newcommand{\s}[2][w]{\ifnotikz\fbox{#1}\else\tikz[baseline=(n.base)]\node[state,state-#1](n){#2};\fi}
+\newcommand{\s}[2][w]{\w[#1]{#2}}
+
+%% Bad patterns: 2 states and some waves around
+\newcommand{\badpattern}[2]{%
+  \begin{tikzpicture}[baseline=(a.base),decoration={snake,segment length=0.8mm,amplitude=0.5pt}]%
+    \node[state,state-b,outer sep=0pt](a){#1};
+    \node[state,state-b,outer sep=0pt,right=3mm of a](b){#2};
+    \coordinate[left=3mm of a](a');
+    \coordinate[right=3mm of b](b');
+    \draw[decorate] (a) -- (a') (a) -- (b) (b) -- (b');
+    \begin{pgfonlayer}{my background}
+      \node [fit=(a')(a)(b)(b'),rectangle,rounded corners=0.5ex,shading=axis,top color=white,bottom color=white,middle color=gray!30,inner ysep=1pt]{};%shading angle=90,
+    \end{pgfonlayer}
+  \end{tikzpicture}%
+}
+
+
+%% ---------------------------------------------
+%% Switch example
+%% ---------------------------------------------
+\newcommand{\switch}[3][]{%
+  \ifstrempty{#1}{%
+    \mbox{\ensuremath{\llbracket\mathtt{#2}\!\mid\!\mathtt{#3}\rrbracket}}%
+  }{%
+    {\scriptsize\ensuremath{<\!\mathtt{#2},\mathtt{#3},\text{counter}=#1\!>}}%
+  }%
+}
+
+
+%% -----------------------------------------------------------
+%% Table of content
+% -----------------------------------------------------------
+% Numbering of headings down to the subsection level
+%\numberingdepth{subsection} % from UUThesisTemplate.cls
+\setcounter{secnumdepth}{2}
+% Including headings down to the subsection level in contents
+%\contentsdepth{section} % from UUThesisTemplate.cls
+\setcounter{tocdepth}{1} %% Only Chapters and Sections
+
+% \usepackage{minitoc}
+% \newcommand{\initializepartialtoc}{\protect\dominitoc[n]}
+% \newcommand{\adjusttocfornonnumberedchapters}{\mtcaddchapter\mtcaddchapter\mtcaddchapter} % Notifying Minitoc about the extra chapter* above
+% \newcommand{\chaptertoc}{%
+%   \adjustmtc%
+%   \noindent\begin{tikzpicture}
+%     \coordinate(c);%\node(c){In this chapter};
+%     \node[anchor=north east,inner xsep=1ex, inner ysep=0pt](list) at (\linewidth,0){%inner sep=1ex,draw=gray!10!white,rounded corners=1ex, fill=white,
+%       \parbox{0.85\linewidth}{\nomtcrule\minitoc[e]}%
+%     };
+%     \begin{pgfonlayer}{my background}
+%       \path[rounded corners=1ex, shading=axis,top color=gray!10,bottom color=white]%,shading angle=90]
+%       (c) -- (list.north east) -- (list.south east) -- (list.south west) to[out=90,in=0] ([yshift=-1em]c) -- cycle;
+%       \path[shading=axis,top color=gray!20, bottom color=gray!10,shading angle=90] (c) ++(0.5em,-0.6em) rectangle ([shift={(-0.5em,-0.4em)}]list.north east);
+%     \end{pgfonlayer}
+%   \end{tikzpicture}\bigskip}
+% %\mtcsettitle{minitoc}{In this chapter}
+% \mtcsetdepth{minitoc}{1}
+% \mtcsetoffset{minitoc}{0pt}
+% \mtcsetfont{minitoc}{section}{\small\rmfamily\upshape}
+% \renewcommand\mtcindent{0pt}
+% \renewcommand\mtcskip{0pt}
+% \renewcommand\kernafterminitoc{\kern0pt}
+% \makeatletter
+% \renewcommand{\mtc@strut}{}
+% \renewcommand{\mtc@rule}{}
+% \def\mtc@verse#1{\let\\=\@centercr
+%  \list{}{%
+%  %\itemsep=\z@
+%    \itemindent=0pt \partopsep=0pt \listparindent=0pt \topsep=0pt \leftmargin=0pt \rightmargin=0pt \parsep=0pt
+%  % \addtolength{\leftmargin}{+#1}%
+%  % \addtolength{\rightmargin}{-#1}%
+%  }%
+%  \item[]}
+% \makeatother
+
+% \usepackage{titletoc}
+% \newcommand{\initializepartialtoc}{}
+% \newcommand{\adjusttocfornonnumberedchapters}{}
+% \newcommand{\chaptertoc}{%
+%   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+%   \startcontents[chapters]
+%   \noindent\begin{tikzpicture}
+%     \coordinate(c);
+%     \node[anchor=north east,inner ysep=1em,inner xsep=0pt](list) at (\linewidth,0){\parbox{0.85\linewidth}{\printcontents[chapters]{}{1}{}}};
+%     \begin{pgfonlayer}{my background}
+%       \path[rounded corners=1ex, shading=axis,top color=gray!10,bottom color=white]%,shading angle=90]
+%       (c) -- (list.north east) -- (list.south east) -- (list.south west) to[out=90,in=0] ([yshift=-1em]c) -- cycle;
+%       \path[shading=axis,top color=gray!20, bottom color=gray!10,shading angle=90] (c) ++(0.5em,-0.6em) rectangle +({\dimexpr\linewidth-1em},0.2em);
+%     \end{pgfonlayer}
+%   \end{tikzpicture}\bigskip%
+% }
+% \contentsmargin{0pt}
+% % \titlecontents{section}
+% %               [2.8em] % 2.3m + 0.5em
+% %               {}
+% %               {\contentslabel{2.3em}}
+% %               {\hspace*{2.3em}}
+% %               {\titlerule*[5pt]{.}\contentspage}
+
+%  %% Redefining the chapter titles when they include a mini-ToC
+% \makeatletter
+% \newcommand\chapterwithtoc[1]{%
+%   \if@openright\cleardoublepage\else\if@UU@chapterafterpart\cleardoublepage\else\clearpage\fi\fi
+%   \@UU@chapterafterpartfalse
+%   \thispagestyle{UU@chapter}
+%   \suppressfloats[t]
+%   \@startsection {chapter}{0}{\z@}{\z@}{1em plus 1em minus 1em}{%
+%     \chapterfont%
+%     \LARGE%
+%     \UU@RaggedRight%
+%     \hyphenpenalty=10000%
+%   }{#1}%
+%   \chaptertoc
+% }
+% \makeatother
+
+
+%% If no mini-ToC
+\newcommand{\initializepartialtoc}{}
+\newcommand{\adjusttocfornonnumberedchapters}{}
+\newcommand{\chaptertoc}{}
+\let\chapterwithtoc\chapter
+
+
+%% -----------------------------------------------------------
+%% Hyperref
+%% -----------------------------------------------------------
+% Document links and bookmarks
+%\def\texorpdfstring#1#2{#1}
+\usepackage[pdftex,bookmarks]{hyperref}
+
+\hypersetup{pdfauthor={Frédéric Haziza}}
+\hypersetup{pdftitle={\@title}}
+\hypersetup{pdfsubject={\@subtitle}}
+\hypersetup{pdfkeywords={PhD Thesis, Parameterized Verification, Monotonic Abstraction, View Abstraction, Shape Analysis}}
+\hypersetup{pdfcreator={pdflatex, bibtex, makeindex}}
+%\hypersetup{pdfproducer={pdfLatex}}
+
+%\usepackage[pdftex]{thumbpdf} % Create thumbnails
+
+%% -----------------------------------------------------------
+%% Other macros
+%% -----------------------------------------------------------
+\input{settings/macros}

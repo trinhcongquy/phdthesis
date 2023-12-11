@@ -1,0 +1,19 @@
+data deq(){
+  pointer_t head;
+  while(TRUE){
+    pointer_t head := Head;
+    pointer_t tail := Tail;
+    pointer_t next := head.ptr\textit[$\to$]next;\label[ms:code:line:empty] \commitpoint[infig]
+    if(head = Head)
+      if(head.ptr = tail.ptr)
+        if(next.ptr = NULL) return empty;\label[ms:code:line:emptyreturn]
+        CAS(&Tail, tail, \textit[$\langle$]next.ptr, tail.age+1\textit[$\rangle$]);
+      else
+        data result := next.ptr\textit[$\to$]val;
+        if(CAS(&Head, head,\label[ms:code:line:deq] \commitpoint[infig]
+             \textit[$\langle$]next.ptr,head.age+1\textit[$\rangle$]))
+           break;
+  }\label[ms:code:line:free]
+  free(head.ptr);
+  return result;
+}

@@ -1,0 +1,17 @@
+void enq(data d){
+  node* n := new node(); 
+  n\textit[$\to$]val := d;
+  n\textit[$\to$]next.ptr := NULL;
+  while(TRUE){
+    pointer_t tail := Tail; 
+    pointer_t next := tail.ptr\textit[$\to$]next;
+    if(tail = Tail)
+      if(next.ptr = NULL)
+        if(CAS(&tail.ptr\textit[$\to$]next, next, \commitpoint[infig]\label[ms:code:line:enq]
+            \textit[$\langle$]n,next.age+1\textit[$\rangle$]))
+          break;
+      else
+        CAS(&Tail,tail,\textit[$\langle$]next.ptr, tail.age+1\textit[$\rangle$]);
+  }
+  CAS(&Tail, tail, \textit[$\langle$]n, tail.age+1\textit[$\rangle$]);
+}

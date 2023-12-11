@@ -1,0 +1,107 @@
+\begin{tikzpicture}[show background rectangle,
+  node distance=0.4pt,
+  %state/.append style={scale=0.6,inner sep=2pt},
+  start chain=c1 going right,
+  start chain=c2 going right,
+  start chain=c3 going right,
+  start chain=v1 going right,
+  start chain=v2 going right,
+  start chain=v3 going right,
+  start chain=v4 going right,
+  start chain=v5 going right,
+  start chain=v6 going right,
+  start chain=d1 going right,
+  start chain=d2 going right,
+  start chain=d3 going right,
+  start chain=d4 going right,
+  localview/.style={view}
+  ]
+
+  %% Configurations
+  \node[on chain=c1,state,state-n](c1-1){1};
+  \node[on chain=c1,state,state-n](c1-2){2};
+  \node[on chain=c1,state,state-n](c1-3){3};
+
+  \node[on chain=c2,state,state-n,below=6mm of c1-1](c2-1){2};
+  \node[on chain=c2,state,state-n](c2-2){3};
+  \node[on chain=c2,state,state-n](c2-3){4};
+
+  \node[on chain=c3,state,state-n,below=6mm of c2-1](c3-1){1};
+  \node[on chain=c3,state,state-n](c3-2){3};
+  \node[on chain=c3,state,state-n](c3-3){4};
+
+  %% Views
+  \node[on chain=v1,state,state-w,localview,right=30mm of c1-3](v1-1){1};
+  \node[on chain=v1,state,state-w,localview,right=of v1-1](v1-2){2};
+
+  \node[on chain=v2,state,state-w,localview,below=5pt of v1-1](v2-1){1};
+  \node[on chain=v2,state,state-w,localview](v2-2){3};
+
+  \node[on chain=v3,state,state-w,localview,below=5pt of v2-1](v3-1){2};
+  \node[on chain=v3,state,state-w,localview](v3-2){3};
+
+  \node[on chain=v4,state,state-w,localview,right=5pt of v1-2](v4-1){2};
+  \node[on chain=v4,state,state-w,localview](v4-2){4};
+
+  \node[on chain=v5,state,state-w,localview,below=5pt of v4-1](v5-1){3};
+  \node[on chain=v5,state,state-w,localview](v5-2){4};
+
+  \node[on chain=v6,state,state-w,localview,below=5pt of v5-1](v6-1){1};
+  \node[on chain=v6,state,state-w,localview](v6-2){4};
+
+  \path (v3-1.south) -- node[midway,state,state-w,localview,below=5pt](v7){1} (v3-2.south);
+  %\node[state,state-n,below=5pt of v3-2](v7){1};
+  \node[state,state-w,localview,below=5pt of v7](v8){2};
+  \path (v6-1.south) -- node[midway,state,state-w,localview,below=5pt](v9){3} (v6-2.south);
+  %\node[state,state-n,below=5pt of v6-1](v9){3};
+  \node[state,state-w,localview,below=5pt of v9](v10){4};
+
+  %% Concretization
+  \node[on chain=d1,state,state-n,right=30mm of v4-2](d1-1){1};
+  \node[on chain=d1,state,state-n](d1-2){2};
+  \node[on chain=d1,state,state-n](d1-3){3};
+
+  \node[on chain=d2,state,state-n,below=4mm of d1-1](d2-1){2};
+  \node[on chain=d2,state,state-n](d2-2){3};
+  \node[on chain=d2,state,state-n](d2-3){4};
+
+  \node[on chain=d3,state,state-n,below=4mm of d2-1](d3-1){1};
+  \node[on chain=d3,state,state-n](d3-2){3};
+  \node[on chain=d3,state,state-n](d3-3){4};
+
+  \node[on chain=d4,state,state-n,below=4mm of d3-1](d4-1){1};
+  \node[on chain=d4,state,state-n](d4-2){2};
+  \node[on chain=d4,state,state-n](d4-3){4};
+
+  %% Alpha, Gamma
+  \path (c1-3) -- node[midway,mylabel,double,below=8mm](a){$\Absof 2$} (v1-1);
+  \path (v4-2) -- node[midway,mylabel,double,below=8mm](g){$\Concof 2$} (d1-1);
+
+  \draw[myedge,<-] (d4-1.west) ++(-1mm,0) -- +(-5mm,0);
+
+
+  \begin{pgfonlayer}{my background}
+
+    \foreach \n in {c1,c2,c3,d1,d2,d3,d4}{ \node [fit=(\n-1)(\n-2)(\n-3),word,word-n](r\n){}; }%conf
+    \foreach \n in {1,2,...,6}{ \node [fit=(v\n-1)(v\n-2),view](rv\n){}; }
+    %\foreach \n in {7,8,9,10}{ \node [fit=(v\n),view](rv\n){}; }
+    \foreach \n in {7,8,9,10}{ \node [fit=(v\n)](rv\n){}; }
+
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=90]
+    (rc1.north east) .. controls +(right:6mm) and +(left:7mm) .. (a.center) .. controls +(left:7mm) and +(right:6mm) .. (rc3.south east) -- cycle;
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=-90]
+    let \p1=(rv1.north west), \p2=(rv8.south west) in (\p1) .. controls +(left:7mm) and +(right:6mm) .. (a.center) .. controls +(right:6mm) and +(left:7mm) .. (\x1,\y2) -- cycle;
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=90]
+    let \p1=(rv4.north east), \p2=(rv10.south east) in (\p1) .. controls +(right:6mm) and +(left:7mm) .. (g.center) .. controls +(left:7mm) and +(right:6mm) .. (\x1,\y2) -- cycle;
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=-90]
+    (rd1.north west) .. controls +(left:7mm) and +(right:6mm) .. (g.center) .. controls +(right:6mm) and +(left:7mm) .. (rd4.south west) -- cycle;
+
+  \end{pgfonlayer}
+
+  \node[mylabel,above=1em of c1-1.west,anchor=south west,scale=0.8](C1){Configurations};
+  \node[mylabel,above=1em of d1-3.east,anchor=south east,scale=0.8](C2){Configurations};
+  \path (v1-2) -- node[midway,mylabel,above=1em,anchor=south,scale=0.8](V){Views} (v4-1);
+  % \draw (C1.south) -- (C2.south);
+  % \fill[red] (V.south) circle (1pt);
+
+\end{tikzpicture}

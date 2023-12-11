@@ -1,0 +1,44 @@
+%
+\begin{wrapfigure}{r}[0pt]{0.3\linewidth}
+\hfill%
+\begin{tikzpicture}[%
+  state/.append style={minimum width=6mm}%
+  ]
+
+  \node[state,state-i] (n1) at (0,0) {1};
+  \node[state,state-n] (n2) at (1,1) {2};
+  \node[state,state-b] (n3) at (2,0) {3};
+
+   \draw [->,myedge] (n1) to[out=90,in=180] node[trlabel,above,sloped]{$\forall j<i : \set{1}$} (n2);
+   \draw [->,myedge] (n2) to[out=0,in=90] node[trlabel,above,sloped]{$\forall j>i : \set{1}$} (n3);
+   \draw [->,myedge] (n3) -- (n1);
+
+\end{tikzpicture}
+%\def\initstate{\tikz[baseline=(n.base)]\node[state,fill=green!20,scale=0.7](n){1};}
+%\caption{A pseudocode of the $i$th process of
+%  Bakery's protocol and the corresponding transition rules (in the form of a transition diagram). 
+%  Initially, all processes are in state {\protect\initstate}.
+%}
+%\caption{Transition rules of Bakery's protocol.}
+\end{wrapfigure}
+%
+This case study describes a simplified version of the original Bakery
+algorithm~\cite{Lamport:Bakery}.
+%
+In this version~\cite{Marcus:thesis}, processes have states that range
+over~$\set{\w[w]{1},\w[w]{2},\w[w]{3}}$, where \w[i]{1} is the initial
+state.
+%
+A process gets a ticket with a value strictly higher than the ticket
+value of any process in the queue (transition
+\w[w]{1}$\rightarrow$\w[w]{2}).
+%
+A process accesses the critical section if it has a ticket with the
+lowest value among the existing tickets (transition
+\w[w]{2}$\rightarrow$\w[w]{3}).
+%
+Finally, a process leaves the critical section, freeing its ticket
+(transition \w[w]{3}$\rightarrow$\w[w]{1}).
+%
+Mutual exclusion violation corresponds to configurations where more
+than one process is in state~\w[b]{3}.

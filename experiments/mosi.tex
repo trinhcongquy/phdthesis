@@ -1,0 +1,136 @@
+The MOSI protocol is an extension of the basic MSI cache coherency
+protocol. It is a snoop-based protocol. It adds the state Owned~\s{O},
+which indicates that the current processor owns this block, and will
+service requests from other processors for the block. This also
+reduces the amount of write-back data upon cache eviction.
+
+The protocol can be modeled as a parameterized system where the
+processes are arranged in a multiset. Each process can communicate
+with its neighbors by broadcasting a message on the connecting bus.
+
+\begin{wrapfigure}{r}[2pt]{0.35\linewidth}
+  \newcommand{\wrong}{\raisebox{-0.3pt}{\includegraphics[height=1em]{img/skull.png}}}
+  \newcommand{\valid}{{\color{green}\bf$\checkmark$}}
+  \newcommand{\cache}[1]{\bf\small\emph{#1}}
+  \hfill%
+  \begin{tabular}{c|cccc}
+                & {\cache{M}} & {\cache{O}} & {\cache{S}} & {\cache{I}} \\\hline
+    {\cache{M}} & {\wrong}    & {\wrong}    & {\wrong}    & {\valid}       \\
+    {\cache{O}} & {\wrong}    & {\wrong}    & {\valid}    & {\valid}       \\
+    {\cache{S}} & {\wrong}    & {\valid}    & {\valid}    & {\valid}       \\
+    {\cache{I}} & {\valid}    & {\valid}    & {\valid}    & {\valid}       \\
+  \end{tabular}
+\end{wrapfigure}
+%
+The state of a cache line can be \emph{Modified}~\s{M},
+\emph{Owned}~\s{O}, \emph{Shared}~\s{S}, and \emph{Invalid}~\s{I}.
+%
+The broadcast communication is depicted using the two following
+automata.
+%
+Initially, all cache lines are in state \emph{Invalid}~\s{I}. The
+permitted states of any given pair of cache lines is given in the
+table beside.
+
+The first automaton represents the action taken when the given process
+issues the broadcast message and/or when it manipulates the cache
+line.
+%
+The cache can be written (\emph{CPUwrite}), caused by a store miss, it
+can be read (\emph{CPUread}) caused by a load miss and finally, it can
+be replaced (\emph{CPUrepl}).
+%
+The message sent on the bus vary depending on the state of the current
+cache line. The active process can send a \emph{read-to-share}
+(\emph{BUSrts}) request, a \emph{read-to-write} (\emph{BUSrtw})
+request, a \emph{write-back} (\emph{BUSwb}) request (in case of cache
+eviction) or an \emph{invalidate} (\emph{BUSinv}) request. We label
+each edge of the automaton with the action
+%
+\raisebox{-3pt}{\begin{tikzpicture}
+  \begin{pgfinterruptboundingbox}
+    \path node[message](n){\emph{action}\nodepart{second}\emph{message}} [clip] (n.west) rectangle (n.north east);
+  \end{pgfinterruptboundingbox}
+  \path[use as bounding box,baseline=(n.one base)] (n.west) rectangle (n.north east);
+\end{tikzpicture}}
+%
+issued by the current process and with the message %
+\raisebox{-5pt}{\begin{tikzpicture}
+  \begin{pgfinterruptboundingbox}
+    \path node[message](n){\emph{action}\nodepart{second}\emph{message}} [clip] (n.south west) rectangle (n.east);
+  \end{pgfinterruptboundingbox}
+  \path[use as bounding box,baseline=(n.second base)] (n.south west) rectangle (n.east);
+\end{tikzpicture}}
+%
+it sent on the bus. We use
+%
+\raisebox{-5pt}{\begin{tikzpicture}
+  \begin{pgfinterruptboundingbox}
+    \path node[message](n){\emph{action}\nodepart{second}$-$} [clip] (n.south west) rectangle (n.east);
+  \end{pgfinterruptboundingbox}
+  \path[use as bounding box] (n.south west) rectangle (n.east);
+\end{tikzpicture}}
+%
+when no message is sent on the bus.
+
+\smallskip%
+{\noindent\centering
+  \begin{tikzpicture}[node distance=3cm,
+    state/.append style={state-n,inner sep=2pt,scale=1.5},
+    message/.append style={scale=0.5}
+    ]
+
+    \node[state] (m)	              {M};
+    \node[state] (o) [right=4cm of m] {O};
+    \node[state] (s) [below=of m]     {S};
+    \node[state] (i) [below=of o]     {I};
+
+    \draw [->,myedge] (m) .. controls +(-0.5,1) and +(-1,0.5) ..
+    node[message,anchor=north east,pos=0.7]{\emph{CPUread}\nodepart{second}$-$}
+    node[message,anchor=south east,pos=0.3]{\emph{CPUwrite}\nodepart{second}$-$} (m);
+    \draw [->,myedge] (m) to[out=-30,in=120] node[message,anchor=south,sloped]{\emph{CPUrepl}\nodepart{second}\emph{BUSwb}} (i);
+    \draw [->,myedge] (o) -- node[message,above]{\emph{CPUwrite}\nodepart{second}\emph{BUSinv}} (m);
+    \draw [->,myedge] (o) -- node[message,right]{\emph{CPUrepl}\nodepart{second}\emph{BUSwb}} (i);
+    \draw [->,myedge] (o) .. controls +(0.5,1) and +(1,0.5) .. node[message,anchor=south west]{\emph{CPUread}\nodepart{second}$-$} (o);
+    \draw [->,myedge] (s) to[out=-30,in=-150] node[message,anchor=north]{\emph{CPUrepl}\nodepart{second}$-$} (i);
+    \draw [->,myedge] (s) .. controls +(-1,-0.5) and +(-0.5,-1) .. node[message,anchor=north east]{\emph{CPUread}\nodepart{second}$-$} (s);
+    \draw [->,myedge] (s) -- node[message,left]{\emph{CPUwrite}\nodepart{second}\emph{BUSinv}} (m);
+    \draw [->,myedge] (i) -- node[message,anchor=south]{\emph{CPUread}\nodepart{second}\emph{BUSrts}} (s);
+    \draw [->,myedge] (i) to[out=150,in=-60] node[message,anchor=north,sloped]{\emph{CPUwrite}\nodepart{second}\emph{BUSrtw}} (m);
+    
+  \end{tikzpicture}
+  \par%
+}
+
+\smallskip%
+The second automaton represents how other processes react upon
+reception of a message %
+\raisebox{-5pt}{\begin{tikzpicture}
+  \begin{pgfinterruptboundingbox}
+    \path node[message](n){\emph{action}\nodepart{second}\emph{message}} [clip] (n.south west) rectangle (n.east);
+  \end{pgfinterruptboundingbox}
+  \path[use as bounding box,baseline=(n.second base)] (n.south west) rectangle (n.east);
+\end{tikzpicture}}.
+
+\smallskip%
+{\noindent\centering
+  \begin{tikzpicture}[node distance=3cm,
+    state/.append style={state-n,inner sep=2pt,scale=1.5},
+    message/.append style={scale=0.5,rectangle split parts=1,fill=pink!10!white,rectangle split part fill={yellow!10!white}}
+    ]
+
+    \node[state] (m)	              {M};
+    \node[state] (o) [right=4cm of m] {O};
+    \node[state] (s) [below=of m]     {S};
+    \node[state] (i) [below=of o]     {I};
+    
+    \draw [->,myedge] (m) -- node[message,anchor=south]{\emph{BUSrts} (+Data)} (o);
+    \draw [->,myedge] (m) -- node[message,sloped,above]{\emph{BUSrtw} (+Data)} (i);
+    \draw [->,myedge] (o) -- node[message,anchor=west] {\ensuremath{\begin{tabular}{l} \emph{BUSrtw} (+Data) \\ \emph{BUSinv}\end{tabular}}} (i);
+    \draw [->,myedge] (s) -- node[message,anchor=south east,pos=0.6]{\ensuremath{\begin{tabular}{l}\emph{BUSrtw}\\\emph{BUSinv}\end{tabular}}} (i);
+    \draw [->,myedge] (s) .. controls +(-1,-0.5) and +(-0.5,-1) .. node[message,anchor=east]{\ensuremath{\begin{tabular}{l}\emph{BUSrts}\\\emph{BUSwb}\end{tabular}}} (s);
+    \draw [->,myedge] (i) .. controls +(1,-0.5) and +(0.5,-1) .. node[message,anchor=south west]{\ensuremath{\begin{tabular}{l}\emph{BUSrts}\\\emph{BUSrtw}\\\emph{BUSinv}\\\emph{BUSwb}\end{tabular}}} (i);
+    \draw [->,myedge] (o) .. controls +(0.5,1) and +(1,0.5) .. node[message,anchor=south west]{\emph{BUSrts} (+Data)} (o);
+  \end{tikzpicture}
+  \par%
+}

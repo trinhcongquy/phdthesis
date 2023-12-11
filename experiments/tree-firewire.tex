@@ -1,0 +1,149 @@
+\index{Firewire}
+
+The 1394 High Performance serial bus~\cite{ieee:1394:firewire} is used
+to transport digitized video and audio signals within a network of
+multimedia systems and devices.
+% 
+
+The tree identification protocol is used in one of the phases
+implementing the IEEE 1394 protocol.
+%
+More precisely, it is run after a bus reset in the network and leads
+to the election of a unique leader node.
+
+In this section, we consider a version working on tree topologies.
+%
+Furthermore, we assume that (i) each inner node is connected to $3$
+neighbors, (ii) the root is connected to $2$ neighbors, and (ii)
+communication is atomic.
+
+Initially, all nodes are in state \emph{undefined}~\s{u}. 
+%
+We identify two steps in the protocol depending on the number~$n$ of
+neighbors which are still in state~\s{u}.
+%
+If $n>1$, the node waits for (``be my parent'') requests from its neighbors. 
+%
+If $n=1$, the node sends a request to the remaining neighbor in state~\s{u}. 
+%
+We can observe that the leaf nodes are the first to communicate with
+their neighbors.
+
+Formally, we derive a parameterized tree system model $\parsys$ as follows.
+%
+We define the set of states by
+$\locs=\setcomp{\s{\ensuremath{s_n}}}{s\in\set{\s{u},\s{c},\s{\ensuremath{\ell}}}\wedge
+  n\in\set{leaf,inner,root}}$
+where the script $n$ describe the nature of the node.
+%
+In the definition of the state ($s$), the letters \s{u}, \s{c} and
+\s{$\ell$} stand respectively for \emph{undefined}, \emph{child} and
+\emph{leader}.
+%
+In a similar manner to the previous protocol, we drop the script
+whenever we mean that it can take any value (see caption of
+Figure~\ref{figure:tree:arbiter:rules}).
+% 
+
+The rewrite rules $\rules$ are described as follows.
+%
+\begin{itemize}
+\item The leaves initiate the communications:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u} child{node{u$_{leaf}$ / c}} child[missing];
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u} child[missing] child{node{u$_{leaf}$ / c}};
+  \end{tikzpicture}
+  \par%
+}
+
+\item The inner nodes become children or wait for requests:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u / c} child {node {u}} child {node {c}} child {node {c}};
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u / c} child {node {c}} child {node {u}} child {node {c}};
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u / c} child {node {c}} child {node {c}} child {node {u}};
+  \end{tikzpicture}
+  \par%
+}
+
+\item The leader is chosen:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {u / $\ell$} child {node {c}} child {node {c}} child {node {c}};
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {c} child{node {u$_{leaf}$ / $\ell$}} child[missing] child[missing];
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle,
+    grow cyclic,
+    level 1/.style={level distance=1cm,sibling angle=120},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \begin{scope}[rotate=60]
+      \node {c} child{node {u$_{leaf}$ / $\ell$}} child[missing] child[missing];
+    \end{scope}
+  \end{tikzpicture}
+  \par%
+}
+\end{itemize}
+%
+
+The set of initial configurations \Inits\ is represented by trees where all nodes
+are in state undefined, and the set of bad constraints \Bad\ is represented by 
+trees where at least 2 leaders are elected.
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle, level distance=1cm, every node/.style={state,state-n,inner sep=2pt}]
+    \node {$\ell$} child {node {$\ell$}} child[missing];
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle, level distance=1cm, every node/.style={state,state-n,inner sep=2pt}]
+    \node {$\ell$} child[missing] child {node {$\ell$}};
+  \end{tikzpicture}
+  % 
+  \begin{tikzpicture}[show background rectangle, level distance=1cm, every node/.style={state,state-n,inner sep=2pt}]
+    \node {*} child {node {$\ell$}} child {node {$\ell$}};
+  \end{tikzpicture}
+  \par%
+}

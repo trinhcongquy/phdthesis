@@ -1,0 +1,95 @@
+Szymanski's algorithm %\cite{mutex:szymanski}
+implements a mutual
+exclusion protocol and can be modeled as a parameterized system where
+the processes are arranged in a linear topology. Each process can
+communicate with and distinguish its neighbors on its right and its left.
+
+The algorithm is described in Figure~\ref{algo:szymanski}.
+
+\begin{algorithm}[ht]
+  \SetKw{Then}{then}
+  \SetKw{Await}{await}
+  \SetKw{Goto}{goto}
+  \SetKwIF{MyAwait}{MyThen}{MyElse}{await}{then}{else}{elseif}{endif}
+  %\DontPrintSemicolon
+  \dontprintsemicolon
+  \SetAlgoNoLine
+  \nlset{0}$\flag[i] := 1$\tcc*{standing outside the waiting room}                                     
+  \nl\Await $\forall j\neq i : \flag[j] \in \{0,1,2\}$ \tcc*{waiting in front of the entry door}
+  \nl$\flag[i] := 3$ \tcc*{temporarily blocking the door}                                      
+  \nl\If (\tcc*[f]{does anybody else want to enter?}){$\exists j\neq i : \flag[j] = 1$ } 
+  {$\flag[i] := 2$ \Goto 4 \tcc*{leave the doorway}}                     
+  \lElse {$\flag[i] := 4$, \Goto 5 \tcc*{close the entry and open the exit door}}
+  \nl\MyAwait (\tcc*[f]{wait for the last one to enter})
+  {$\exists j\neq i : \flag[j] = 4$} {$\flag[i] := 4$ \tcc*{keep the entry door closed}} 
+  \nl\Await $\forall j < i : \flag[j] \in \{0,1\}$ \tcc*{let those on the left access c.s.}
+  \nl the shared resource\\
+  \nl\Await {$\forall j > i : \flag[j] \in \{0,1,4\}$} \Then {$\flag[i]:=0$} \tcc*[f]{after everybody is out of the waiting room, allow closing the exit door and reopening the entry door} 
+  \caption{Szymanski's mutual exclusion protocol.}
+  \label{algo:szymanski}
+\end{algorithm}
+
+% %% SIMPLIFIED VERSION: MARCUS THESIS
+% A state process can be modeled as ranging over $\set{1,\ldots,7}$
+% where the critical section is $7$. Initially, all processes are in
+% state $1$. The transitions are depicted in the following state
+% diagram.
+
+% \begin{center}
+% \begin{tikzpicture}[node distance=14mm]
+
+%   \node[state] (n1) {1};
+%   \node[state] (n2) [right=of n1] {2};
+%   \node[state] (n3) [right=of n2] {3};
+%   \node[state] (n4) [right=of n3] {4};
+%   \node[state] (n5) [right=of n4] {5};
+%   \node[state] (n6) [right=of n5] {6};
+%   \node[state] (n7) [right=of n6] {7};
+
+%   \draw [->,myedge] (n1) -- (n2) node[mylabel]{$\forall\state{j}\in\set{1,2,4}$};
+%   \draw [->,myedge] (n2) -- (n3);
+%   \draw [->,myedge] (n3) -- (n4) node[mylabel]{$\exists\state{j}\in\set{2,5,6,7}$};
+%   \draw [->,myedge] (n4) -- (n5) node[mylabel]{$\exists\state{j}\in\set{5,6,7}$};
+%   \draw [->,myedge] (n3) .. controls +(1,-1) and +(-1,-1) .. (n5) node[mylabel]{$\forall\state{j}\in\set{1,3,4}$};
+%   \draw [->,myedge] (n5) -- (n6) node[mylabel]{$\forall\state{j}\not\in\set{3,4}$};
+%   \draw [->,myedge] (n6) -- (n7) node[mylabel,pos=0.6]{\begin{tabular}{l}$\forall j<i:$\\$\state{j}\in\set{1,2,4}$\end{tabular}};
+%   \draw [->,myedge] (n7) .. controls +(-0.5,1) and +(0,2) .. (n1);
+% \end{tikzpicture}
+% \end{center}
+
+%% FULL VERSION
+A state process can be modeled as ranging over $\set{1,\ldots,11}$
+where the critical section is $10$. Initially, all processes are in
+state $1$. The transitions are depicted in the following state
+diagram.
+
+{\centering
+\begin{tikzpicture}[node distance=15mm,state/.append style={minimum width=6mm}]
+
+  \node[state] (n1) {1};
+  \node[state] (n2) [below=6mm of n1] {2};
+  \node[state] (n3) [below=6mm of n2] {3};
+  \node[state] (n4) [below=6mm of n3] {4};
+  \node[state] (n5) [right=of n4] {5};
+  \node[state] (n6) [right=of n5] {6};
+  \node[state] (n7) [right=of n6] {7};
+  \node[state] (n8) [below=6mm of n6] {8};
+  \node[state] (n9) [right=of n7] {9};
+  \node[state] (n10) [above=6mm of n9] {10};
+  \node[state] (n11) [above=6mm of n10] {11};
+
+  \draw [->,myedge] (n1) -- (n2);
+  \draw [->,myedge] (n2) -- node[mylabel,right]{$\forall j\neq i : \set{1,2,3,6,7}$} (n3);
+  \draw [->,myedge] (n3) -- (n4);
+  \draw [->,myedge] (n4) -- node[mylabel]{$\exists j\neq i : \set{2,3}$} (n5);
+  \draw [->,myedge] (n5) -- (n6);
+  \draw [->,myedge] (n6) -- node[mylabel]{$\exists j\neq i : \set{9,10,11}$} (n7);
+  \draw [->,myedge] (n7) -- (n9);
+  \draw [->,myedge] (n9) -- node[mylabel,left]{$\forall j<i: \set{1,2,3}$} (n10);
+  \draw [->,myedge] (n10) -- node[mylabel,left]{$\forall j>i: \set{1,2,3,9,10,11}$} (n11);
+  \draw [->,myedge] (n11) to[out=90,in=0] (n1);
+
+  \draw [->,myedge] (n4) to[out=-90,in=180] node[mylabel,above left,pos=0.85]{$\forall j\neq i : \set{1,4,5,6,7,8,9,10,11}$} (n8);
+  \draw [->,myedge] (n8) to[out=0,in=-90] (n9);
+\end{tikzpicture}
+} %% End centering

@@ -1,0 +1,12 @@
+@\w[i]{0}@ flag[$i$] $\coloneqq 1$
+@\w[n]{1}@ wait until $\forall j{\neq}i$ : flag[$j$] $\in\set{0,1,2}$
+@\w[n]{2}@ flag[$i$] $\coloneqq 3$
+@\w[n]{3}@ if $\exists j{\neq}i$ : flag[$j$] = 1 then
+@\w[n]{4}@       flag[$i$] $\coloneqq 2$
+@\w[n]{5}@       wait until $\exists j{\neq}i$ : flag[$j$] = 4
+@\w[n]{6}@ end
+@\w[n]{7}@ flag[$i$] $\coloneqq 4$
+@\w[n]{8}@ wait until $\forall j<i$ : flag[j] $\in\set{0,1}$
+@\w[b]{9}@ /* Critical Section */
+@\w[b]{10}@ wait until $\forall j>i$ : flag[j] $\in\set{0,1,4}$
+@\w[n]{11}@ flag[i] $\coloneqq 0$; goto @\w[i]{0}@;

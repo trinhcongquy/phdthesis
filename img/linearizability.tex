@@ -1,0 +1,94 @@
+\begin{tikzpicture}[
+  function/.style={line width=1ex,>=fast cap,draw,color=cyan!50},
+  function1/.style={line width=1ex,>=fast cap,draw,color=cyan!50},
+  function2/.style={line width=1ex,>=fast cap,draw,color=cyan!50},
+  function3/.style={line width=1ex,>=fast cap,draw,color=cyan!50},
+  function4/.style={line width=1ex,>=fast cap,draw,color=cyan!50},
+  functionname/.style={color=black,above left=1pt,inner sep=0pt,pos=1},
+  project/.style={dotted,very thick,black!60,>=stealth,shorten >=3pt},
+  ]
+
+
+%%% Function spans and commit points
+%  \foreach \m/\x/\y/\length/\pos/\t in {
+%    1/5/7/4.5/0.35/pop,
+%    2/7/6/5/0.2/{push(d)},
+%    3/2/5/8.5/0.83/pop,
+%    4/3/4/5/0.5/{push(a)},
+%    5/8.3/3/3.5/0.6/{push(c)},
+%    6/1/2/8.7/0.4/{push(b)}
+%  }{
+%    \draw[function,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+%    \draw[function,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+%    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+%  }
+
+
+  %% Function spans and commit points
+  \foreach \m/\x/\y/\length/\pos/\t in {
+    1/5/7/4.5/0.2/{cnt(a,true)}
+  }{
+    \draw[function1,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+    \draw[function1,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+  }
+
+
+%% Function spans and commit points
+  \foreach \m/\x/\y/\length/\pos/\t in {
+    2/7/6/5/0.1/{rmv(a,true)}
+  }{
+    \draw[function2,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+    \draw[function2,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+  }
+
+
+%% Function spans and commit points
+  \foreach \m/\x/\y/\length/\pos/\t in {
+    3/2/5/8.5/0.83/{cnt(a,false)}
+  }{
+    \draw[function3,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+    \draw[function3,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+  }
+
+
+
+
+ \foreach \m/\x/\y/\length/\pos/\t in {
+    4/3/4/5/0.3/{add(a,true)},
+    5/8.3/3/3.5/0.8/{cnt(b,true)}
+  }{
+    \draw[function,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+    \draw[function,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+  }
+
+\foreach \m/\x/\y/\length/\pos/\t in {
+    6/1/2/8.7/0.1/{add(b,true)}
+  }{
+    \draw[function4,<->] (\x,\y) -- +(right:\length) node[line width=1pt,commitpoint,pos=\pos](cp\m){} node[functionname]{\t};
+    \draw[function4,<->] let \p1=(cp\m.south) in (\x1,-1.3) ++(-0.45,0) -- +(right:0.9) node[line width=1pt,commitpoint,midway](cpl\m){};
+    \node[scale=0.7,above=1pt of cpl\m,inner sep=0pt](ml\m){\t}; % functionname
+  }
+
+
+  %% Projections
+  \foreach \m in {1,...,6}{ \draw[project,->] let \p1=(cp\m.south) in (\p1) -- (\x1,0); }
+
+  %% Time line
+  \draw[line width=1.5pt,line cap=round,-stealth] (0,0) -- +(right:14) node[above right=1pt,pos=0.05]{time};
+
+  %% Pop values
+%  \foreach \m/\t in {1/a,3/d}{
+%    \path let \p1=(cp\m.south) in (\x1,-0.35) node[inner sep=0pt](r\m){\t};
+%    \draw[-stealth,shorten >=2pt,shorten <=1pt] (ml\m) ..controls +(right:6mm) and +(-60:6mm) .. (r\m);
+%  }
+
+  %% Orders
+  \draw[decorate,decoration={bent},shorten >=3pt,shorten <=3pt] (0,0) -- +(up:7) node[above=3pt,rotate=90,midway]{Partial Order};
+  \draw[decorate,decoration={bent},shorten >=3pt,shorten <=3pt] (0,-2) -- (0,0) node[above=3pt,rotate=90,midway]{Total Order};
+
+  
+\end{tikzpicture}

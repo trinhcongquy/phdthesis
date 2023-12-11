@@ -1,0 +1,23 @@
+\begin{tikzpicture}[show background rectangle,
+  state/.append style={minimum size=2ex,font=\scriptsize},%
+  decoration={snake,segment length=3mm,amplitude=0.5mm,pre length=3mm,post length=3mm}
+  ]
+
+  \node(c){$c$};
+  \node[left=2cm of c,yshift=1cm](c1){$u$};
+  \node[above=1.2cm of c](c2){$\exists v$};
+  \node[left=2cm of c](e){$\emptyset$};
+
+  \draw[->,myedge,decorate] (c1) -- node[midway,above]{$\delta$} (c2);
+  \draw[->,myedge,decorate] (e) -- node[midway,above]{$\delta$} (c);
+  \path (e) -- node[midway,cross out,minimum width=10mm,draw=red]{} (c);
+
+  \path (c) -- node[midway,rotate=90](s){$\subword$} (c2);
+
+  \begin{pgfonlayer}{my background}
+    \draw[black, very thin, fill=white] ([shift={(-1,0.7)}]c2.south) parabola[parabola height=-2.6cm,bend pos=0.5] ([shift={(1,0.7)}]c2.south);
+    \path[clip] ([shift={(-1,0.7)}]c2.south) parabola[parabola height=-2.6cm,bend pos=0.5] ([shift={(1,0.7)}]c2.south);
+    \draw[very thick,dotted,fill=red!5] (c) ++(0,-1) circle (13mm);
+  \end{pgfonlayer}
+
+\end{tikzpicture}

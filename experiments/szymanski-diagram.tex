@@ -1,0 +1,73 @@
+%
+\begin{tikzpicture}[scale=0.8,
+      mystate/.style={scale=0.7,circle,draw=none,fill=white,inner sep=0pt,minimum width=3ex,,draw=gray!10!white,thin},%inner sep=1.2pt,
+      edge/.style={->,>=stealth',thin},%,shorten >=1pt,semithick},
+      mylabel/.style={midway,anchor=east,scale=0.55,thick},
+      myexplanation/.style={black,scale=0.6,text centered},
+      % mybg/.style={rounded corners,draw=none,fill=#1!10!white},
+      mybg/.style={rounded corners,draw=none,shading=axis,left color=white,right color=#1!10!white},
+      mybg/.default=white,
+      % sepbar/.style={draw=white,line width=3pt}
+      sepbar/.style={draw=black!10!white,double=white,thin,double distance=3pt}
+      ]
+      
+      \node (n0) at (-2.5,0)   [mystate,fill=green!20] {0};
+      \node (n1) at (0,3.25)   [mystate] {1};
+      \node (n2) at (0,2.25)   [mystate] {2};
+      \node (n3) at (0,1.25)   [mystate] {3};
+      %\node (n4) at (2.5,0.75) [mystate] {4};
+      \node (n5) at (3,0)      [mystate] {5};
+      %\node (n6) at (2.5,-0.75)[mystate] {6};
+      \node (n7) at (0,-0.5)   [mystate] {7};
+      \node (n8) at (0,-1.25)  [mystate] {8};
+      \node (n9) at (0,-2.5)   [mystate,fill=red!50] {9};
+      \node (n10) at (0,-3.25) [mystate,fill=red!50] {10};
+      \node (n11) at (-1.25,-4)[mystate] {11};
+
+      \begin{pgfonlayer}{background}
+        \path [draw,mybg=green] (n1) ++(-1,0.5) rectangle ++(7,-2.5) ++(0,1.25) coordinate(intention);
+        \path [draw,mybg=blue] (n3) ++(-1,0) rectangle ++(7,-2.5) ++(0,1.25) coordinate(waiting);
+        \path [draw,mybg=red] (n8) ++(-1,0) rectangle ++(7,-2) ++(0,1) coordinate(cs);
+        \path [draw,mybg=yellow] (n11) ++(-1,0.75) rectangle ++(8.25,-1) ++(0,0.5) coordinate(exit);
+
+        \path [draw,mybg=gray,shading=axis,left color=gray!10!white,right color=white] (n0) ++(-0.5,3.75) rectangle +(2,-8);
+
+        \coordinate (doorin) at ([shift={(5.5,0)}]n3);
+        \coordinate (doorout) at ([shift={(5.5,0)}]n8);
+
+        \node at (intention) [myexplanation,left,text width=35mm,inner sep=0pt]{Standing outside the waiting room with the intention to enter, eventually blocking the doorway};
+        \node at (waiting) [myexplanation,left,text width=30mm]{Waiting for the last one to enter};
+        \node at (cs) [myexplanation,left,text width=30mm]{Critical Section};
+        \node at (exit) [myexplanation,left,text width=5cm]{Emptying the waiting room and reopening the entry door};
+        \node (nocs) at (n0) [myexplanation,right,text width=15mm]{Non critical work};
+
+        \node (doorinText) at (doorin) [myexplanation,anchor=east,fill=white,rounded corners,inner xsep=2mm,draw=black!10!white]{Entry Door};
+        \node (dooroutText) at (doorout) [myexplanation,anchor=east,fill=white,rounded corners,inner xsep=2mm,draw=black!10!white]{Exit Door};
+        \draw [sepbar] (doorinText.west) ++(1pt,0) -- +(-3.65,0);
+        \draw [sepbar] (dooroutText.west) ++(1pt,0) -- +(-3.8,0);
+        
+      \end{pgfonlayer}
+
+      \draw [edge] (n0) -- +(0,3) to[out=90,in=90] (n1);
+      \draw [edge] (n1) -- node[mylabel,right]{$\forall j\neq i:\set{0,1,2,5,6}$} (n2);
+      \draw [edge] (n2) -- (n3);
+      \draw [edge] (n3) -- node[mylabel,right]{$\forall j\neq i:\neg\set{1,2}$} (n7);
+      \draw [edge] (n7) -- (n8);
+
+%       \draw [edge] (n3) to[out=0,in=150] (n4) node[mylabel,below left,swap,pos=0.6]{$\exists\set{1,2}$};
+%       \draw [edge] (n4) to[out=-30,in=90] (n5);
+%       \draw [edge] (n5) to[out=-90,in=30] (n6) node[mylabel,above left,swap,pos=0.4]{$\exists\set{8,9,10}$};
+%       \draw [edge] (n6) to[out=-150,in=0] (n8);
+
+      \draw [edge] (n3) to[out=0,in=90] node[mylabel,below left,swap,pos=0.5]{$\exists j\neq i:\set{1,2}$} coordinate[pos=0.7](n4') (n5);
+      \draw [edge] (n5) to[out=-90,in=0] node[mylabel,above left,swap,pos=0.15]{$\exists j\neq i:\set{8,9,10}$} coordinate[pos=0.3](n6') (n8);
+      
+      \node (n4) at (n4') [mystate] {4};
+      \node (n6) at (n6') [mystate] {6};
+
+      \draw [edge] (n8) -- node[mylabel,right]{$\forall j<i:\set{0,1,2}$} (n9);
+      \draw [edge] (n9) -- (n10);
+      \draw [edge] (n10) to[out=-90,in=0] node[mylabel,below right]{$\forall j>i:\neg\set{3..7}$} (n11);
+      \draw [edge,<-] (n0) -- +(0,-3) to[out=-90,in=-180] (n11);
+
+    \end{tikzpicture}

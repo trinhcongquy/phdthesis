@@ -1,0 +1,92 @@
+%\chapter{Summaries of Papers}
+\chapter{Summary of Contributions}
+
+In this chapter, we give a short overview of our three peer-reviewed papers. We
+will explain the problem addressed by each paper and its main contributions.
+\section{Paper I: Verification of Heap Manipulating Programs with Ordered Data by Extended Forest Automata} 
+Automated verification of programs that manipulate complex dynamic linked data structures is a challenging problem in software verification. The problem becomes even more challenging when program correctness depends on relationships between data values that are stored in the dynamically allocated structures. 
+
+In this paper, we present a general framework for verifying such programs. The underlying formalism of our framework is that
+of forest automata (FA) which
+has previously been developed for representing sets of reachable configurations of programs with complex dynamic linked data structures but without data stored in nodes. In the FA framework, a heap
+graph is represented as a composition of tree components. Sets of trees can be represented by tree automata, sets of heap graphs can then
+be represented by tuples of tree automata (TA). We extend FA by adding constraints between data elements associated with nodes of the heaps represented by FA, and we present extended versions of all operations needed for using the extended FA in a fully-automated verification approach, based on abstract interpretation.  
+Technically, we express relationships between data elements associated with nodes of the heap graph by two classes of constraints. Local data constraints are associated with transitions of TA and capture relationships between data of neighbouring nodes in a heap graph; they
+can be used, e.g., to represent ordering internal to some structure such as a binary search
+tree. Global data constraints are associated with states of TA and capture relationships
+between data in distant parts of the heap. In order to obtain a powerful analysis based on
+such extended FA, the entire analysis machinery must have been redesigned, including
+a need to develop mechanisms for propagating data constraints through FA, to develop a new inclusion check between
+extended FAs, and to define extended abstract transformers
+
+The resulting method allows for verification of pointer programs where the needed inductive invariants combine complex shape properties with constraints over stored data, such as sortedness. The method is fully automatic, quite general, and its efficiency is comparable with other state-of-theart analyses even though they handle less general classes of programs and/or are less automated. 
+
+
+
+
+
+
+
+We have implemented our approach as an extension of the Forester tool and successfully applied it to a number of programs dealing with data structures such as various forms of singly- and doubly-linked lists, binary search trees, as well as skip lists. We presented experimental results from verifying programs dealing with variants of (ordered) lists and trees. To the best of our knowledge, our method is the first one to cope fully automatically with a full C implementation of a 3-level skip list. 
+
+\section{Paper II: Automated Verification of Linearization Policies} 
+Data structures that can be accessed concurrently by many parallel threads are a central component of many software applications, and are implemented in several widely used libraries (e.g., java.util.concurrent). Linearizability is the standard correctness criterion for such concurrent data structure implementations. It states that each operation on the data structure can be considered as being performed atomically at some point, called the linearization point (LP), between its invocation and return. This allows client threads to understand the data structure in terms of atomic actions, without considering the complications of concurrency.
+
+In this paper, we present a novel uniform framework for automatically
+verifying linearizability of concurrent data structure implementations, which handles the following challenges: Firstly, We handle non-fixed LPs by a novel formalism for specifying linearization policies, by means of so-called controllers. Linearization policies are often described informally by the algorithm designers together with each new data structure implementation when explaining why it is linearizable. Our controllers offer a way to express such policies in a simple and uniform manner. They can express complex patterns for linearization that are much more general than fixed LPs. In detail, a
+controller is responsible for generating operations announcing the occurrence of
+LPs during each method invocation. The controller is occasionally activated, either by
+its thread or by another controller, and mediates the interaction of the thread with the
+observer as well as with other threads. Secondly, we handle the challenge of an unbounded number of threads by extending the successful thread-modular approach which verifies a concurrent program by generating an invariant that correlates the global state with the local state of an arbitrary thread. Finally,  we present a novel symbolic representation of singly-linked heap structures.
+We have implemented our technique in a tool, and applied it to specify and automatically verify linearizability of all the implementations of concurrent set, queue,
+and stack algorithms known to us in the literature, as well as some algorithms for implementing atomic memory read/write operations. To use the tool, the user needs to
+provide the code of the algorithm together with the controllers that specify linearization
+policies. To our knowledge, this is the first time all these examples are verified fully
+automatically in the same framework.
+\section{Paper III: Fragment Abstraction for Concurrent Shape Analysis}  
+A major challenge in automated verification is to develop techniques
+that are able to reason about fine-grained concurrent algorithms that consist of
+an unbounded number of concurrent threads, which operate on an unbounded
+domain of data values, and use unbounded dynamically allocated memory. Existing automated techniques consider the case where shared data is organized into
+singly-linked lists.
+
+In this paper, we present a technique for automatic verification of concurrent data structure implementations that operate on dynamically allocated heap structures which are more complex than just singly-linked lists. Our approach is the first
+framework that can automatically verify concurrent data structure implementations that
+employ singly linked lists, skiplists [15, 23, 39], as well as arrays of singly linked
+lists [11], at the same time as handling an unbounded number of concurrent threads,
+an unbounded domain of data values (including timestamps), and an unbounded shared
+heap.
+
+Our technique is based on a novel shape abstraction, called fragment abstraction,
+which in a simple and uniform way is able to represent several different classes of
+unbounded heap structures. Its main idea is to represent a set of heap states by a set
+of fragments. A fragment represents two heap cells that are connected by a pointer
+field. For each of its cells, the fragment represents the contents of its non-pointer fields,
+together with information about how the cell can be reached from the program’s pointer
+variables. The latter information consists of both: (i) local information, saying which
+pointer variables point directly to them, and (ii) global information, saying how the cell
+can reach to and be reached from (by following chains of pointers) other heap cells that
+are significant from a global perspective, typically since they are pointed to by global
+variables. A set of fragments represents the set of heap states in which any two pointer-connected nodes is represented by some fragment in the set. Thus, a set of fragments
+describes the set of heaps that can be formed by “pieced together” fragments in the
+set. The combination of local and global information in fragments supports precise
+reasoning about the sequence of cells that can be accessed by threads that traverse the
+heap by following pointer fields in cells and pointer variables: the local information
+captures properties of the cell fields that can be accessed as a thread dereferences a
+pointer variable or a pointer field; the global information also captures whether certain
+significant accesses will at all be possible by following a sequence of pointer fields. This
+support for reasoning about patterns of cell accesses enables automated verification of
+reachability and other functional properties.
+Fragment abstraction can (and should) be combined, in a natural way, with data abstractions for handling unbounded data domains and with thread abstractions for handling an unbounded number of threads. For the latter we adapt the successful threadmodular approach [5], which represents the local state of a single, but arbitrary thread,
+together with the part of the global state and heap that is accessible to that thread. Our
+combination of fragment abstraction, thread abstraction, and data abstraction results in
+a finite abstract domain, thereby guaranteeing termination of our analysis.
+We have implemented our approach and applied it to automatically verify correctness, in the sense of linearizability, of a large number of concurrent data structure
+algorithms, described in a C-like language. More specifically, we have automatically
+verified linearizability of most linearizable concurrent implementations of sets, stacks,
+and queues, and priority queues, which emply singly-linked lists, skiplists, or arrays
+of timestamped singly-linked lists, which are known to us in the literature on concurrent data structures. For this verification, we specify linearizability using the simple and
+powerful technique of observers [1, 7, 21, 3], which reduces the criterion of linearizability to a simple reachability property. To verify implementations of stacks and queues,
+the application of observers can be done completely automatically without any manual
+steps, whereas for implementations of sets, the verification relies on linearization policies. 
+

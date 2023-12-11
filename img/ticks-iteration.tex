@@ -1,0 +1,49 @@
+\begin{tikzpicture}[
+  scale=0.5,
+  myedge/.append style={very thin,green!20!orange,shorten >=0pt,shorten <=0pt}
+  ]
+
+  \begin{scope}
+    \foreach \n in {1,2,3,4,6}{\node[state,state-n](n\n) at (\n,0){};}
+    \node[state,state-n](n5) at (5,0){$3$};
+
+    %\draw[myedge,blue!70!red] (n5) .. controls +(135:6mm) and +(30:6mm) .. (n4);
+    %\draw[myedge,blue!70!red] (n5) .. controls +(135:8mm) and +(30:10mm) .. (n3);
+    \draw[myedge,blue!70!red] (n5) .. controls +(135:10mm) and +(30:14mm) .. (n2);
+    \draw[myedge,blue!70!red] (n5) .. controls +(135:12mm) and +(30:18mm) .. (n1);
+
+    \draw[myedge] (n1) .. controls +(-45:6mm) and +(-150:6mm) .. (n2);
+    \draw[myedge] (n1) .. controls +(-45:8mm) and +(-150:10mm) .. (n3);
+    \draw[myedge] (n1) .. controls +(-45:10mm) and +(-150:14mm) .. (n4);
+
+    \begin{pgfonlayer}{my background}
+      \node[fit=(n1)(n6)](bgFrom){};
+    \end{pgfonlayer}
+  \end{scope}
+
+  \node[rotate=-90] at (5,-1){$\trans$};
+
+  \begin{scope}[shift={(0,-2)}]
+    \foreach \n in {1,2,3,4,6}{\node[state,state-n](n\n) at (\n,0){};}
+    \node[state,state-n](n5) at (5,0){$3$};
+
+    %\draw[myedge,blue!70!red] (n5) .. controls +(135:6mm) and +(30:6mm) .. (n4);
+    \draw[myedge,blue!70!red] (n5) .. controls +(135:8mm) and +(30:10mm) .. (n3);
+    \draw[myedge,blue!70!red] (n5) .. controls +(135:10mm) and +(30:14mm) .. (n2);
+    \draw[myedge,blue!70!red] (n5) .. controls +(135:12mm) and +(30:18mm) .. (n1);
+
+    \draw[myedge] (n1) .. controls +(-45:6mm) and +(-150:6mm) .. (n2);
+    \draw[myedge] (n1) .. controls +(-45:8mm) and +(-150:10mm) .. (n3);
+    \draw[myedge] (n1) .. controls +(-45:10mm) and +(-150:14mm) .. (n4);
+
+    \begin{pgfonlayer}{my background}
+      \node[fit=(n1)(n6)](bgTo){};
+    \end{pgfonlayer}
+  \end{scope}
+
+  \begin{pgfonlayer}{my background}
+    \draw[background rectangle] ([shift={(-0.5,0.5)}]bgFrom.north west) rectangle ([shift={(0.5,-0.6)}]bgTo.south east);
+  \end{pgfonlayer}
+
+  \node[looplabel] at ([shift={(0,-0.6)}]bgTo.south){Iteration};
+\end{tikzpicture}

@@ -1,0 +1,76 @@
+\index{Token Protocol}
+
+The protocol operates on binary trees to transmit a token from the
+root to the leaves. A node can be labeled as having the token~\s{t},
+or not having the token~\s{n}.
+%
+Initially, the token is in the root.
+%
+As an example:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    level 2/.style={sibling distance=5mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node(t1) {t}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t2)[xshift=40mm] {n}
+    child {node {t}
+      child {node {n}}
+      child {node {n}}}
+    child {node {u}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t3)[xshift=80mm] {n}
+    child {node {n}
+      child {node {n}}
+      child {node {t}}}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}
+    };
+
+    %% Small step arrows
+    \foreach \f/\t in {1/2,2/3}{
+      \path (t\f) -- coordinate[midway](t\f\t) (t\t);
+      \draw[*->] (t\f\t) ++(-3mm,0) .. controls +(3mm,1mm) .. +(6mm,0);
+    }
+  \end{tikzpicture}
+  \par%
+}
+
+The set of bad constraints \Bad\ is represented by trees where at
+least two nodes contain the token.
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node {t} child {node {t}} child[missing];
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle,
+    sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node {t} child[missing] child {node {t}};
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle,
+    sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node {*} child {node{t}} child {node {t}};
+  \end{tikzpicture}
+  \par%
+}
+
+

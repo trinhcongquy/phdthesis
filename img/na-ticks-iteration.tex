@@ -1,0 +1,42 @@
+\begin{tikzpicture}[
+  state/.append style={scale=0.9},
+  context/.append style={scale=0.9}
+  ]
+
+    \matrix (m) [context-matrix] {
+      |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]|3 & |[context]| \\
+    };
+
+    \makehighgroup{m-1-1}{m-1-2}{2}
+    \makehighgroup{m-1-3}{m-1-4}{4}
+    \makehighgroup[densely dotted]{m-1-5}{m-1-6}{6}
+    \draw[project,->] (m-1-8) .. controls +(115:10mm) and +(30:7mm) .. (n2);
+    \draw[project,->] (m-1-8) .. controls +(115:8mm) and +(30:5mm) .. (n4);
+    \draw[project,->,densely dotted] (m-1-8) .. controls +(115:6mm) and +(30:3mm) .. (n6);
+
+    \matrix[context-matrix] (m2) at (0,-1) {
+      |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]| & |[context]|
+      & |[state,state-n]|3 & |[context]| \\
+    };
+
+    \makehighgroup{m2-1-1}{m2-1-2}{2}
+    \makehighgroup{m2-1-3}{m2-1-4}{4}
+    \makehighgroup{m2-1-5}{m2-1-6}{6}
+    \draw[project,->] (m2-1-8) .. controls +(115:10mm) and +(30:7mm) .. (n2);
+    \draw[project,->] (m2-1-8) .. controls +(115:8mm) and +(30:5mm) .. (n4);
+    \draw[project,->] (m2-1-8) .. controls +(115:6mm) and +(30:3mm) .. (n6);
+
+    \begin{pgfonlayer}{my background}
+      \draw[background rectangle,double=white] ([shift={(-0.2,0.5)}]m.north west) rectangle ([shift={(0.2,-0.3)}]m2.south east);
+    \end{pgfonlayer}
+
+    \node[rotate=-90] at (barycentric cs:m-1-8=0.5,m2-1-8=0.5){$\trans$};
+    \node[looplabel] at ([shift={(0,-0.3)}]m2.south) {Iteration};
+\end{tikzpicture}

@@ -1,0 +1,20 @@
+% Package to determine whether XeTeX is used
+\usepackage{ifxetex}
+
+%\RequireXeTeX
+\ifxetex
+   \begingroup
+     \errorcontextlines=-1\relax
+     \newlinechar=10\relax
+     \errmessage{^^J^^J
+     **********************************************^^J
+     * This thesis should be compiled with pdflatex.^^J
+     **********************************************^^J^^J}%
+     \errmessage{^^J^^J
+     **********************************************^^J
+     * I'm telling you...^^J
+     * It won't work with xelatex!^^J
+     * Insisting? ^^J
+     **********************************************^^J^^J}%
+   \endgroup
+\fi

@@ -1,0 +1,92 @@
+\index{Two-way Token}
+
+This protocol is a generalization of the token protocol by allowing
+the token to both move upwards and downwards.
+%
+Initially, the token is in the root.
+%
+The set of bad constraints \Bad\ is represented by trees where at
+least two nodes contain the token, similarly to the simple token
+protocol.
+%
+The rules for the propagation of the token are:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle, sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid} ]
+    \node {t / n} child {node {n / t}} child[missing];
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle, sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid} ]
+    \node {t / n} child[missing] child {node {n / t}};
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle, sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid} ]
+    \node {n / t} child {node {t / n}} child[missing];
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle, sibling distance=10mm,level distance=12mm,
+    every node/.style={state,state-n,inner sep=2pt,solid} ]
+    \node {n / t} child[missing] child {node {t / n}};
+  \end{tikzpicture}
+  \par%
+}
+
+\newpage
+As an example:
+
+{\noindent\centering
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    level 2/.style={sibling distance=5mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node(t1)[red] {t}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t2)[xshift=30mm] {n}
+    child {node[red] {t}
+      child {node {n}}
+      child {node {n}}}
+    child {node {u}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t3)[xshift=60mm] {n}
+    child {node {n}
+      child {node {n}}
+      child {node[red] {t}}}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t4)[xshift=90mm] {n}
+    child {node[red] {t}
+      child {node {n}}
+      child {node {n}}}
+    child {node {u}
+      child {node {n}}
+      child {node {n}}
+    };
+    \node(t5)[xshift=120mm] {n}
+    child {node {n}
+      child[red] {node {t}}
+      child {node {n}}}
+    child {node {n}
+      child {node {n}}
+      child {node {n}}
+    };
+
+    %% Small step arrows
+    \foreach \f/\t in {1/2,2/3,3/4,4/5}{
+      \path (t\f) -- coordinate[midway](t\f\t) (t\t);
+      \draw[*->] (t\f\t) ++(-3mm,0) .. controls +(3mm,1mm) .. +(6mm,0);
+    }
+  \end{tikzpicture}
+  \par%
+}
+

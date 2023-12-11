@@ -1,0 +1,312 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdftex 2016.5.22)  21 SEP 2017 10:42
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**shape-observers.tex
+(./shape-observers.tex
+./shape-observers.tex:1: Undefined control sequence.
+l.1 \begin
+          {tikzpicture}[
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (35.3294pt too wide) in paragraph at lines 1--10
+[]\tenrm tikzpicture[ framed, shorten >=1pt, >=stealth, data/.append style=draw=black, scale=0.85, ev-ery node/.append|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm t
+.\tenrm i
+.\tenrm k
+.\tenrm z
+.etc.
+
+./shape-observers.tex:12: Undefined control sequence.
+l.12   \begin
+             {scope}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:13: Undefined control sequence.
+l.13     \node
+              [obsstate,initial, color = black,fill=yellow!20]  (i)         ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:14: Undefined control sequence.
+l.14     \node
+              [obsstate,color = black,fill=yellow!20]          (q1)  [right=...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:15: Undefined control sequence.
+l.15     \node
+              [obsstate,color = black,fill=yellow!20]          (q2)  [right=...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:16: Undefined control sequence.
+l.16     \node
+              [obsstate,accepting](bad) [below=12mm of q2] {};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:18: Undefined control sequence.
+l.18     \path
+              [->]  (i) edge              coordinate(cpushB) (q1)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:25: Undefined control sequence.
+l.25     \filldraw
+                  [scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) circle (0.2e...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:26: Undefined control sequence.
+l.26     \draw
+              [scale=2,black!80!red,line width=2pt,line cap=round] (bad) ++(...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (32.78307pt too wide) in paragraph at lines 25--27
+[]\tenrm [scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) cir-cle (0.2ex) ++(0.8ex,0) cir-cle (0.2ex); [scale=2,black!80!red,line|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm [
+.\tenrm s
+.\tenrm c
+.\tenrm a
+.etc.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30     \path
+               let \p1 = (bad), \p2 = (i.west) in node[property,right] at (\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30     \path let \p
+                     1 = (bad), \p2 = (i.west) in node[property,right] at (\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30     \path let \p1 = (bad), \p
+                                  2 = (i.west) in node[property,right] at (\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30 ... = (i.west) in node[property,right] at (\x
+                                                  2,\y1) {\Large\sc Orderedn...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30 ...i.west) in node[property,right] at (\x2,\y
+                                                  1) {\Large\sc Orderedness};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30 ... node[property,right] at (\x2,\y1) {\Large
+                                                  \sc Orderedness};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:30: Undefined control sequence.
+l.30 ...de[property,right] at (\x2,\y1) {\Large\sc
+                                                   Orderedness};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:34: Undefined control sequence.
+l.34     \path
+               node[above=2pt of cpushB,inner sep=0pt,xshift=-7pt](pushB){pu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:37: Undefined control sequence.
+l.37     \path
+               node[above=2pt of cpushR,inner sep=0pt,xshift=-7pt](pushR){pu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:40: Undefined control sequence.
+l.40     \path
+               node[right=3pt of cpopB,inner sep=0pt](popB){pop(x)}{};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:43: Undefined control sequence.
+l.43     \foreach
+                  \n in {1,2,3}{
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:43: Undefined control sequence.
+l.43     \foreach \n
+                     in {1,2,3}{
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:44: Undefined control sequence.
+l.44       \path
+                 node[above=2pt of cw\n,inner sep=0pt,xshift=-7pt](popW\n){p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:44: Undefined control sequence.
+l.44       \path node[above=2pt of cw\n
+                                       ,inner sep=0pt,xshift=-7pt](popW\n){p...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:44: Undefined control sequence.
+l.44 ... of cw\n,inner sep=0pt,xshift=-7pt](popW\n
+                                                  ){pop(!=x)} node[data=whit...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:44: Undefined control sequence.
+l.44 ...(!=x)} node[data=white,right=2pt of popW\n
+                                                  .east,yshift=1pt]{};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:45: Undefined control sequence.
+l.45       \path
+                 node[above=2pt of popW\n.north east,inner sep=0pt,xshift=-7...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:45: Undefined control sequence.
+l.45       \path node[above=2pt of popW\n
+                                         .north east,inner sep=0pt,xshift=-7...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:45: Undefined control sequence.
+l.45 ...th east,inner sep=0pt,xshift=-7pt](pushW\n
+                                                  ){push} node[data=white,ri...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./shape-observers.tex:45: Undefined control sequence.
+l.45 ...push} node[data=white,right=2pt of pushW\n
+                                                  .east,yshift=1pt]{};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (102.20013pt too wide) in paragraph at lines 43--47
+\tenrm of popW.east,yshift=1pt]; node[above=2pt of popW.north east,inner sep=0pt,xshift=-7pt](pushW)push node[data=white,right=2pt|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm o
+.\tenrm f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm p
+.\kern0.27779
+.etc.
+
+[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] )</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on /Users/quytrinh/Dropbox/FredThesis/src/img/.texpadtmp/shape-observers.pdf (1 page, 28513 bytes).
+PDF statistics:
+ 16 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

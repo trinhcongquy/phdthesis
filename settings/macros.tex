@@ -1,0 +1,330 @@
+%% ---------------------------------------------
+%% Math stuff
+%% ---------------------------------------------
+
+%\newtheorem{definition}{Definition}[chapter]
+
+%\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\set}[1]{\{#1\}}
+%\newcommand{\setcomp}[2]{\{{#1}\mathrel{}\middle|\mathrel{}{#2}\}}
+%\newcommand{\setcomp}[2]{\set{#1\mid\;#2}}
+\newcommand{\setcomp}[2]{\{{#1}\mathrel{}\mid\mathrel{}{#2}\}}
+
+\newcommand{\cross}{\textcolor{red}{\ding{55}}}
+\newcommand{\tickk}{\textcolor{green}{\ding{52}}}
+
+\newcommand{\nat}{\ensuremath{\mathbb N}}
+\newcommand{\reals}{\ensuremath{\mathbb R}}
+\newcommand{\sizeof}[1]{|#1|}
+\newcommand{\union}{\cup}
+%\newcommand{\minsetunion}{\sqcup}
+\newcommand{\range}[2]{\llbracket{#1}{,}{#2}\rrbracket} %% {,} otherwise I get some spacing after the ','
+\newcommand\data{d}
+
+% \newcommand{\updateby}[2]{\ensuremath{\left[#1\leftarrow#2\right]}}
+\newcommand\indata{\data^{\it in}}
+\newcommand\ddomain{{\mathds D}}
+\newcommand{\msgset}{\Sigma}
+
+\newcommand{\senderindata}{\data^{\it in}_s}
+\newcommand\inxvar{\xvar^{\it in}}
+\newcommand\pindata[1]{\data^{\it in}_{#1}}
+\newcommand\outdata{\data^{\it out}}
+\newcommand{\senderoutdata}{\data^{\it out}_s}
+\newcommand\outxvar{\xvar^{\it out}}
+\newcommand\poutdata[1]{\data^{\it out}_{#1}}
+\newcommand\op{{\it op}}
+\newcommand\event{e}
+\newcommand{\senderevent}{\event_s}
+\newcommand{\symbrep}{\Psi}
+\newcommand{\abstrconf}{\Phi}
+\newcommand{\ac}{\abstrconf}
+\newcommand\action{a}
+
+%% ---------------------------------------------
+%% Parameterized systems
+%% ---------------------------------------------
+\newcommand\tuple[1]{\left\langle#1\right\rangle}
+\newcommand{\parsys}{\ensuremath{\mathcal P}}
+\newcommand{\locs}{\ensuremath{Q}}
+\newcommand{\rules}{\ensuremath{\Delta}}
+\newcommand\mname{{\tt m}}
+
+\newcommand{\witnesses}{S}
+\newcommand{\quantrule}[5]{ \mathbf{if}\ {#3}~j\,{#4}\,i:\,{#5}\ \mathbf{then}\ {#1}\trans{#2}}
+\newcommand{\quantify}{\mathbb Q}
+
+\newcommand{\confs}{\ensuremath{\mathcal C}}
+\newcommand{\trans}{\ensuremath{\rightarrow}}
+\newcommand{\transof}[1]{\stackrel{#1}{\trans}}
+\newcommand{\transys}{\ensuremath{\mathcal T}}
+
+\newcommand{\src}{\mathtt{src}}
+\newcommand{\dst}{\mathtt{dst}}
+
+
+\newcommand{\borule}[4]{\mbox{\bf when }#1\mbox{ \bf provided }#2\mbox{ \bf broadcast }#3\mbox{ \bf emit }#4}
+
+
+
+\newcommand{\rrule}[3]{\mbox{\bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+\newcommand{\frule}[5]{\mbox{\bf from } #1 \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4\mbox{ \bf goto } #5}
+
+\newcommand{\frulenostate}[3]{ \mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+
+\newcommand{\eventseq}{w}
+\newcommand{\veventseq}{v}
+\newcommand{\closeparagraph}[1]{\vspace{-6pt}\paragraph{#1}}
+\newcommand{\frag}{\mathtt{v}}
+\newcommand{\dangconst}{\bot}
+
+\newcommand{\eexpr}{{\it expr}}
+\newcommand{\oevent}{{\it op}}
+\newcommand{\sevent}{{\it se}}
+\newcommand{\revent}{{\it re}}
+\newcommand{\cevent}{{\it ce}}
+
+\newcommand{\rulename}{\rho}
+\newcommand{\sndrule}[6]{\mbox{\bf from } #1 \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4\mbox{ \bf broadcast } #5 \mbox{ \bf goto } #6}
+\newcommand{\sndrulenostate}[4]{\mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3\mbox{ \bf broadcast } #4}
+
+
+\newcommand{\rcvrule}[5]{\mbox{\bf from } #1  \mbox{ \bf when }#2\mbox{ \bf provided }#3\mbox{ \bf emit }#4 
+\mbox{ \bf goto } #5}
+\newcommand{\rcvrulenostate}[3]{\mbox{ \bf when }#1\mbox{ \bf provided }#2\mbox{ \bf emit }#3}
+
+\newcommand{\rcvruletwostate}[6]{\mbox{\bf from } #1 {,} #2  \mbox{ \bf when }#3\mbox{ \bf provided }#4\mbox{ \bf emit }#5 \mbox{ \bf goto } #6}
+
+\newcommand{\cnd}{{\it cnd}}
+\newcommand{\triggersym}{\textcolor{red}{\bullet}}
+\newcommand{\cstate}{q}
+
+
+\newcommand\snd[1]{{#1}!}
+\newcommand\rcv[1]{{#1}?}
+\newcommand{\ctrlof}[1]{{\tt cntrl}\left(#1\right)}
+\newcommand{\augof}[1]{{\tt aug}\left(#1\right)}
+\newcommand{\rvalues}{\theta}
+\newcommand{\param}{p}
+\newcommand{\ord}{{\tt ord}}
+\newcommand\before{\tt before}
+\newcommand\after{\tt after}
+
+\newcommand{\subsumed}{\sqsubseteq}
+
+
+
+%\newcommand{\bad}{\mathit{Bad}}
+\newcommand{\Bad}{\ensuremath{\mathcal{B}}}
+\newcommand{\minbad}{\ensuremath{\Bad_{min}}}
+%\newcommand{\minbad}{B}
+\newcommand{\Reach}{\ensuremath{\mathcal{R}}}
+\newcommand{\Inits}{\ensuremath{\mathcal{I}}}
+
+\newcommand{\domain}{\ensuremath{\mathcal{D}}}
+\newcommand{\entails}{\preccurlyeq}
+\newcommand{\preorder}{\leqslant}%\vartriangleleft
+
+% \newcommand{\BinRel}{\mathcal B} % Binary relation
+% \newcommand{\rel}{R}
+
+\newcommand{\forrule}[5]{\ensuremath{\mathbf{if~foreach}\ j\mathrel{#1}i: {#2} \ \mathbf{then}\ {#3}\trans{#4}\ \mathbf{else}\ {#3}\trans{#5}}}
+
+%% ---------------------------------------------
+%% Monotonic abstraction
+%% ---------------------------------------------
+\newcommand{\thread}{{\tt th}}
+\newcommand{\subword}{\sqsubseteq}
+% \newcommand{\word}[3][0]{{#2}_{#1}  \ldots  {#2}_{#3}}
+\newcommand{\ucl}[1]{\ensuremath{\lfloor{#1}\rfloor}} %% Upward-Closure
+\newcommand{\gen}[1]{min(#1)}
+
+\newcommand{\parabol}[3][]{\draw[black, very thin, fill=white,#1] (0,0) parabola[parabola height=#3, bend pos=0.5] ++(#2,0)}
+\newcommand{\atrans}{\leadsto}
+\newcommand{\atransof}[1]{\stackrel{#1}{\atrans}}
+
+\newcommand{\abstrans}[1]{\hat{#1}}
+
+\newcommand{\worklist}{\texttt{W}}
+\newcommand{\visited}{\texttt{V}}
+\newcommand{\inverse}[1]{\ensuremath{{#1}^{\textit{-}1}}} % Using hyphen and not the longer "minus".
+% \newcommand{\pre}{\ensuremath{\inverse{\abstrans\rules}}}
+% %\newcommand{\prestar}{\ensuremath{{\abstrans\rules}^{\textit{-}*}}}
+% \newcommand{\prestar}{\ensuremath{(\pre)^{*}}}
+\newcommand{\pre}{Pre}
+\newcommand{\prestar}{\ensuremath{Pre^{*}}}
+
+
+%% ---------------------------------------------
+%% View abstraction
+%% ---------------------------------------------
+\newcommand{\dcl}[1]{\ensuremath{\lceil{#1}\rceil}} %% Downward-Closure
+
+\newcommand{\Abs}{\alpha} 
+\newcommand{\Conc}{\gamma}
+
+\newcommand{\Absof}[1]{\Abs_{#1}}
+\newcommand{\Concof}[1]{\Conc_{#1}}
+%\newcommand{\Concoflim}[2]{\Conc_{#1}^{#2}}
+\newcommand{\Concoflim}[2]{\oint_{#1}^{#2}}
+%\newcommand{\minabstrof}[1]{\minsetof{\abstr_{#1}}}
+
+\newcommand {\views}{\mathcal{V}}
+\newcommand {\viewsof}[1]{\views_{#1}}
+%\newcommand {\confsof}[1]{\confs_{#1}}
+
+\newcommand {\badviewsof}[1]{\views_{#1}^{\mathit{bad}}}
+\newcommand {\badviews}{\views^{\mathit{bad}}}
+
+% \newcommand {\mk}[1]{{#1}^\bullet}
+\newcommand {\proj}[2]{\Pi_{#1}(#2)}
+% \newcommand {\tproj}[2]{\Pi_{#1}^\circ(#2)}
+% \newcommand {\naproj}[2]{\Pi'_{#1}(#2)}
+
+\newcommand {\post}{\mathit{post}}
+\newcommand {\spost}{\mathit{spost}}
+\newcommand {\apost}[1]{{\mathit{Apost}}_#1}
+\newcommand {\sdelta}{\delta^\#}
+
+\newcommand{\entailedby}{\succcurlyeq}
+\newcommand{\minsetof}[1]{\lfloor #1 \rfloor}
+\newcommand{\minunion}{\sqcup}
+
+\newcommand{\base}{\mathtt{base}}
+\newcommand{\ctx}{\mathtt{ctx}}
+
+% \usepackage{wasysym}
+% \newcommand{\aConcoflim}[2]{\ensuremath{\mathbin{\ooalign{\hspace{.2ex}\raisebox{.15ex}{\scalebox{.7}{\wasylozenge}}\cr$\int$\cr}}_{#1}^{#2}}}
+%\newcommand{\aConcoflim}[2]{\ensuremath{\mathbin{\ooalign{\hspace{.2ex}\raisebox{.15ex}{\scalebox{.6}{$\square$}}\cr$\int_{#1}^{#2}$\cr}}}}
+\newcommand{\aConcoflim}[2]{\sqint_{#1}^{#2}}
+%\newcommand{\F}{\ensuremath{\mathtt{F}}}
+\newcommand{\isbad}{\ensuremath{\mathtt{bad}}}
+
+\newcommand{\tick}{\checkmark}
+%\newcommand{\tickof}[2]{\checkmark({#1},{#2})}
+\newcommand{\unticked}{\rho}%\xi \chi
+\renewcommand{\next}{\mathit{next}}
+
+\newcommand{\makehighgroup}[4][]{
+  \draw[blue!70!red,#1] (#2.north west) ++(0,1mm) -- +(0,1mm) -- ([yshift=2mm]#3.north east) coordinate[midway](n#4) -- +(0,-1mm);
+}
+\newcommand{\makelowgroup}[4][]{
+  \draw[#1] (#2.south west) ++(0,-1mm) -- +(0,-0.5mm) -- ([yshift=-1.5mm]#3.south east) coordinate[midway](p#4) -- +(0,0.5mm);
+}
+%% ---------------------------------------------
+%% Shape Analysis
+%% ---------------------------------------------
+\newcommand{\fragset}{V}
+\newcommand\true{{\tt true}}
+\newcommand\false{{\tt false}}
+\newcommand*{\prgcode}[1]{\texttt{#1}}
+\newcommand{\dset}{\mathbb{D}}
+\newcommand\commitpoint[1]{\tikz{\node[commitpoint,#1]{};}}
+\newcommand\stepa{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 1}}}
+\newcommand\stepb{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 2}}}
+\newcommand\stepc{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 3}}}
+\newcommand\stepd{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 4}}}
+\newcommand\stepe{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 5}}}
+\newcommand\stepf{\tikz{\node[draw, circle, fill = gray!20, draw = black, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8]{\tt 6}}}
+
+\newcommand\threada{\tikz{
+\node[draw, circle, fill = red!20, double = red, name = addT, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt, scale=0.8]{{$\tt T_1$}};
+}}
+
+\newcommand\threadb{\tikz{
+\node[draw, circle, fill = blue!20, double = blue, name = addT, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt, scale=0.8]{{$\tt T_2$}};
+}}
+
+\newcommand\threadc{\tikz{
+\node[draw, circle, fill = orange!20, double = orange, name = addT, minimum width=15pt, minimum height=15pt,anchor=south west,inner sep=0pt, scale=0.8]{{$\tt T_3$}};
+}}
+
+
+\newcommand\taa{\tikz{
+\node[name = x, circle, color = red, draw = red, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.south east)+(0pt,-9pt)$){{$\tt 1$}};
+}}
+
+\newcommand\tab{\tikz{
+\node[name = x, circle, color = blue, draw = blue, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(204pt,63pt)$){{$\tt 2$}};
+}}
+
+\newcommand\tac{\tikz{
+\node[name = x, circle, color = blue, draw = blue, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(244pt,63pt)$){{$\tt 3$}};
+}}
+
+\newcommand\tad{\tikz{
+\node[name = x, circle, color = orange, draw = orange, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(284pt,63pt)$){{$\tt 4$}};
+}}
+
+\newcommand\tae{\tikz{
+\node[name = x, circle, color = cyan, draw = cyan, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(324pt,63pt)$){{$\tt 5$}};
+}}
+
+
+\newcommand\nodea{\tikz{
+\node[draw,rounded corners = 0.09cm, fill = red!30, draw = red, name = n1, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,0pt)$){{$\tt 1$}};
+}}
+
+\newcommand\nodeb{\tikz{
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n3, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-25pt)$){{$\tt 4$}};
+}}
+
+\newcommand\nodec{\tikz{
+\node[draw, rounded corners = 0.09cm, fill = orange!30, draw = orange, name = n6, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(0pt,-50pt)$){{$\tt 6$}};
+}}
+
+\newcommand\noded{\tikz{
+\node[draw, rounded corners = 0.09cm, fill = blue!30, draw = blue, name = n4, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(40pt,-25pt)$){{$\tt 2$}};
+}}
+
+\newcommand\nodee{\tikz{
+\node[draw, rounded corners = 0.09cm, fill = cyan!30, draw = cyan, name = n5, minimum width=12pt, minimum height=12pt,anchor=south west,inner sep=0pt,scale=0.8] at ($(cell1.north east)+(80pt,-25pt)$){{$\tt 8$}};
+}}
+
+\newcommand{\triggered}[1]{{#1}^{\triggersym}}
+
+\newcommand{\pointsto}{\mapsto}
+\newcommand{\reaches}{\dashrightarrow}
+\newcommand{\pointedby}{\mapsfrom}
+\newcommand{\reachedby}{\dashleftarrow}
+\newcommand{\unrelated}{\Join}
+
+\newcommand{\nullconst}{{\tt \#}}
+\newcommand{\undefconst}{{\tt \bot}}
+% \newcommand{\freeconst}{{\tt FREE}}
+\newcommand{\Pred}{\mathit{Pred}}
+%%%%%%  TiKZ styles    %%%%%
+
+\tikzstyle{code-bg}=
+[rounded corners,fill=cyan!2!white,draw=cyan!50!white,inner xsep=0pt]%
+
+%\tikzstyle{inference-bg}=
+%[rounded corners,fill=blue!5!white,draw=blue!50!white]%
+
+\tikzstyle{inference-bg}=
+[rounded corners,fill=gray!6!white,draw=gray!50!white,inner xsep=0pt]%
+
+  
+\tikzstyle{linenum}=[font={\footnotesize\tt},anchor=east]
+\tikzstyle{linecode}=[font={\footnotesize\tt},anchor=west, scale = 0.9]
+\tikzstyle{lpcode}=[anchor=west,text=blue]
+\tikzstyle{ostate}=[fill=white,circle,minimum size=0pt,inner sep=0pt,text=black,,font=\tiny]
+\tikzstyle{oedge}=[line width=1pt,->,>=stealth]
+\tikzstyle{ctrlnode}=[font=\small,scale = 0.9]
+
+
+
+
+%%%%%%  TiKZ layers    %%%%%
+%\pgfdeclarelayer{background}
+%\pgfdeclarelayer{bbackground}
+%\pgfdeclarelayer{foreground}
+%\pgfsetlayers{bbackground,background,main,foreground}
+%% ---------------------------------------------
+%% Experiments
+%% ---------------------------------------------
+\newcommand{\strue}{\ensuremath{\mathtt{true}}}
+\newcommand{\sfalse}{\ensuremath{\mathtt{false}}}
+\newcommand{\LD}[1]{\ensuremath{Read_{#1}}}
+\newcommand{\ST}[1]{\ensuremath{Write_{#1}}}
+

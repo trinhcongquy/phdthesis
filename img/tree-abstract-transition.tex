@@ -1,0 +1,29 @@
+\begin{tikzpicture}[show background rectangle,
+  %level/.style={sibling distance=20mm,level distance=15mm},
+  level 1/.style={sibling distance=20mm,level distance=15mm},
+  level 2/.style={sibling distance=20mm,level distance=15mm},
+  process/.append style={inner sep=2pt},
+  abstract-edge/.style={decorate, decoration={snake,segment length=1mm,amplitude=0.7mm,pre length=5mm,post length=5mm}},
+  edge from parent path={(\tikzparentnode) to (\tikzchildnode)}
+  %edge from parent path={[dotted](\tikzparentnode) .. controls +(-110:20mm) and +(70:20mm) .. (\tikzchildnode)}
+  ]
+
+  \node[process] (p_1) {$p_1$} 
+    child { 
+      node[process,state-i](a_1){$a_1$} edge from parent[abstract-edge,bend right=10]
+      child { node[process](b_1){$b_1$} edge from parent[abstract-edge,bend right=20] }
+      child { node[process](c_1){$c_1$} edge from parent[abstract-edge,bend left=20] }
+    }
+    child[missing];
+
+  \node[process,right=5cm of p_1] (p_2) {$p_2$} 
+    child { 
+      node[process,state-i](a_2){$a_2$} edge from parent[bend right=10]%abstract-edge,
+      child { node[process](b_2){$b_2$} edge from parent[bend right=20]}%abstract-edge,
+      child { node[process](c_2){$c_2$} edge from parent[bend left=20] }%abstract-edge,
+    }
+    child[missing];
+
+    \draw[myedge,->,shorten >=10mm,shorten <=18mm,decorate] (a_1) -- node[above,pos=0.58]{$\abstrans\delta$} (a_2);
+
+\end{tikzpicture}

@@ -1,0 +1,101 @@
+\index{Arbiter}\index{Tree-Arbiter Protocol}
+
+The protocol supervises the access to a shared resource of a set of
+processes arranged in a tree topology.
+%
+The processes competing for the resource reside in the leaves.
+%
+A process in the protocol can be in state \emph{idle}~\s{i},
+\emph{requesting}~\s{r}, \emph{token}~\s{t} or
+\emph{below}~\s{b}.
+%
+All the processes are initially in state~\s{i}.
+%
+A node is in state~\s{b} whenever it has a descendant in
+state~\s{t}.
+%
+When a leaf is in state~\s{r}, the request is propagated upwards
+until it encounters a node which is aware of the presence of the token
+(i.e. a node in state~\s{t} or~\s{b}).
+%
+A node that has the token (in state~\s{t}) can choose to pass it
+upwards or pass it downwards to a requesting child (node in
+state~\s{r}).
+%
+
+We model the tree-arbiter protocol with a parameterized tree system
+$\parsys=(\locs,\rules)$ where
+$\locs=\setcomp{\s{\ensuremath{s_n}}}{s\in\set{\s{i},\s{r},\s{t},\s{b}}\wedge
+  n\in\set{leaf,inner,root}}$
+and $\rules$ is as depicted below, in Figure~\ref{figure:tree:arbiter:rules}.
+%
+Observe that in the definition of $\locs$, we use the subscript~$n$ to
+model the nature (leaf, inner or root) of the nodes.
+%
+In the definition of the rules, we will drop the script whenever we
+mean that it is arbitrary (it can take any value).
+%
+
+The rules to model this protocol are as follows: 
+%
+2 rules to propagate the request upwards,
+%
+2 rules to propagate the token downwards, 
+%
+2 rules to propagate the token upwards and one rule to initiate a request from a leaf. 
+%
+
+\begin{figure}[hb]
+  \centering
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+
+    \node(t1)                    {i/r} child[missing] child {node {r}};
+    \node(t2)[right=20mm of t1]  {i/r} child {node {r}} child[missing];
+    \node(t3)[right= 5mm of t2]  {t/b} child[missing] child {node {r/t}};
+    \node(t4)[right=20mm of t3]  {t/b} child {node {r/t}} child[missing];
+    \node(t5)[right= 5mm of t4]  {b/t} child[missing] child {node {t/i}};
+    \node(t6)[right=20mm of t5]  {b/t} child {node {t/i}} child[missing];
+    \coordinate[right=8mm of t6](t7); % cheating
+    \node[below=5mm of t7]  {i$_{leaf}$/r};
+
+    %\foreach \f/\t in {1/2,2/3,3/4,4/5,5/6}{
+    \foreach \f/\t in {2/3,4/5}{
+      \path (t\f) -- coordinate[midway](t\f\t) (t\t);
+      \draw[color=white] (t\f\t) -- +(0,-10mm); % vertical
+    }
+    \draw[color=white] (t6.east) ++(2mm,0) -- +(0,-10mm); % vertical t67
+  \end{tikzpicture}
+  \label{figure:tree:arbiter:rules}
+  \caption{The rewrite rules for the tree-arbiter protocol.
+    % 
+    Notice that there are more rules in the model:
+    % 
+    For example, the first rule on the left is represented in the concrete model by $2$ rules, each of which 
+    corresponds to a particular combination of the natures of the parent and child nodes:
+    % 
+    For the parent there are $2$ possibilities
+    (\s{$i_{inner}/r_{inner}$} and \s{$i_{root}/r_{root}$}) while for
+    the child, there are $2$ (\s{$r_{inner}$} and \s{$r_{leaf}$}).}
+\end{figure}
+
+\begin{wrapfigure}{r}{0.3\linewidth}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {*} child {node {$t_{leaf}$}} child {node {$t_{leaf}$}};
+  \end{tikzpicture}
+  } % end resizebox
+\end{wrapfigure}
+%
+The set of initial configurations \Inits\ contains all trees where
+the leaf nodes are either idle or requesting, inner nodes are idle,
+and the root has the token.
+%
+The set of bad constraints \Bad\ is represented by trees where at
+least two processes obtained the token (i.e. two leaves in
+state~\s{$t_{leaf}$}, see the figure on the right).

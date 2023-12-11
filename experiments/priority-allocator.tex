@@ -1,0 +1,105 @@
+A ferry transports one car at a time from one side of the river to the
+other side.
+%
+At the departure, there are 2 queues of cars: One with high priority,
+one without priority.
+%
+If there are cars in the high priority lane, the ferry must load them
+first. If not, it can load a car from the lane with no priority, not
+even with a first-come-first-served basis.
+
+Initially, the cars must choose their respective lane, but are not
+allowed to board the ferry, which is not loaded.
+%
+A bad configuration is detected when the ferry has loaded a car from
+the no-priority lane while there are still cars in the high-priority
+lane.
+
+
+We model this situation with a Petri Net with Inhibitor arcs. %
+There are 2 places associated with the \emph{high} and \emph{low}
+priority lanes. %
+And there are 2 places associated with the fact that a car has been
+granted access on the ferry. %
+There is an initialization phase that models how the car get
+attributed a priority. %
+
+{\noindent\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[show background rectangle,
+  label distance=2pt,
+  caption/.style={mylabel,anchor=north},
+  every place/.append style={scale=0.7}
+  ]
+
+  \begin{scope}
+
+    \node[state,place,label={[scale=0.6]left:$Start$}](start) at (0,20mm) {};
+    \node[state,place,label={[scale=0.6]above:$Phase1$}](phase1) at (0,10mm) {};
+    \node[state,place,label={[scale=0.6]above:$Phase2$}](phase2) at (2,15mm) {};
+
+    \node[state,place,label={[scale=0.6]right:$High$}](high) at (10mm,-10mm) {};
+    \node[state,place,label={[scale=0.6]left:$Low$}](low)  at (-10mm,-10mm) {};
+
+    \node[transition](t1) at (-10mm,0){};
+    \draw[myedge,<-] (t1.165) to[out=90,in=-135] (start);
+    \draw[myedge,<-] (t1.15) to[out=90,in=180] (phase1);
+    \draw[myedge,->] (t1.-15) ..controls +(down:10mm) and +(-100:3mm).. (phase1);
+    \draw[myedge,->] (t1.-165) to[out=-90,in=90] (low);
+
+    \node[transition](t2) at (10mm,0){};
+    \draw[myedge,<-] (t2.15) to[out=90,in=-35] (start);
+    \draw[myedge,<-] (t2.165) to[out=90,in=0] (phase1);
+    \draw[myedge,->] (t2.-165) ..controls +(down:10mm) and +(-80:3mm).. (phase1);
+    \draw[myedge,->] (t2.-15) to[out=-90,in=90] (high);
+
+    \node[transition,rotate=90](t3) at (13mm,15mm){};
+    \draw[*-,myedge] (t3.15) to[out=180,in=0] (start);
+    \draw[myedge,<-] (t3.165) to[out=180,in=35] (phase1);
+    \draw[myedge,->] (t3.-90) to[out=0,in=180] (phase2);
+
+    \node[caption] at (0,-15mm) {Arriving at the dock};
+  \end{scope}
+
+  %% Going out
+  \begin{scope}[shift={(60mm,22mm)}]
+
+    \node[state,place,label={[scale=0.6]right:$High$}](high) at (10mm,0) {};
+    \node[state,place,label={[scale=0.6]left:$Low$}](low)  at (-10mm,0) {};
+    \node[state,place,label={[scale=0.6,label distance=4pt]above:$Phase2$}](phase2) at (0,-10mm) {};
+
+    \node[state,place,label={[scale=0.6]right:$High_{granted}$}](ghigh) at (10mm,-20mm) {};
+    \node[state,place,label={[scale=0.6]left:$Low_{granted}$}](glow)  at (-10mm,-20mm) {};
+
+    \node[state,place,label={[scale=0.6]right:$End$}](finish) at (0,-40mm) {};
+
+    \node[transition](t1) at (-10mm,-10mm){};
+    \draw[*-,myedge] (t1.90) to[out=90,in=180] (high);
+    \draw[myedge,<-] (t1.165) to[out=90,in=-135] (low);
+    \draw[myedge,<-] (t1.15) to[out=90,in=115] (phase2);
+    \draw[myedge,->] (t1.-165) to[out=-90,in=90] (glow);
+    \draw[myedge,->] (t1.-15) to[out=-90,in=-115] (phase2);
+
+    \node[transition](t2) at (10mm,-10mm){};
+    \draw[myedge,<-] (t2.15) to[out=90,in=-35] (high);
+    \draw[myedge,<-] (t2.165) to[out=90,in=65] (phase2);
+    \draw[myedge,->] (t2.-15) to[out=-90,in=90] (ghigh);
+    \draw[myedge,->] (t2.-165) to[out=-90,in=-65] (phase2);
+
+    \node[transition](t3) at (-10mm,-30mm){};
+    \draw[myedge,<-] (t3) to[out=90,in=-90] (glow);
+    \draw[myedge,->] (t3) to[out=-90,in=135] (finish);
+
+    \node[transition](t4) at (10mm,-30mm){};
+    \draw[myedge,<-] (t4) to[out=90,in=-90] (ghigh);
+    \draw[myedge,->] (t4) to[out=-90,in=35] (finish);
+
+    \node[caption,left=5mm of finish] {Boarding};
+  \end{scope}
+
+  \draw[white,thick] (3,2.5) -- +(0,-4);
+
+\end{tikzpicture}
+} %end \resizebox
+\par} %end \centering
+

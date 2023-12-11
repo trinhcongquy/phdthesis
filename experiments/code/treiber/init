@@ -1,0 +1,3 @@
+void initialize()
+  Top.ptr := NULL;
+  Top.age := 0;

@@ -1,0 +1,20 @@
+%\addtocontents{toc}{\protect\hrulefill}
+\addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
+
+\input{misc/contributions}
+\input{misc/conclusion}
+
+%\addtocontents{toc}{References}
+% No restriction is set to the reference styles
+\nocite{*} % Remove this for your own citations
+\bibliographystyle{plain}
+%\bibliographystyle{alpha}
+\bibliography{misc/references}
+
+%% Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifnoindex\else
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\indexname}
+%\printindex
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,1 @@
+locate(e):  local p, c   while (true)    p := head;    c := p.next;    while (c.val < e)     p := c;     c := c.next    lock(p); lock(c);    if (!p.mark && !c.mark && p.next=c)     return(p,c);    else     unlock(p);     unlock(c);

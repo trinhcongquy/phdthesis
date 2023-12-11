@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  show background rectangle,
+  every place/.append style={process,scale=0.6},
+  ]
+
+  %% Read 1
+  \node[place,tokens=2] (in1) {};
+  \node[place,below=16mm of in1,tokens=1](temp1){};
+  \node[place,below=16mm of temp1,tokens=0](out1){};
+  \node[place,shared,right=10mm of temp1,tokens=1](R1){};
+  \node[transition,below=8mm of in1](tin1){} edge [pre] (in1) edge [post] (temp1);
+  \node[transition,below=8mm of temp1](tout1) {} edge [pre] (temp1) edge [post] (out1);
+  \draw[post] (tin1.-15) to[out=-90,in=165] (R1);  
+  \draw[pre] (tout1.15) to[out=90,in=-165] (R1);  
+
+  %% Read 1
+  \node[place,tokens=3,right=35mm] (in2) {};
+  \node[place,below=16mm of in2,tokens=2](temp2){};
+  \node[place,below=16mm of temp2,tokens=1](out2){};
+  \node[place,shared,right=10mm of temp2,tokens=2](R2){};
+  \node[transition,below=8mm of in2](tin2){} edge [pre] (in2) edge [post] (temp2);
+  \node[transition,below=8mm of temp2](tout2) {} edge [pre] (temp2) edge [post] (out2);
+  \draw[post] (tin2.-15) to[out=-90,in=165] (R2);  
+  \draw[pre] (tout2.15) to[out=90,in=-165] (R2);  
+
+  %% White separation
+  \path (in1) -- coordinate[pos=0.7] (a) (in2);
+  \path (out1) -- coordinate[pos=0.7] (b) (out2);
+  \draw [white,thick] (a) -- node[midway,mylabel,double,inner sep=1ex,scale=1.2]{\color{black}$\subword$} (b);
+
+\end{tikzpicture}

@@ -1,0 +1,105 @@
+\begin{tikzpicture}[%show background rectangle,
+  start chain=n going right,
+  start chain=ln going left,
+  start chain=rn going right,
+  start chain=m going right,
+  start chain=lm going left,
+  start chain=rm going right,
+  node distance=0.3,
+  dots/.style={anchor=base,text=gray!60,text centered,scale=0.8}
+  ]
+
+  \def\mypath{%
+    [draw=none,fill=gray!30]%shading=axis,top color=gray!10,bottom color=gray!10,middle color=gray!30,shading angle=90] %
+    coordinate(L) -- %to[out=45,in=-135] %.. controls +(45:3mm) and +(-135:3mm) ..
+    ++(0,0.6) --
+    % length
+    ++(4.4,0) -- %to[out=-135,in=45] %.. controls +(45:3mm) and +(-135:3mm) ..
+    ++(0,-0.6) coordinate(R) -- (L)
+    % Right part 
+    (R) ++(0.3,0) coordinate(R') -- %to[out=45,in=-135] %.. controls +(45:3mm) and +(-135:3mm) ..
+    ++(0,0.6) -- ++(0.7,0) -- ++(0,-0.6) -- (R')
+    % Left part 
+    (L) ++(-0.3,0) coordinate(L') -- %to[out=45,in=-135] %.. controls +(45:3mm) and +(-135:3mm) ..
+    ++(0,0.6) -- ++(-0.7,0) -- ++(0,-0.6) -- (L')
+    (R) -- coordinate[midway,below=0.1](RR') (R')
+    (L) -- coordinate[midway,below=0.1](LL') (L')
+  }
+
+  \path (0,0) \mypath;
+  \path[draw=none,shading=axis,top color=gray!30,bottom color=gray!30,middle color=gray!50,shading angle=90] 
+  (R) ..controls +(right:0.15) and +(left:0.15).. (RR') ..controls +(right:0.15) and +(left:0.15) .. (R')
+  -- %to[out=45,in=-135]
+  ($(R') + (0,0.6)$) ..controls +(left:0.15) and +(right:0.15).. ($(RR') + (0,0.6)$) ..controls +(left:0.15) and +(right:0.15) .. ($(R) + (0,0.6)$)
+  %to[out=-135,in=45] (R);
+  -- cycle;
+  \path[draw=none,shading=axis,top color=gray!30,bottom color=gray!30,middle color=gray!50,shading angle=90] 
+  (L) ..controls +(left:0.15) and +(right:0.15).. (LL') ..controls +(left:0.15) and +(right:0.15) .. (L')
+  -- %to[out=45,in=-135]
+  ($(L') + (0,0.6)$) ..controls +(right:0.15) and +(left:0.15).. ($(LL') + (0,0.6)$) ..controls +(right:0.15) and +(left:0.15) .. ($(L) + (0,0.6)$)
+  %to[out=-135,in=45] (L);
+  -- cycle;
+
+  %\path node[dots,above=0.3 of RR']{$\cdots$} node[dots,above=0.3 of LL']{$\cdots$};
+
+  \node[state,state-n,on chain=ln] at ([shift={(-0.3,0.3)}]L'){};
+  % \node[state,state-n,on chain=ln]{};
+  % \node[state,state-n,on chain=ln]{};
+
+  \node[state,state-n,on chain=rn] at ([shift={(0.3,0.3)}]R'){};
+  % \node[state,state-n,on chain=rn]{};
+  % \node[state,state-n,on chain=rn]{};
+
+  %% Chain n
+  \node[state,state-n,on chain=n] at ([shift={(0.4,0.3)}]L){};
+  \node[state,state-n,on chain=n]{};
+  \node[state,state-i,on chain=n](src){$s$};
+  \node[state,state-n,on chain=n]{};
+  \node[state,state-witness,on chain=n]{$w$};
+  \node[state,state-n,on chain=n]{};
+
+  % \filldraw[red] (L) circle(2pt) (R) circle(2pt);
+  % \filldraw[green] (L') circle(2pt) (R') circle(2pt);
+
+
+  \path (0,-1.4) \mypath;
+  \path[draw=none,shading=axis,top color=gray!30,bottom color=gray!30,middle color=gray!50,shading angle=90] 
+  (R) ..controls +(right:0.15) and +(left:0.15).. (RR') ..controls +(right:0.15) and +(left:0.15) .. (R')
+  -- %to[out=45,in=-135]
+  ($(R') + (0,0.6)$) ..controls +(left:0.15) and +(right:0.15).. ($(RR') + (0,0.6)$) ..controls +(left:0.15) and +(right:0.15) .. ($(R) + (0,0.6)$)
+  %to[out=-135,in=45] (R);
+  -- cycle;
+  \path[draw=none,shading=axis,top color=gray!30,bottom color=gray!30,middle color=gray!50,shading angle=90] 
+  (L) ..controls +(left:0.15) and +(right:0.15).. (LL') ..controls +(left:0.15) and +(right:0.15) .. (L')
+  -- %to[out=45,in=-135]
+  ($(L') + (0,0.6)$) ..controls +(right:0.15) and +(left:0.15).. ($(LL') + (0,0.6)$) ..controls +(right:0.15) and +(left:0.15) .. ($(L) + (0,0.6)$)
+  %to[out=-135,in=45] (L);
+  -- cycle;
+
+  %\path node[dots,above=0.3 of RR']{$\cdots$} node[dots,above=0.3 of LL']{$\cdots$};
+
+
+  \node[state,state-n,on chain=lm] at ([shift={(-0.3,0.3)}]L'){};
+  % \node[state,state-n,on chain=lm]{};
+  % \node[state,state-n,on chain=lm]{};
+
+  \node[state,state-n,on chain=rm] at ([shift={(0.3,0.3)}]R'){};
+  % \node[state,state-n,on chain=rm]{};
+  % \node[state,state-n,on chain=rm]{};
+
+  %% Chain m
+  \node[state,state-n,on chain=m] at ([shift={(0.4,0.3)}]L){};
+  \node[state,state-n,on chain=m]{};
+  \node[state,state-i,on chain=m](dst){$d$};
+  \node[state,state-n,on chain=m]{};
+  \node[state,state-witness,on chain=m]{$w$};
+  \node[state,state-n,on chain=m]{};
+
+  % \filldraw[red] (L) circle(2pt) (R) circle(2pt);
+  % \filldraw[green] (L') circle(2pt) (R') circle(2pt);
+
+  %% Transition
+  \draw[myedge,->] (src) -- node[pos=0.5,left=4pt,state,state-witness](witness){$w$} (dst);
+  \node[left=4pt] at (witness.center){$\exists_{R}$};
+
+\end{tikzpicture}

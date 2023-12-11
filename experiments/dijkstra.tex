@@ -1,0 +1,88 @@
+\label{app:dijkstra}
+Dijsktra's algorithm %\cite{mutex:dijsktra}
+implements a mutual exclusion protocol and can be modeled as a
+parameterized system where the processes are arranged in a linear
+topology. Each process can communicate with its neighbors and check
+their status.
+
+\medskip{\noindent\centering
+  \begin{minipage}{0.7\linewidth}
+    \lstinputlisting[style=custom]{experiments/code/dijkstra.txt}
+  \end{minipage}%
+  \par%
+}\medskip
+%
+The algorithm is described in the above code listing.
+%
+It makes use of a pointer, i.e. a variable ranging over
+process indices. We model this pointer by a local boolean variable $p$
+for each process state.
+%
+$p$ is $\strue$ iff the pointer points to this current process. When
+the pointer changes, this information must be passed onto all other
+processes, which we model as a broadcast transition. Concretely, upon
+pointer assignment, the current process sets its local variable $p$ to
+$\strue$ and simultaneously sets $p$ to $\sfalse$ in all other
+processes.
+
+We denote the state of process as $St$ (resp. $Sf$) when the process
+is in state $S$ and the pointer $p$ is $\strue$ (resp. $\sfalse$). The
+state $S$ of a process ranges over $\set{\w[w]{1},\ldots,\w[w]{6}}$
+where $\w[w]{6}$ represents the critical section.
+%
+Initially, one process is in state $\w[i]{1t}$ and all other processes
+are in state $\w[i]{1f}$. A bad configuration is detected when 2 or
+more processes are in the critical section, ie when their state is
+either $\w[b]{6t}$ or $\w[b]{6f}$.
+
+% \begin{figure}[h]
+\noindent%
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[%
+  node distance=20mm,
+  state/.append style={scale=1.25},
+  ]
+
+  \node[state,state-i] (n1t) {1f};
+  \node[state,state-n] (n2t) [right=of n1t] {2f};
+  \node[state,state-n] (n3t) [right=of n2t] {3f};
+  \node[state,state-n] (n4t) [right=of n3t] {4f};
+  \node[state,state-n] (n5t) [right=of n4t] {5f};
+  \node[state,state-b] (n6t) [right=of n5t] {6f};
+
+  \node[state,state-i] (n1f) [below=of n1t] {1t};
+  \node[state,state-n] (n2f) [right=of n1f] {2t};
+  \node[state,state-n] (n3f) [right=of n2f] {3t};
+  \node[state,state-n] (n4f) [right=of n3f] {4t};
+  \node[state,state-n] (n5f) [right=of n4f] {5t};
+  \node[state,state-b] (n6f) [right=of n5f] {6t};
+
+  \draw [->,myedge] (n1t) -- (n2t);
+  \draw [->,myedge] (n2t) -- node[trlabel]{\begin{tabular}{c}$\forall j\neq i :$\\$\set{[1-6]t,1f}$\end{tabular}} (n3t);
+  \draw [->,myedge] (n4t) -- (n5t);
+  \draw [->,myedge] (n5t) -- node[trlabel]{\begin{tabular}{c}$\forall j\neq i :$\\$\set{[1-4]\{t,f\}}$\end{tabular}} (n6t);
+  \draw [->,myedge] (n5t) .. controls +(-1,1) and +(1,1) .. node[trlabel,above]{$\exists j\neq i :\set{5t,6t,5f,6f}$} (n1t);
+  \draw [->,myedge] (n6t) .. controls +(0,2) and +(0,2) .. (n1t);
+
+
+  \draw [->,myedge] (n3t) -- node[trlabel,sloped,above]{\emph{Broadcast}} (n4f);
+
+  \draw [->,myedge] (n1f) -- (n2f);
+  \draw [->,myedge] (n2f) to[out=-20,in=-160] (n4f);
+
+  \draw [->,myedge] (n4f) -- (n5f);
+  \draw [->,myedge] (n5f) -- node[trlabel]{\begin{tabular}{c}$\forall  j\neq i : $\\$\set{[1-4]\{t,f\}}$\end{tabular}} (n6f);
+  \draw [->,myedge] (n5f) .. controls +(-1,-1) and +(1,-1) .. node[trlabel,below]{$\exists j\neq i : \set{5t,6t,5f,6f}$} (n1f);
+
+  \draw [->,myedge] (n6f) .. controls +(0,-2) and +(0,-2) .. (n1f);
+
+  \foreach \x in {1,2,3,4,5,6}{ \draw [<->,myedge,draw=gray] (n\x t) -- node[rotate=45,scale=0.5,midway]{\color{gray}Global change} (n\x f); }     
+
+  %% Uncomment to see the limits of the bounding box
+  % \fill[red] (current bounding box.north west) circle (2pt);
+  % \fill[red] (current bounding box.south east) circle (2pt);
+\end{tikzpicture}
+} % End resise
+% \caption{The transitions of Dijkstra's protocol}
+% \label{figure:dijkstra:transitions}
+% \end{figure}

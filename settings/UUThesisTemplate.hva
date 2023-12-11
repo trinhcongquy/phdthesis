@@ -1,0 +1,79 @@
+\ifstyleloaded\relax
+\else
+\setcounter {secnumdepth}{2}
+\newcounter {part}
+\newcounter {chapter}
+\newcounter {section}[chapter]
+\newcounter {subsection}[section]
+\newcounter {subsubsection}[subsection]
+\newcounter {paragraph}[subsubsection]
+\newcounter {subparagraph}[paragraph]
+\newcounter {footnote}[chapter]
+\newcounter {titlenote}
+\setenvclass{part}{part}
+\setenvclass{chapter}{chapter}
+\setenvclass{section}{section}
+\setenvclass{subsection}{subsection}
+\setenvclass{subsubsection}{subsubsection}
+\setenvclass{paragraph}{paragraph}
+\setenvclass{subparagraph}{subparagraph}
+\newcounter {anchornote}
+\renewcommand \theanchornote{{\@nostyle\arabic{chapter}.\arabic{anchornote}}}
+\renewcommand \thepart {\Roman{part}}
+\renewcommand \thesection {\thechapter.\arabic{section}}
+\renewcommand\thesubsection   {\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\renewcommand\theparagraph    {\thesubsubsection.\arabic{paragraph}}
+\renewcommand\thesubparagraph {\theparagraph.\arabic{subparagraph}}
+\flushdef{chapter}
+\newcommand{\partname}{Part}
+\renewcommand{\chaptername}{Chapter}
+\newcommand{\appendixname}{Appendix}
+%%%%%%%%%%% Initial cutting
+\newcommand{\cuttingunit}{chapter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\appendix}{%
+\renewcommand{\chaptername}{\appendixname}%
+\setcounter{chapter}{0}%
+\renewcommand{\thechapter}{\Alph{chapter}}}
+\newcounter{equation}[chapter]
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\newcounter{figure}[chapter]
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\newcounter{table}[chapter]
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\newcommand\abstractname{Abstract}
+\newenvironment{abstract}{\begin{quote}{\bf \abstractname: }}{\end{quote}}
+\newcommand{\@indexsection}[1]{\chapter*{#1}}
+\newcommand{\@bibliosection}[1]{\chapter*{#1}}
+\newcommand{\@tocsection}[1]{\chapter*{#1}}
+\newcommand{\@base}{book}
+\setcounter{tocdepth}{2}
+\newcommand{\@book@attr}[1]{\@secid\envclass@attr{#1}}
+\@makesection
+  {\part}{-2}{part}
+  {\@opencell{class="center"}{}{}\@open{h1}{\@book@attr{part}}}%
+  {\partname~\thepart}{\\}%
+  {\@close{h1}\@closecell}
+\newstyle{.part}{margin:2ex auto;text-align:center}
+\@makesection
+  {\chapter}{-1}{chapter}
+   {\@open{h1}{\@book@attr{chapter}}}{\chaptername~\thechapter}{\quad}{\@close{h1}}
+\@makesection
+  {\section}{0}{section}
+  {\@open{h2}{\@book@attr{section}}}{\thesection}{\quad}{\@close{h2}}%
+\@makesection
+  {\subsection}{1}{subsection}
+  {\@open{h3}{\@book@attr{subsection}}}{\thesubsection}{\quad}{\@close{h3}}%
+\@makesection
+  {\subsubsection}{2}{subsubsection}
+  {\@open{h4}{\@book@attr{subsubsection}}}{\thesubsubsection}{\quad}{\@close{h4}}%
+\@makesection
+  {\paragraph}{3}{paragraph}
+  {\@open{h5}{\@book@attr{paragraph}}}{\theparagraph}{\quad}{\@close{h5}}%
+\@makesection
+  {\subparagraph}{4}{subparagraph}
+  {\@open{h6}{\@book@attr{subparagraph}}}{\thesubparagraph}{\quad}{\@close{h6}}%
+\newcommand{\hacha@style}{book}%
+\styleloadedtrue
+\fi

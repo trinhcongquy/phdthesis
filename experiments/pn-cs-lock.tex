@@ -1,0 +1,91 @@
+\begin{wrapfigure}{r}[2pt]{0.55\textwidth}
+  \hfill
+  \begin{tikzpicture}[scale=0.7,
+    show background rectangle,
+    %
+    shared/.style={draw=green,fill=green!30!gray,thick},
+    dottedrectangle/.style={rounded corners,draw,dotted,inner sep=1pt},
+    localVars/.style={ellipse,minimum height=30mm,minimum width=12mm, shade, top color=yellow, bottom color=white},
+    globalVars/.style={ellipse, shade, top color=blue!50!red, bottom color=white},
+    % 
+    every edge/.style={draw,shorten >=1pt,>=stealth',semithick},
+    every label/.append style={scale=0.7},
+    every place/.append style={scale=0.7},
+    ]
+    
+    \node(cheating) at(-2,0){};
+    
+    \node[state,place,label=right:$init$](in)  at (4,0) {?};
+    \node[state,place](lockOut) at (0,0) {};
+    \node[state,place](temp1) at (0,-2) {};
+    \node[state,place](readOut) at (0,-4) {};
+    \node[state,place](temp2) at (0,-6) {};
+    \node[state,place](writeOut) at (0,-8) {};
+    \node[state,place,label=right:$end$](unlockOut) at (4,-8) {};
+    
+    \node[transition,rotate=90,label={[scale=0.9]above left:$lock$}](tlock) at (2,0){} edge [pre] (in) edge [post] (lockOut);
+    \node[transition](treadIn) at (0,-1){} edge [pre] (lockOut) edge [post] (temp1);
+    \node[transition](treadOut) at (0,-3){} edge [pre] (temp1) edge [post] (readOut);
+    \node[transition](twriteIn) at (0,-5){} edge [pre] (readOut) edge [post] (temp2);
+    \node[transition](twriteOut) at (0,-7){} edge [pre] (temp2) edge [post] (writeOut);
+    \node[transition,rotate=90,label={[scale=0.9]below right:$unlock$}](tunlock) at (2,-8){} edge [pre] (writeOut) edge [post] (unlockOut);
+    
+    \node[state,place,shared,label=right:$L$,tokens=1] (L)  at (6,-4) {};
+    \node[state,place,shared,label=right:$\LD{counter}$] (Rc)  at (2,-3.5) {};
+    \node[state,place,shared,label=right:$\ST{counter}$] (Wc)  at (2,-4.5) {};
+    
+    \draw[pre,myedge] (tlock.-165) to[out=0,in=90] (L);
+    \draw[post,myedge] (tunlock.-15) to[out=0,in=-90] (L);
+    
+    \draw[post,myedge] (treadIn.-15) to[out=-90,in=120] (Rc.120);
+    \draw[pre,myedge] (treadOut.15) to[out=90,in=150] (Rc.150);
+    
+    \draw[post,myedge] (twriteIn.-15) to[out=-90,in=-150] (Wc.-150);
+    \draw[pre,myedge] (twriteOut.15) to[out=90,in=-120] (Wc.-120);
+    
+    \begin{pgfonlayer}{my background}
+      \node[dottedrectangle,fit=(Rc) (Wc)] (r){};
+      \node[dottedrectangle,fit=(treadIn) (treadOut)] (read){};
+      \node[dottedrectangle,fit=(twriteIn) (twriteOut)] (write){};
+    \end{pgfonlayer}
+    
+  \end{tikzpicture}    
+\end{wrapfigure}
+%
+We can model the critical section problem by read and write access to
+a resource shared by multiple processes. There is no particular
+topology so we will model it as an instance of a parametrized system
+with multisets. More precisely, as a Petri Net.
+%
+As the petri net of a concurrent program, described at that level of
+granularity, can quickly grow in size, we choose a short example: The
+processes repeatedly grab the lock, increment a \emph{counter} and
+release the lock. A bad configuration is detected when two or more
+processes are accessing the shared variable simultaneously while one
+is writing.
+
+The shared variable $counter$ is associated with two places,
+$\LD{counter}$ and $\ST{counter}$. The tokens of a place in the petri
+net represent the count of process in a given state, or the available
+resources. %
+A process places a token in $\LD{counter}$ (resp. $\ST{counter}$) if
+it is currently accessing the variable $counter$ for reading
+(resp. writing). We model read and write accesses to shared variables
+with two transitions, denoted by the dotted rectangle in the following
+figure.
+%
+There is a place $L$ associated with a lock. Intuitively, if $L$
+contains a token, the lock is free, otherwise it is busy. This ensures
+that only one process can hold the lock at a time. 
+%
+Note that $L$ is a global variable and that we omit the input places
+used to balance out the number of tokens in the net.
+%
+
+Initially, the lock is free and the processes are in the initial state
+\emph{init}. The petri contains then one token in $L$ and the others
+in \emph{init}. 
+%
+A bad situation is detected when the petri net contains two or more
+tokens in $\ST{counter}$ or when there is one (or more) token in
+$\LD{counter}$ and one (or more) token in $\ST{counter}$.

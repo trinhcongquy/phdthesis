@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  show background rectangle,
+  every place/.append style={scale=0.6}
+  ]
+
+  \node[place,shared,label={[scale=0.5,above=2pt]above:$\LD{v}$},tokens=1] (Rx1){};
+  \node[place,shared,label={[scale=0.5,above=2pt]above:$\ST{v}$},tokens=1,right=5mm of Rx1] (Wx1) {};
+
+  \node[place,shared,label={[scale=0.5,below=2pt]below:$\LD{v}$}, right=10mm of Wx1] (Rx2) {};
+  \node[place,shared,label={[scale=0.5,below=2pt]below:$\ST{v}$},tokens=2, right=5mm of Rx2] (Wx2) {};
+
+  \path (Wx1) -- node[midway,mylabel,double,scale=0.6] (and) {and} (Rx2);
+
+  \begin{pgfonlayer}{my background}
+    \node[dottedrectangle,fit=(Rx1)(Wx1),inner sep=2pt]{};
+    \node[dottedrectangle,fit=(Rx2)(Wx2),inner sep=2pt](r2){};
+    \draw[white,thick] (and) ++(0,0.5) -- +(0,-1);
+  \end{pgfonlayer}
+  
+\end{tikzpicture}

@@ -1,0 +1,112 @@
+%% ====================================================================
+\chapterwithtoc{Case Studies}
+\label{chapter:case:studies}
+\label{chapter:experimentation}
+%% ====================================================================
+
+% % Suppress the sections from the Table of Content (Now only chapters)
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+%% =================================================
+\section{Burns' mutual exclusion}
+\ifnoexperiments\else\input{experiments/burns}\fi
+
+\section{Szymanski's mutual exclusion}
+This example is presented in Section~\ref{section:paramsys:example}
+(on page~\pageref{section:paramsys:example}).
+% Simple version too? Pseudo code?
+
+\section{Dijsktra's mutual exclusion}
+\ifnoexperiments\else\input{experiments/dijkstra}\fi
+
+\newpage
+\section{Gribomont-Zenner's mutual exclusion}
+\ifnoexperiments\else\input{experiments/gribomont-zenner}\fi
+
+\section{Parosh's mutual exclusion}
+\ifnoexperiments\else\input{experiments/parosh}\fi
+
+\section{Bakery mutual exclusion}
+\ifnoexperiments\else\input{experiments/bakery}\fi
+
+
+%% =================================================
+\section{MOSI Cache Coherence Protocol}
+\ifnoexperiments\else\input{experiments/mosi}\fi
+\section{German Cache Coherence Protocol}
+\ifnoexperiments\else\input{experiments/german}\fi
+
+%% =================================================
+\section{Tree Protocols}
+\noindent%
+\begin{wrapfigure}{r}{0.25\linewidth}    
+  \hfill%
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt,solid}
+    ]
+    
+    \node {$p_1/p_2$}
+    child { node{$l_1/l_2$} edge from parent }
+    child { node{$r_1/r_2$} edge from parent };
+  \end{tikzpicture}
+  } % End resizebox
+\end{wrapfigure}
+% 
+In this section, we present the tree protocols that have been used in
+benchmarks in the papers of this thesis.
+%
+For a tree transition, if the tree pattern $p_1,l_1,r_1$ is found in
+the tree, the rule is applied and the nodes change their local state
+to $p_2,l_2,r_2$ respectively.
+% 
+We represent the rule in a compact form on the right.
+
+\subsection{Token Protocol}
+\ifnoexperiments\else\input{experiments/tree-token}\fi
+\subsection{Two-way Token Protocol}
+\ifnoexperiments\else\input{experiments/tree-token-two-way}\fi
+\subsection{The Tree Percolate Protocol}
+\ifnoexperiments\else\input{experiments/tree-percolate}\fi
+\subsection{The Leader Election Protocol}
+\ifnoexperiments\else\input{experiments/tree-leader}\fi
+\subsection{The Tree Arbiter Protocol}
+\ifnoexperiments\else\input{experiments/tree-arbiter}\fi
+\subsection{The IEEE 1394 Tree Identification Protocol}
+\ifnoexperiments\else\input{experiments/tree-firewire}\fi
+
+%% =================================================
+\section{Agreement protocol on a Ring}
+\ifnoexperiments\else\input{experiments/agreement}\fi
+
+%% =================================================
+\newpage
+\section{Critical section guarded by a lock}
+% This example is presented in
+% Section~\ref{section:monotonic:abstraction:applications:pn} (on
+% page~\pageref{section:monotonic:abstraction:applications:pn}).
+\ifnoexperiments\else\input{experiments/pn-cs-lock}\fi
+
+\section{Light Control}
+\ifnoexperiments\else\input{experiments/light-control.tex}\fi
+
+\section{Priority Allocator}
+\ifnoexperiments\else\input{experiments/priority-allocator.tex}\fi
+
+\section{Simple Barrier}
+\ifnoexperiments\else\input{experiments/simple-barrier.tex}\fi
+
+\section{List with Counter Automata}
+\ifnoexperiments\else\input{experiments/list-counter-automata.tex}\fi
+
+%% =================================================
+\section{Michael \& Scott's Lock-Free Queue}
+\ifnoexperiments\else\input{experiments/ms.tex}\fi
+
+\section{Treiber's Lock-Free Stack}
+\ifnoexperiments\else\input{experiments/treiber.tex}\fi
+
+% %% =================================================
+% % Adds back the sections to the Table of Content, in case.
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}

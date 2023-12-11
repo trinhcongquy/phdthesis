@@ -1,0 +1,101 @@
+\index{Percolate}
+
+The protocol~\cite{KMMPS2001} operates on binary trees of processes
+and evaluates the disjunction of the values in the leaves up to the
+root.
+%
+The states are $\set{\s{0}, \s{1}, \s{u}}$.
+%
+Initially, the leaves contain either~\s{0} or~\s{1} and all
+other nodes are labeled as undefined~\s{u}.
+%
+A still undefined inner node will be labeled as~\s{1} if at least one
+of its children contains~\s{1}, and~\s{0} otherwise.
+%
+As an example:
+
+{\noindent\centering%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=10mm,level distance=12mm},
+    level 2/.style={sibling distance=5mm,level distance=12mm},
+    every node/.style={state,state-n,inner sep=2pt,solid},
+    ]
+    \node(t1) {$u$}
+    child {node {$u$}
+      child {node {$0$}}
+      child {node {$0$}}}
+    child {node {$u$}
+      child {node {$1$}}
+      child {node {$1$}}
+    };
+    \node(t2)[xshift=40mm] {$u$}
+    child {node {$0$}
+      child {node {$0$}}
+      child {node {$0$}}}
+    child {node {$1$}
+      child {node {$1$}}
+      child {node {$1$}}
+    };
+    \node(t3)[xshift=80mm] {$1$}
+    child {node {$0$}
+      child {node {$0$}}
+      child {node {$0$}}}
+    child {node {$1$}
+      child {node {$1$}}
+      child {node {$1$}}
+    };
+
+    %% Small step arrows
+    \foreach \f/\t in {1/2,2/3}{ \path (t\f) -- coordinate[midway](t\f\t) (t\t); }
+    \foreach \x in {t12,t23}{ \draw[*->] (\x) ++(-3mm,0) .. controls +(3mm,1mm) .. +(6mm,0); }
+  \end{tikzpicture}
+  \par%
+}
+
+The rules are depicted as follows.
+
+{\noindent\centering%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    
+    \node[solid](p_1){$u/0$}
+    child { node{$0/0$} edge from parent }
+    child { node{$0/0$} edge from parent };
+    
+    \node[right=25mm of p_1](p_2){$u/1$}
+    child { node{$1/1$} edge from parent }
+    child { node{$0/0$} edge from parent };
+    
+    \node[right=25mm of p_2](p_3){$u/1$}
+    child { node{$0/0$} edge from parent }
+    child { node{$1/1$} edge from parent };
+    
+    \node[right=25mm of p_3](p_4){$u/1$}
+    child { node{$1/1$} edge from parent }
+    child { node{$1/1$} edge from parent };
+    
+  \end{tikzpicture}
+  \par%
+}
+
+
+The set of bad constraints \Bad\ is represented by trees where \s{0}
+gets propagated upwards while there is \s{1} below.
+
+{\noindent\centering%
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {$0$} child {node {$1$}} child {edge from parent[draw=none]};
+  \end{tikzpicture}
+  \begin{tikzpicture}[show background rectangle,
+    level 1/.style={sibling distance=15mm,level distance=10mm},
+    every node/.style={state,state-n,inner sep=2pt}
+    ]
+    \node {$0$} child {edge from parent[draw=none]} child {node {$1$}};
+  \end{tikzpicture}
+  \par%
+}

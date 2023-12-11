@@ -1,0 +1,165 @@
+\begin{tikzpicture}[
+  x={(0.84pt,-0.54pt)}, y={(0pt,-0.8pt)}, z={(0.84pt,0.54pt)},
+  project/.style={fill=#1,draw=black,very thin,opacity=0.6},
+  start chain=ab going right,
+  start chain=ac going right,
+  start chain=bc going right,
+  start chain=abc going right,
+  start chain=bcd going right,
+  start chain=abcd going right,
+  node distance=2pt,
+  ]
+
+  %% To fix the coordinate. I'll cheat and redraw them (see below)
+  \begin{scope}[every node/.append style={state,state-n,scale=2}]
+    \node[on chain=ab](ab-a) at (260,350,200) {a};
+    \node[on chain=ab](ab-b) {b};
+    
+    \node[on chain=ac](ac-a) at (280,430,200) {a};
+    \node[on chain=ac](ac-c) {c};
+    
+    \node[on chain=bc](bc-b) at (400,420,200) {b};
+    \node[on chain=bc](bc-c) {c};
+    
+    \node[on chain=abc](abc-a) at (350,300,300) {a};
+    \node[on chain=abc](abc-b) {b};
+    \node[on chain=abc](abc-c) {c};
+
+    \node[on chain=bcd](bcd-b) at (450,400,300) {b};
+    \node[on chain=bcd](bcd-c) {c};
+    \node[on chain=bcd](bcd-d) {d};
+
+    \node[on chain=abcd](abcd-a) at (410,250,400) {a};
+    \node[on chain=abcd](abcd-b) {b};
+    \node[on chain=abcd](abcd-c) {c};
+    \node[on chain=abcd](abcd-d) {d};
+  \end{scope}
+
+  %% R4
+  \def\mypath{(353.5530,99.1820,400) .. controls (420.0220,86.4540,400) and
+    (435.5780,18.5720,400) .. (516.1880,92.1110,400) .. controls (596.7980,165.6500,400) and
+    (698.6220,202.4200,400) .. (704.2780,249.0890,400) .. controls (709.9360,295.7580,400) and
+    (684.4790,288.6870,400) .. (685.8930,339.5990,400) .. controls (687.3070,390.5100,400) and
+    (688.7210,391.9250,400) .. (691.5510,432.9370,400) .. controls (694.3790,473.9500,400) and
+    (673.0350,448.9910,400) .. (654.6510,494.2460,400) .. controls (636.2660,539.5000,400) and
+    (651.1370,525.1840,400) .. (563.4560,539.3270,400) .. controls (475.7740,553.4700,400) and
+    (528.8880,577.4110,400) .. (459.2200,577.7270,400) .. controls (355.7520,578.1960,400) and
+    (396.4810,598.6140,400) .. (324.3560,578.8150,400) .. controls (252.2310,559.0160,400) and
+    (258.3880,576.2450,400) .. (213.1330,559.2740,400) .. controls (167.8780,542.3030,400) and
+    (152.4790,551.3740,400) .. (152.4790,496.2200,400) .. controls (152.4790,441.0660,400) and
+    (181.0210,481.0210,400) .. (154.1510,417.3810,400) .. controls (127.2810,353.7410,400) and
+    (120.2100,406.0680,400) .. (114.5530,336.7720,400) .. controls (108.8960,267.4750,400) and
+    (98.9970,275.9600,400) .. (123.0380,230.7060,400) .. controls (147.0790,185.4520,400) and
+    (125.8660,188.2800,400) .. (199.4060,155.7530,400) .. controls (272.9430,123.2240,400) and
+    (353.5530,99.1820,400) .. (353.5530,99.1820,400) -- (353.5530,99.1820,400) -- cycle}
+  \path[fill=green!30,drop shadow] \mypath;
+  % \pattern[pattern=north east lines] \mypath;
+
+  \begin{scope}[project/.append style={fill=green!50}]
+    %% ABC <-> ABCD
+    \path[project] (abc-a.south west) .. controls +(0,0,0) and +(0,40pt,0) .. (abcd-a.south west) --
+    (abcd-c.south east) .. controls +(0,0,0) and +(0,40pt,0) .. (abc-c.south east) -- cycle;
+
+    %% BCD <-> ABCD
+    \path[project] (bcd-b.south west) .. controls +(0,0,0) and +(20pt,200pt,0) .. (abcd-b.south west) --
+    (abcd-d.south east) .. controls +(20pt,200pt,0) and +(0,0,0) .. (bcd-d.south east) -- cycle;
+  \end{scope}
+
+  %% R3
+  \path[fill=yellow,drop shadow,opacity=0.6]
+  (154.1490,264.7780,300) .. controls
+  (169.7050,227.7040,300) and (173.9480,187.8830,300) .. (210.7170,179.6450,300) .. controls
+  (247.4870,171.4060,300) and (296.9840,149.4370,300) .. (313.9550,127.4660,300) .. controls
+  (330.9250,105.4960,300) and (339.4110,105.4960,300) .. (397.3930,130.2130,300) .. controls
+  (455.3760,154.9290,300) and (538.8140,179.6450,300) .. (541.6420,222.2120,300) .. controls
+  (544.4720,264.7780,300) and (521.8430,270.2710,300) .. (560.0270,301.8520,300) .. controls
+  (598.2110,333.4340,300) and (596.7970,286.7480,300) .. (632.1520,363.6420,300) .. controls
+  (667.5070,440.5370,300) and (576.9980,496.8340,300) .. (569.9270,509.1930,300) .. controls
+  (562.8570,521.5500,300) and (560.9270,504.5280,300) .. (537.9270,519.1320,300) .. controls
+  (525.1750,527.2280,300) and (536.2280,531.7200,300) .. (502.2860,531.7200,300) .. controls
+  (468.3470,531.7200,300) and (459.6180,550.3860,300) .. (434.1610,539.4000,300) .. controls
+  (408.7060,528.4160,300) and (400.2210,513.3120,300) .. (362.0370,518.8040,300) .. controls
+  (323.8530,524.2960,300) and (282.8410,525.6700,300) .. (258.8000,525.6700,300) .. controls
+  (234.7580,525.6700,300) and (202.2310,546.2650,300) .. (193.7460,495.4610,300) .. controls
+  (185.2610,444.6550,300) and (186.6750,428.1790,300) .. (185.2610,404.8360,300) .. controls
+  (183.8470,381.4920,300) and (159.8050,316.9560,300) .. (156.9770,300.4790,300) .. controls
+  (154.1490,284.0010,300) and (154.1490,264.7780,300) .. (154.1490,264.7780,300) --
+  (154.1490,264.7780,300) -- cycle;
+
+  \begin{scope}[project/.append style={fill=red!20}]
+    %% AB <-> ABC
+    \path[project] (ab-a.north west) .. controls +(0,-100pt,0) and +(0,-100pt,0) .. (abc-a.north west) --
+    (abc-a.north east) .. controls +(0,-100pt,0) and +(0,-100pt,0) .. (ab-a.north east) -- cycle;
+    \path[project=red!20] (ab-b.north west) .. controls +(0,-100pt,0) and +(0,-100pt,0) .. (abc-b.north west) --
+    (abc-b.north east) .. controls +(0,-100pt,0) and +(0,-100pt,0) .. (ab-b.north east) -- cycle;
+
+    %% BC <-> ABC
+    \path[project] (bc-b.north west) .. controls +(0,-100pt,0) and +(0,100pt,0) .. (abc-b.south west) --
+    (abc-b.south east) .. controls +(0,100pt,0) and +(0,-100pt,0) .. (bc-b.south east) -- cycle;
+    \path[project=red!20] (bc-c.north west) .. controls +(0,-100pt,0) and +(0,100pt,0) .. (abc-c.south west) --
+    (abc-c.south east) .. controls +(0,100pt,0) and +(0,-100pt,0) .. (bc-c.south east) -- cycle;
+
+    %% AC <-> ABC
+    \path[project] (ac-a.south west) .. controls +(0,0,0) and +(0,50pt,0) .. (abc-a.south west) --
+    (abc-a.south east) .. controls +(0,50pt,0) and +(0,0,0) .. (ac-a.south east) -- cycle;
+    \path[project=red!20] (ac-c.south west) .. controls +(0,0,0) and +(0,50pt,0) .. (abc-c.south west) --
+    (abc-c.south east) .. controls +(0,50pt,0) and +(0,0,0) .. (ac-c.south east) -- cycle;
+  \end{scope}
+
+  \begin{scope}[project/.append style={fill=purple!50}]
+    %% BC <-> BCD
+    \path[project] (bc-b.north west) .. controls +(0,100pt,0) and +(0,100pt,0) .. (bcd-b.north west) --
+    (bcd-b.north east) .. controls +(0,100pt,0) and +(0,100pt,0) .. (bc-b.north east) -- cycle;
+    \path[project] (bc-c.north west) .. controls +(0,100pt,0) and +(0,100pt,0) .. (bcd-c.north west) --
+    (bcd-c.north east) .. controls +(0,100pt,0) and +(0,100pt,0) .. (bc-c.north east) -- cycle;
+
+    %% BCD <-> ...
+    \path (bcd-c.south west) ++(0,50pt,0) coordinate(p-1) -- ++(-20pt,50pt,0) coordinate(p-2);
+    \path (bcd-c.south east) ++(0,50pt,0) coordinate(p-3) -- ++(-20pt,50pt,0) coordinate(p-4);
+    \path[project,draw=none] (p-3) -- (bcd-c.south east) -- (bcd-c.south west) -- (p-1) to[out=-90,in=60] (p-2) -- (p-4) to[out=60,in=-90] (p-3);
+    \path[draw=black,very thin] (p-3) -- (bcd-c.south east) -- (bcd-c.south west) -- (p-1);
+    \path[draw=black,very thin,dashed] (p-1) to[out=-90,in=60] (p-2) (p-3) to[out=-90,in=60] (p-4);
+
+    \path (bcd-d.south west) ++(0,50pt,0) coordinate(p-1) -- ++(-20pt,50pt,0) coordinate(p-2);
+    \path (bcd-d.south east) ++(0,50pt,0) coordinate(p-3) -- ++(-20pt,50pt,0) coordinate(p-4);
+    \path[project,draw=none] (p-3) -- (bcd-d.south east) -- (bcd-d.south west) -- (p-1) to[out=-90,in=60] (p-2) -- (p-4) to[out=60,in=-90] (p-3);
+    \path[draw=black,very thin] (p-3) -- (bcd-d.south east) -- (bcd-d.south west) -- (p-1);
+    \path[draw=black,very thin,dashed] (p-1) to[out=-90,in=60] (p-2) (p-3) to[out=-90,in=60] (p-4);
+  \end{scope}
+
+  %% R2
+  \path[fill=blue!50,opacity=0.6,drop shadow]
+  (203.6467,222.2188,200) .. controls (229.1026,198.1772,200) and (231.9310,193.9346,200) ..
+  (267.2864,203.8340,200) .. controls (302.6417,213.7335,200) and (295.5706,226.4615,200) ..
+  (346.4823,217.9762,200) .. controls (397.3940,209.4909,200) and (398.8082,185.4493,200) ..
+  (434.1636,210.9051,200) .. controls (469.5189,236.3610,200) and (492.1463,244.8462,200) ..
+  (496.3890,281.6158,200) .. controls (500.6316,318.3853,200) and (475.1758,319.7996,200) ..
+  (511.9453,359.3975,200) .. controls (548.7149,398.9955,200) and (562.8570,404.6524,200) ..
+  (568.5139,435.7651,200) .. controls (574.1707,466.8778,200) and (605.2834,486.6768,200) ..
+  (551.5433,499.4047,200) .. controls (497.8032,512.1326,200) and (476.5900,514.9610,200) ..
+  (428.5067,512.1326,200) .. controls (380.4235,509.3042,200) and (364.8671,505.0615,200) ..
+  (340.8255,505.0615,200) .. controls (316.7838,505.0615,200) and (294.1564,507.8900,200) ..
+  (275.7716,510.7184,200) .. controls (257.3869,513.5468,200) and (255.9727,526.2747,200) ..
+  (240.4163,502.2331,200) .. controls (224.8600,478.1915,200) and (202.2325,465.4635,200) ..
+  (210.7178,430.1082,200) .. controls (219.2031,394.7529,200) and (189.5046,382.0249,200) ..
+  (182.4336,355.1549,200) .. controls (175.3625,328.2848,200) and (148.4924,278.7874,200) ..
+  (173.9483,251.9173,200) .. controls (199.4041,225.0472,200) and (203.6468,222.2188,200) ..
+  (203.6468,222.2188,200) -- cycle;
+
+  %% Redrawing the nodes
+  \foreach \n/\v in {
+    a/ab, b/ab,
+    a/ac, c/ac,
+    b/bc, c/bc,
+    a/abc, b/abc, c/abc,
+    b/bcd, c/bcd, d/bcd,
+    a/abcd, b/abcd, c/abcd, d/abcd%
+  }{
+    \node[state,state-n,scale=2, drop shadow] at (\v-\n) {\n};
+  }
+
+  \node[scale=2] at (200,250,200){$\Reach_{2}$};
+  \node[scale=2] at (200,220,300){$\Reach_{3}$};
+  \node[scale=2] at (200,200,400){$\Reach_{4}$};
+
+\end{tikzpicture}

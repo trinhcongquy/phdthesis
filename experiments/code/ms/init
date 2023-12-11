@@ -1,0 +1,6 @@
+void initialize() {
+  node* n := new node(); 
+  n\textit[$\to$]next.ptr := NULL;
+  Head.ptr := n; 
+  Tail.ptr := n;
+}

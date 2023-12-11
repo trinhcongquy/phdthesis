@@ -1,0 +1,74 @@
+\label{MS:lock:free:queue}
+%
+We show a version of the concurrent queue by Michael and
+Scott~\cite{MS:QueueAlgorithms}.
+%
+The program represents a queue as a linked list from the node pointed
+to by \prgcode{Head} to a node that is either pointed by
+\prgcode{Tail} or by \prgcode{Tail}'s successor.
+%
+The global variable \prgcode{Head} always points to a dummy cell whose
+successor, if any, stores the head of the queue.
+%
+In the absence of garbage collection, the program must handle the ABA
+problem~\cite{ABA:1983,ABA:Wikipedia} where a thread mistakenly
+assumes that a globally accessible pointer has not been changed since
+it previously accessed that pointer.
+%
+Each pointer is therefore equipped with an additional \prgcode{age}
+field, which is incremented whenever the pointer is assigned a new
+value.
+
+The queue can be accessed by an arbitrary number of threads, either by
+an enqueue method \prgcode{enq(d)}, which inserts a cell containing
+the data value \prgcode{d} at the tail, or by a dequeue method
+\prgcode{deq(d)} which returns \prgcode{empty} if the queue is empty,
+and otherwise advances \prgcode{Head}, deallocates the previous dummy
+cell and returns the data value stored in the new dummy cell.
+%
+The algorithm uses the atomic compare-and-swap (CAS) operation.
+%
+For example, the command %
+\prgcode{CAS(\&Head, head, $\langle$next.ptr,head.age+1$\rangle$)} at
+line~\ref{ms:code:line:deq} of the \prgcode{deq} method checks whether
+the extended pointer \prgcode{Head} equals the extended pointer
+\prgcode{head} (meaning that both fields \prgcode{ptr} and
+\prgcode{age} must agree).
+%
+If not, it returns \prgcode{FALSE}. Otherwise it returns
+\prgcode{TRUE} after assigning %
+\prgcode{$\langle$next.ptr, head.age+1$\rangle$} to \prgcode{Head}.
+
+The linearization points~\commitpoint{} %
+are at line~\ref{ms:code:line:enq}, \ref{ms:code:line:empty} and \ref{ms:code:line:deq}.
+%
+For instance, line~\ref{ms:code:line:enq} of the \prgcode{enq} method
+called with data value \prgcode{d} is instrumented to generate the
+abstract event \s{\prgcode{enq(d)}} when the \prgcode{CAS} command
+succeeds;
+%
+no abstract event is generated when the \prgcode{CAS} fails.
+%
+Generation of abstract events can be conditional.
+%
+For instance, line~\ref{ms:code:line:empty} of the \prgcode{deq}
+method is instrumented to generate \s{\prgcode{deq(empty)}} when the
+value assigned to \prgcode{next} satisfies \prgcode{next.ptr = NULL}
+(i.e.\ it will cause the method to return \prgcode{empty} at
+line~\ref{ms:code:line:emptyreturn}).
+
+{\noindent\centering
+\begin{tikzpicture}
+        
+  \node[codeblock] (init) at (current bounding box.north west) {\begingroup\scriptsize\VerbatimInput[numbers=none]{experiments/code/ms/init}\endgroup};
+  \node[codeblock] (enq) at (init.south west) {\begingroup\scriptsize\VerbatimInput{experiments/code/ms/enq}\endgroup};
+  \node[codeblock] (struct) at (init.north east) {\begingroup\scriptsize\VerbatimInput[numbers=none]{experiments/code/ms/struct}\endgroup};
+  \node[codeblock] (deq) at (struct.south west) {\begingroup\scriptsize\VerbatimInput[firstnumber=17]{experiments/code/ms/deq}\endgroup};
+
+  \node[property,rotate=-10,scale=0.7] at ([shift={(-0.5,-0.2)}]init.north east) {\sc Init};
+  \node[property,rotate=-10,scale=0.7] at ([shift={(-0.5,-0.2)}]enq.north east) {\sc Enq};
+  \node[property,rotate=-10,scale=0.7] at ([shift={(-0.5,-0.2)}]deq.north east) {\sc Deq};
+
+\end{tikzpicture}%
+\par%
+}

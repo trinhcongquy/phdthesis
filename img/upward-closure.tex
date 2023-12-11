@@ -1,0 +1,13 @@
+\begin{tikzpicture}[show background rectangle,
+  state/.append style={minimum size=2ex,font=\scriptsize},%
+  ]
+
+  \node(c){$c$};
+  \node[above=7mm of c](u){$u$};
+  \path (c) -- node[midway,rotate=90]{$\subword$} (u);
+
+  \begin{pgfonlayer}{my background}
+    \draw[black, very thin, fill=white] ([shift={(-0.7,0.1)}]u.north) parabola[parabola height=-1.7cm,bend pos=0.5] ([shift={(0.7,0.1)}]u.north);
+  \end{pgfonlayer}
+
+\end{tikzpicture}

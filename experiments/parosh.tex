@@ -1,0 +1,75 @@
+This protocol ensures mutual exclusion between processes.
+Each process has five local states %
+\w[w]{0},%
+\w[w]{1},%
+\w[w]{2},%
+\w[w]{3},%
+\w[w]{4} %
+and is initially in state\,\w[i]{0}. %
+
+\noindent%
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \begin{tikzpicture}[%scale=0.8,
+    % mystate/.style={circle,draw=none,fill=white,thick,inner sep=1pt,scale=0.8},
+    edge/.style={->,>=stealth',thin},%,shorten >=1pt,semithick},
+    trlabel/.style={midway,anchor=east,scale=0.9,thick},
+    guard/.style={state,state-n,scale=0.8,thin,circle}
+    ]
+    
+    \node[state,state-i] (n0) at (0,0)     {0};
+    \node[state,state-n] (n1) at (1,1.2)   {1};
+    \node[state,state-n] (n2) at (2.4,1.2) {2};
+    \node[state,state-n] (n3) at (3.4,0)   {3};
+    \node[state,state-b] (n4) at (1.7,0)   {4};
+    
+    \draw [edge,->] (n0) to[out=90,in=-180] node[trlabel,above left,pos=0.25](l01){$\forall$} (n1);
+    \draw [edge,->] (n1) -- (n2);
+    \draw [edge,->] (n2) to[out=0,in=90] node[trlabel,above right,pos=0.7](l23){$\forall_L$} (n3);
+    \draw [edge,->] (n3) -- node[trlabel,above,pos=0.6](l34){$\exists$} (n4);
+    \draw [edge,->] (n4) -- (n0);
+    \draw [edge,->] (n3)  ..controls +(-135:8mm) and +(-45:8mm).. (n0);
+
+    %% 0 -> 1 forall 0,1,4
+    \node[guard,state-i,right=-0.5mm of l01]{0};
+    \node[guard,right=1.5mm of l01]{1};
+    \node[guard,state-b,right=3.5mm of l01]{4};
+    %% 2 -> 3 forall_left 0
+    \node[guard,state-i,right=0mm of l23]{0};
+    %% 3 -> 4 exists 2
+    \node[guard,right=-0.5mm of l34]{2};
+  \end{tikzpicture}
+  % \caption{State diagram (per process).}
+  % \label{figure:parosh}
+\end{wrapfigure}
+%
+A process in the critical section is at state\,\w[b]{4}. %
+The set of bad configurations contains exactly configurations with at
+least two occurrences of state\,\w[b]{4}.
+%
+Processes move from state~\w[w]{0} to~\w[w]{1}, and
+then~\w[w]{2}.
+% 
+Once the first process is in state~\w[w]{2}, it ``closes the door'' on
+the processes which are still in~\w[w]{0}. They can no longer leave
+state~\w[w]{0} until the door is opened again (when no process is in
+state~\w[w]{2} or~\w[w]{3}). %
+%
+Moreover, a process is allowed to cross from state~\w[w]{3}
+to~\w[w]{4} only if there is at least one process still in
+state~\w[w]{2} (i.e., the door is still closed on the processes in
+state~\w[w]{0}). %
+%
+This prevents a process to first reach state~\w[w]{4} along with
+a process to its left starting to move from~\w[w]{0} all the way
+to state~\w[w]{4} (thus violating mutual exclusion). %
+From the set of processes which have left state~\w[w]{0} (and
+which are now in state~\w[w]{1} or~\w[w]{2}), the leftmost
+process has the highest priority and it is encoded in the global
+condition: a process may move from \w[w]{2} to~\w[w]{3}
+only if all processes on its left are in state~\w[w]{0}.
+%
+
+We have shown in Paper~\ref{paper:SAS14}, using the view abstraction
+method from Section~\ref{chapter:view:abstraction}, that this
+protocol is not safe in the case of non-atomic global transitions.

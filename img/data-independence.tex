@@ -1,0 +1,121 @@
+\begin{tikzpicture}[
+  framed,
+  stackdata/.style={scale=0.6,above,circle,minimum size=2ex,inner sep=1pt},
+  concretedata/.style={stackdata,densely dotted},
+  abstractdata/.style={stackdata,thin,draw=black!50!white,fill=white},
+  datalink/.style={shorten <=2pt,black!50!white,dotted,thick},%densely dotted
+  cubeface/.style={thick,draw=black,fill=#1,opacity=0.8,rounded corners=1pt},
+  ]
+
+  \begin{scope}[
+    % x = {({sin(-120)*1cm},{cos(-120)*1cm})},
+    % y = {({cos(-30)*1cm},{sin(-30)*1cm})},
+    % z = {(0cm,1cm)}  
+    x = {({sin(-140)*1cm},{cos(-140)*1cm})},
+    y = {({cos(-5)*1cm},{sin(-5)*1cm})},
+    z = {(0cm,1cm)}  
+    % x = {({cos(-120)*1cm},{sin(-120)*1cm})},
+    % y = {({cos(-30)*1cm},{sin(-30)*1cm})},
+    % z = {({cos(80)*1cm},{sin(80)*1cm})}
+    ]  
+
+    %% Input
+    \draw[thick,-(] (0.5,-3,0.5) -- (0.5,0,0.5)
+    node[concretedata,pos=0](cd-a){a}
+    node[concretedata,pos=0.1](cd-b){b}
+    node[concretedata,pos=0.2,draw=red,thick](cd-c){c}
+    node[concretedata,pos=0.3](cd-d){d}
+    node[concretedata,pos=0.4](cd-e){e}
+    node[concretedata,pos=0.5](cd-f){f}
+    node[concretedata,pos=0.6,draw=blue,thick](cd-g){g}
+    node[concretedata,pos=0.7](cd-h){h}
+    node[concretedata,pos=0.8](cd-i){i}
+    ;
+ 
+    %% Cube
+    \draw[thick,dashed] (0,0,0) -- (1,0,0) (0,0,0) -- (0,1,0) (0,0,0) -- (0,0,1);
+    \filldraw[cubeface=black!60!white] (1,0,0) -- (1,1,0) -- (1,1,1) -- (1,0,1) -- cycle;
+    \filldraw[cubeface=black!60!white] (1,1,0) -- (0,1,0) -- (0,1,1) -- (1,1,1) -- cycle;
+    \filldraw[cubeface=black!60!white] (0,0,1) -- (1,0,1) -- (1,1,1) -- (0,1,1) -- cycle;
+
+    \node[property,below=2pt,xshift=2.8ex,rotate=5,yslant=-0.17] at (1,0,0){\tiny Differentiated Stack};
+
+    \draw[thick,-(] (0.5,4,0.5) -- (0.5,1,0.5)
+    node[concretedata,pos=0](cd-a'){a}
+    node[concretedata,pos=0.1](cd-b'){b}
+    node[concretedata,pos=0.2,draw=red,thick](cd-c'){c}
+    node[concretedata,pos=0.3](cd-d'){d}
+    node[concretedata,pos=0.4](cd-e'){e}
+    node[concretedata,pos=0.5](cd-f'){f}
+    node[concretedata,pos=0.6,draw=blue,thick](cd-g'){g}
+    node[concretedata,pos=0.7](cd-h'){h}
+    node[concretedata,pos=0.8](cd-i'){i}
+    ;
+  \end{scope} 
+
+  \begin{scope}[yshift=-3cm,
+    % x = {({sin(-120)*1cm},{cos(-120)*1cm})},
+    % y = {({cos(-30)*1cm},{sin(-30)*1cm})},
+    % z = {(0cm,1cm)}  
+    x = {({sin(-150)*1cm},{cos(-150)*1cm})},
+    y = {({cos(-10)*1cm},{sin(-10)*1cm})},
+    z = {(0cm,1cm)}  
+    % x = {({cos(-120)*1cm},{sin(-120)*1cm})},
+    % y = {({cos(-30)*1cm},{sin(-30)*1cm})},
+    % z = {({cos(80)*1cm},{sin(80)*1cm})}
+    ]  
+
+
+    %% Input
+    \draw[thick,-(] (0.5,-3,0.5) -- (0.5,0,0.5)
+    node[abstractdata,pos=0](ad-a){}
+    node[abstractdata,pos=0.1](ad-b){}
+    node[abstractdata,pos=0.2,fill=red](ad-c){}
+    node[abstractdata,pos=0.3](ad-d){}
+    node[abstractdata,pos=0.4](ad-e){}
+    node[abstractdata,pos=0.5](ad-f){}
+    node[abstractdata,pos=0.6,fill=blue](ad-g){}
+    node[abstractdata,pos=0.7](ad-h){}
+    node[abstractdata,pos=0.8](ad-i){}
+    ;
+ 
+    %% Cube
+    \draw[thick,dashed] (0,0,0) -- (1,0,0) (0,0,0) -- (0,1,0) (0,0,0) -- (0,0,1);
+    \filldraw[cubeface=blue!60!red] (1,0,0) -- (1,1,0) -- (1,1,1) -- (1,0,1) -- cycle;
+    \filldraw[cubeface=blue!60!red] (1,1,0) -- (0,1,0) -- (0,1,1) -- (1,1,1) -- cycle;
+    \filldraw[cubeface=blue!60!red] (0,0,1) -- (1,0,1) -- (1,1,1) -- (0,1,1) -- cycle;
+    
+    \node[property,xshift=3ex,below=1pt,rotate=5,yslant=-0.26] at (1,0,-0.1){\tiny Abstract Stack};
+
+    \draw[thick,-(] (0.5,4,0.5) -- (0.5,1,0.5)
+    node[abstractdata,pos=0](ad-a'){}
+    node[abstractdata,pos=0.1](ad-b'){}
+    node[abstractdata,pos=0.2,fill=red](ad-c'){}
+    node[abstractdata,pos=0.3](ad-d'){}
+    node[abstractdata,pos=0.4](ad-e'){}
+    node[abstractdata,pos=0.5](ad-f'){}
+    node[abstractdata,pos=0.6,fill=blue](ad-g'){}
+    node[abstractdata,pos=0.7](ad-h'){}
+    node[abstractdata,pos=0.8](ad-i'){}
+    ;
+  \end{scope} 
+
+
+  \begin{pgfonlayer}{my background}
+    \foreach \letter in {a,b,d,e,f,h,i,a',b',d',e',f',h',i'}{ \draw[datalink] (cd-\letter) -- (ad-\letter); }
+    \draw[datalink,red] (cd-c) -- (ad-c);
+    \draw[datalink,red] (cd-c') -- (ad-c');
+    \draw[datalink,blue] (cd-g) -- (ad-g);
+    \draw[datalink,blue] (cd-g') -- (ad-g');
+  \end{pgfonlayer}
+  
+
+  \path (current bounding box.south west) ++(right:10pt)
+  node[abstractdata,scale=0.6](white){}
+  node[right=0pt of white]{\tiny not important}
+  node[abstractdata,fill=blue,above=2pt of white,scale=0.6](blue){}
+  node[abstractdata,fill=red,scale=0.6,left=1pt of blue](red){}
+  node[right=0pt of blue](important){\tiny important}
+  ;
+
+\end{tikzpicture}

@@ -1,0 +1,2 @@
+add(e):local p, c, n, r
+ (p,c) := locate(e); if (c.val <> e)   n := new Node(0,e,c,false);   p.next := n;   r := true; else r := false; unlock(p); unlock(c); return r;

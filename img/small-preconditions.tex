@@ -1,0 +1,71 @@
+\begin{tikzpicture}[show background rectangle,
+  %scale=0.5,
+  %state/.append style={semithick}
+  node distance=3mm,
+  ]
+
+  \node[state,state-n](n0){};
+  \node[state,state-n,right=of n0](n1){};
+  \node[state,state-n,right=of n1](n2){};
+  \node[state,state-i,right=of n2](n3){$s$};
+  \node[state,state-n,right=of n3](n4){};
+  \node[state,state-n,right=of n4](n5){};
+  \node[state,state-n,right=of n5](n6){};
+  \node[state,state-n,right=of n6](n7){};
+  \node[state,state-n,right=of n7](n8){};
+  \node[state,state-n,right=of n8](n9){};
+  \node[state,state-witness,right=of n9](n10){$w$};
+
+  \node[state,state-n,left=of n0,scale=0.8](n-1){};
+  \node[state,state-n,left=of n-1,scale=0.6](n-2){};
+  \node[state,state-n,left=of n-2,scale=0.4](n-3){};
+  \node[state,state-n,left=of n-3,scale=0.2](n-4){};
+  \node[state,state-n,left=of n-4,scale=0.1](n-5){};
+
+  \node[state,state-n,right=of n10,scale=0.8](n11){};
+  \node[state,state-n,right=of n11,scale=0.6](n12){};
+  \node[state,state-n,right=of n12,scale=0.4](n13){};
+  \node[state,state-n,right=of n13,scale=0.2](n14){};
+  \node[state,state-n,right=of n14,scale=0.1](n15){};
+
+  \foreach \n in {2,6,7,8}{\node[state,state-n,below=1cm of n\n](m\n){};}
+  \node[state,state-i,below=1cm of n3](m3){$t$};
+
+  \coordinate(a) at (-3,-0.6);
+  \coordinate(b) at (13,0.7);
+  
+  \draw[myedge,->] (n3) -- node[pos=0.55,right](exists){$\exists$} (m3);
+  
+  \node[state,state-witness,right=1pt of exists.east]{$w$};
+
+  \node[scale=0.9,above left=0mm of n2.north west]{$v$};
+  \node[scale=0.9,above left=0mm of m2.north west]{$v'$};
+
+  \begin{pgfonlayer}{my background}
+    \node [fit=(n-5)(n0)(n10)(n15),conf]{};
+    \node [fit=(m2)(m8),view]{};
+
+    %% the extra witness to be included
+    \path[fill=blue!5!white,rounded corners=2pt,draw=gray!50,densely dotted,very thick]%double=white,draw=gray!30]%
+    ([shift={(0,2mm)}]n8.north east) -- ([shift={(2mm,2mm)}]n10.north east) -- %
+    ([shift={(2mm,-2mm)}]n10.south east) -- ([shift={(-2mm,-2mm)}]n10.south west) -- %
+    ([shift={(-2mm,1mm)}]n10.north west) -- ([shift={(0,1mm)}]n8.north west) -- cycle;
+
+    %% the top view
+    \path[double=white,fill=blue!5!white,rounded corners=2pt,draw=gray]%
+    ([shift={(-2mm,2mm)}]n2.north west) -- ([shift={(2mm,3mm)}]n3.north east) -- %
+    ([shift={(-2mm,3mm)}]n6.north west) -- ([shift={(2mm,2mm)}]n8.north east) -- %
+    ([shift={(2mm,-2mm)}]n8.south east) -- ([shift={(-2mm,-2mm)}]n6.south west) -- %
+    ([shift={(-2mm,2mm)}]n6.north west) -- ([shift={(2mm,2mm)}]n3.north east) -- %
+    ([shift={(2mm,-2mm)}]n3.south east) -- ([shift={(-2mm,-2mm)}]n2.south west) -- cycle;
+
+    % %% the bottom view
+    % \path[double=white,fill=blue!5!white,rounded corners=2pt,draw=gray]%
+    % ([shift={(-2mm,2mm)}]m2.north west) -- ([shift={(2mm,3mm)}]m3.north east) -- %
+    % ([shift={(-2mm,3mm)}]m6.north west) -- ([shift={(2mm,2mm)}]m8.north east) -- %
+    % ([shift={(2mm,-2mm)}]m8.south east) -- ([shift={(-2mm,-2mm)}]m6.south west) -- %
+    % ([shift={(-2mm,2mm)}]m6.north west) -- ([shift={(2mm,2mm)}]m3.north east) -- %
+    % ([shift={(2mm,-2mm)}]m3.south east) -- ([shift={(-2mm,-2mm)}]m2.south west) -- cycle;
+  \end{pgfonlayer}
+
+\end{tikzpicture}

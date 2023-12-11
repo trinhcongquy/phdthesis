@@ -1,0 +1,24 @@
+You can find the example for Treiber with Garbage Collection in Section~\ref{section:shape:programs}.
+%
+We present here the code in the case there is no garbage
+collection. As in the previous section, we equip each pointer with an
+\prgcode{age} field in order to avoid the ABA problem.
+
+{\noindent\centering
+  \begin{tikzpicture}[%
+    %codeblock/.append style={text width=48mm},%0.5\textwidth,
+    property/.append style={left,rotate=-10,scale=0.7,shift={(-0.5,-0.7)}},
+    ]
+
+    \node[codeblock] (struct) {\begingroup\scriptsize\VerbatimInput[numbers=none]{experiments/code/treiber/struct}\endgroup};
+    \node[codeblock] (init) at (struct.north east) {\begingroup\scriptsize\VerbatimInput[numbers=none]{experiments/code/treiber/init}\endgroup};
+    \node[codeblock] (pop) at (init.south west) {\begingroup\scriptsize\VerbatimInput[firstnumber=10]{experiments/code/treiber/pop}\endgroup};
+    \node[codeblock,above left] (push) at (pop.south west) {\begingroup\scriptsize\VerbatimInput{experiments/code/treiber/push}\endgroup};
+    
+    \node[property] at (init.north east) {\sc Init};
+    \node[property] at (push.north east) {\sc Push};
+    \node[property] at (pop.north east) {\sc Pop};
+    
+  \end{tikzpicture}
+\par%
+}

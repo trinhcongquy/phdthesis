@@ -1,0 +1,62 @@
+This algorithm could be seen as a version of Szymanski's
+algorithm~\ref{figure:szymanski:implementation}, with transitions that
+are finer-grained in the sense that tests and assignments are split
+over different atomic transitions.
+%
+In this model, the local state of a process ranges over
+state~$\set{\w[w]{1},\ldots,\w[w]{13}}$ where \w[i]{1} is the initial
+state and \w[b]{12} represents the critical section.  Configurations
+not satisfying mutual exclusion are those where at least two processes
+are at state~\w[b]{12}.
+
+{\noindent%
+  %\centering
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[%
+        node distance=25mm,
+        state/.append style={minimum width=6mm}%
+  ]     
+
+  \node[state,state-i] (n1) {1};
+  \node[state,state-n] (n2) [left=10mm of n1] {2};
+  \node[state,state-n] (n3) [left=10mm of n2] {3};
+  \node[state,state-n] (n4) [below=10mm of n3] {4};
+  \node[state,state-n] (n5) [below=10mm of n4] {5};
+  \node[state,state-n] (n6) [right=of n5] {6};
+  \node[state,state-n] (n7) [right=of n6] {7};
+  \node[state,state-n] (n8) [right=of n7] {8};
+  \node[state,state-n] (n9) [right=of n8] {9};
+  \node[state,state-n] (n10) [above=10mm of n9] {10};
+  \node[state,state-n] (n11) [above=10mm of n10] {11};
+  \node[state,state-b] (n12) [left=of n11] {12};
+  \node[state,state-n] (n13) [left=6mm of n12] {13};
+
+   \draw [->,myedge] (n1) -- (n2);
+   \draw [->,myedge] (n2) -- (n3);
+   \draw [->,myedge] (n3) -- node[trlabel,right]{$\forall j\neq i : \set{1,2,3,4,7,8}$} (n4);
+   \draw [->,myedge] (n4) -- (n5);
+   \draw [->,myedge] (n5) -- node[trlabel,above]{$\exists j\neq i : \set{3,4,10-13}$} (n6);
+   \draw [->,myedge] (n6) -- (n7);
+   \draw [->,myedge] (n7) -- node[trlabel,above]{$\exists j\neq i : \set{10-13}$} (n8);
+   \draw [->,myedge] (n8) -- (n9);
+   \draw [->,myedge] (n9) -- (n10);
+   \draw [->,myedge] (n10) -- node[trlabel,left]{$\forall j\neq i: \set{1-4,10-13}$} (n11);
+   \draw [->,myedge] (n11) -- node[trlabel,above]{$\forall j<i: \set{1-4,7,8}$} (n12);
+
+   \draw [->,myedge] (n12) -- (n13);
+   \draw [->,myedge] (n13) -- (n1);
+
+   %\draw [->,myedge] (n5) to[out=-30,in=-150] node[mylabel,above,pos=0.5]{$\forall j\neq i : \set{1,2,5-9}$} (n9);
+   \draw [->,myedge] (n5) ..controls +(-45:10mm) and +(-135:10mm).. (n9) node[trlabel,below,pos=0.5]{$\forall j\neq i : \set{1,2,5-9}$};
+
+\end{tikzpicture}%
+}% End resize
+%\par%
+}
+%\def\initstate{\tikz[baseline=(n.base)]\node[state,fill=green!20,scale=0.7](n){1};}
+%\caption{A pseudocode of the $i$th process of
+%  Gribomont-Zenner's protocol and the corresponding transition rules (in the form of a transition diagram). 
+%  Initially, all processes are in state {\protect\initstate}.
+%}
+%\caption{Transition rules of Gribomont-Zenner's protocol.}
+%

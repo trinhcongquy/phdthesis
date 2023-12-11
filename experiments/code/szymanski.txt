@@ -1,0 +1,17 @@
+@\w[i]{0}@ flag[i] = 1;
+@\w[n]{1}@ for(j=0;j<N;j++){ if(flag[j]$\geq 3$) goto @\w[n]{1}@; }
+@\w[n]{2}@ flag[i] = 3;
+@\w[n]{3}@ for(j=0;j<N;j++){
+@\w[-]{ }@   if (flag[j] = 1) {
+@\w[n]{4}@     flag[i] = 2;
+@\w[n]{5}@     for(j=0;j<N;j++){ if(flag[j]==4) goto @\w[n]{7}@; }
+@\w[n]{6}@     goto @\w[n]{5}@;
+@\w[-]{ }@   }
+@\w[-]{ }@ }
+@\w[n]{7}@ flag[i] = 4;
+@\w[n]{8}@ for(j=0;j<i;j++){ if(flag[j]$\geq 2$) goto @\w[n]{8}@; }
+@\w[b]{9}@ /* Critical Section */
+@\w[b]{10}@ for(j=i+1;j<N;j++){
+@\w[-]{  }@   if(flag[j]==2@$\,\|\,$@flag[j]==3) goto @\w[n]{10}@;
+@\w[-]{  }@ }
+@\w[n]{11}@ flag[i] = 0; goto @\w[i]{0}@;

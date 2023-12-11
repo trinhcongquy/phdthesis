@@ -1,0 +1,27 @@
+  channel values[n](int largest); 
+
+  /* For Process $P_0$: initiates the exchanges */
+@\w[i]{1}@ int val; // Assume val has been initialized
+@\w[n]{2}@ int largest = val; // Initial state
+  // Send val to the next process, P$_1$
+@\w[n]{3}@ send values[1](largest);
+  // Get global largest from P$_{n-1}$
+@\w[n]{4}@ receive values[0](largest);
+  // and pass them on to P$_1$
+@\w[n]{5}@ send values[1](largest); // Finally
+@\w[n]{6}@ // end
+
+  /* For Process $P_{1,...,n-1}$ */
+@\w[i]{10}@ int val; // Assume val has been initialized
+@\w[n]{11}@ int largest; // Initial state
+  // Receive the largest value discovered so far
+@\w[n]{12}@ receive values[i](largest);
+  // then update its val by comparison
+@\w[n]{13}@ if (val > largest){ largest = val; } 
+  // Send the result to the next process
+@\w[n]{14}@ send values[(i+1) %n](largest);      
+  // and then wait to get the global result
+@\w[n]{15}@ receive values[i](largest);          
+@\w[n]{16}@ if (i < n-1) send values[i+1](largest); // Finally
+@\w[n]{17}@ // end
+

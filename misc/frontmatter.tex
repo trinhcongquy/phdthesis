@@ -1,0 +1,39 @@
+%% -------------------------------------
+% Creates the front matter (title page(s), abstract, list of papers)
+%% -------------------------------------
+\frontmatterCS
+ 
+%% Optional dedication
+%\dedication{Pour {\Papa}, {\Maman}, {\Franck} et {\Alexandre}}
+
+%% List of papers
+\input{misc/papers}
+
+\chapter*{Acknowledgements} 
+%\addcontentsline{toc}{chapter}{Acknowledgements\texorpdfstring{~(= Thank you, \Parosh !)}{}}
+\input{misc/acknowledgements}
+
+%% Summaries in Swedish and French
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Summary} 
+\input{misc/summary-sv}
+
+\begingroup
+\clearpage
+% To adjust the indentation in your table of contents, uncomment and enter the widest numbers for each level
+%  E.g.  \settocnumwidth{widest chapter number}{widest section number}{widest subsection number}...{...}
+%  \settocnumwidth{5}{4}{5}{3}{3}{3}
+%\initializepartialtoc
+\tableofcontents
+%\adjusttocfornonnumberedchapters % Adjusting the small ToC counters
+\endgroup
+
+%% Optional tables
+%\listoftables
+%\listoffigures
+
+%\chapter{How to read this thesis}
+%\input{chapters/outline}
+
+\addtocontents{toc}{\protect\hrulefill}
+	

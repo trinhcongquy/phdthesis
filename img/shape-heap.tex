@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+
+  %% ============ Concrete shape ======================
+
+  \foreach \n/\x/\y/\c in {
+    1/0/0/7,%/age: 1,
+    2/1/-3/3,%/age: 17,
+    3/2/-1.5/9,%/age: 8 ,
+    4/3/-4/4,%/age: 32,
+    5/2/-5.5/2,%/age: 21,
+    6/4.3/-5.5/6%/age: 0
+  }{
+    
+    \node(m\n)[minimum width=12mm,minimum height=6mm,inner sep=0pt,
+    fill=blue!20, draw=blue!50, very thick, rounded corners=4pt] at (\x,\y) {};
+    %\node[data=\c,left=1mm of m\n.center]{}; 
+    \node[left=1mm of m\n.center]{\c}; 
+    \coordinate[right=2mm of m\n.center](m\n-n){};
+    \draw[blue!50, very thick] (m\n.north) -- (m\n.south);
+  }
+
+  \node[globals](null) at (3,-7){\#};
+
+  
+  \draw[pointsto] (m1-n) .. controls +(right:20mm) and +(160:30mm) .. (m2);
+  \draw[pointsto] (m2-n) .. controls +(right:20mm) and +(-170:20mm) .. (m3);
+  \draw[pointsto] (m3-n) .. controls +(right:20mm) and +(150:20mm) .. (m4);
+  \draw[pointsto] (m4-n) .. controls +(-15:32mm) and +(160:25mm) .. (m5);
+  \draw[pointsto] (m5-n) .. controls +(right:10mm) and +(120:10mm) .. (null);
+  \draw[pointsto] (m6-n) .. controls +(-10:20mm) and +(50:10mm) .. (null);
+
+
+
+  %% ============ Thread info and variables ===============
+  \matrix[matrix of nodes, below right, nodes={anchor=west}, row sep=3pt] (info) at (5,1) {
+    |[globals,name=T]| Top \\
+    |[fill=t1color,rectangle,inner xsep=2pt, name=thread1]| Thread 1 {\tiny (pc:~\ref{treiber:thread:pop})} \\
+    |[thread1,name=t1]| t \\
+    |[thread1,name=x1]| x \\
+    |[fill=t2color,rectangle,inner xsep=2pt, name=thread2]| Thread 2 {\tiny (pc:~\ref{treiber:thread:push})} \\
+    |[thread2,name=t2]| t \\
+    |[thread2,name=n2]| n \\
+  };
+
+  %% ============ Pointing to ======================
+  \draw[varpointsto] (T) ..controls +(left:30mm) and +(150:30pt).. (m1.150);
+  \draw[varpointsto] (t1) ..controls +(160:35mm) and +(60:10pt).. (m1.140);
+  \draw[varpointsto] (x1) ..controls +(left:30mm) and +(80:35mm).. (m2.140);
+  \draw[varpointsto] (t2) to[out=180,in=90] (m4.140);
+  \draw[varpointsto] (n2) ..controls +(left:15mm) and +(60:15mm).. (m6.140);
+
+\end{tikzpicture}

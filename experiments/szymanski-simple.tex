@@ -1,0 +1,104 @@
+%
+%
+%
+The full version of Szymanski's
+protocol~\cite{Szymanski88,Szymanski90} is shown in
+Section~\ref{section:paramsys}. We present here a compact version
+taken from~\cite{APRXZ01}.
+
+%
+\begin{wrapfigure}{r}[2pt]{0.6\textwidth}
+  \centering
+  \begin{tikzpicture}[scale=0.8,
+    mystate/.style={circle,draw=none,fill=white,thick,inner sep=1pt,scale=0.8},
+    edge/.style={->,>=stealth',thin},%,shorten >=1pt,semithick},
+    mylabel/.style={midway,anchor=east,scale=0.55,thick},
+    myexplanation/.style={black,scale=0.6,text centered,thick},
+    % mybg/.style={rounded corners,draw=none,fill=#1!10!white},
+    mybg/.style={rounded corners,draw=none,shading=axis,left color=white,right color=#1!10!white},
+    mybg/.default=white,
+    % sepbar/.style={draw=white,line width=3pt}
+    sepbar/.style={draw=black!10!white,double=white,thin,double distance=3pt}
+    ]
+    
+    \node (n0) at (-2.5,0) [mystate] {0};
+    \node (n1) at (0,3.25) [mystate] {1};
+    \node (n2) at (0,2.25) [mystate] {2};
+    \node (n3) at (0,1.25) [mystate] {3};
+    \node (n4) at (3,0) [mystate] {4};
+    \node (n5) at (0,-1.25) [mystate] {5};
+    \node (n6) at (0,-2.25) [mystate] {6};
+    \node (n7) at (0,-3.25) [mystate] {7};
+    
+    \begin{pgfonlayer}{background}
+      \def\size{7}
+      \path [draw,mybg=blue] (n1) ++(-1,0.5) rectangle ++(\size,-2.5) ++(0,1.25) coordinate(intention);
+      \path [draw,mybg=red] (n3) ++(-1,0) rectangle ++(\size,-2.5) ++(0,1.25) coordinate(waiting);
+      \path [draw,mybg=green] (n5) ++(-1,0) rectangle ++(\size,-1.5) ++(0,0.75) coordinate(cs);
+      \path [draw,mybg=yellow] (n7) ++(-1,0.5) rectangle ++(\size,-1) ++(0,0.5) coordinate(exit);
+
+      \path [draw,mybg=gray,shading=axis,left color=gray!10!white,right color=white] (n0) ++(-0.5,3.75) rectangle +(2,-7.5);
+
+      \coordinate (doorin) at ([shift={(5.5,0)}]n3);
+      \coordinate (doorout) at ([shift={(5.5,0)}]n5);
+
+      \node at (intention) [myexplanation,left,text width=35mm,inner sep=0pt]{Standing outside the waiting room with the intention to enter, eventually blocking the doorway};
+      \node at (waiting) [myexplanation,left,text width=30mm]{Waiting for the last one to enter};
+      \node at (cs) [myexplanation,left,text width=30mm]{Critical Section};
+      \node at (exit) [myexplanation,left,text width=5cm]{Emptying the waiting room and reopening the entry door};
+      \node (nocs) at (n0) [myexplanation,right,text width=15mm]{Non critical work};
+
+      \node (doorinText) at (doorin) [myexplanation,anchor=east,fill=white,rounded corners,inner xsep=2mm,draw=black!10!white]{Entry Door};
+      \node (dooroutText) at (doorout) [myexplanation,anchor=east,fill=white,rounded corners,inner xsep=2mm,draw=black!10!white]{Exit Door};
+      \draw [sepbar] (doorinText.west) ++(1pt,0) -- +(-3.65,0);
+      \draw [sepbar] (dooroutText.west) ++(1pt,0) -- +(-3.8,0);
+      
+    \end{pgfonlayer}
+
+    \draw [edge] (n0) -- +(0,3) to[out=90,in=90] (n1);
+    \draw [edge] (n1) -- node[mylabel,right]{$\forall j\neq i : \set{0,1,2,4}$} (n2);
+    \draw [edge] (n2) -- (n3);
+    \draw [edge] (n3) to[out=0,in=90] node[mylabel,below left,swap,pos=0.6]{$\exists j\neq i : \set{1,2}$} (n4);
+    \draw [edge] (n4) to[out=-90,in=0] node[mylabel,above left,swap,pos=0.4]{$\exists j\neq i : \set{5,6,7}$} (n5);
+    \draw [edge] (n3) -- node[mylabel,right]{\begin{tabular}{c}$\forall j\neq i :$\\$\set{0,3,4,5,6,7}$\end{tabular}} (n5);
+    \draw [edge] (n5) -- node[mylabel,right]{$\forall j<i : \set{0,1,2}$} (n6);
+    \draw [edge] (n6) -- (n7);
+    \draw [edge,<-] (n0) -- +(0,-3) to[out=-90,in=-90] node[mylabel,below right]{$\forall j>i : \set{0,1,2,5,6,7}$} (n7);
+
+  \end{tikzpicture}
+  \caption{Szymanski's protocol as a transition system. States
+    correspond to program locations.}
+  %\label{figure:SzymanskiTS}
+\end{wrapfigure}
+%
+The protocol ensures exclusive access to a shared resource in a system
+consisting of an unbounded number of processes organized in an array.
+%
+The transition diagram for the $i$th process is given in
+Fig.~\ref{figure:SzymanskiTS}.
+%
+The protocol implements a waiting room with two doors. %
+Processes intending to access the shared resource gather in the
+waiting room.
+%
+The last one to enter closes the entry door and opens the exit door.
+%
+Then, processes access the resource one by one.
+%
+%
+When all processes have left the waiting room, the exit door closes
+and the entry door reopens.
+%
+A process may perform {\it local} transitions in which
+it moves independently of the other processes,
+or transitions that are guarded by {\it existential} or 
+{\it universal} conditions on the states of the other processes. 
+%
+In the latter case, the guards may be chosen to refer only to
+processes on the left or on the right of the current process.
+%
+Our aim is to prove correctness of the system regardless of the number
+of processes and check that the protocol guarantees exclusive access
+to the shared resource. A configuration $c$ is considered to be
+\emph{bad} if it contains two occurrences of state $6$, ie.\
+$66\subword c$. Initially, all processes are in state $0$.

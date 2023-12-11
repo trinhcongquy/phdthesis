@@ -1,0 +1,97 @@
+\begin{figure}
+\begin{tikzpicture}[]
+
+
+\node[rounded corners,draw = orange,name=cell1,minimum width=24pt, minimum height=20pt]{};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d1] at (cell1.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8] at ($(cell1.south west)+(0.5pt,1pt)$){{--$\infty$}};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell1.north){\cross};
+\node[draw=cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell1.south){\cross};
+\node[name=succ1,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell1.east)+(-4pt,0pt)$) {};
+\node[anchor=north,font=\tiny,align=center] at ($(cell1.south)+(0pt,2pt)$) {{\tt head}};
+
+\node[rounded corners,draw = orange,name=cell2,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell1.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d2] at (cell2.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt] at (cell2.south west){$3$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell2.north){\cross};
+\node[draw=cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell2.south){\tick};
+\node[name=succ2,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell2.east)+(-4pt,0pt)$) {};
+\draw[->] (succ1) -- (cell2);
+%\draw[->,dotted,line width=1pt,color=blue,out=90,in=120] ($(d1.north)+(0pt,0pt)$) to ($(d2.north west)+(1pt,-1pt)$);
+
+\node[anchor=north,font=\tiny,align=center] at ($(cell2.south)+(0pt,2pt)$) {$\tuple{\thread_{\tt 1},{\tt p}}$\\$\tuple{\thread_{\tt 2},{\tt p}}$};
+
+%\node[anchor=north,font=\tiny,align=center] at ($(cell2.south)+(0pt,2pt)$) {$\tuple{a,b}$};
+
+
+\node[rounded corners,draw = orange,name=cell3,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell2.east)+(10pt,20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d3] at (cell3.north west){$\mkadata1$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d3a] at (cell3.south west){$4$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell3.north){\cross};
+\node[draw = cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell3.south){\cross};
+\node[name=succ3,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell3.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ2) to (cell3.west);
+%\draw[->,dotted,line width=1pt,color=blue,out=60,in=180] ($(d2.north)+(3pt,0pt)$) to ($(d3.west)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell3.north)+(0pt,-2pt)$) {$\tuple{\thread_{\tt 2},{\tt n}}$};
+
+
+
+\node[rounded corners,draw = orange,name=cell4,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell3.east)+(10pt,-20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d4] at (cell4.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d4a] at (cell4.south west){$6$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell4.north){\cross};
+\node[draw = cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell4.south){\tick};
+\node[name=succ4,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell4.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ3) to  ($(cell4.west)+(0pt,6pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell4.north)+(0pt,-2pt)$) {$\tuple{\thread_{\tt 2},{\tt c}}$};
+
+
+\node[rounded corners,draw = orange,name=cell5,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell4.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d5] at (cell5.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,name=d5a] at (cell5.south west){$9$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell5.north){\cross};
+\node[draw = cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell5.south){\cross};
+\node[name=succ5,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell5.east)+(-4pt,0pt)$) {};
+\draw[->] (succ4) -- (cell5);
+%\draw[->,dotted,line width=1pt,color=blue,out=270,in=270] ($(d4a.south)+(0pt,0pt)$) to ($(d5a.south)+(-3pt,1pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell5.north)+(0pt,-2pt)$) {$\tuple{\thread_{\tt 3},{\tt c}}$};
+
+
+\node[rounded corners,draw = orange,name=cell6,minimum width=24pt, minimum height=20pt,anchor=west,name=cell6]
+at ($(cell5.east)+(10pt,0pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d6] at (cell6.north west){$\mkadata0$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt,scale=0.8,name=d6a] at ($(cell6.south west)+(1pt,1pt)$){$\infty$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell6.north){\cross};
+\node[draw = cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell6.south){\cross};
+\draw ($(cell6.north east)+(-1pt,-2pt)$) -- ($(cell6.south east)+(-8pt,0pt)$);
+\draw ($(cell6.north east)+(-8pt,0pt)$) -- ($(cell6.south east)+(-1pt,2pt)$);
+\draw[->] (succ5) -- (cell6);
+%\draw[->,dotted,line width=1pt,color=blue,out=270,in=270] ($(d5a.south)+(3pt,0pt)$) to ($(d6a.south)+(0pt,-1pt)$);
+\node[anchor=south,font=\tiny,align=center] at ($(cell6.north)+(0pt,-2pt)$) {{\tt tail}};
+
+\node[rounded corners,draw = orange,name=cell7,minimum width=24pt, minimum height=20pt,anchor=west]
+at ($(cell2.east)+(7pt,-20pt)$){};
+%\node[minimum width=8pt, minimum height=10pt,anchor=north west,font=\tiny,inner sep=0pt,name=d7] at (cell7.north west){$\mkadata1$};
+\node[minimum width=8pt, minimum height=10pt,anchor=south west,font=\tiny,inner sep=0pt] at (cell7.south west){$4$};
+\node[draw = pink,minimum width=8pt, minimum height=10pt,anchor=north,font=\tiny,inner sep=0pt]at (cell7.north){\tick};
+\node[draw = cyan,minimum width=8pt, minimum height=10pt,anchor=south,font=\tiny,inner sep=0pt]at (cell7.south){\tick};
+\node[name=succ7,circle,fill,minimum size=3pt,inner sep=0pt,outer sep=0pt] at ($(cell7.east)+(-4pt,0pt)$) {};
+\draw[->,out=0,in=180] (succ7) to ($(cell4.west)+(0pt,-6pt)$);
+%\draw[<->,dotted,line width=1pt,color=blue,out=270,in=90] ($(d3a.south)$) to ($(d7.north)+(-2pt,0pt)$);
+%\draw[->,dotted,line width=1pt,color=blue,out=90,in=180] ($(d7.north)+(2pt,0pt)$) to ($(cell4.west)$);
+\node[anchor=north,font=\tiny,align=center] at ($(cell7.south)+(0pt,2pt)$) {$\tuple{\thread_{\tt 1},{\tt c}}$};
+
+\end{tikzpicture}
+\caption{A heap configuration of the {\tt Lazy Set} Algorithm. The abstract data values, 
+and the dotted arrows represent performing data abstraction.
+There are three active threads $\thread_1$, $\thread_2$, and $\thread_3$,
+running the methods ${\tt rmv}(4)$, ${\tt add}(4)$, and ${\tt ctn}(9)$ respectively.
+%
+The symbols \tick and \cross represent the Boolean values {\tt true} and {\tt false}.}
+\label{lazy:list:heap:fig}
+\end{figure}
+%

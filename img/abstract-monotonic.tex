@@ -1,0 +1,48 @@
+\begin{tikzpicture}[show background rectangle,
+  state/.append style={minimum size=2ex,font=\scriptsize},%
+  node distance=0.3cm,%
+  decoration={snake,segment length=3mm,amplitude=0.5mm,pre length=3mm,post length=3mm}
+  ]
+
+  %% Conf c1
+  \node[state,state-i](n0) at (0,0){$s$};
+  \node[state,right=of n0,state-witness](n1){$w$};
+  \node[state,right=of n1,state-witness](n2){$w$};
+
+  %% Conf c3
+  \node[state,above=1.5cm of n1,state-n](m2){};
+  \node[state,left=of m2,state-witness](m1){$w$};
+  \node[state,left=of m1,state-i](m0){$s$};
+  \node[state,right=of m2,state-n](m3){};
+  \node[state,right=of m3,state-witness](m4){$w$};
+
+  %% Conf c2
+  \node[state,right=4cm of n2,state-i](p0){$d$};
+  \node[state,right=of p0,state-witness](p1){$w$};
+  \node[state,right=of p1,state-witness](p2){$w$};
+
+  %% Conf c4
+  \node[state,above=1.5cm of p0,state-i](q0){$d$};
+  \node[state,right=of q0,state-witness](q1){$w$};
+  \node[state,right=of q1,state-witness](q2){$w$};
+
+  \begin{pgfonlayer}{my background}
+    \begin{scope}[xshift=-14mm,yshift=2.3cm]
+      \parabol{4cm}{-3cm};
+    \end{scope}
+    \begin{scope}[xshift=40mm,yshift=2.3cm]
+      \parabol{4cm}{-3cm};
+    \end{scope}
+
+    \node [fit=(n0)(n2),conf](c1){};
+    \node [fit=(m0)(m4),conf](c3){};
+    \node [fit=(p0)(p2),conf](c2){};
+    \node [fit=(q0)(q2),conf](c4){};
+  \end{pgfonlayer}
+
+  \path (c1) -- node[midway,rotate=90]{$\subword$} (c3);
+  \path (c2) -- node[midway,rotate=90]{$\subword$} (c4);
+  \draw[myedge,decorate] (c1) -- node[midway,above]{$\abstrans\delta$} (c2);
+  \draw[myedge,decorate] (c3) -- node[midway,above](delta){$\abstrans\delta$} (c4);
+  
+\end{tikzpicture}

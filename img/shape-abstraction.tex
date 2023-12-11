@@ -1,0 +1,89 @@
+\begin{tikzpicture}[framed]
+
+  %% ============ Concrete shape ======================
+  \begin{scope}[scale=0.8,every node/.append style={scale=0.8}]
+
+    \foreach \n/\x/\y/\c in {
+      1/4/0/white,
+      2/2/-1/white,
+      3/0/-2/red,
+      4/2/-3/white,
+      5/4.5/-3.5/white,
+      6/3.5/-4.5/white}{
+      
+      \node(m\n)[minimum width=12mm,minimum height=6mm,inner sep=0pt,
+      fill=blue!20, draw=blue!50, very thick, rounded corners=4pt] at (\x,\y) {};
+      \node[data=\c,left=1mm of m\n.center]{}; 
+      \coordinate[right=2mm of m\n.center](m\n-n){};
+      \draw[blue!50, very thick] (m\n.north) -- (m\n.south);
+    }
+    
+    \node[globals](null) at (2,-6){\#};
+
+    \draw[pointsto,shorten <=-2pt] (m1-n) .. controls +(-60:20mm) and +(120:20mm) .. (m2);
+    \draw[pointsto,shorten <=-2pt] (m2-n) .. controls +(-60:20mm) and +(120:20mm) .. (m3);
+    \draw[pointsto,shorten <=-1pt] (m3-n) .. controls +(right:20mm) and +(150:20mm) .. (m4);
+    \draw[pointsto,shorten <=-2pt] (m4-n) .. controls +(-70:25mm) and +(120:20mm) .. (m5);
+    \draw[pointsto,shorten <=-2pt] (m5-n) .. controls +(-60:12mm) and +(120:14mm) .. (m6);
+    \draw[pointsto,shorten <=-2pt] (m6-n) .. controls +(-65:12mm) and +(up:14mm) .. (null);
+ 
+    %% ============ Variables ======================
+
+    \node[globals,right=0pt of m1.east,shift={(10pt,0pt)}] (T) {Top};
+    \node[thread1,right=0pt of m1.east,shift={(0pt,10pt)}] (t1) {t};
+    \node[thread2,right=0pt of m1.east,shift={(0pt,-10pt)}] (n2) {n};
+    \node[thread1,right=1pt of m4.east,shift={(0pt,0pt)}] (x1) {x};
+    \node[thread3,right=1pt of m5.east,shift={(0pt,0pt)}] (t3) {t};
+    \node[thread2,above left=2pt of m3.west,shift={(0pt,2pt)}] (t2) {t};
+    \node[thread3,below left=2pt of m3.west,shift={(0pt,-2pt)}] (x3) {x};
+
+    %% ============ Threads info ======================
+    \node[fill=t1color,rectangle,inner xsep=2pt] (thread1) at (0,1) {Thread 1 {\tiny (pc:~\ref{treiber:thread:pop})}};
+    \node[fill=t2color,rectangle,inner xsep=2pt,right=2pt of thread1] (thread2) {Thread 2 {\tiny (pc:~\ref{treiber:thread:push})}};
+    \node[fill=t3color,rectangle,inner xsep=2pt,right=2pt of thread2] (thread3) {Thread 3 {\tiny (pc:~\ref{treiber:thread:popinit})}};
+
+    
+
+  \end{scope} %% End concrete shape
+
+  %% ============ White separation ======================
+  \draw[white,ultra thick] (5.3,1) -- +(0,-6);
+
+  %% ============ Abstraction ===============
+  \begin{scope}[shift={(6,0)},scale=0.8,every node/.append style={scale=0.8}]
+
+
+    \foreach \n/\x/\y/\c in {
+      1/3/0/white,
+      3/1/-2/red,
+      4/3/-3/white}{
+      
+      \node(m\n)[minimum width=12mm,minimum height=6mm,inner sep=0pt,
+      fill=blue!20, draw=blue!50, very thick, rounded corners=4pt] at (\x,\y) {};
+      \node[data=\c,left=1mm of m\n.center]{}; 
+      \coordinate[right=2mm of m\n.center](m\n-n){};
+      \draw[blue!50, very thick] (m\n.north) -- (m\n.south);
+    }
+    
+    \node[globals](null) at (2,-6){\#};
+
+    \draw[pointsto,shorten <=-2pt,dashed] (m1-n) .. controls +(-60:20mm) and +(120:20mm) .. (m3);
+    \draw[pointsto,shorten <=-1pt] (m3-n) .. controls +(right:20mm) and +(150:20mm) .. (m4);
+    \draw[pointsto,shorten <=-2pt,dashed] (m4-n) .. controls +(-70:25mm) and +(up:20mm) .. (null);
+ 
+    %% ============ Variables ======================
+
+    \node[globals,right=0pt of m1.east,shift={(10pt,0pt)}] (T) {Top};
+    \node[thread1,right=0pt of m1.east,shift={(0pt,10pt)}] (t1) {t};
+    \node[thread2,right=0pt of m1.east,shift={(0pt,-10pt)}] (n2) {n};
+    \node[thread1,right=1pt of m4.east,shift={(0pt,0pt)}] (x1) {x};
+    \node[thread2,above left=2pt of m3.west,shift={(0pt,2pt)}] (t2) {t};
+
+    %% ============ Threads info ======================
+    \node[fill=t1color,rectangle,inner xsep=2pt] (thread1) at (1,1) {Thread 1 {\tiny (pc:~\ref{treiber:thread:pop})}};
+    \node[fill=t2color,rectangle,inner xsep=2pt,right=2pt of thread1] (thread2) {Thread 2 {\tiny (pc:~\ref{treiber:thread:push})}};
+
+      
+  \end{scope} %% End abstraction
+
+\end{tikzpicture}

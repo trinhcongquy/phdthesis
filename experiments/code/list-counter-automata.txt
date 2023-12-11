@@ -1,0 +1,4 @@
+@\w[n]{1}@ $i\coloneqq L$
+@\w[n]{2}@ while $i\neq P$ do
+@\w[n]{3}@       $i\coloneqq i.next$
+@\w[n]{4}@ end

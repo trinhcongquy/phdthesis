@@ -1,0 +1,142 @@
+%% ================================
+%% TikZ styles
+%% ================================
+
+\pgfdeclarelayer{my background} 
+\pgfsetlayers{background,my background,main}
+
+\tikzset{background rectangle/.style={rounded corners=1ex,draw=gray!5,thick,fill=gray!10,double}}
+
+\tikzset{enumbullet/.style={draw,circle,double,inner sep=1pt}}
+\tikzset{challenge/.style={draw,circle,double,scale=0.75,inner sep=1pt}}
+\tikzset{subchallenge/.style={circle,fill=white,scale=0.6,inner sep=0.5pt,draw=black,very thin}}
+
+\tikzset{myedge/.style={draw,shorten >=1pt,->,>=stealth',semithick}}
+\tikzset{process/.style={circle,minimum width=2ex,inner sep=1pt,draw=blue!50,fill=blue!20,thick}}
+\tikzset{mylabel/.style={inner xsep=2pt,draw=gray!10,fill=white,double,rounded corners=2pt,anchor=center}}
+\tikzset{separation/.style={white,semithick}}
+
+%------------------------------------------
+%\tikzset{state/.style={circle,minimum size=3.2ex,inner sep=0pt,scale=0.75}}
+\tikzset{state/.style={rectangle,rounded corners=0.5ex,minimum height=2ex,minimum size=3.2ex,inner sep=0pt,scale=0.75}}
+\tikzset{word/.style={rectangle,rounded corners=0.5ex,thin,inner sep=0pt,draw=blue!50,fill=blue!50}}%inner xsep=1pt,inner ysep=1pt
+
+% \tikzset{state-w/.style={top color=blue!30,bottom color=blue!30,middle color=blue!10}}
+% \tikzset{word-w/.style={thin,fill=blue!30,draw=blue!10}}
+\tikzset{state-w/.style={fill=none,draw=blue!10}}
+\tikzset{word-w/.style={thin,fill=none,draw=blue!10}}
+
+\tikzset{state-n/.style={top color=blue!30,bottom color=blue!30,middle color=blue!10}}
+\tikzset{word-n/.style={thin,fill=blue!50,draw=blue!10}}
+
+\tikzset{state-i/.style={top color=green!20,bottom color=green!20,middle color=green!10}}
+\tikzset{word-i/.style={thin,fill=green!20,draw=green!30}}
+
+\tikzset{state-b/.style={top color=red!50,bottom color=red!50,middle color=red!20}}
+\tikzset{word-b/.style={thin,fill=red!50,draw=red!60}}
+
+\tikzset{state-witness/.style={top color=green!20!orange,bottom color=green!20!orange,middle color=green!20!orange!10}}
+\tikzset{word-witness/.style={thin,fill=green!20!orange,draw=green!20!orange!50}}
+
+\tikzset{state--/.style={draw=none,fill=none}}
+\tikzset{word--/.style={draw=none,fill=none}}
+
+% \tikzset{word/.style={matrix of nodes,outer sep=0pt,inner ysep=1pt,inner xsep=1pt,rounded corners=2pt,
+%                       thin,fill=blue!30,draw=blue!10,
+%                       column sep=1pt,
+%                       nodes={state-#1,rectangle,rounded corners=0pt,inner sep=1pt,outer sep=0pt,anchor=base,text height=1.5ex,%
+%                              top color=blue!30,bottom color=blue!30,middle color=blue!10,
+%                              %outer color=gray!80,inner color=gray!20,shading=radial,
+%                              }%
+%                       }}
+% \tikzset{invisible/.style={rectangle,draw=none,outer sep=0pt,inner sep=0pt,fill=none,text width=0pt,text height=0pt,minimum height=0pt}}
+%\tikzset{word/.style={matrix of nodes,outer sep=0pt,inner sep=0pt,column sep=-2pt,nodes={outer sep=0pt,anchor=base,state,state-#1}}}
+
+\tikzset{trlabel/.style={scale=0.75}}
+
+  
+\tikzset{conf/.style={shading=axis,top color=gray!10,bottom color=gray!10,middle color=gray!50,shading angle=90,inner ysep=1pt}}
+% \tikzset{view/.style={%draw,thin,rounded corners=2pt,inner xsep=2pt,
+%                       shading=axis,top color=white,bottom color=white,middle color=gray!50,inner ysep=1pt}}%shading angle=90,
+\tikzset{view/.style={word, draw=blue!50,double=gray!10,thin,inner xsep=0.4pt,%
+                            shading=axis,top color=gray!10,bottom color=gray!10,middle color=gray!25,}}
+
+\tikzfading[name=f, top color=transparent!100, bottom color=transparent!0, middle color=transparent!80]
+
+%------------------------------------------
+%% Petri Nets
+\tikzset{every place/.style={circle,draw=blue,fill=blue!20,thick}}
+\tikzset{shared/.style={draw=green,fill=green!30!gray,thick}}
+\tikzset{every transition/.style={draw=red,fill=red!20,thick,minimum width=10mm,minimum height=1mm}}
+\tikzset{dottedrectangle/.style={rounded corners,draw,dotted,inner sep=1ex}}
+
+\tikzset{mysnake/.style={decorate,decoration={snake,amplitude=0.2mm,segment length=1mm,pre length=1mm,post length=1mm}}}
+
+
+%------------------------------------------
+%% Non atomic
+\tikzset{looplabel/.style={scale=0.7,inner xsep=2pt,draw=gray!10,fill=white,rounded corners=2pt,anchor=center}}
+ 
+
+%------------------------------------------
+%% View Abstraction - Contexts
+
+\tikzset{context/.style={rectangle,minimum width=3.2ex,minimum height=3.2ex,inner sep=0pt,fill=none,draw=black,thin,scale=0.6,anchor=center,fill=yellow!20!white}}
+\tikzset{project/.style={draw,shorten >=1pt,>=stealth',very thin,blue!70!red}}
+\tikzset{context-matrix/.style={matrix of nodes,inner xsep=0pt,column sep=1.5pt,column 1/.style={anchor=base}}}
+\tikzset{na-looplabel/.style={inner sep=2pt,draw=gray,fill=white,rounded corners=2pt,anchor=base,yshift=-2pt}}
+
+%------------------------------------------
+%% Shape Analysis
+
+\colorlet{gcolor}{green!30}
+\colorlet{t1color}{yellow!50}
+\colorlet{t2color}{pink!50}
+\colorlet{t3color}{purple!50}
+
+\tikzset{pointsto/.style={*-stealth,semithick}}%,decorate,decoration={snake,pre=lineto,pre length=1.5em,post=lineto,post length=1em,amplitude=2pt}},
+\tikzset{varpointsto/.style={-stealth,thick,black!50!white,dotted}}
+\tikzset{data/.style={circle,fill=#1}}
+\tikzset{globals/.style={ellipse,fill=gcolor}}
+\tikzset{thread1/.style={circle,fill=t1color}}
+\tikzset{thread2/.style={circle,fill=t2color}}
+\tikzset{thread3/.style={circle,fill=t3color}}
+% >=stealth,
+%\tikzset{age/.style={label={[color=white,fill=black,font=\scriptsize,circle,inner sep=0pt,scale=0.6,label distance=-4pt,on background layer]below right:${#1}$}}}
+\tikzset{agebubble/.style={color=white,fill=black!30,font=\scriptsize,circle,inner sep=0pt,scale=0.6}}
+\tikzset{age/.style={agebubble,anchor=north west,below right=-1pt of #1}}
+\tikzset{var/.style={minimum size=1.8em,anchor=center}}
+
+%% Observer states
+\tikzset{obsstate/.style={circle,thick, minimum size=4ex, draw=#1!50,fill=#1!20}}
+\tikzset{obsstate/.default=blue}
+\tikzset{property/.style={rounded corners=1pt,inner xsep=1mm,draw=black!50,fill=white,double}}
+\tikzset{initial/.style={initial by arrow,initial text=,initial where=left,fill=green!50,draw=green!60!black}}
+\tikzset{accepting/.style={accepting by double,fill=red!80,draw=red}}
+
+%% Commit points
+\tikzset{commitpoint/.style={%
+        shape=circle,
+        inner sep=0pt,
+        minimum size=2pt,
+        draw=red,fill=red}}
+\tikzset{infig/.style={scale=0.04}} % weird hack
+
+\newlength{\blockwidth}
+\setlength{\blockwidth}{0.5\linewidth}
+\addtolength{\blockwidth}{-24pt}
+\tikzset{codeblock/.style={text width=\blockwidth, inner xsep=12pt, inner ysep=4pt, %
+                           rounded corners, draw = gray!20, below right,draw,fill=gray!1!white}}
+
+%% ==============================
+%% Experiments
+%%      - MOSI message
+\tikzset{message/.style={midway,draw,rounded corners,rectangle split, rectangle split parts=2, rectangle split part fill={yellow!10!white, pink!10!white}}}
+
+%% ==============================
+%% Conference name for the papers section
+\tikzset{paper/.style={text=black,rectangle,rounded corners=0.5ex,thin,draw=black,minimum width=4ex,text centered,%
+                       shading=axis,top color=gray!10,bottom color=gray!10,middle color=gray!30}}
+\tikzset{conference/.style={scale=0.8,text=black,rectangle,rounded corners=0.5ex,thin,draw=blue!50,%
+                            shading=axis,top color=blue!10,bottom color=blue!10,middle color=blue!20}}
+

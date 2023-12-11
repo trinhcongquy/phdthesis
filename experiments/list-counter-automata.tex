@@ -1,0 +1,15 @@
+%
+\begin{wrapfigure}{r}[0pt]{0.34\linewidth}
+  \hfill%
+  \lstinputlisting[style=custom]{experiments/code/list-counter-automata.txt}
+\end{wrapfigure}
+%
+Consider the following single-threaded program. It scans a list
+starting from the pointer $L$ and must end when it finds a marker $P$,
+placed prior to the start of the program. %
+In this case, the parameter for this parametrized system if the length
+of the list.
+%
+The program risks a segmentation fault is the marker $P$ is not
+found. Our analysis retain the presence of the marker information in a
+context (and would forget it without context).

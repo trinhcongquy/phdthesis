@@ -1,0 +1,121 @@
+A barrier is a tool to ensure synchronization between threads and
+allows a programmer to impose restriction for an asynchronous
+multi-threaded program.
+%
+A process arriving at the barrier must stop at this point and cannot
+proceed until all other processes reach this barrier.
+
+\begin{wrapfigure}{r}[0pt]{0.30\linewidth}
+  \hfill%
+  \begin{tikzpicture}
+    \node[draw,shade,rotate=90,anchor=center,inner xsep=15mm](barrier) at (0,0){Barrier};
+    \foreach \d/\a/\n in {25mm/10/A,13mm/30/B,20mm/150/C,10mm/170/D}{
+      \node[circle,draw,shade,left=\d of barrier.\a](\n-1){\n};
+      \draw[-latex,dashed,gray] (\n-1) -- (barrier.\a);
+    }
+    \draw[latex-] (0,-2.3) -- +(-25mm,0) node[fill=white,midway]{time};      
+  \end{tikzpicture}
+\end{wrapfigure}
+%
+The following model represents a barrier with a \emph{pivot}. The
+first thread at the barrier will take the role of a pivot and all
+other processes wait as long as there is a pivot. When all processes
+have arrived at the barrier, the pivot can then proceed, which in turn
+releases all the waiting processes.
+
+A process can be in state \emph{before}~\w[w]{B},
+\emph{wait}~\w[w]{W}, \emph{pivot}~\w[w]{P} or
+\emph{after}~\w[w]{A}. %
+%
+Initially, all processes are in state~\w[i]{B} and a bad configuration
+is detected when there is a process in state~\w[w]{A}, while there is
+still a process in state~\w[w]{B}.
+%
+The transition diagram and inhibitor net are as follows.
+
+\begin{wrapfigure}{l}{0.55\linewidth}
+\begin{tikzpicture}[%
+  show background rectangle,
+  transition/.append style={minimum width=6mm},
+  mylabel/.append style={scale=0.7},
+  every place/.append style={scale=0.7}
+  ]
+
+  \draw[white,thick] (-1.1,0) -- +(0,-2);
+
+  %% Diagram
+  \begin{scope}[shift={(-2.5,0)}]
+
+    \node[state,state-i](before) at (0,0) {B};
+    \node[state,state-n](wait) at (-1,-1) {W};
+    \node[state,state-n](pivot) at (1,-1) {P};
+    \node[state,state-n](after) at (0,-2) {A};
+
+    \draw[myedge] (before) -- node[mylabel,midway,above left]{$\exists~P$} (wait);
+    \draw[myedge] (before) -- node[mylabel,midway,above right]{$\forall~B$} (pivot);
+
+    \draw[myedge] (wait) -- node[mylabel,midway,below left]{$\not\exists~P$} (after);
+    \draw[myedge] (pivot) -- node[mylabel,midway,below right]{$\forall~W$} (after);
+
+    %\node[caption] at (0,-1.3) {Arriving at the dock};
+  \end{scope}
+
+  %% Petri Net
+  \begin{scope}%[xshift=4]
+
+    \node(b)[state,place] at (0,0)  {};
+    \node(w)[state,place] at (0,-2) {};
+    \node(p)[state,place] at (1,-1) {};
+    \node(a)[state,place] at (2,-3) {};
+
+    \node[scale=0.5,left=1pt of b]{B};
+    \node[scale=0.5,left=1pt of w] {W};
+    \node[scale=0.5,right=1pt of p]{P};
+    \node[scale=0.5,right=1pt of a]{A};
+
+    \node[transition](t1) at (0,-1){};
+    \draw[myedge,<-] (t1.135) to[out=90,in=-135] (b);
+    \draw[myedge,->] (t1.-135) to[out=-90,in=90] (w);
+    \draw[myedge,<-] (t1.35) ..controls +(up:6mm) and +(135:6mm).. (p);
+    \draw[myedge,->] (t1.-35) ..controls +(down:6mm) and +(-135:6mm).. (p);
+
+    \node[transition](t2) at (1,-2.5){};
+    \draw[myedge,<-] (t2.150) ..controls +(up:5mm) and +(right:6mm).. (w);
+    \draw[myedge,*-] (t2.30) to[out=90,in=-90] (p);
+    \draw[myedge,->] (t2.-90) to[out=-90,in=180] (a);
+
+    \node[transition,rotate=90](t3) at (1.5,0.5){};
+    \draw[myedge,<-] (t3.90) to[out=180,in=45] (b);
+    \draw[myedge,*-] (t3.160) to[out=180,in=90] (p);
+    \draw[myedge,*-] (t3.20) ..controls +(left:25mm) and +(120:25mm).. (w);
+    \draw[myedge,->] (t3.-90) to[out=0,in=45] (p);
+
+    \node[transition](t4) at (2,-2){};
+    \draw[myedge,*-] (t4.30) to[out=90,in=-10] (b);
+    \draw[myedge,<-] (t4.150) to[out=90,in=-45] (p);
+    \draw[myedge,->] (t4) to[out=-90,in=90] (a);
+
+    %\node[caption] at (0,-3.3) {Boarding};
+  \end{scope}
+
+\end{tikzpicture}
+\end{wrapfigure}
+%
+The following invariant can be derived: %
+(i) a pivot~$P$ can coexist with a process in state~\w[w]{B}
+and/or \w[w]{W}, or is alone, i.e.\ the set of configurations
+$\set{\w[w]{P}\wedge\w[w]{B}^*\wedge\w[w]{W}^*}$, %
+(ii) a process after the barrier can only coexist with other process
+after the barrier or still waiting, i.e.\ the set of configurations
+$\set{\w[w]{W}^*\wedge\w[w]{A}^+}$, %
+and (iii) initially, all processes were before the barrier, i.e.\
+$\set{\w[w]{B}^*}$.
+
+It is also possible to model it with a linear topology (as
+in~\ref{paper:SAS14}).
+% Section~\ref{section:introduction}~and~\ref{chapter:parameterized:systems}. %
+In that case, we can consider a non-atomic version, which would not
+check the state of the other processes all at once.
+
+A typically implementation uses an atomic counter as follows.
+\lstinputlisting[style=custom]{experiments/code/barrier.txt}

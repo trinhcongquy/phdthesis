@@ -1,0 +1,19 @@
+\begin{tikzpicture}[show background rectangle]
+
+  \node (c1){$c_1$};
+  \node[right=2cm of c1](c2){$c_2$};
+  \node[above=1.2cm of c1](c3){$c_3$};
+  \node[above=1.2cm of c2](c4){$\exists c_4$};
+
+  \draw[->,myedge] (c1) -- node[midway,above]{$\delta$} (c2);
+  \draw[->,myedge] (c3) -- node[midway,above]{$\delta$} (c4);
+
+  \path (c1) -- node[midway,rotate=90]{$\subword$} (c3);
+  \path (c2) -- node[midway,rotate=90]{$\subword$} (c4);
+
+  \begin{pgfonlayer}{my background}
+    \draw[black, very thin, fill=white] ([shift={(-1,0.7)}]c4.south) parabola[parabola height=-2.6cm,bend pos=0.5] ([shift={(1,0.7)}]c4.south);
+    \draw[black, very thin, fill=white] ([shift={(-1,0.7)}]c3.south) parabola[parabola height=-2.6cm,bend pos=0.5] ([shift={(1,0.7)}]c3.south);
+  \end{pgfonlayer}
+
+\end{tikzpicture}

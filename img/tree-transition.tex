@@ -1,0 +1,51 @@
+\begin{tikzpicture}[show background rectangle,
+  level 1/.style={sibling distance=15mm,level distance=10mm},
+  level 4/.style={sibling distance=10mm,level distance=10mm},
+  process/.append style={inner sep=2pt}
+  ]
+
+
+  \node (t_1) {} 
+  child {
+    node[process] {$p_1$} edge from parent[dashed]
+    child { 
+      node[process,state-i,solid](a_1){$a_1$} edge from parent[solid]
+      child {
+        node[process]{$b_1$}
+        child {edge from parent[dashed]}
+        child {edge from parent[dashed]}
+      }
+      child {
+        node[process]{$c_1$}
+        child {edge from parent[dashed]}
+        child {edge from parent[dashed]}
+      }
+    }
+    child {edge from parent[dashed]}
+  }
+  child[missing];
+
+  \node[right=5cm of t_1] (t_2) {} 
+  child {
+    node[process] {$p_2$} edge from parent[dashed]
+    child { 
+      node[process,state-i,solid,fill=green!20!orange](a_2){$a_2$} edge from parent[solid]
+      child {
+        node[process]{$b_2$}
+        child {edge from parent[dashed]}
+        child {edge from parent[dashed]}
+      }
+      child {
+        node[process]{$c_2$}
+        child {edge from parent[dashed]}
+        child {edge from parent[dashed]}
+      }
+    }
+    child {edge from parent[dashed]}
+  }
+  child[missing];
+
+
+  \draw[myedge,->,shorten >=10mm,shorten <=18mm] (a_1) -- node[above,pos=0.58]{$\delta$} (a_2);
+
+\end{tikzpicture}

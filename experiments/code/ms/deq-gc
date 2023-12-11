@@ -1,0 +1,17 @@
+data deq(){
+  while(TRUE){
+    node* head := Head;
+    node* tail := Tail;
+    node* next := head\textit[$\to$]next;\label[ms:code:line:empty:gc] \commitpoint[infig]
+    if(head = Head)
+      if(head = tail)
+        if(next = NULL) 
+           return empty;\label[ms:code:line:emptyreturn]
+        CAS(&Tail, tail, next);
+      else
+        data result := next\textit[$\to$]val;
+        if(CAS(&Head, head, next ) \commitpoint[infig])\label[ms:code:line:deq:gc]
+           break;
+  }
+  return result;
+}

@@ -1,0 +1,1 @@
+rmv(e): local p, c, n, r  (p,c) := locate(e);  if (c.val = e)    c.mark := true;    n := c.next;    p.next := n;    r := true;  else r := false;  unlock(p);unlock(c);  return r;

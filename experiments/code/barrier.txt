@@ -1,0 +1,12 @@
+@\textbf{shared}@ counter  // Initially 0, Ranges over {0,...,n}
+@\textbf{shared}@ go       // Atomic bit
+@\textbf{local}@  local.go // A bit
+
+local.go = go; // remembers the current value
+$<$ counter = counter + 1; $>$  // atomic increment
+if ( counter == n ) {      // last at the barrier
+    counter = 0;           // reset
+    go = 1 - go;           // notify all
+} else {
+   while(local.go == go){};// not the last
+}

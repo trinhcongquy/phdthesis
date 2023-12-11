@@ -1,0 +1,5 @@
+struct node {data val, node* next}
+
+node* Head, Tail;
+
+

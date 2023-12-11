@@ -1,0 +1,36 @@
+\begin{tikzpicture}[
+  show background rectangle,
+  every place/.append style={state,state-n,scale=0.6},
+  ]
+
+  %% Read
+  \node[place,label=left:$in$] (in1) {};
+  \node[place,below=16mm of in1](temp1){};
+  \node[place,label=left:$out$,below=16mm of temp1](out1){};
+  \node[place,shared,label=below:$\LD{x}$,right=10mm of temp1](Rx){};
+  \node[transition,below=8mm of in1](tin1){} edge [pre] (in1) edge [post] (temp1);
+  \node[transition,below=8mm of temp1](tout1) {} edge [pre] (temp1) edge [post] (out1);
+  \draw[post] (tin1.-15) to[out=-90,in=165] (Rx);  
+  \draw[pre] (tout1.15) to[out=90,in=-165] (Rx);  
+
+  %% Write
+  \node[place,label=right:$in$,right=45mm of in1] (in2){};
+  \node[place,below=16mm of in2](temp2){};
+  \node[place,label=right:$out$,below=16mm of temp2](out2){};
+  \node[place,shared,label=above:$\ST{x}$,left=10mm of temp2](Wx){};
+  \node[transition,below=8mm of in2](tin2){} edge [pre] (in2) edge [post] (temp2);
+  \node[transition,below=8mm of temp2](tout2) {} edge [pre] (temp2) edge [post] (out2);
+  \draw[post] (tin2.-165) to[out=-90,in=15] (Wx);  
+  \draw[pre] (tout2.165) to[out=90,in=-15] (Wx);   
+
+  \begin{pgfonlayer}{my background}
+    \node[dottedrectangle,fit=(tin1)(temp1)(tout1)]{};
+    \node[dottedrectangle,fit=(tin2)(temp2)(tout2)]{};
+  \end{pgfonlayer}
+
+  %% White separation
+  \path (in1) -- coordinate[midway] (a) (in2);
+  \path (out1) -- coordinate[midway] (b) (out2);
+  \draw [white,thick] (a) -- (b);
+
+\end{tikzpicture}

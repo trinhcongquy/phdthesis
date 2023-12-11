@@ -1,0 +1,42 @@
+\begin{tikzpicture}[
+  show background rectangle,
+  decision/.style={scale=0.5,midway,right},
+  >=stealth,
+  stage/.style={double,fill=blue!20,draw=blue!50,rounded corners=1ex},
+  outcome/.style={->,shorten >=1pt, shorten <=1pt},
+  special/.style={draw=red, decorate,decoration={snake,amplitude=0.5pt,segment length=3pt,pre length=0pt,post length=0pt}}%densely dotted
+  ]
+
+  \node[stage](concrete){ ${\color{red}\Reach_{k}}\cap\Bad\neq\emptyset$ };
+  \node[above right=5mm of concrete,scale=0.7](k){ $k:=1$ };
+  \node[stage,below=1cm of concrete](fixpoint){ $V := \mu X\,.\,{\color{red}\Absof{k}(\Inits)} \cup {\color{red} \apost{k}(X)}$ };
+  \node[stage,below=1cm of fixpoint](test){ ${\color{red}\Concof{k}(V) \cap \Bad} = \emptyset$ };
+  % \node[stage](concrete){ $\Reach_{k}\cap\Bad\neq\emptyset$ };
+  % \node[above right=5mm of concrete,scale=0.7](k){ $k:=1$ };
+  % \node[stage,below=1cm of concrete](fixpoint){ $V := \mu X\,.\,\Absof{k}(\Inits) \cup \apost{k}(X)$ };
+  % \node[stage,below=1cm of fixpoint](test){ $\Concof{k}(V) \cap \Bad = \emptyset$ };
+
+  \node[right=1cm of concrete](unsafe){ Unsafe };
+  \node[right=1cm of test](safe){ Safe };
+
+  \draw[outcome] (k) to[out=180,in=90] (concrete.80);
+
+  \draw[outcome] (concrete) -- (fixpoint) node[decision]{no};
+  \draw[outcome] (concrete) -- (unsafe) node[decision,above]{yes};
+
+  \draw[outcome] (fixpoint) -- (test);
+
+  \draw[outcome] (test) -- (safe) node[decision,above]{yes};
+  \draw[outcome]
+  (test.south) .. controls +(down:5mm) and +(down:25mm) .. ([xshift=-3mm]fixpoint.west)
+  node[decision,pos=0.2,below]{no}
+  node[pos=1,text width=10ex,left, text centered,scale=0.7](p){increase precision ($k$++)}
+  .. controls +(up:30mm) and +(up:5mm) .. (concrete.100);
+
+
+  % \path[special] ([shift={(45:1mm)}]concrete.south west) -- +(right:3.5ex);
+  % \path[special] ([shift={(45:1mm)}]fixpoint.-160) -- +(right:6ex);
+  % \path[special] ([shift={(45:1mm)}]fixpoint.-30) -- +(right:10.5ex);
+  % \path[special] ([shift={(45:1mm)}]test.south west) -- ([shift={(135:1mm)}]test.south east);
+
+\end{tikzpicture}

@@ -1,0 +1,69 @@
+\ifcomments %% =====================================================
+
+\setlength{\fboxsep}{2pt}
+
+\newdimen\len
+\len=\marginparwidth
+\advance\len by -\marginparsep
+\advance\len by -\marginparsep
+%\advance\len by -\marginparsep
+
+\newcounter{notec}
+\newcommand{\note}[1]{%
+  \stepcounter{notec}%
+  {$^{\footnotesize\textcolor{red}\bf (\arabic{notec})}$}%
+  \leavevmode%
+  \marginpar[\fbox{\parbox{\len}{$^{\footnotesize\textcolor{red}\bf (\arabic{notec})}$ \footnotesize\raggedleft #1}}]%
+  {\fbox{\parbox{\len}{$^{\footnotesize\textcolor{red}\bf (\arabic{notec})}$ \footnotesize\raggedright #1}}}%
+}%
+
+%% Local note, as footnote
+\newcommand{\lnote}[1]{\footnote{#1}}
+
+% For the large comments
+\usepackage{framed}
+\newenvironment{comment}{\begin{framed}}{\end{framed}}
+
+%% Thesis Keywords (included in the index)
+\usepackage{marginfix}
+%\usepackage[noadjust]{marginnote}
+\newcommand*{\KW}[1]{\leavevmode%
+{%\mbox{}
+\marginpar[\fbox{\parbox[b]{\len}{\raggedleft\footnotesize #1}}]{\fbox{\parbox[b]{\len}{\raggedright\footnotesize #1}}}%
+%\marginnote[\fbox{\parbox[b]{\len}{\raggedleft\footnotesize #1}}]{\fbox{\parbox[b]{\len}{\raggedright\footnotesize #1}}}[0pt]%
+%\index{THESIS KEYWORDS!#1}
+}%
+%\ignorespaces%
+}
+% \newcommand*{\KW}[1]{%
+% {\mbox{}\marginpar{\tikz[baseline=(n.base)]\node[text width=\len,draw,fill=yellow!20,text centered,inner sep=3pt,rounded corners=4pt](n) at (0,0){\footnotesize #1};}%
+% \index{THESIS KEYWORDS!#1}}%
+% }
+
+
+\else %% ==========================================================
+
+\newcommand{\note}[1]{}
+\newcommand{\lnote}[1]{}
+\newcommand*{\KW}[1]{}
+
+\newsavebox\commentb %% Saving and throwing away the comment env
+\newenvironment{comment}{\setbox\commentb\hbox\bgroup}{\egroup}
+
+\fi %% ============================================================
+
+
+%% -----------------------------------------------------------
+%% So far so good
+%% -----------------------------------------------------------
+\newcommand*{\sofarsogood}{\ifunderprogress\par\bigskip\noindent\hrulefill\begingroup\tiny\raisebox{-0.5ex}{\Chalk\ SO FAR SO GOOD\ }\endgroup\hrulefill\par\bigskip\fi}
+\newcommand*{\sfsg}{\sofarsogood\endinput}
+\newcommand*{\cutafter}{\endinput}
+
+%% -----------------------------------------------------------
+\ifunderprogress
+\newenvironment{todo}{\par\bigskip\noindent\hrulefill\raisebox{-0.5ex}{\Chalk\ TODO\ }\hrulefill\par\vspace{1em}}{\par\vspace{1em}\noindent\hrulefill}
+\else
+\newsavebox\todob %% Saving and throwing away the todo env
+\newenvironment{todo}{\setbox\todob\hbox\bgroup}{\egroup}
+\fi

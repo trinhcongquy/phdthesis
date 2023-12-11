@@ -1,0 +1,306 @@
+\begin{tikzpicture}[framed,%
+  projectaway/.style={thick,black!50!gray,decorate,decoration={snake,amplitude=.4mm}}]
+
+  %% ============ Matrix Encoding T12 ===============
+  \begin{scope}[scale=0.5,every node/.append style={scale=0.5}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding12) {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & . & . & . & . & . & . & . \\
+      |[globals]|\text{\#}           & . & = & . & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & = & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & . & = & . & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & . & . & = & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & . & . & . & = & . & . \\
+      |[data=red,minimum size=1em]|  & . & . & . & . & . & . & = & . \\
+      |[data=blue,minimum size=1em]| & . & . & . & . & . & . & . & = \\
+    };
+
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=0pt of encoding12] (sigma12) {
+      $\sigma$ & : & |[fill=t1color,rectangle]| \ref{treiber:thread:pop} & $|$ & |[fill=t2color,rectangle]| \ref{treiber:thread:push} & $|$ & Observer: $s_1$ \\    
+    };
+  \end{scope} %% End matrix encoding
+
+  %% ============ Matrix Encoding T13 ===============
+  \begin{scope}[shift={(4,0)},scale=0.4,every node/.append style={scale=0.4}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding13) {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & . & . & . & . & . & . & . \\
+      |[globals]|\text{\#}           & . & = & . & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & = & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & . & = & . & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & = & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & . & = & . & . \\
+      |[data=red,minimum size=1em]|  & . & . & . & . & . & . & = & . \\
+      |[data=blue,minimum size=1em]| & . & . & . & . & . & . & . & = \\
+    };
+
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=0pt of encoding13] (sigma) {
+      $\sigma$ & : & |[fill=t1color,rectangle]| \ref{treiber:thread:pop} & $|$ & |[fill=t3color,rectangle]| \ref{treiber:thread:pop} & $|$ & Observer: $s_1$ \\    
+    };
+  \end{scope} %% End matrix encoding
+
+  %% ============ Matrix Encoding T23 ===============
+  \begin{scope}[shift={(7,0)},scale=0.4,every node/.append style={scale=0.4}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding23) {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & . & . & . & . & . & . & . \\
+      |[globals]|\text{\#}           & . & = & . & . & . & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & = & . & . & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & . & = & . & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & = & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & . & = & . & . \\
+      |[data=red,minimum size=1em]|  & . & . & . & . & . & . & = & . \\
+      |[data=blue,minimum size=1em]| & . & . & . & . & . & . & . & = \\
+    };
+
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=0pt of encoding23] (sigma) {
+      $\sigma$ & : & |[fill=t2color,rectangle]| \ref{treiber:thread:push} & $|$ & |[fill=t3color,rectangle]| \ref{treiber:thread:pop} & $|$ & Observer: $s_1$ \\    
+    };
+
+  \end{scope} %% End matrix encoding
+
+  %% ============ Matrix Encoding T123 ===============
+  \begin{scope}[shift={(0,-5)},scale=0.4,every node/.append style={scale=0.4}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding123) {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & . & . & . & . & . & . & . & . & . \\
+      |[globals]|\text{\#}           & . & = & . & . & . & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & = & . & . & . & . & . & . & . \\
+      |[thread1]|\text{\hspace{1pt}} & . & . & . & = & . & . & . & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & . & . & = & . & . & . & . & . \\
+      |[thread2]|\text{\hspace{1pt}} & . & . & . & . & . & = & . & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & . & . & = & . & . & . \\
+      |[thread3]|\text{\hspace{1pt}} & . & . & . & . & . & . & . & = & . & . \\
+      |[data=red,minimum size=1em]|  & . & . & . & . & . & . & . & . & = & . \\
+      |[data=blue,minimum size=1em]| & . & . & . & . & . & . & . & . & . & = \\
+    };
+
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=2pt of encoding123] (sigma123) {
+      $\sigma$ & : & |[fill=t1color,rectangle]| \ref{treiber:thread:pop} & $|$ & |[fill=t2color,rectangle]| \ref{treiber:thread:push} & $|$ & |[fill=t3color,rectangle]| \ref{treiber:thread:pop} & $|$ & Observer: $s_1$ \\    
+    };
+  \end{scope} %% End matrix encoding
+
+  %% ============ Matrix Encoding post(T123) ===============
+  \begin{scope}[shift={(4,-5)},scale=0.4,every node/.append style={scale=0.4}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding123') {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & * & * & * & * & * & * & * & * & * \\
+      |[globals]|\text{\#}           & * & = & * & * & * & * & * & * & * & * \\
+      |[thread1]|\text{\hspace{1pt}} & * & * & = & * & * & * & * & * & * & * \\
+      |[thread1]|\text{\hspace{1pt}} & * & * & * & = & * & * & * & * & * & * \\
+      |[thread2]|\text{\hspace{1pt}} & * & * & * & * & = & * & * & * & * & * \\
+      |[thread2]|\text{\hspace{1pt}} & * & * & * & * & * & = & * & * & * & * \\
+      |[thread3]|\text{\hspace{1pt}} & * & * & * & * & * & * & = & * & * & * \\
+      |[thread3]|\text{\hspace{1pt}} & * & * & * & * & * & * & * & = & * & * \\
+      |[data=red,minimum size=1em]|  & * & * & * & * & * & * & * & * & = & * \\
+      |[data=blue,minimum size=1em]| & * & * & * & * & * & * & * & * & * & = \\
+    };
+    
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=2pt of encoding123'] (sigma) {
+      $\sigma$ & : & |[fill=t1color,rectangle]| \ref{treiber:thread:pop} & $|$ & |[fill=t2color,rectangle]| \ref{treiber:thread:push} & $|$ & |[fill=t3color,rectangle]| \ref{treiber:thread:pop2} & $|$ & Observer: $s_1$ \\    
+    };
+  \end{scope} %% End matrix encoding
+
+  %% ============ Matrix Encoding T12' ===============
+  \begin{scope}[shift={(8,-5)},scale=0.4,every node/.append style={scale=0.4}]
+    \matrix[matrix of math nodes, below right, inner sep=0pt, nodes={var,inner sep=0pt}, row sep=0pt,column sep=0pt] (encoding12') {
+      & |[globals]|\text{Top}
+      & |[globals]|\text{\#}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread1]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread2]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[thread3]|\text{\hspace{1pt}}
+      & |[data=red,minimum size=1em]|
+      & |[data=blue,minimum size=1em]|
+      \\
+      |[globals]|\text{Top}          & = & * & * & * & * & * & * & * & * & * \\
+      |[globals]|\text{\#}           & * & = & * & * & * & * & * & * & * & * \\
+      |[thread1]|\text{\hspace{1pt}} & * & * & = & * & * & * & * & * & * & * \\
+      |[thread1]|\text{\hspace{1pt}} & * & * & * & = & * & * & * & * & * & * \\
+      |[thread2]|\text{\hspace{1pt}} & * & * & * & * & = & * & * & * & * & * \\
+      |[thread2]|\text{\hspace{1pt}} & * & * & * & * & * & = & * & * & * & * \\
+      |[thread3]|\text{\hspace{1pt}} & * & * & * & * & * & * & = & * & * & * \\
+      |[thread3]|\text{\hspace{1pt}} & * & * & * & * & * & * & * & = & * & * \\
+      |[data=red,minimum size=1em]|  & * & * & * & * & * & * & * & * & = & * \\
+      |[data=blue,minimum size=1em]| & * & * & * & * & * & * & * & * & * & = \\
+    };
+    
+    %% Sigma
+    \matrix[matrix of nodes,nodes={inner xsep=2pt},above=2pt of encoding12'] (sigma12') {
+      $\sigma$ & : & |[fill=t1color,rectangle]| \ref{treiber:thread:pop} & $|$ & |[fill=t2color,rectangle]| \ref{treiber:thread:push} & $|$ & |[fill=t3color,rectangle]| \ref{treiber:thread:pop2} & $|$ & Observer: $s_1$ \\    
+    };
+  \end{scope} %% End matrix encoding
+
+  %% Matrix Lines
+  \foreach \m in {encoding12,encoding13,encoding23}{
+    \draw (\m-2-2.north west) -- (\m-2-9.north east);
+    \draw (\m-2-2.north west) -- (\m-9-2.south west);
+    \foreach \n in {2,...,9}{
+      \draw (\m-\n-2.south west) -- (\m-\n-9.south east);
+      \draw (\m-2-\n.north east) -- (\m-9-\n.south east);
+    }
+  }
+  \foreach \m in {encoding123,encoding123',encoding12'}{
+    \draw (\m-2-2.north west) -- (\m-2-11.north east);
+    \draw (\m-2-2.north west) -- (\m-11-2.south west);
+    \foreach \n in {2,...,11}{
+      \draw (\m-\n-2.south west) -- (\m-\n-11.south east);
+      \draw (\m-2-\n.north east) -- (\m-11-\n.south east);
+    }
+  }
+
+  %% Step labels
+  \node[below=5pt of encoding123-11-6,property]{\tiny Extension + Strengthening};
+  \node[below=5pt of encoding123'-11-6,property]{\tiny Post operation};
+  \node[below=5pt of encoding12'-11-6,property]{\tiny Projection};
+
+  \node[scale=2,black,right=8pt of encoding23.east]{\bf ?};
+
+
+  %% Background colors
+  \begin{pgfonlayer}{my background}
+
+    \path[shading=axis,top color=gray!10,bottom color=blue!20]
+    (encoding12-9-2.south west) .. controls +(down:7mm) and +(up:6mm) .. (sigma123-1-3.north west) --
+    (sigma123-1-3.north east) .. controls +(up:6mm) and +(down:7mm) .. (encoding12-9-7.south east) -- cycle;
+
+    \path[shading=axis,top color=gray!10,bottom color=blue!20]
+    (encoding13-9-2.south west) .. controls +(down:7mm) and +(up:6mm) .. (sigma123-1-5.north west) --
+    (sigma123-1-5.north east) .. controls +(up:6mm) and +(down:7mm) .. (encoding13-9-9.south east) -- cycle;
+
+    \path[shading=axis,top color=gray!10,bottom color=blue!20]
+    (encoding23-9-2.south west) .. controls +(down:7mm) and +(up:6mm) .. (sigma123-1-7.north west) --
+    (sigma123-1-7.north east) .. controls +(up:6mm) and +(down:7mm) .. (encoding23-9-9.south east) -- cycle;
+
+    %% Frame for the first matrix
+    \fill[rounded corners=1ex,draw=gray!10,thick,fill=gray!30,double]
+    let \p1=([shift={(-2ex,0ex)}]encoding12.north west),
+        \p2=([shift={(-2ex,1ex)}]sigma12.north west)
+        in
+        (\x1,\y2) rectangle ([shift={(2ex,-2ex)}]encoding12.south east);
+
+    \foreach \m in {encoding12,encoding13,encoding23,encoding123,encoding123',encoding12'}{
+      \fill[gcolor]  (\m-2-2.north west) rectangle (\m-3-3.south east);
+    }
+
+    \foreach \m/\c/\rs/\re/\cs/\ce in {%
+      encoding12/t1color/2/9/4/5,
+      encoding13/t1color/2/9/4/5,
+      encoding123/t1color/2/11/4/5,
+      encoding123'/t1color/2/11/4/5,
+      encoding12'/t1color/2/11/4/5,
+      %
+      encoding12/t2color/2/9/6/7,
+      encoding23/t2color/2/9/4/5,
+      encoding123/t2color/2/11/6/7,
+      encoding123'/t2color/2/11/6/7,
+      encoding12'/t2color/2/11/6/7,
+      %
+      encoding23/t3color/2/9/6/7,
+      encoding13/t3color/2/9/6/7,
+      encoding123/t3color/2/11/8/9,
+      encoding123'/t3color/2/11/8/9,
+      encoding12'/t3color/2/11/8/9%
+    }{
+      \fill[\c] (\m-\rs-\cs.north west) rectangle (\m-\re-\ce.south east);
+      \fill[\c] (\m-\cs-\rs.north west) rectangle (\m-\ce-\re.south east);
+    }
+
+    
+    % \draw[ultra thick] (anchor12) .. controls +(down:1mm) and +(up:1mm) .. (anchor123);
+    % \draw[ultra thick] (anchor13) .. controls +(down:1mm) and +(60:3mm) .. (anchor123);
+    % \draw[ultra thick] (anchor23) .. controls +(down:1mm) and +(30:3mm) .. (anchor123);
+
+    
+    %% From encoding123 to encoding123' 
+    % \fill[fill=blue!20,path fading=north] %% No fading with Xetex
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=90]
+    (encoding123-2-11.north east) .. controls +(right:7mm) and +(left:6mm) .. (encoding123'-6-1.north west) --
+    (encoding123'-7-1.south west) .. controls +(left:6mm) and +(right:7mm) .. (encoding123-11-11.south east) -- cycle;
+
+    %% From encoding123' to encoding12' 
+    \path[shading=axis,top color=gray!10,bottom color=blue!20,shading angle=90]
+    (encoding123'-2-11.north east) .. controls +(right:7mm) and +(left:6mm) .. (encoding12'-6-1.north west) --
+    (encoding12'-7-1.south west) .. controls +(left:6mm) and +(right:7mm) .. (encoding123'-11-11.south east) -- cycle;
+
+    
+    %% Projecting away thread 3
+    %% I can't use patterns with Xetex, so I draw lines and I clip the area.
+    %% Pdflatex can, so just use \path[pattern=north east lines] (and load the patterns lib)
+    \path[clip]
+    (encoding12'-8-2.north west)
+    -- (encoding12'-8-8.north west)
+    -- (encoding12'-2-8.north west)
+    -- (encoding12'-2-9.north east)
+    -- (encoding12'-8-9.north east)
+    -- (encoding12'-8-11.north east)
+    -- (encoding12'-9-11.south east)
+    -- (encoding12'-9-9.south east)
+    -- (encoding12'-11-9.south east)
+    -- (encoding12'-11-8.south west)
+    -- (encoding12'-9-8.south west)
+    -- (encoding12'-9-2.south west)
+    -- cycle;
+    \foreach \m in {2,...,11}{
+      \draw[projectaway] (encoding12'-\m-2.south west) -- +(45:5cm);
+      \draw[projectaway] (encoding12'-11-\m.south west) -- +(45:5cm);
+    }
+    
+  \end{pgfonlayer}
+
+  %% For the PC
+  \draw[projectaway,very thick] (sigma12'-1-7.south west) -- (sigma12'-1-7.north east);
+
+\end{tikzpicture}
+

@@ -1,0 +1,92 @@
+\begin{tikzpicture}[framed,%show background rectangle,
+  % level distance=8pt,level 1/.style={sibling distance=8pt},
+  %edge from parent/.style={draw,thick,densely dotted},
+  %every place/.append style={scale=0.3},
+  decoration={snake,segment length=3mm,amplitude=0.5mm,pre length=3mm,post length=3mm},
+  link/.style={->,myedge,decorate,shorten >=4pt},
+  para/.style={shade,bottom color=#1,shading angle=180},
+  zone/.style={circle,shading=radial,inner color=#1!yellow,draw=blue!50,line width=2pt},
+  %% Special frame...
+  background rectangle/.append style={inner sep=0pt}
+  ]
+
+  %% Clipping rectangle
+  % \clip[use as bounding box] (0,0) rectangle (\textwidth-10mm,\textheight-15mm);
+  \clip[use as bounding box] (0,0) rectangle (\textwidth-5mm,110mm);
+
+  \coordinate (z) at  ([shift={(+30pt,0pt)}]current bounding box.north east){};
+
+  %% Circles
+  \node[zone=green!10,minimum width=23cm] (big) at (z){};
+  \node[zone=green!30,minimum width=18cm] at (z){};
+  \node[zone=green!60,minimum width=13cm] at (z){};
+  \node[zone=green!90,minimum width=8cm] at (z){};
+  
+  %% Bad state
+  \coordinate (bad2) at  ([shift={(-20pt,-80pt)}]current bounding box.north east){};
+  \fill[para=red] (bad2) ++(-20pt,50pt) parabola[bend pos=0.5] bend (bad2) +(40pt,0pt) -- cycle;
+  \draw[link] (bad2) to [out=-90,in=0] node[pos=1,below]{\ldots} +(-120:20mm);
+
+  \coordinate (bad) at  ([shift={(-30pt,-70pt)}]current bounding box.north east){};
+  \fill[para=red] (bad) ++(-20pt,50pt) parabola[bend pos=0.5] bend (bad) +(40pt,0pt) -- cycle;
+
+  \node[above] at ([shift={(-23pt,-60pt)}]current bounding box.north east) {$\ucl\minbad$};
+
+  %% Parabolas on p1 and p2
+  \coordinate (p1) at  ([shift={(-30mm,5mm)}]bad){};
+  \fill[para=blue] (p1) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p1) +(40pt,0pt) -- cycle;
+  \coordinate (p2) at  ([shift={(-20mm,-20mm)}]bad){};
+  \fill[para=blue!50!red] (p2) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p2) +(40pt,0pt) -- cycle;
+  \draw[link] (bad) to [out=180,in=0] (p1);
+  \draw[link] (bad) to [out=-100,in=0] (p2);
+
+  %% Parabolas on p3 and p4
+  \coordinate (p3) at  ([shift={(-30mm,0mm)}]p1){};
+  \coordinate (p4) at  ([shift={(-20mm,-18mm)}]p1){};
+  \coordinate (p5) at  ([shift={(-10mm,-25mm)}]p2){};
+  \fill[para=yellow] (p3) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p3) +(40pt,0pt) -- cycle;
+  \fill[para=blue!30!red] (p4) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p4) +(40pt,0pt) -- cycle;
+  \fill[para=green] (p5) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p5) +(40pt,0pt) -- cycle;
+  \draw[link] (p1) to [out=180,in=20] (p3);
+  \draw[link] (p1) to [out=-100,in=10] (p4);
+  \draw[link] (p2) to [out=-90,in=0] (p5);
+
+  %% Inclusion and discard
+  \draw[densely dashed,blue,ultra thick] (p2)--(p4) node[solid,fill=white,draw=blue,circle,midway,rotate=180,sloped]{$\sqsubseteq$};
+  \draw[red,ultra thick] (p4) ++(-10pt,0pt)--++(30pt,40pt) ++(-40pt,0pt)--++(+30pt,-30pt);
+  %\node[red,ultra thick,cross out,minimum size=50pt,above=25pt of p4]{};
+
+  %% Empty sets and Arrows from p3 and p5
+  % \node[scale=1.5,left,inner sep=0pt] (p6) at ([shift={(-20mm,0mm)}]p3){$\emptyset$};
+  % \node[scale=1.5,left,inner sep=0pt] (p7) at  ([shift={(-10mm,-10mm)}]p5){$\emptyset$};
+
+  \coordinate (p6) at ([shift={(-20mm,-5mm)}]p3){};
+  \fill[para=blue!50!red] (p6) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p6) +(40pt,0pt) -- cycle;
+  \draw[red,ultra thick] (p6) ++(-10pt,0pt)--++(30pt,40pt) ++(-40pt,0pt)--++(+30pt,-30pt);
+  \draw[link] (p3) to [out=-100,in=0] (p6);
+
+  \coordinate (p7) at ([shift={(-23mm,-10mm)}]p5){};
+  \fill[para=blue] (p7) ++(-20pt,50pt) parabola[bend pos=0.5] bend (p7) +(40pt,0pt) -- cycle;
+  \draw[red,ultra thick] (p7) ++(-10pt,0pt)--++(30pt,40pt) ++(-40pt,0pt)--++(+30pt,-30pt);
+  \draw[link] (p5) to [out=-100,in=0] (p7);
+
+  %% Minimal elements
+  \foreach \a in {bad,bad2,p1,p2,p3,p4,p5,p6,p7}{\fill[red] (\a) circle (2pt);}
+
+  % %% Pre*(bad)
+  % \node<9->[zone=black!10,opacity=0.9,minimum width=18cm] at (z){};
+  % \coordinate (b) at (7,4);
+  % \fill<9->[para=red] (b) ++(-1,2) parabola[bend pos=0.5] bend (b) +(2,0);
+  % \node<9-> [scale=2,left] at ($(b)+(-0.7,1)$) {Pre$^*($};
+  % \node<9-> [scale=2,right] at ($(b)+(0.7,1)$) {$)$};
+
+  %% Init
+  \node[](i) at ([shift={(-31mm,0)}]p7) {$\Inits$};
+  \begin{pgfonlayer}{my background}
+    \node[ellipse,fill=blue!30!white,rotate=30,minimum height=7cm,minimum width=25mm,fit=(i)](bi){};
+  \end{pgfonlayer}
+
+  \node[scale=0.7,mylabel,draw=black,double,inner sep=1ex](prestar) at ([shift={(4mm,-25mm)}]p7) {$\prestar(\ucl\minbad)$};
+  \draw[thin,->,>=stealth] (prestar.east) to[out=0,in=-121] (big.-121);
+
+\end{tikzpicture}

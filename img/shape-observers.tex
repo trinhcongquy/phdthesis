@@ -1,0 +1,147 @@
+\begin{tikzpicture}[
+  framed,
+  shorten >=1pt,
+  >=stealth,
+  %auto,
+  data/.append style={draw=black},
+  scale=0.85,
+  every node/.append style={scale=0.85},
+  ]
+
+
+  \begin{scope}
+    \node[obsstate,initial, color = black,fill=yellow!20]  (i)                      {$i$};
+    \node[obsstate,color = black,fill=yellow!20]          (q1)  [right=16mm of i]  {};
+    \node[obsstate,color = black,fill=yellow!20]          (q2)  [right=16mm of q1] {};
+    \node[obsstate,accepting](bad) [below=12mm of q2] {};
+
+    \path[->]  (i) edge              coordinate(cpushB) (q1)
+                   edge [loop above] coordinate(cw1)    ()
+              (q1) edge              coordinate(cpushR) (q2)
+                   edge [loop above] coordinate(cw2)    ()
+              (q2) edge              coordinate(cpopB)  (bad)
+                   edge [loop above] coordinate(cw3)    ();
+    
+    \filldraw[scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) circle (0.2ex) ++(0.8ex,0) circle (0.2ex);
+    \draw[scale=2,black!80!red,line width=2pt,line cap=round] (bad) ++(0.5ex,-0.4ex) arc (45:135:0.7ex);
+
+    %% Orderedness
+    %\node[property,left=5mm of bad]{\Large\sc Orderedness};    
+    \path let \p1 = (bad), \p2 = (i.west) in node[property,right] at (\x2,\y1) {\Large\sc FIFO};
+    %\node[property,right,scale=1.2,below=16mm of i.west] at (0,-16mm) {\sc Orderedness};    
+
+    %% Push B
+    \path node[above=2pt of cpushB,inner sep=0pt,xshift=-7pt](pushB){push(x)} {};
+
+    %% Push R
+    \path node[above=2pt of cpushR,inner sep=0pt,xshift=-7pt](pushR){push(y)}{};
+
+    %% Pop B
+    \path node[right=3pt of cpopB,inner sep=0pt](popB){pop(x)}{};
+
+    %% Push/Pop W
+    \foreach \n in {1,2,3}{
+      \path node[above=2pt of cw\n,inner sep=0pt,xshift=-7pt](popW\n){pop} node[data=white,right=2pt of popW\n.east,yshift=1pt]{};
+      \path node[above=2pt of popW\n.north east,inner sep=0pt,xshift=-7pt](pushW\n){push} node[data=white,right=2pt of pushW\n.east,yshift=1pt]{};
+    }
+    
+  \end{scope}
+
+%  \begin{scope}[shift={(8.5,0)}]
+%    \node[obsstate,initial]  (i)                      {$i$};
+%    \node[obsstate]          (q1)  [right=16mm of i]  {};
+%    \node[obsstate,accepting](bad) [below=12mm of q1] {};
+%
+%    \path[->]  (i) edge              coordinate(cpushB) (q1)
+%                   edge [loop above] coordinate(cw1)    ()
+%              (q1) edge              coordinate(cpopE)  (bad)
+%                   edge [loop above] coordinate(cw2)    ();
+%    
+%    \filldraw[scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) circle (0.2ex) ++(0.8ex,0) circle (0.2ex);
+%    \draw[scale=2,black!80!red,line width=2pt,line cap=round] (bad) ++(0.5ex,-0.4ex) arc (45:135:0.7ex);
+%    
+%    %% Lossiness
+%    \node[property,left=5mm of bad](lossiness){\Large\sc Lossiness};    
+%    \coordinate(badL) at (bad);
+%
+%    %% Push B
+%    \path node[above=2pt of cpushB,inner sep=0pt,xshift=-7pt](pushB){push} node[data=blue,right=2pt of pushB.east,yshift=1pt]{};
+%
+%    %% Pop Empty
+%    \node[right=3pt of cpopE,inner sep=0pt]{pop $\emptyset$};
+%
+%    %% Push/Pop W
+%    \foreach \n in {1,2}{
+%      \path node[above=2pt of cw\n,inner sep=0pt,xshift=-7pt](popW\n){pop} node[data=white,right=2pt of popW\n.east,yshift=1pt]{};
+%      \path node[above=2pt of popW\n.north east,inner sep=0pt,xshift=-7pt](pushW\n){push} node[data=white,right=2pt of pushW\n.east,yshift=1pt]{};
+%    }
+%    
+%  \end{scope}
+
+
+%  \begin{scope}[shift={(0,-5.5)}]
+%    \node[obsstate,initial]  (i)                      {$i$};
+%    \node[obsstate]          (q1)  [right=16mm of i]  {};
+%    \node[obsstate]          (q2)  [right=16mm of q1] {};
+%    \node[obsstate,accepting](bad) [below=12mm of q2] {};
+%    \coordinate(badD) at (bad);
+%
+%    \path[->]  (i) edge              coordinate(cpushB) (q1)
+%                   edge [loop above] coordinate(cw1)    ()
+%              (q1) edge              coordinate(cpushR) (q2)
+%                   edge [loop above] coordinate(cw2)    ()
+%              (q2) edge              coordinate(cpopB)  (bad)
+%                   edge [loop above] coordinate(cw3)    ();
+%    
+%    \filldraw[scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) circle (0.2ex) ++(0.8ex,0) circle (0.2ex);
+%    \draw[scale=2,black!80!red,line width=2pt,line cap=round] (bad) ++(0.5ex,-0.4ex) arc (45:135:0.7ex);
+%
+%    %% Orderedness
+%    %\node[property,left=5mm of bad](duplication){\Large\sc Duplication};
+%    \path let \p1 = (bad), \p2 = (i.west) in node[property,right](duplication) at (\x2,\y1) {\Large\sc Duplication};
+%
+%    %% Push B
+%    \path node[above=2pt of cpushB,inner sep=0pt,xshift=-7pt](pushB){push} node[data=blue,right=2pt of pushB.east,yshift=1pt]{};
+%
+%    %% Push R => pop B
+%    \path node[above=2pt of cpushR,inner sep=0pt,xshift=-7pt](pushR){pop} node[data=blue,right=2pt of pushR.east,yshift=1pt]{};
+%
+%    %% Pop B
+%    \path node[right=3pt of cpopB,inner sep=0pt](popB){pop} node[data=blue,right=2pt of popB.east,yshift=1pt]{};
+%
+%    %% Push/Pop W
+%    \foreach \n in {1,2,3}{
+%      \path node[above=2pt of cw\n,inner sep=0pt,xshift=-7pt](popW\n){pop} node[data=white,right=2pt of popW\n.east,yshift=1pt]{};
+%      \path node[above=2pt of popW\n.north east,inner sep=0pt,xshift=-7pt](pushW\n){push} node[data=white,right=2pt of pushW\n.east,yshift=1pt]{};
+%    }
+%    
+%  \end{scope}
+
+%  \begin{scope}[shift={(8.5,-5.5)}]
+%    \node[obsstate,initial]  (i)                      {$i$};
+%    %\node[obsstate,accepting](bad) [right=16mm of i] {};
+%    \path let \p1 = (badD.west), \p2 = (badL.west) in node[obsstate,accepting](bad) at (\x2,\y1){};
+%
+%    \path[->]  (i) edge[bend left]              coordinate(cpopB) (bad)
+%                   edge [loop above] coordinate(cw1)    ();
+%    
+%    \filldraw[scale=2,black!80!red] (bad) ++(-0.4ex,0.4ex) circle (0.2ex) ++(0.8ex,0) circle (0.2ex);
+%    \draw[scale=2,black!80!red,line width=2pt,line cap=round] (bad) ++(0.5ex,-0.4ex) arc (45:135:0.7ex);
+%    
+%    %% Lossiness
+%    %\node[property,below left=5mm of bad]{\Large\sc Creation};    
+%    \path let \p1 = (duplication.west), \p2 = (lossiness.west) in node[property,right] at (\x2,\y1){\Large\sc Creation};
+%
+%    %% pop B
+%    \path node[above right=2pt of cpopB,inner sep=0pt](popB){pop} node[data=blue,right=2pt of popB.east,yshift=1pt]{};
+%
+%    %% Push/Pop W
+%    \path node[above=2pt of cw1,inner sep=0pt,xshift=-7pt](popW1){pop} node[data=white,right=2pt of popW1.east,yshift=1pt]{};
+%    \path node[above=2pt of popW1.north east,inner sep=0pt,xshift=-7pt](pushW1){push} node[data=white,right=2pt of pushW1.east,yshift=1pt]{};
+%    
+%  \end{scope}
+
+  %\draw[gray!5,line width=2pt,line cap=round] (-0.8,-3.3) -- +(right:12.6);
+  %\draw[gray!5,line width=2pt,line cap=round] (7,1.2) -- +(down:9.2);
+
+\end{tikzpicture}

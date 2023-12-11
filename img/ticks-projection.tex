@@ -1,0 +1,65 @@
+\begin{tikzpicture}
+  \matrix(m1)[matrix of math nodes,nodes in empty cells,nodes={na-cell}]{%
+    |[ful]|&|[fu]|&|[keep,fu]|&|[fu]|&|[fu]|&|[fu]|&|[keep,fu]|&|[fu]|&|[fur]|\\
+    |[fl]|& &|[keep]|& & & &|[keep]|& &|[fr]|\\
+    |[keep,fl]|\tick&|[keep]|\tick&|[keep]|\tick&|[check]|\tick&|[check]|\tick&|[check]|\tick&|[select]|\tick&|[keep]|\tick&|[keep,fr]|\tick\\
+    |[fl]|& &|[keep]|& & & &|[keep]|& &|[fr]|\\
+    |[fl]|& &|[keep]|& & & &|[keep]|& &|[fr]|\\
+    |[keep,fl]|\tick&|[keep]|\tick&|[keep]|\tick&|[check]|\tick&|[check]|\tick&|[check]|\times&|[select]|\times&|[keep]|\times&|[keep,fr]|\times\\
+    |[fl]|& &|[keep]|& & & &|[keep]|& &|[fr]|\\
+    |[fdl]|&|[fd]|&|[keep,fd]|&|[fd]|&|[fd]|&|[fd]|&|[keep,fd]|&|[fd]|&|[fdr]|\\
+  };
+
+  \foreach \n in {1,2,...,8}{
+    \draw[snake] (m1-2-\n.north east) -- +(up:3ex);
+    \draw[snake] (m1-7-\n.south east) -- +(down:3ex);
+  }
+  \foreach \n in {1,2,...,7}{
+    \draw[snake] (m1-\n-2.south west) -- +(left:3ex);
+    \draw[snake] (m1-\n-8.south east) -- +(right:3ex);
+  }
+
+  \node[above=0pt of m1-1-3.north,anchor=center,circular glow={fill=white}]{ h(j-1) };
+  \node[above=0pt of m1-1-7.north,anchor=center,circular glow={fill=white}]{ h(j) };
+  \node[left=0pt of m1-3-1]{ h(i) };
+  \node[left=0pt of m1-6-1]{ h(i+1) };
+  
+  \node[fit=(m1-3-4)(m1-3-5)(m1-3-6),draw=red,very thick](c3){};
+  \draw[<->,na-edge,very thick,draw=red](c3.north) to[out=45,in=135] (m1-3-7.north);
+
+  \node[fit=(m1-6-4)(m1-6-5)(m1-6-6),draw=red,very thick](c6){};
+  \draw[<->,na-edge,very thick,draw=red](c6.north) to[out=45,in=135] (m1-6-7.north);
+
+  % xshift = 5 cm
+  \matrix(m2)[yshift=-40mm,matrix of math nodes,nodes in empty cells,nodes={na-cell}]{%
+    |[ful]|&|[keep,fu]|&|[keep,fu]|&|[fur]|\\
+    |[fl,keep]|\tick&|[keep]|\tick&|[select]|\tick&|[fr,keep]|\tick\\
+    |[fl,keep]|\tick&|[keep]|\tick&|[select]|\sdunno&|[fr,keep]|\times\\
+    |[fdl]|&|[keep,fd]|&|[keep,fd]|&|[fdr]|\\
+  };
+
+  \foreach \n in {1,2,3}{
+    \draw[snake] (m2-2-\n.north east) -- +(up:2ex);
+    \draw[snake] (m2-3-\n.south east) -- +(down:2ex);
+  }
+  \foreach \n in {1,2,3}{
+    \draw[snake] (m2-\n-2.south west) -- +(left:2ex);
+    \draw[snake] (m2-\n-3.south east) -- +(right:2ex);
+  }
+  \node[above=0pt of m2-1-2.north,anchor=center,circular glow={fill=white}]{ j-1 };
+  \node[above=0pt of m2-1-3.north,anchor=center,circular glow={fill=white}]{ j };
+  \node[left=0pt of m2-2-1]{ i };
+  \node[left=0pt of m2-3-1]{ i+1 };
+
+  %\draw[->,shorten >=7mm,shorten <=3mm] (m1) -- (m2) node[pos=0.4,above]{project};
+  \draw[->,shorten >=3mm,shorten <=3mm] (m1) -- (m2) node[midway,right=2pt]{$\Pi_{h}$};
+
+%   \matrix(m3)[matrix of math nodes,nodes={na-cell},right=10pt of m1.south east, anchor=south west]{%
+%     |[check]|\tick&|[check]|\tick&|[check]|\times&|[select]|\times\\
+%   };
+%   \node[fit=(m3-1-1)(m3-1-2)(m3-1-3),draw=red,very thick](c){};
+%   \draw[<->,na-edge,very thick,draw=red](c.north) to[out=45,in=135] (m3-1-4.north);
+  
+%   \draw[->,shorten <=3mm] (m3-1-4) -- ++(right:15mm) node[pos=0.6,above]{project} node[pos=1.1,right]{$\notdefined$};
+
+\end{tikzpicture}

@@ -1,0 +1,235 @@
+The directory-based cache protocol consists of a central server $H$
+(for \emph{Home}), and a set of client caches $C_1,\ldots,C_n$. Each
+client $C_i$ communicates with the server through a set of three
+message channels namely $ch_1^i,ch_2^i,ch_3^i$ in a star
+topology.
+
+A client $C_i$ can request to share a given cache and sends a
+\emph{ReqShared} or \emph{ReqExclusive} through its $ch_1^i$. The
+\emph{Home} node will reply in $ch_2^i$ with an \emph{Invalidate}, a
+\emph{GrantShared}, or a \emph{GrantExclusive} message. The client
+aknowledges the reception by sending a \emph{InvAck} message in
+$ch_3^i$.
+
+A cache line can be in state \emph{Invalid}, \emph{Shared} or
+\emph{Exclusive}. If a cache line is in state \emph{Invalid} in the
+cache $C_i$, the client $i$ does not have access to that cache line.
+If a client has been granted the access, by \emph{Home}, possibly
+along with other clients, the cache line is in state \emph{Shared}.
+\emph{Home} can also grant the access exclusively to a client, if
+which case the cache line is in state \emph{Exclusive}.
+
+\begin{wrapfigure}{r}[2pt]{0.45\textwidth}
+  \hfill
+  \begin{tikzpicture}[auto,>=stealth']
+    \node[scale=0.7,ellipse,ball color=blue!50!white](home){Home};
+    \foreach \i/\t/\a in {1/$C_1$/60, 2/$C_2$/120, 3/$C_3$/180, 4/$C_4$/240, 5/$\ldots$/-80, 6/$\ldots$/-40, 7/$C_6$/360}{
+      \node(c\i)[scale=0.8,circle,ball color=green!50!white] at +(\a:23mm){\t};
+      \begin{pgfonlayer}{background}
+        \draw[->] (home.\a) .. controls +(\a:1cm) and +(\a:-1cm) .. (c\i) coordinate[midway](ch2\i);
+        \draw[<-] ([rotate=5]home.\a) .. controls +([rotate=5]\a:1cm) and +(\a:-1cm) .. ([rotate=5]c\i) coordinate[pos=0.2](ch1\i);
+        \draw[<-] ([rotate=-5]home.\a) .. controls +([rotate=-5]\a:1cm) and +(\a:-1cm) .. ([rotate=-5]c\i) coordinate[pos=0.8](ch3\i);
+      \end{pgfonlayer}
+      \node[scale=0.4,anchor=east,inner sep=0pt, fill=white!90!gray] at (ch11){$ch_1$};
+      \node[scale=0.4,anchor=center,inner sep=0pt, fill=white!90!gray] at (ch21){$ch_2$};
+      \node[scale=0.4,anchor=north west,inner sep=0pt, fill=white!90!gray] at (ch31){$ch_3$};
+    }
+  \end{tikzpicture}
+\end{wrapfigure}
+%
+Initially, all channels are empty and all cache lines are in state
+\emph{Invalid}. A bad configuration is detected when two (or more)
+processes have exclusive access to a given cache line, or if one
+accesses the cache line exclusively whilst the others still have a
+shared access.
+
+We model each client in a parametrized system with multiset topology.
+The actions of $H$ are represented in each process and its (bounded)
+local variables are modeled as shared variables. The model
+follows~\cite{PRZ-tacas01}. We assume the channels to be of length one
+and therefore can represent them by a local variable (for each
+client).  In addition to channels, the central controller manipulates
+five data:
+\begin{description}[leftmargin=6em,style=nextline,align=right,labelsep=\parindent]
+\item[\color{blue} excl] a flag to remember whether the exclusive access has been granted.% (modeled with a shared boolean variable).
+\item[\color{blue} ctl] a pointer to the client that sent the request being served.% (modeled with a local boolean variable),
+\item[\color{blue} sh\_list] a list of the processes having an access, either shared or exclusive, to the cache~line. % (modeled with a local boolean variable), and
+\item[\color{blue} inv\_list] a list of  processes which have to be invalidated in order to serve the current request.% (modeled also with a local boolean variable). 
+\item[\color{blue} cmd] a message read in some buffer.% (modeled as shared variable). 
+\end{description}%
+% We model a variable of the server as follows: Each client has a local
+% copy of it. When the server performs an update to that shared
+% variable, a broadcast communication is issued: all clients update
+% their local copy simultaneously.
+
+A client $i$ may perform one of the following actions:
+\begin{description}[leftmargin=6em,style=nextline,align=right,labelsep=\parindent]
+\item[\color{orange} $c_1$] If in state invalid and $ch_1^i$ is empty, the client $i$ sends a request to $H$
+  for a shared access via its $ch_1$.
+\item[\color{orange} $c_2$] If in state invalid or shared while $ch_1^i$ is empty, the client $i$ sends 
+  a request to $H$ for an exclusive access via its $ch_1$.
+\item[\color{orange} $c_3$] If the client $i$ is granted a shared access via $ch_2^i$,
+  it consumes the message from the channel and update the state of the
+  cache line to \emph{Shared}. 
+\item[\color{orange} $c_4$] If the client $i$ is granted an exclusive access via $ch_2^i$,
+  it consumes the message from the channel and update the state of the
+  cache line to \emph{Exclusive}.
+\item[\color{orange} $c_5$] If the client $i$ receives an invalidation message through
+  $ch_2^i$ and $ch_3^i$ is empty, it changes the state of the cache
+  line to \emph{Invalid}, empties $ch_2^i$ and sends an invalidation
+  acknowledgment to $H$ via $ch_3^i$.
+\end{description}
+
+Depending on the content of the channels and the values of the shared
+variables, $H$ may perform one of the following actions.
+\begin{description}[leftmargin=6em,style=nextline,align=right,labelsep=\parindent]
+\item[\color{orange} $h_1$] If $H$ is idle (ie $cmd$ is empty) and receives a request via
+  some $ch_1$, it consumes the received request from $ch_1$ into
+  $cmd$, selects the sender to be the current client and copies the
+  content of the sharer list to the invalidation list.
+\item[\color{orange} $h_2$] In case some $ch_2$ is empty, the current command is a
+  shared request and the exclusive access has not been granted, then
+  $H$ grants a shared access to the current client via $ch_2$ and adds
+  the client to the shared list and returns idle.
+\item[{\color{orange} $h_3$},{\color{orange}~$h_4$}] If the current command is either a shared request
+  (while the exclusive flag is set) or an exclusive request, some
+  $ch_2$ is empty, then $H$ sends an invalidation message every
+  process through $ch_2$ and removes these processes from the
+  invalidation list.
+\item[\color{orange} $h_5$] In case the current command is a request for either a
+  shared or an exclusive access and $H$ receives an invalidation
+  acknowledgment from a client via $ch_3$, then $H$ removes a client
+  from the sharer list, resets the exclusive flag and empties $ch_3$.
+\end{description}
+%
+Using this model, the safety properties we checked are: (i) no two
+clients are simultaneously granted an exclusive access, and (ii) no
+client in state shared coexists with a client in state exclusive.
+%
+We described the model, the variables and transitions in plain
+text. The complete description and pseudocode can be found
+in~\cite{PRZ-tacas01}. 
+
+%% ================================================================
+\subsection*{Modeled as a Petri Net.}
+A simplified version of the protocol has been modeled as a Petri Net
+as in~\cite{Raskin:experiments:German}. It uses 12 places:
+\emph{idle,serveS,serveE,grantS,} and \emph{grantE} model which
+request is being served, \emph{ex,notEx} to model the exclusive flag,
+\emph{waitS,waitE} to model the response from $H$, and finally
+\emph{shared,excl,invalid} to model the cache line states.
+
+
+{\noindent\centering %
+\begin{tikzpicture}[show background rectangle,
+  node distance=6mm,
+  label distance=2pt,
+  ]
+
+  %% (new R.apply ~descr:"reqS" [idle;invalid] [serveS;waitS]);
+  \begin{scope}[xshift=-40mm]
+    \node[transition](t){};
+    \node[state,place,label={[scale=0.5]above:$idle$},above=of t.west](i1){};
+    \node[state,place,label={[scale=0.5]above:$inv$},above=of t.east](i2) {};
+    \node[state,place,label={[scale=0.5]below:$serveS$},below=of t.west](o1) {};
+    \node[state,place,label={[scale=0.5]below:$waitS$},below=of t.east](o2) {};
+    \draw[myedge,<-] (t.150) .. controls +(up:5mm) .. (i1);
+    \draw[myedge,<-] (t.30) .. controls +(up:5mm) .. (i2);
+    \draw[myedge,->] (t.-150) .. controls +(down:5mm) .. (o1);
+    \draw[myedge,->] (t.-30) .. controls +(down:5mm) .. (o2);
+  \end{scope}
+
+  %% (new R.apply ~descr:"invalid" [serveS;ex;excl] [notEx;grantS;invalid]);
+  \begin{scope}
+    \node[transition](t){};
+    \node[state,place,label={[scale=0.5]above:$shared$},above=of t.center](i2) {};
+    \node[state,place,label={[scale=0.5]above:$serveE$},left=of i2](i1) {};
+    \node[state,place,label={[scale=0.5]above:$excl$},right=of i2](i3) {};
+    \node[state,place,label={[scale=0.5]below:$grantE$},below=of t.west](o1) {};
+    \node[state,place,label={[scale=0.5]below:$inv$},below=of t.east](o2) {};
+    \draw[myedge,<-] (t.150) .. controls +(up:5mm) .. (i1);
+    \draw[myedge,<-,decorate] (t.30) .. controls +(up:5mm) .. (i2);
+    \draw[myedge,<-,mysnake] (t.15) .. controls +(75:2mm) .. (i3);
+    \draw[myedge,->] (t.-150) .. controls +(down:5mm) .. (o1);
+    \draw[myedge,->,mysnake] (t.-30) .. controls +(-75:5mm) .. (o2);
+  \end{scope}
+
+  %% (new R.apply ~descr:"nonex" [serveS;notEx] [grantS;notEx]);
+  \begin{scope}[xshift=40mm]
+    \node[transition](t){};
+    \node[state,place,label={[scale=0.5]above:$serveS$},above=of t.west](i1) {};
+    \node[state,place,label={[scale=0.5]right:$notEx$},right=of t](notex) {};
+    \node[state,place,label={[scale=0.5]below:$grantS$},below=of t.west](o1) {};
+    \draw[myedge,<-] (t.150) .. controls +(up:5mm) .. (i1);
+    \draw[myedge,<-] (t.30) .. controls +(up:5mm) and +(120:5mm) .. (notex);
+    \draw[myedge,->] (t.-150) .. controls +(down:5mm) .. (o1);
+    \draw[myedge,->] (t.-30) .. controls +(down:5mm) and +(-120:5mm) .. (notex);
+  \end{scope}
+
+  %% (new R.apply ~descr:"grantS" [grantS;waitS] [idle;shared]);
+  \begin{scope}[xshift=-40mm,yshift=-35mm]
+    \node[transition](t){};
+    \node[state,place,label={[scale=0.5]above:$grantS$},above=of t.west](i1) {};
+    \node[state,place,label={[scale=0.5]above:$waitS$},above=of t.east](i2) {};
+    \node[state,place,label={[scale=0.5]below:$idle$},below=of t.west](o1) {};
+    \node[state,place,label={[scale=0.5]below:$shared$},below=of t.east](o2) {};
+    \draw[myedge,<-] (t.150) .. controls +(up:5mm) .. (i1);
+    \draw[myedge,<-] (t.30) .. controls +(up:5mm) .. (i2);
+    \draw[myedge,->] (t.-150) .. controls +(down:5mm) .. (o1);
+    \draw[myedge,->] (t.-30) .. controls +(down:5mm) .. (o2);
+  \end{scope}
+
+  %% (new R.apply ~descr:"reqE" [idle;invalid] [serveE;waitE]);
+  %% (new R.apply ~descr:"reqE2" [idle;shared] [serveE;waitE]);
+  \begin{scope}[yshift=-26mm]% magic number
+    \node[state,place,label={[scale=0.5]above:$idle$}](idle){};
+    \node[state,place,label={[scale=0.5]above:$shared$},left=of idle](shared) {};
+    \node[state,place,label={[scale=0.5]above:$inv$},right=of idle](inv) {};
+
+    \node[transition,minimum width=7mm,below=of shared,anchor=west](t1){};
+    \node[transition,minimum width=7mm,below=of inv,anchor=east](t2){};
+
+    \node[state,place,label={[scale=0.5]below:$serveE$},below=of t1](serveE) {};
+    \node[state,place,label={[scale=0.5]below:$waitE$},below=of t2](waitE) {};
+
+    \draw[myedge,<-] (t1.150) .. controls +(up:2mm) .. (shared);
+    \draw[myedge,<-] (t1.30) .. controls +(up:2mm) .. (idle);
+    \draw[myedge,->] (t1.-150) .. controls +(down:2mm) .. (serveE.60);
+    \draw[myedge,->] (t1.-30) .. controls +(down:2mm) .. (waitE.120);
+
+    \draw[myedge,<-] (t2.150) .. controls +(up:2mm) .. (idle);
+    \draw[myedge,<-] (t2.30) .. controls +(up:2mm) .. (inv);
+    \draw[myedge,->] (t2.-150) .. controls +(down:2mm) .. (serveE.60);
+    \draw[myedge,->] (t2.-30) .. controls +(down:2mm) .. (waitE.120);
+
+  \end{scope}
+
+  %% (new R.transfer ~descr:"grantE" [grantE;waitE] [idle;excl] notEx ex);
+  \begin{scope}[xshift=40mm,yshift=-35mm]
+    \node[transition](t){};
+    \node[state,place,label={[scale=0.5,label distance=2pt]above:$waitE$},above=of t.center](i2) {};
+    \node[state,place,label={[scale=0.5,label distance=0pt]above:$grantE$},left=of i2](i1) {};
+    \node[state,place,label={[scale=0.5]right:$notEx$},right=of i2](i3) {};
+
+    \node[state,place,label={[scale=0.5]below:$excl$},below=of t.center](o2) {};
+    \node[state,place,label={[scale=0.5]below:$idle$},left=of o2](o1) {};
+    \node[state,place,label={[scale=0.5]right:$ex$},right=of o2](o3) {};
+
+    \draw[myedge,<-] (t.160) .. controls +(up:2mm) .. (i1.-60);
+    \draw[myedge,<-] (t.90) .. controls +(up:5mm) .. (i2);
+    \draw[myedge,<-,mysnake] (t.10) .. controls +(75:2mm) .. (i3);
+    \draw[myedge,->] (t.-160) .. controls +(down:2mm) .. (o1.60);
+    \draw[myedge,->] (t.-90) .. controls +(down:5mm) .. (o2);
+    \draw[myedge,->,mysnake] (t.-10) .. controls +(-75:2mm) .. (o3);
+  \end{scope}
+
+  \draw[white,thick] (-23mm,10mm) -- +(down:55mm) (20.5mm,10mm) -- +(down:55mm) (-45mm,-17.5mm) -- +(right:100mm);
+
+\end{tikzpicture}%
+\par%
+} % end \centering
+
+Initially one token is in \emph{ex} (such that we model the exclusive
+flag is $\strue$) and each token that represents a process is in
+\emph{invalid}. A bad configuration is detected when the place
+\emph{excl} contains 2 or more tokens.

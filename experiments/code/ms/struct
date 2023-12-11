@@ -1,0 +1,4 @@
+struct node {data val, pointer_t next}
+struct pointer_t {node* ptr, int age}
+
+pointer_t Head, Tail;

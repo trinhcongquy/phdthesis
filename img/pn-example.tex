@@ -1,0 +1,41 @@
+\begin{tikzpicture}[%
+  show background rectangle,
+  ]
+
+  \node(cheating) at(-2,0){};
+
+  \node[state,place,label=right:$init$,tokens=2](in)  at (4,0) {};
+  \node[state,place](lockOut) at (0,0) {};
+  \node[state,place](temp1) at (0,-2) {};
+  \node[state,place](readOut) at (0,-4) {};
+  \node[state,place](temp2) at (0,-6) {};
+  \node[state,place](writeOut) at (0,-8) {};
+  \node[state,place,label=right:$end$](unlockOut) at (4,-8) {};
+
+  \node[transition,rotate=90,label={[scale=0.9]above left:$lock$}](tlock) at (2,0){} edge [pre] (in) edge [post] (lockOut);
+  \node[transition](treadIn) at (0,-1){} edge [pre] (lockOut) edge [post] (temp1);
+  \node[transition](treadOut) at (0,-3){} edge [pre] (temp1) edge [post] (readOut);
+  \node[transition](twriteIn) at (0,-5){} edge [pre] (readOut) edge [post] (temp2);
+  \node[transition](twriteOut) at (0,-7){} edge [pre] (temp2) edge [post] (writeOut);
+  \node[transition,rotate=90,label={[scale=0.9]above left:$unlock$}](tunlock) at (2,-8){} edge [pre] (writeOut) edge [post] (unlockOut);
+
+  \node[state,place,shared,label=right:$L$,tokens=1] (L)  at (6,-4) {};
+  \node[state,place,shared,label=right:$\LD{counter}$] (Rc)  at (2,-3.5) {};
+  \node[state,place,shared,label=right:$\ST{counter}$] (Wc)  at (2,-4.5) {};
+
+  \draw[pre] (tlock.-165) to[out=0,in=90] (L);
+  \draw[post] (tunlock.-15) to[out=0,in=-90] (L);
+
+  \draw[post] (treadIn.-15) to[out=-90,in=120] (Rc.120);
+  \draw[pre] (treadOut.15) to[out=90,in=150] (Rc.150);
+
+  \draw[post] (twriteIn.-15) to[out=-90,in=-150] (Wc.-150);
+  \draw[pre] (twriteOut.15) to[out=90,in=-120] (Wc.-120);
+
+  \begin{pgfonlayer}{my background}
+    \node[dottedrectangle,fit=(Rc) (Wc)] (r){};
+    \node[dottedrectangle,fit=(treadIn) (treadOut)] (read){};
+    \node[dottedrectangle,fit=(twriteIn) (twriteOut)] (write){};
+  \end{pgfonlayer}
+
+\end{tikzpicture}

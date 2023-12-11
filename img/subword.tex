@@ -1,0 +1,30 @@
+\begin{tikzpicture}[show background rectangle,
+  injection/.style={<->,shorten >=1pt,shorten <=1pt}
+  ]
+
+  \foreach \m/\p in {0/0,1/0.5,2/1,3/1.5,4/2,5/2.5,6/3,7/3.5}{\node[state,state-n](v\m) at (\p,0){};}
+
+  \foreach \n/\p in {0/0,1/0.5,2/1}{\node[state,state-n,shift={(1.5,0)}](u\n) at (\p,-1){};}
+
+    \draw[injection] (u0) .. controls +(up:6mm) and +(down:6mm) .. (v2);
+    \draw[injection] (u1) .. controls +(up:6mm) and +(down:6mm) .. (v5);
+    \draw[injection] (u2) .. controls +(up:6mm) and +(down:6mm) .. (v6);
+
+    \foreach \i/\j/\m in {0/1/2,1/2/5,2/3/6}{
+      \node[below=2pt of u\i,anchor=north,scale=0.5]{${\j}$};
+      \node[above=2pt of v\m,anchor=south,scale=0.5]{$h(\j)$};
+    }
+
+    \node[left=4pt of v0,anchor=east]{$v:$};
+    \node[left=4pt of u0,anchor=east]{$u:$};
+
+%     \fill[fill=blue!20,path fading=north]
+%     (m-1-3.north west) .. controls +(up:7mm) and +(down:6mm) .. (c-1-3.south west) --
+%     (c-1-5.south east) .. controls +(down:6mm) and +(up:7mm) .. (m-1-3.north east) -- cycle;
+
+  \begin{pgfonlayer}{my background}
+    \node [fit=(v0)(v7),conf]{};
+    \node [fit=(u0)(u2),conf]{};
+  \end{pgfonlayer}
+
+\end{tikzpicture}

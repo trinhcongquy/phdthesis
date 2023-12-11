@@ -1,0 +1,29 @@
+
+In this thesis we propose general and simple methods for the proving both safety shape properties, and linearization properties of
+both sequential and concurrent heap manipulating programs. Shortly, Linearizability means that all operations are executed in a way as if executed on a single machine.
+Such programs induce an infinite-state space in several dimensions:
+they %
+(i) consist of an unbounded number of concurrent threads, %
+(ii) use unbounded dynamically allocated memory, and %
+(iii) the domain of data values is unbounded. %
+(iv) consist of un unbounded number of pointers. 
+In addition, we could verify the linearization properties of concurrent programs whose linearization points are either fix or depended on the future executions of these programs. In this work, we describes two approaches for shape analysis and one approach for linearization verification.
+
+In the first approach of shape analysis, we propose a novel method of extending the forest automata approach \cite{foresterfull} by expressing relationships between data elements associated with cells of the heap 
+by adding date constraints. This approach work for verifying safety property of sequential programs.
+
+Secondly, to verify concurrent data structures with unbounded number of threads, we use the thread-modular reasoning	which is achieved by abstracting the interaction between threads. Our idea is to define the abstraction precise description of the parts of the heap that are visible (reachable) from global variables, and to make a succinct representation of the parts that are local to the threads. Intuitively, a heap segment can be characterized by a TA with data constraints. More concretely, we will extract a set of heap segments between two cut-points which are analogous to cut-points in the forest automata approach. For each segment, we will store a summary of the content of the heap along the segment.
+
+In order to handle non-fixed linearization points, we provide semantic for specifying linearization policies by a mechanism for assigning LPs to executions, which we call \emph{linearization policies}. 
+A linearization policy is expressed by defining invocation associated controller, which is responsible for generating operations announcing the occurrence of LPs during each method invocation. The controller is occasionally activated, either by its thread or by another controller, and mediates the interaction of the thread with theobserver as well as with other threads.
+ 
+Our framework is the first that
+can automatically verify concurrent data structure implementations that employ
+singly linked lists, skiplists~\cite{Fomitchev:2004,ArtOfMpP,Sundell:2005},
+as well as arrays of singly linked lists~\cite{ts-stack},
+at the same time as handling an unbounded
+number of concurrent threads, an unbounded domain of data values
+(including timestamps), and an unbounded shared heap. To the best of our knowledge, these verification problems have been
+considered challenging in the verification community and
+could not be carried out automatically by other existing methods.
+

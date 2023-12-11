@@ -1,0 +1,95 @@
+\subsection{The Tree-arbiter Protocol}
+
+The protocol supervises the access to a shared resource of a set of processes arranged in 
+a tree topology.
+%
+The processes competing for the resource reside in the leaves.
+%
+
+A process in the protocol can be in state \emph{idle} ($i$), \emph{requesting} ($r$),  
+\emph{token} ($t$) or \emph{below} ($b$).
+%
+All the processes are initially in state $i$.
+%
+A node is in state $b$ whenever it has a descendant in state $t$.
+%
+When a leaf is in state $r$, the request is propagated upwards
+until it encounters a node which is aware of the presence of the token (i.e. a
+node in state $t$ or $b$).
+%
+A node that has the token (in state $t$) can choose to pass it upwards or pass it downwards 
+to a requesting child (node in state $r$).
+%
+
+We model the tree-arbiter protocol with a parameterized tree system $\parsys=\parsystuple$ 
+where $\states=\setcomp{\state_s^n}{s\in\set{i,r,t,b}\band n\in\set{leaf,inner,root}}$ and 
+$\rwrules$ is as depicted in the figure below (figure~\ref{fig:arbiter:rules}).
+%
+Observe that in the definition of $\states$, we use the scripts $s$ and $n$ to model respectively 
+the state and the nature (leaf, inner or root) of the nodes.
+%
+In the definition of the rules, we will drop the script(s) whenever we mean that it is arbitrary 
+(it can take any value).
+%
+
+The rules to model this protocol are as follows: 
+%
+2 rules to propagate the
+request upwards, 
+%
+2 rules to propagate the token downwards, 
+%
+2 rules to propagate the token upwards and one rule to initiate a request from a leaf. 
+%
+
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}[show background rectangle]
+  \begin{scope}[scale=0.5]
+    \tikzstyle{every node}=[draw,rounded corners,minimum width=1cm]
+    \tikzstyle{level 1}=[sibling distance=2.5cm,level distance=2cm]
+    %\tikzstyle{level 2}=[sibling distance=1.8cm,level distance=1.3cm]
+    \node[shift={(0cm,0cm)}] {$\state_i$/$\state_r$} child{edge from parent[draw=none]} child {node {$\state_r$}};
+    \node[shift={(3cm,0cm)}] {$\state_i$/$\state_r$} child{node {$\state_r$}} child{edge from parent[draw=none]};
+    \node[shift={(0cm,-2.2cm)}] {$\state_t$/$\state_b$} child {edge from parent[draw=none]} child {node {$\state_r$/$\state_t$}};
+    \node[shift={(3cm,-2.2cm)}] {$\state_t$/$\state_b$} child {node {$\state_r$/$\state_t$}} child {edge from parent[draw=none]};
+    \node[shift={(0cm,-4.4cm)}] {$\state_b$/$\state_t$} child{edge from parent[draw=none]} child {node {$\state_t$/$\state_i$}};
+    \node[shift={(3cm,-4.4cm)}] {$\state_b$/$\state_t$} child {node {$\state_t$/$\state_i$}} child {edge from parent[draw=none]};
+    \node[shift={(1.5cm,-6.6cm)}] {$\state_i^{leaf}$/$\state_r$};
+  \end{scope}
+  \begin{scope}[color=white]
+    \draw (0cm,-1.5cm) -- +(3cm,0cm);
+    \draw (0cm,-3.7cm) -- +(3cm,0cm);
+    \draw (0cm,-5.9cm) -- +(3cm,0cm);
+    \draw (1.5cm,0cm) -- +(0cm,-5.9cm);
+  \end{scope}
+\end{tikzpicture}
+\caption{The rewrite rules for the tree-arbiter protocol.
+%
+We mention here that there are more rules in the model we have verified.
+%
+For example, the rule in the top-left corner is represented in the concrete model by $2$ rules, each of which 
+corresponds to a particular combination of the natures of the parent and child nodes:
+%
+For the parent there are $2$ possibilities ($\state_i^{inner}/\state_r^{inner}$ and $\state_i^{root}/\state_r^{root}$) 
+while for the child, there are $2$ ($\state_r^{inner}$ and $\state_r^{leaf}$).}
+\label{fig:arbiter:rules}
+\end{figure}
+
+The set of bad constraints $\fconfs$ is represented by trees where at least two
+processes (i.e. two leaves) obtain the token (i.e. in state $\state_t^{leaf}$).
+%
+The set of initial configurations $\init$ contains all trees where the leaf nodes
+are either idle or requesting, inner nodes are idle, and the root has the token.
+%
+\begin{center}
+  \begin{tikzpicture}[show background rectangle]
+    \begin{scope}[scale=0.5]
+      \tikzstyle{every node}=[draw,rounded corners,minimum width= 1cm]
+      \tikzstyle{level 1}=[sibling distance=3cm,level distance=2cm]
+      \node {$\state$} child {node {$\state_t^{leaf}$}} child {node {$\state_t^{leaf}$}};
+    \end{scope}
+    \end{tikzpicture}
+\end{center}
+%
+

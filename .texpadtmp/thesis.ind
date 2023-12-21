@@ -1,0 +1,29 @@
+\begin{theindex}
+
+  \item Automation, \hyperpage{15}
+
+  \indexspace
+
+  \item Linearizability, \hyperpage{22}
+
+  \indexspace
+
+  \item Model Checking, \hyperpage{15}
+
+  \indexspace
+
+  \item Observers, \hyperpage{25}
+
+  \indexspace
+
+  \item Specification, \hyperpage{22}
+  \item Summary
+    \subitem Sammanfattning \protect\makebox[3ex]{\protect\includegraphics[height=1em]{img/flag-sverige.png}}, 
+		\hyperpage{vii}
+
+  \indexspace
+
+  \item Verification Methods
+    \subitem Model Checking, \hyperpage{15}
+
+\end{theindex}

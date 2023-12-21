@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: /Users/quytrinh/phdthesis/.texpadtmp/thesis.aux
+The style file: plain.bst
+Database file #1: ../misc/references.bib
+Repeated entry---line 1403 of file ../misc/references.bib
+ : @incollection{Forester
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1672 of file ../misc/references.bib
+ : @techreport{AHHR:integrated:rep
+ :                                ,
+I'm skipping whatever remains of this entry
+Name 1 in "P.~Habermehl, L.~Hol{\'i}k, A.~Rogalewicz, J.~{\v S}im{\' a}{\v c}ek, and T.~Vojnar" has a comma at the end for entry forester11
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "P.~Habermehl, L.~Hol{\'i}k, A.~Rogalewicz, J.~{\v S}im{\' a}{\v c}ek, and T.~Vojnar" for entry forester11
+while executing---line 1049 of file plain.bst
+Warning--empty booktitle in Chin:SL
+Warning--can't use both volume and number fields in Chin:SL
+Name 1 in "P.~Habermehl, L.~Hol{\'i}k, A.~Rogalewicz, J.~{\v S}im{\' a}{\v c}ek, and T.~Vojnar" has a comma at the end for entry forester11
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "P.~Habermehl, L.~Hol{\'i}k, A.~Rogalewicz, J.~{\v S}im{\' a}{\v c}ek, and T.~Vojnar" for entry forester11
+while executing---line 1090 of file plain.bst
+You've used 142 entries,
+            2118 wiz_defined-function locations,
+            1460 strings with 30597 characters,
+and the built_in function-call counts, 61857 in all, are:
+= -- 6254
+> -- 2513
+< -- 155
++ -- 1004
+- -- 843
+* -- 4209
+:= -- 9137
+add.period$ -- 480
+call.type$ -- 142
+change.case$ -- 840
+chr.to.int$ -- 0
+cite$ -- 144
+duplicate$ -- 2736
+empty$ -- 5060
+format.name$ -- 843
+if$ -- 13920
+int.to.chr$ -- 0
+int.to.str$ -- 142
+missing$ -- 132
+newline$ -- 709
+num.names$ -- 289
+pop$ -- 1026
+preamble$ -- 1
+purify$ -- 703
+quote$ -- 0
+skip$ -- 2172
+stack$ -- 0
+substring$ -- 4107
+swap$ -- 1187
+text.length$ -- 155
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 563
+warning$ -- 2
+while$ -- 583
+width$ -- 145
+write$ -- 1661
+(There were 6 error messages)

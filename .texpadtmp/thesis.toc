@@ -1,0 +1,33 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{List of papers}{iii}{section*.1}%
+\contentsline {chapter}{Summary}{vii}{section*.2}%
+\contentsline {section}{\raisebox {-0.5ex}{\makebox [3ex]{\includegraphics [height=1em]{img/flag-sverige.png}}} in Swedish}{vii}{section*.3}%
+\hrulefill 
+\contentsline {chapter}{\numberline {1}Introduction}{11}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Formal Verification}{12}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Research Challenges}{13}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Model Checking}{15}{chapter.2}%
+\contentsline {paragraph}{Example:}{16}{section*.5}%
+\contentsline {chapter}{\numberline {3}Data Structures}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Linearizability}{22}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Specifying Linearizability}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Observers}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Linearization Policies}{26}{section.4.2}%
+\contentsline {paragraph}{Verifying Linearization Policies}{29}{section*.6}%
+\contentsline {chapter}{\numberline {5}Shape Analysis}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Previous Approaches}{31}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Our Approaches}{34}{section.5.2}%
+\contentsline {paragraph}{Heap abstraction for singly-linked lists}{36}{section*.7}%
+\contentsline {paragraph}{Heap abstraction for skiplists}{37}{section*.8}%
+\contentsline {chapter}{\numberline {6}Related Work}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Verification of Linearizability}{41}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Shape Analysis}{42}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Shape Analysis for Sequential Programs}{42}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Shape Analysis for Concurrent Programs}{44}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{47}{chapter.7}%
+\mbox {}\hrulefill \par 
+\contentsline {chapter}{\numberline {8}Summary of Contributions}{49}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Paper I: Verification of Heap Manipulating Programs with Ordered Data by Extended Forest Automata}{49}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Paper II: Automated Verification of Linearization Policies}{50}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Paper III: Fragment Abstraction for Concurrent Shape Analysis}{51}{section.8.3}%
+\contentsline {chapter}{\numberline {9}References}{53}{chapter.9}%
